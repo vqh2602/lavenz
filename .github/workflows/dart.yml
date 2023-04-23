@@ -20,7 +20,7 @@ jobs:
           java-version: '17.x'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.3'
+          flutter-version: '3.7.x'
           
       # Note: This workflow uses the latest stable version of the Dart SDK.
       # You can specify other versions if desired, see documentation here:
@@ -32,8 +32,8 @@ jobs:
         run: flutter pub get
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
-      # - name: Verify formatting
-      #   run: dart format --output=none --set-exit-if-changed .
+       - name: Verify formatting
+         run: dart format --output=none --set-exit-if-changed .
 
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
@@ -43,11 +43,9 @@ jobs:
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
       - run: flutter build apk --debug --split-per-abi
-      #- name: Create a Release APK
-       # uses: ncipollo/release-action@v1
-        #with:
-         # artifacts: "build/app/outputs/apk/debug/*.apk"
-          #token: ${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}
-      #- run: flutter build apk
-      #- run: flutter build appbundle
+      - name: Create a Release APK
+      - uses: actions/upload-artifact@v1
+        with:
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
     
