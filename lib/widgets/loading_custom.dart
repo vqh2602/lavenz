@@ -22,12 +22,11 @@ class LoadingCustom extends StatelessWidget {
                       image: AssetImage('assets/background/bg.png'),
                       fit: BoxFit.fill)),
             ),
-            Container(
-                child: Center(
-                  child: Lottie.asset('assets/background/loadding.json',
-                      width: Get.width,
-                      fit: BoxFit.fill),
-                )),
+            Center(
+              child: Lottie.asset('assets/background/loadding.json',
+                  width: Get.width,
+                  fit: BoxFit.fill),
+            ),
           ],
         ),
       ),

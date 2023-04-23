@@ -3,12 +3,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 enum TypeToast {
-  GetError,
-  GetSuccess,
-  GetDefault,
-  ToastDefault,
-  ToastError,
-  ToastSuccess
+  getError,
+  getSuccess,
+  getDefault,
+  toastDefault,
+  toastError,
+  toastSuccess
 }
 
 void buildToast(
@@ -19,7 +19,7 @@ void buildToast(
       Color? backgroundColor,
       Color? textColor}) {
   switch (status) {
-    case TypeToast.GetSuccess:
+    case TypeToast.getSuccess:
       {
         Get.snackbar(title ?? 'Thành công'.tr, message,
             duration: duration ?? const Duration(seconds: 1),
@@ -27,7 +27,7 @@ void buildToast(
             colorText: textColor ?? Colors.white);
         break;
       }
-    case TypeToast.GetError:
+    case TypeToast.getError:
       {
         Get.snackbar(title ?? 'Có lỗi sảy ra'.tr, message,
             duration: duration ?? const Duration(seconds: 1),
@@ -35,7 +35,7 @@ void buildToast(
             colorText: textColor ?? Colors.white);
         break;
       }
-    case TypeToast.GetDefault:
+    case TypeToast.getDefault:
       {
         Get.snackbar(title ?? 'Thông báo'.tr, message,
             backgroundColor: backgroundColor,
@@ -43,7 +43,7 @@ void buildToast(
             duration: duration ?? const Duration(seconds: 1));
         break;
       }
-    case TypeToast.ToastDefault:
+    case TypeToast.toastDefault:
       {
         Fluttertoast.showToast(
             msg: message,
@@ -54,7 +54,7 @@ void buildToast(
             gravity: ToastGravity.BOTTOM);
         break;
       }
-    case TypeToast.ToastSuccess:
+    case TypeToast.toastSuccess:
       {
         Fluttertoast.showToast(
             msg: message,
@@ -65,7 +65,7 @@ void buildToast(
             gravity: ToastGravity.BOTTOM);
         break;
       }
-    case TypeToast.ToastError:
+    case TypeToast.toastError:
       {
         Fluttertoast.showToast(
             msg: message,
