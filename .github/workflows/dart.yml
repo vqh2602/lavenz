@@ -52,10 +52,10 @@ jobs:
           #token: ${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}
       #- run: flutter build apk
       #- run: flutter build appbundle
-      - name: Build and test
-            run: |
-              flutter build apk
-              flutter test
+      - name: Build
+          run: flutter build apk
+      - name: test
+          run: flutter test
 #      - uses: actions/upload-artifact@v1
 #        with:
 #          name: release-apk
