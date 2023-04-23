@@ -18,9 +18,11 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '17.x'
+          cache: 'gradle'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.3'
+          channel: 'stable'
+          cache: true
           
       # Note: This workflow uses the latest stable version of the Dart SDK.
       # You can specify other versions if desired, see documentation here:
