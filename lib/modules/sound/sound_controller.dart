@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
 import 'package:video_player/video_player.dart';
 
 class SoundController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
+  SoundControlController soundControlController =
+      Get.put(SoundControlController());
   GetStorage box = GetStorage();
   VideoPlayerController? videoPlayerController;
-  List<AudioPlayer> listAudio = [];
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -32,23 +33,7 @@ class SoundController extends GetxController
   }
 
   Future<void> playSound() async {
-    AudioPlayer audioPlayer =
-        AudioPlayer(playerId: 'aaaa ${listAudio.length + 1}');
-    listAudio.add(audioPlayer);
-    // await audioPlayer.setSource(AssetSource('background/rain.ogg'));
-    listAudio[0].play(
-      AssetSource('background/rain.ogg'),
-    );
-    listAudio[0].setReleaseMode(ReleaseMode.loop);
-    Future.delayed(const Duration(seconds: 5), () async {
-      AudioPlayer audioPlayer1 =
-          AudioPlayer(playerId: 'aaaa ${listAudio.length + 1}');
-      listAudio.add(audioPlayer1);
-      listAudio[1].play(
-        AssetSource('background/bird1.ogg'),
-      );
-      listAudio[1].setReleaseMode(ReleaseMode.loop);
-    });
+    soundControlController.playSoundControl();
   }
 
   changeUI() {

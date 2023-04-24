@@ -243,7 +243,7 @@ class _SoundScreenState extends State<SoundScreen>
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                           color: colorF2,
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(20)),
                       child: SvgPicture.asset(
                         'assets/background/noun-wind-3100898.svg',
                         fit: BoxFit.scaleDown,
