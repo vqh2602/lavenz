@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         // GlobalCupertinoLocalizations.delegate,
         // GlobalWidgetsLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('vi'),Locale('en')],
+      //supportedLocales: const [Locale('vn'),Locale('u')],
       transitionDuration: const Duration(milliseconds: 300),
       defaultTransition: Transition.fadeIn,
       initialRoute: SplashScreen.routeName,
