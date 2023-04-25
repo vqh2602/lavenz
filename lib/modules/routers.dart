@@ -7,6 +7,10 @@ import 'package:lavenz/modules/dashbroad/dashbroad_screen.dart';
 
 import 'package:lavenz/modules/home/home_binding.dart';
 import 'package:lavenz/modules/home/home_screen.dart';
+import 'package:lavenz/modules/sound/sound_binding.dart';
+import 'package:lavenz/modules/sound/sound_screen.dart';
+import 'package:lavenz/modules/sound_control/sound_control_binding.dart';
+import 'package:lavenz/modules/sound_control/sound_control_screen.dart';
 
 import 'package:lavenz/modules/splash/splash_binding.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
@@ -35,5 +39,14 @@ List<GetPage> routes = [
   GetPage(
       name: DashBroadScreen.routeName,
       page: () => const DashBroadScreen(),
-      binding: DashBroadBinding()),
+      binding: DashBroadBinding(),
+  transition: Transition.downToUp),
+  GetPage(
+      name: SoundScreen.routeName,
+      page: () => const SoundScreen(),
+      binding: SoundBinding()),
+  GetPage(
+      name: SoundControlScreen.routeName,
+      page: () => const SoundControlScreen(),
+      binding: SoundControlBinding()),
 ];

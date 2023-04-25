@@ -1,8 +1,12 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/color_custom.dart';
+import 'package:lavenz/widgets/count_down_timer.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
@@ -92,14 +96,22 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      cHeight(30),
+                      _numSoundPlay(
+                          title: 'hẹn giờ',
+                          wIcon: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                LucideIcons.alarmMinus,
+                                color: Colors.white70,
+                              ))),
                       _header(),
-                      // Container(
-                      //    color: Colors.red,
-                      //  ),
+                      cHeight(30),
+                      _numSoundPlay(title: 'âm nhạc', num: '0/1'),
                       _listSoundControl(),
-                      Container(
-                        color: Colors.black,
-                      ),
+                      cHeight(30),
+                      _numSoundPlay(title: 'âm thanh', num: '0/15'),
+                      _listSoundControl(),
                     ],
                   ),
                 ))
@@ -109,14 +121,14 @@ class _SoundControlScreenState extends State<SoundControlScreen>
   }
 
   Widget _header() {
-    return Container();
+    return _countdownTime();
   }
 
   Widget _listSoundControl() {
     return soundControlController.obx((state) => Container(
           padding: alignment_20_0(),
           child: ListView.builder(
-            padding: const EdgeInsets.only(top: 12),
+            padding: const EdgeInsets.only(top: 4),
             itemCount: soundControlController.listAudio.length,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
@@ -155,7 +167,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                               cHeight(8),
                               textTitleSmall(
                                   text: 'âm thanh nhẹ sss sss ss ',
-                                  maxLines: 2,
+                                  maxLines: 1,
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
                                   color: Colors.white),
@@ -163,6 +175,11 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                                 child: SliderTheme(
                                   data: SliderThemeData(
                                       // here
+                                      rangeThumbShape:
+                                          const RoundRangeSliderThumbShape(
+                                              enabledThumbRadius: 16),
+                                      thumbShape: const RoundSliderThumbShape(
+                                          enabledThumbRadius: 8),
                                       overlayShape:
                                           SliderComponentShape.noThumb),
                                   child: Slider.adaptive(
@@ -200,7 +217,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                           child: const Icon(
                             LucideIcons.xCircle,
                             size: 30,
-                            color: Colors.white,
+                            color: Colors.white54,
                           ),
                         )
                       ],
@@ -211,5 +228,70 @@ class _SoundControlScreenState extends State<SoundControlScreen>
             },
           ),
         ));
+  }
+
+  Widget _numSoundPlay(
+      {required String title, String? num, Function? onClick, Widget? wIcon}) {
+    return Container(
+      margin: alignment_20_0(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 12,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              textTitleSmall(text: title.toUpperCase(), color: Colors.white),
+              num != null
+                  ? textBodySmall(text: num, color: Colors.white)
+                  : const SizedBox()
+            ],
+          ),
+          (wIcon == null)
+              ? IconButton(
+                  onPressed: () {
+                    if (onClick != null) onClick();
+                  },
+                  icon: const Icon(
+                    LucideIcons.playCircle,
+                    color: Colors.white70,
+                  ))
+              : wIcon
+        ],
+      ),
+    );
+  }
+
+  Widget _countdownTime() {
+    return InkWell(
+      onTap: () {
+        Get.bottomSheet(
+          SizedBox(
+            height: 250,
+            child: CupertinoTimerPicker(
+              mode: CupertinoTimerPickerMode.hms,
+              minuteInterval: 5,
+              secondInterval: 10,
+              initialTimerDuration: Duration.zero,
+              onTimerDurationChanged: (Duration changedtimer) {
+                if (soundControlController.debounce != null) {
+                  soundControlController.debounce?.cancel();
+                }
+                soundControlController.debounce =
+                    Timer(const Duration(seconds: 3), () {
+                  soundControlController.startTimer1(duration: changedtimer);
+                });
+              },
+            ),
+          ),
+          backgroundColor: Colors.white,
+        );
+      },
+      child: Container(
+          margin: alignment_20_0(),
+          alignment: Alignment.center,
+          child: buildTime1(duration: soundControlController.duration1)),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -11,10 +12,92 @@ class SoundControlController extends GetxController
   List<AudioCustom> listAudio = [];
   Timer? debounce;
 
+  // static var countdownDuration = const Duration(minutes: 10);
+  // static var countdownDuration1 = const Duration(minutes: 10);
+  // Duration duration = const Duration();
+  Duration duration1 = const Duration();
+  // Timer? timer;
+  Timer? timer1;
+  //bool countDown = true;
+  bool countDown1 = true;
+  // var hours;
+  // var mints;
+  // var secs;
+
   @override
   Future<void> onInit() async {
     super.onInit();
     changeUI();
+  }
+
+  // void test() {
+  //   hours = int.parse("00");
+  //   mints = int.parse("00");
+  //   secs = int.parse("00");
+  //   countdownDuration = Duration(hours: hours, minutes: mints, seconds: secs);
+  //   startTimer();
+  //   reset();
+  //   // var hours1;
+  //   // var mints1;
+  //   // var secs1;
+  //   // hours1 = int.parse("10");
+  //   // mints1 = int.parse("0");
+  //   // secs1 = int.parse("00");
+  //   // countdownDuration1 =
+  //   //     Duration(minutes: mints1,);
+  //   startTimer1();
+  //   reset1();
+  // }
+
+  // void reset() {
+  //   if (countDown) {
+  //     duration = countdownDuration;
+  //   } else {
+  //     duration = Duration();
+  //   }
+  //   updateUI();
+  // }
+
+  void resetDownTime() {
+    timer1?.cancel();
+    duration1 = const Duration();
+    updateUI();
+  }
+
+  // void startTimer() {
+  //   timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
+  //   updateUI();
+  // }
+
+  void startTimer1({required Duration duration}) {
+    duration1 = duration;
+    if (timer1 != null) timer1?.cancel();
+    timer1 =
+        Timer.periodic(const Duration(seconds: 1), (_) => addTimeDownTime());
+    updateUI();
+  }
+
+  // void addTime() {
+  //   final addSeconds = 1;
+  //   final seconds = duration.inSeconds + addSeconds;
+  //   if (seconds < 0) {
+  //     timer?.cancel();
+  //   } else {
+  //     duration = Duration(seconds: seconds);
+  //   }
+  //   updateUI();
+  // }
+
+  void addTimeDownTime() {
+    const addSeconds = 1;
+    final seconds = duration1.inSeconds - addSeconds;
+    if (seconds < 0) {
+      timer1?.cancel();
+      log('tắt nhạc');
+    } else {
+      duration1 = Duration(seconds: seconds);
+    }
+    updateUI();
   }
 
   initVideoBackground() {
@@ -57,23 +140,17 @@ class SoundControlController extends GetxController
       updateUI();
     });
 
-    Future.delayed(const Duration(seconds: 15), () async {
-      clearAllSound();
-    });
     updateUI();
   }
 
   Future<void> clearAllSound() async {
-    if (debounce != null) debounce?.cancel();
-    debounce = Timer(const Duration(seconds: 2), () {
-      Timer(const Duration(minutes: 1), () {
+      Timer(const Duration(seconds: 3), () {
         for (var element in listAudio) {
           element.audioPlayer.dispose();
         }
         listAudio.clear();
         updateUI();
       });
-    });
   }
 
   changeUI() {
