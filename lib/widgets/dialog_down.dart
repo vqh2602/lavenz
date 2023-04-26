@@ -8,7 +8,7 @@ import 'package:lavenz/widgets/text_custom.dart';
 import 'package:lavenz/widgets/widgets.dart';
 import 'package:lottie/lottie.dart';
 
-Widget dialogDown({dynamic process}) {
+Widget dialogDown({dynamic process,dynamic speed}) {
   return AlertDialog(
       elevation: 0,
       backgroundColor: Colors.transparent,
@@ -39,6 +39,9 @@ Widget dialogDown({dynamic process}) {
                 Lottie.asset('assets/background/loadding_dowb.json'),
                 textTitleSmall(
                     text:'$process',
+                    color: Colors.white),
+                textBodySmall(
+                    text:'Tốc độ internet: $speed',
                     color: Colors.white),
               ],
             ),

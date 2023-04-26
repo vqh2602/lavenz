@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:lavenz/data/models/sound.dart' as sound;
+import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:video_player/video_player.dart';
 
 class SoundControlController extends GetxController
@@ -10,7 +13,10 @@ class SoundControlController extends GetxController
   GetStorage box = GetStorage();
   VideoPlayerController? videoPlayerController;
   List<AudioCustom> listAudio = [];
+  List<AudioCustom> listMusic = [];
   Timer? debounce;
+  DownloadAssetsController downloadAssetsController =
+      DownloadAssetsController();
 
   // static var countdownDuration = const Duration(minutes: 10);
   // static var countdownDuration1 = const Duration(minutes: 10);
@@ -27,9 +33,13 @@ class SoundControlController extends GetxController
   @override
   Future<void> onInit() async {
     super.onInit();
+    initLocalData();
     changeUI();
   }
 
+  Future initLocalData() async {
+    await downloadAssetsController.init();
+  }
   // void test() {
   //   hours = int.parse("00");
   //   mints = int.parse("00");
@@ -116,41 +126,33 @@ class SoundControlController extends GetxController
     videoPlayerController?.dispose();
   }
 
-  Future<void> playSoundControl() async {
+  Future<void> playSoundControl(
+      {required String path, required sound.Data data}) async {
     AudioPlayer audioPlayer =
-        AudioPlayer(playerId: 'aaaa ${listAudio.length + 1}');
-    listAudio.add(AudioCustom(audioPlayer, 0.5, 'hdhsdhfsadhfjh jksdhfbh', ''));
+        AudioPlayer(playerId: 'sound ${listAudio.length + 1}');
+    listAudio.add(AudioCustom(
+        audioPlayer: audioPlayer,
+        volume: 0.5,
+        title: data.name ?? '',
+        data: data));
     // await audioPlayer.setSource(AssetSource('background/rain.ogg'));
-    listAudio[0].audioPlayer.play(
-          AssetSource('background/rain.ogg'),
-        );
-    listAudio[0].audioPlayer.setReleaseMode(ReleaseMode.loop);
-    listAudio[0].audioPlayer.setVolume(0.5);
-
-    Future.delayed(const Duration(seconds: 5), () async {
-      AudioPlayer audioPlayer1 =
-          AudioPlayer(playerId: 'aaaa ${listAudio.length + 1}');
-      listAudio
-          .add(AudioCustom(audioPlayer1, 0.5, 'hdhsdhfsadhfjh jksdhfbh', ''));
-      listAudio[1].audioPlayer.play(
-            AssetSource('background/bird1.ogg'),
-          );
-      listAudio[1].audioPlayer.setReleaseMode(ReleaseMode.loop);
-      listAudio[1].audioPlayer.setVolume(0.5);
-      updateUI();
-    });
+    listAudio.last.audioPlayer.play(
+      DeviceFileSource(File(path).path),
+    );
+    listAudio.last.audioPlayer.setReleaseMode(ReleaseMode.loop);
+    listAudio.last.audioPlayer.setVolume(0.5);
 
     updateUI();
   }
 
   Future<void> clearAllSound() async {
-      Timer(const Duration(seconds: 3), () {
-        for (var element in listAudio) {
-          element.audioPlayer.dispose();
-        }
-        listAudio.clear();
-        updateUI();
-      });
+    Timer(const Duration(seconds: 3), () {
+      for (var element in listAudio) {
+        element.audioPlayer.dispose();
+      }
+      listAudio.clear();
+      updateUI();
+    });
   }
 
   changeUI() {
@@ -170,7 +172,11 @@ class AudioCustom {
   AudioPlayer audioPlayer;
   double volume;
   String title;
-  dynamic data;
+  sound.Data data;
 
-  AudioCustom(this.audioPlayer, this.volume, this.title, this.data);
+  AudioCustom(
+      {required this.audioPlayer,
+      required this.volume,
+      required this.title,
+      required this.data});
 }

@@ -59,6 +59,7 @@ dependencies:
   flutter_svg: ^2.0.5
   audioplayers: ^4.0.1
   archive: ^3.3.7
+  flutter_internet_speed_test: ^1.4.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,38 +29,16 @@ class _SoundControlScreenState extends State<SoundControlScreen>
   SoundControlController soundControlController =
       Get.put(SoundControlController());
   bool showHeader = true;
-  ScrollController scrollController = ScrollController();
-  late TabController tabController, tabControllerMin;
+
   @override
   void initState() {
     soundControlController.initVideoBackground();
-    scrollController.addListener(() {
-      if (scrollController.position.pixels <=
-          scrollController.position.minScrollExtent + 20) {
-        //print('mở');
-        setState(() {
-          showHeader = true;
-        });
-      } else {
-        setState(() {
-          showHeader = false;
-        });
-      }
-    });
-    tabController = TabController(length: 2, vsync: this);
-    tabControllerMin = TabController(length: 6, vsync: this);
-    tabControllerMin.addListener(() {
-      setState(() {});
-    });
     super.initState();
   }
 
   @override
   void dispose() {
     soundControlController.videoPlayerController?.dispose();
-    scrollController.dispose();
-    tabController.dispose();
-    tabControllerMin.dispose();
     super.dispose();
   }
 
@@ -107,11 +86,13 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                               ))),
                       _header(),
                       cHeight(30),
-                      _numSoundPlay(title: 'âm nhạc', num: '0/1'),
-                      _listSoundControl(),
+                      _numSoundPlay(title: 'âm thanh', num: '${soundControlController.listAudio.length}/15'),
+                      _listSoundControl(
+                          listData: soundControlController.listAudio),
                       cHeight(30),
-                      _numSoundPlay(title: 'âm thanh', num: '0/15'),
-                      _listSoundControl(),
+                      _numSoundPlay(title: 'âm nhạc', num: '${soundControlController.listMusic.length}/1'),
+                      _listSoundControl(
+                          listData: soundControlController.listMusic),
                     ],
                   ),
                 ))
@@ -124,12 +105,12 @@ class _SoundControlScreenState extends State<SoundControlScreen>
     return _countdownTime();
   }
 
-  Widget _listSoundControl() {
+  Widget _listSoundControl({required List<AudioCustom> listData}) {
     return soundControlController.obx((state) => Container(
           padding: alignment_20_0(),
           child: ListView.builder(
             padding: const EdgeInsets.only(top: 4),
-            itemCount: soundControlController.listAudio.length,
+            itemCount: listData.length,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               return Container(
@@ -137,7 +118,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                 width: Get.width,
                 height: 70,
                 child: Tooltip(
-                  message: 'ádfnsdjkfhkjsdfhnjkleswdfbnjkl',
+                  message: listData[index].title,
                   child: InkWell(
                     onTap: () {
                       //soundControlController.playSoundControl();
@@ -152,8 +133,9 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                             decoration: BoxDecoration(
                                 color: colorF2,
                                 borderRadius: BorderRadius.circular(20)),
-                            child: SvgPicture.asset(
-                              'assets/background/noun-wind-3100898.svg',
+                            child: SvgPicture.file(
+                              File(
+                                  '${soundControlController.downloadAssetsController.assetsDir}/svg_icons/${listData[index].data.image}'),
                               fit: BoxFit.scaleDown,
                               colorFilter: const ColorFilter.mode(
                                   Colors.white, BlendMode.srcIn),
@@ -166,7 +148,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                             children: [
                               cHeight(8),
                               textTitleSmall(
-                                  text: 'âm thanh nhẹ sss sss ss ',
+                                  text: listData[index].title,
                                   maxLines: 1,
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,

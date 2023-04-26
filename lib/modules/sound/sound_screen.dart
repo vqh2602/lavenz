@@ -1,12 +1,13 @@
-import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:lavenz/modules/home/home_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/color_custom.dart';
+import 'package:lavenz/widgets/list_sound.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lavenz/widgets/widgets.dart';
 import 'package:video_player/video_player.dart';
 
 class SoundScreen extends StatefulWidget {
@@ -20,6 +21,7 @@ class SoundScreen extends StatefulWidget {
 class _SoundScreenState extends State<SoundScreen>
     with TickerProviderStateMixin {
   SoundController soundController = Get.put(SoundController());
+  HomeController homeController = Get.find();
   bool showHeader = true;
   ScrollController scrollController = ScrollController();
   late TabController tabController, tabControllerMin;
@@ -206,7 +208,14 @@ class _SoundScreenState extends State<SoundScreen>
         body: TabBarView(
           controller: tabControllerMin,
           children: [
-            listSound(),
+            listSound(
+              onTap: (sound, data) {
+                soundController.playSound(sound: sound, data: data);
+              },
+              listData: soundController.soundData.data ?? [],
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
             Container(),
             Container(),
             Container(),
@@ -214,54 +223,6 @@ class _SoundScreenState extends State<SoundScreen>
             Container(),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget listSound() {
-    return Container(
-      padding: alignment_20_0(),
-      child: GridView.builder(
-        padding: const EdgeInsets.only(top: 12),
-        itemCount: 20,
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, crossAxisSpacing: 4, mainAxisSpacing: 4),
-        itemBuilder: (BuildContext context, int index) {
-          return Tooltip(
-            message: 'ádfnsdjkfhkjsdfhnjkleswdfbnjkl',
-            child: InkWell(
-              onTap: () {
-                soundController.playSound();
-              },
-              child: Column(
-                children: [
-                  Container(
-                      width: 70,
-                      height: 70,
-                      alignment: Alignment.center, //
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                          color: colorF2,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: SvgPicture.asset(
-                        'assets/background/noun-wind-3100898.svg',
-                        fit: BoxFit.scaleDown,
-                        colorFilter: const ColorFilter.mode(
-                            Colors.white, BlendMode.srcIn),
-                      )),
-                  cHeight(4),
-                  textBodySmall(
-                      text: 'âm thanh nhẹ sss sss ss ',
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      color: Colors.white),
-                ],
-              ),
-            ),
-          );
-        },
       ),
     );
   }
