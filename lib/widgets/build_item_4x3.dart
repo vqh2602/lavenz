@@ -1,6 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 
 Widget buildItem4x3() {
@@ -54,7 +56,9 @@ Widget buildItem4x3() {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: GFButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(VipScreen.routeName);
+                        },
                         color: Colors.white,
                         textColor: Colors.black,
                         padding:

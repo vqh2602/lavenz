@@ -11,8 +11,9 @@ import 'package:lavenz/modules/home/home_screen.dart';
 import 'package:lavenz/modules/splash/splash_binding.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
 
-
 import 'package:get/get.dart';
+import 'package:lavenz/modules/vip/vip_binding.dart';
+import 'package:lavenz/modules/vip/vip_screen.dart';
 
 List<GetPage> routes = [
   GetPage(
@@ -36,4 +37,8 @@ List<GetPage> routes = [
       name: DashBroadScreen.routeName,
       page: () => const DashBroadScreen(),
       binding: DashBroadBinding()),
+  GetPage(
+      name: VipScreen.routeName,
+      page: () => const VipScreen(),
+      binding: VipBinding()),
 ];
