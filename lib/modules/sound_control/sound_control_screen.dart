@@ -72,29 +72,33 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                           fit: BoxFit.fill)),
                 ),
                 SafeArea(
-                    child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      cHeight(30),
-                      _numSoundPlay(
-                          title: 'hẹn giờ',
-                          wIcon: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                LucideIcons.alarmMinus,
-                                color: Colors.white70,
-                              ))),
-                      _header(),
-                      cHeight(30),
-                      _numSoundPlay(title: 'âm thanh', num: '${soundControlController.listAudio.length}/15'),
-                      _listSoundControl(
+                    child: Column(
+                  children: [
+                    cHeight(30),
+                    _numSoundPlay(
+                        title: 'hẹn giờ',
+                        wIcon: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              LucideIcons.alarmMinus,
+                              color: Colors.white70,
+                            ))),
+                    _header(),
+                    cHeight(30),
+                    _numSoundPlay(
+                        title: 'âm nhạc',
+                        num: '${soundControlController.listMusic.length}/1'),
+                    _listSoundControl(
+                        listData: soundControlController.listMusic),
+                    cHeight(30),
+                    _numSoundPlay(
+                        title: 'âm thanh',
+                        num: '${soundControlController.listAudio.length}/15'),
+                    Expanded(
+                      child: _listSoundControl(
                           listData: soundControlController.listAudio),
-                      cHeight(30),
-                      _numSoundPlay(title: 'âm nhạc', num: '${soundControlController.listMusic.length}/1'),
-                      _listSoundControl(
-                          listData: soundControlController.listMusic),
-                    ],
-                  ),
+                    ),
+                  ],
                 ))
               ],
             ),

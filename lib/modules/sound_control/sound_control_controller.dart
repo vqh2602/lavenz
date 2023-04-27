@@ -37,6 +37,12 @@ class SoundControlController extends GetxController
     changeUI();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    videoPlayerController?.dispose();
+  }
+
   Future initLocalData() async {
     await downloadAssetsController.init();
   }
@@ -112,18 +118,12 @@ class SoundControlController extends GetxController
 
   initVideoBackground() {
     videoPlayerController =
-        VideoPlayerController.asset('assets/background/vd4.mp4')
-          ..initialize().then((_) {
-            videoPlayerController?.play();
-            videoPlayerController?.setLooping(true);
-            videoPlayerController?.setVolume(0);
-          });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    videoPlayerController?.dispose();
+    VideoPlayerController.asset('assets/background/vd4.mp4')
+      ..initialize().then((_) {
+        videoPlayerController?.play();
+        videoPlayerController?.setLooping(true);
+        videoPlayerController?.setVolume(0);
+      });
   }
 
   Future<void> playSoundControl(
@@ -146,12 +146,24 @@ class SoundControlController extends GetxController
   }
 
   Future<void> clearAllSound() async {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 0), () {
       for (var element in listAudio) {
         element.audioPlayer.dispose();
       }
       listAudio.clear();
       updateUI();
+    });
+  }
+  Future<void> clearSoundWithId({required num? id}) async {
+    Timer(const Duration(seconds: 0), () {
+      for (var element in listAudio) {
+        if(element.data.id == id){
+          element.audioPlayer.dispose();
+          listAudio.remove(element);
+          updateUI();
+          break;
+        }
+      }
     });
   }
 

@@ -1,6 +1,6 @@
-
 import 'package:lavenz/modules/home/home_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
+import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/color_custom.dart';
 import 'package:lavenz/widgets/list_sound.dart';
@@ -21,6 +21,8 @@ class SoundScreen extends StatefulWidget {
 class _SoundScreenState extends State<SoundScreen>
     with TickerProviderStateMixin {
   SoundController soundController = Get.put(SoundController());
+  SoundControlController soundControlController =
+      Get.put(SoundControlController());
   HomeController homeController = Get.find();
   bool showHeader = true;
   ScrollController scrollController = ScrollController();
@@ -211,7 +213,16 @@ class _SoundScreenState extends State<SoundScreen>
             listSound(
               onTap: (sound, data) {
                 soundController.playSound(sound: sound, data: data);
+                soundControlController.updateUI();
+                soundController.updateUI();
               },
+              onTapPlaying: (data){
+                soundControlController.clearSoundWithId(id: data);
+                soundControlController.updateUI();
+                soundController.updateUI();
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
               listData: soundController.soundData.data ?? [],
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',

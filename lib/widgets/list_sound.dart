@@ -10,7 +10,9 @@ import 'package:lavenz/widgets/widgets.dart';
 
 Widget listSound({
   required Function(String, dynamic) onTap,
+  required Function(num?) onTapPlaying,
   required List<Data> listData,
+  required List<Data> listSelect,
   required String pathBase,
 }) {
   return Container(
@@ -22,11 +24,14 @@ Widget listSound({
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3, crossAxisSpacing: 4, mainAxisSpacing: 4),
       itemBuilder: (BuildContext context, int index) {
+        bool isPlaying = listSelect.contains(listData[index]);
         return Tooltip(
           message: listData[index].describe,
           child: InkWell(
             onTap: () {
-              onTap(listData[index].sound ?? '', listData[index]);
+              !isPlaying
+                  ? onTap(listData[index].sound ?? '', listData[index])
+                  : onTapPlaying(listData[index].id);
               //soundController.playSound();
             },
             child: Column(
@@ -37,18 +42,33 @@ Widget listSound({
                     alignment: Alignment.center, //
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                        color: colorF2,
+                        color: isPlaying ? Colors.white : colorF2,
+                        boxShadow: [
+                          isPlaying
+                              ? BoxShadow(
+                                  color: colorF4,
+                                  spreadRadius: 4,
+                                  blurRadius: 12,
+                                  offset: const Offset(
+                                      0, 0), // changes position of shadow
+                                )
+                              : const BoxShadow(),
+                        ],
                         borderRadius: BorderRadius.circular(20)),
-                    child: SvgPicture.file(
-                      File('$pathBase${listData[index].image}'),
-                      fit: BoxFit.scaleDown,
-                      colorFilter:
-                          const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                      // child: SvgPicture.asset(
-                      //   'assets/background/noun-wind-3100898.svg',
-                      //   fit: BoxFit.scaleDown,
-                      //   colorFilter: const ColorFilter.mode(
-                      //       Colors.white, BlendMode.srcIn),
+                    child: Center(
+                      child: SvgPicture.file(
+                        File('$pathBase${listData[index].image}'),
+                        fit: BoxFit.scaleDown,
+                        colorFilter: !isPlaying
+                            ? const ColorFilter.mode(
+                                Colors.white, BlendMode.srcIn)
+                            : ColorFilter.mode(colorF2, BlendMode.srcIn),
+                        // child: SvgPicture.asset(
+                        //   'assets/background/noun-wind-3100898.svg',
+                        //   fit: BoxFit.scaleDown,
+                        //   colorFilter: const ColorFilter.mode(
+                        //       Colors.white, BlendMode.srcIn),
+                      ),
                     )),
                 cHeight(4),
                 textBodySmall(
