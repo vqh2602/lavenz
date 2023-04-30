@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
@@ -41,6 +40,8 @@ class SoundControlController extends GetxController
   void dispose() {
     super.dispose();
     videoPlayerController?.dispose();
+    clearAllMusic();
+    clearAllSound();
   }
 
   Future initLocalData() async {
@@ -109,7 +110,6 @@ class SoundControlController extends GetxController
     final seconds = duration1.inSeconds - addSeconds;
     if (seconds < 0) {
       timer1?.cancel();
-      log('tắt nhạc');
     } else {
       duration1 = Duration(seconds: seconds);
     }
@@ -118,34 +118,42 @@ class SoundControlController extends GetxController
 
   initVideoBackground() {
     videoPlayerController =
-    VideoPlayerController.asset('assets/background/vd4.mp4')
-      ..initialize().then((_) {
-        videoPlayerController?.play();
-        videoPlayerController?.setLooping(true);
-        videoPlayerController?.setVolume(0);
-      });
+        VideoPlayerController.asset('assets/background/vd4.mp4')
+          ..initialize().then((_) {
+            videoPlayerController?.play();
+            videoPlayerController?.setLooping(true);
+            videoPlayerController?.setVolume(0);
+          });
   }
 
   Future<void> playSoundControl(
       {required String path, required sound.Data data}) async {
     AudioPlayer audioPlayer =
         AudioPlayer(playerId: 'sound ${listAudio.length + 1}');
-    listAudio.add(AudioCustom(
-        audioPlayer: audioPlayer,
-        volume: 0.5,
-        title: data.name ?? '',
-        data: data));
-    // await audioPlayer.setSource(AssetSource('background/rain.ogg'));
-    listAudio.last.audioPlayer.play(
-      DeviceFileSource(File(path).path),
-    );
-    listAudio.last.audioPlayer.setReleaseMode(ReleaseMode.loop);
-    listAudio.last.audioPlayer.setVolume(0.5);
+    if (data.type == 1) {
+      listAudio.add(AudioCustom(
+          audioPlayer: audioPlayer,
+          volume: 0.5,
+          title: data.name ?? '',
+          data: data));
+      await listAudio.last.audioPlayer.play(DeviceFileSource(File(path).path));
+      listAudio.last.audioPlayer.setReleaseMode(ReleaseMode.loop);
+      listAudio.last.audioPlayer.setVolume(0.5);
+    } else {
+      listMusic.add(AudioCustom(
+          audioPlayer: audioPlayer,
+          volume: 0.5,
+          title: data.name ?? '',
+          data: data));
+      await listMusic[0].audioPlayer.play(UrlSource(path));
+      listMusic[0].audioPlayer.setReleaseMode(ReleaseMode.loop);
+      listMusic[0].audioPlayer.setVolume(0.5);
+    }
 
     updateUI();
   }
 
-  Future<void> clearAllSound() async {
+  void clearAllSound() {
     Timer(const Duration(seconds: 0), () {
       for (var element in listAudio) {
         element.audioPlayer.dispose();
@@ -154,10 +162,33 @@ class SoundControlController extends GetxController
       updateUI();
     });
   }
+
+  Future<void> clearAllMusic() async {
+    Timer(const Duration(seconds: 0), () {
+      if (listMusic.isNotEmpty) {
+        for (var element in listMusic) {
+          element.audioPlayer.dispose();
+          listMusic.remove(element);
+        }
+      }
+      updateUI();
+    });
+  }
+
+  Future<void> playAllSound() async {
+    Timer(const Duration(seconds: 0), () {
+      for (var element in listAudio) {
+        element.audioPlayer.setVolume(0.5);
+        element.volume = 0.5;
+      }
+      updateUI();
+    });
+  }
+
   Future<void> clearSoundWithId({required num? id}) async {
     Timer(const Duration(seconds: 0), () {
       for (var element in listAudio) {
-        if(element.data.id == id){
+        if (element.data.id == id) {
           element.audioPlayer.dispose();
           listAudio.remove(element);
           updateUI();
@@ -167,6 +198,28 @@ class SoundControlController extends GetxController
     });
   }
 
+  onSetVolume(AudioCustom audioCustom, double volume, {required int type}) {
+    if (type == 1) {
+      audioCustom.audioPlayer.setVolume(volume);
+      audioCustom.volume = volume;
+    } else {
+      audioCustom.audioPlayer.setVolume(volume);
+      audioCustom.volume = volume;
+    }
+    updateUI();
+  }
+
+  onPauseMP3(AudioCustom audioCustom, int index, {required int type}) {
+    if (type == 1) {
+                              audioCustom.audioPlayer
+                                  .dispose();
+                              listAudio.removeAt(index);
+                            } else {
+                              clearAllMusic();
+                            }
+                            updateUI();
+    updateUI();
+  }
   changeUI() {
     change(null, status: RxStatus.success());
   }

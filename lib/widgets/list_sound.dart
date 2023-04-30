@@ -28,6 +28,8 @@ Widget listSound({
         return Tooltip(
           message: listData[index].describe,
           child: InkWell(
+            borderRadius: BorderRadius.circular(25),
+            splashColor: colorF2.withOpacity(0.3),
             onTap: () {
               !isPlaying
                   ? onTap(listData[index].sound ?? '', listData[index])

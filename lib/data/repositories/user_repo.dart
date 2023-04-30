@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/data/repositories/repo.dart';
 import 'package:lavenz/data/storage.dart';
-import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth_android/local_auth_android.dart';
@@ -25,7 +24,7 @@ class UserRepo extends Repo {
         user = User.fromJson(result['data']);
         await box.write(Storages.dataUser, jsonEncode(result['data']));
       } else {
-        buildToast(type: TypeToast.failure, title: result["message"]);
+       // buildToast(type: TypeToast.failure, title: result["message"]);
       }
     }
     return user;
@@ -56,8 +55,8 @@ class UserRepo extends Repo {
       //     title: 'Đăng nhập thành công',
       //     message: 'Chào mừng ${splitNameUser(name: user.name ?? '',isLastName: true)}');
     } else {
-      buildToast(
-          type: TypeToast.failure, title: result["message"] ?? 'có lỗi sảy ra');
+      // buildToast(
+      //     type: TypeToast.failure, title: result["message"] ?? 'có lỗi sảy ra');
     }
     log('Đăng nhập, user: ${user?.toJson().toString()}');
     return user;
@@ -136,9 +135,9 @@ class UserRepo extends Repo {
 
     var result = jsonDecode(res.toString());
     if (result["success"]) {
-      buildToast(type: TypeToast.success, title: result['message']);
+     // buildToast(type: TypeToast.success, title: result['message']);
     } else {
-      buildToast(type: TypeToast.failure, title: result["message"]);
+   //   buildToast(type: TypeToast.failure, title: result["message"]);
     }
   }
 
@@ -154,13 +153,13 @@ class UserRepo extends Repo {
     var result = jsonDecode(res.toString());
     if (result["success"] ?? false) {
       await box.write(Storages.dataUser, jsonEncode(result['data']));
-      buildToast(
-        type: TypeToast.success,
-        title: 'Cập nhật thành công',
-      );
+      // buildToast(
+      //   type: TypeToast.success,
+      //   title: 'Cập nhật thành công',
+      // );
     } else {
-      buildToast(
-          type: TypeToast.failure, title: result["message"] ?? 'Có lỗi xảy ra');
+      // buildToast(
+      //     type: TypeToast.failure, title: result["message"] ?? 'Có lỗi xảy ra');
     }
   }
 
@@ -186,13 +185,13 @@ class UserRepo extends Repo {
     });
     var result = jsonDecode(res.toString());
     if (result["success"] ?? false) {
-      buildToast(
-        type: TypeToast.success,
-        title: 'Cập nhật thành công',
-      );
+      // buildToast(
+      //   type: TypeToast.success,
+      //   title: 'Cập nhật thành công',
+      // );
     } else {
-      buildToast(
-          type: TypeToast.failure, title: result["message"] ?? 'có lỗi sảy ra');
+      // buildToast(
+      //     type: TypeToast.failure, title: result["message"] ?? 'có lỗi sảy ra');
     }
   }
 
@@ -205,13 +204,13 @@ class UserRepo extends Repo {
         data: {"workout_realtime": min, "calo_real": calo});
     var result = jsonDecode(res.toString());
     if (result["success"] ?? false) {
-      buildToast(
-        type: TypeToast.success,
-        title: 'thêm bài tập thành công',
-      );
+      // buildToast(
+      //   type: TypeToast.success,
+      //   title: 'thêm bài tập thành công',
+      // );
     } else {
-      buildToast(
-          type: TypeToast.failure, title: result["message"] ?? 'có lỗi sảy ra');
+      // buildToast(
+      //     type: TypeToast.failure, title: result["message"] ?? 'có lỗi sảy ra');
     }
   }
 
@@ -225,15 +224,15 @@ class UserRepo extends Repo {
     );
     var result = jsonDecode(res.toString());
     if (result["success"] ?? false) {
-      buildToast(
-        type: TypeToast.success,
-        title: 'Thêm bài tập training thành công',
-      );
+      // buildToast(
+      //   type: TypeToast.success,
+      //   title: 'Thêm bài tập training thành công',
+      // );
     } else {
-      buildToast(
-        type: TypeToast.failure,
-        title: result["message"] ?? 'Có lỗi xảy ra',
-      );
+      // buildToast(
+      //   type: TypeToast.failure,
+      //   title: result["message"] ?? 'Có lỗi xảy ra',
+      // );
     }
   }
 

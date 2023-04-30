@@ -2,12 +2,15 @@ import 'package:lavenz/modules/home/home_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
 import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
+import 'package:lavenz/widgets/build_list_item_1x1.dart';
 import 'package:lavenz/widgets/color_custom.dart';
 import 'package:lavenz/widgets/list_sound.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
+
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lavenz/widgets/widgets.dart';
 import 'package:video_player/video_player.dart';
 
 class SoundScreen extends StatefulWidget {
@@ -25,24 +28,10 @@ class _SoundScreenState extends State<SoundScreen>
       Get.put(SoundControlController());
   HomeController homeController = Get.find();
   bool showHeader = true;
-  ScrollController scrollController = ScrollController();
   late TabController tabController, tabControllerMin;
   @override
   void initState() {
     soundController.initVideoBackground();
-    scrollController.addListener(() {
-      if (scrollController.position.pixels <=
-          scrollController.position.minScrollExtent + 20) {
-        //print('mở');
-        setState(() {
-          showHeader = true;
-        });
-      } else {
-        setState(() {
-          showHeader = false;
-        });
-      }
-    });
     tabController = TabController(length: 2, vsync: this);
     tabControllerMin = TabController(length: 6, vsync: this);
     tabControllerMin.addListener(() {
@@ -54,7 +43,6 @@ class _SoundScreenState extends State<SoundScreen>
   @override
   void dispose() {
     soundController.videoPlayerController?.dispose();
-    scrollController.dispose();
     tabController.dispose();
     tabControllerMin.dispose();
     super.dispose();
@@ -148,13 +136,11 @@ class _SoundScreenState extends State<SoundScreen>
                     controller: tabController,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      _header(),
+                      _sound(),
                       // Container(
                       //    color: Colors.red,
                       //  ),
-                      Container(
-                        color: Colors.black,
-                      ),
+                      _music()
                     ],
                   ),
                 )
@@ -163,7 +149,7 @@ class _SoundScreenState extends State<SoundScreen>
         onLoading: const LoadingCustom());
   }
 
-  Widget _header() {
+  Widget _sound() {
     return DefaultTabController(
       length: 6,
       child: Scaffold(
@@ -212,18 +198,14 @@ class _SoundScreenState extends State<SoundScreen>
           children: [
             listSound(
               onTap: (sound, data) {
-                soundController.playSound(sound: sound, data: data);
-                soundControlController.updateUI();
-                soundController.updateUI();
+                soundController.onPlaySound(sound, data);
               },
-              onTapPlaying: (data){
-                soundControlController.clearSoundWithId(id: data);
-                soundControlController.updateUI();
-                soundController.updateUI();
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
               },
               listSelect:
                   soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.soundData.data ?? [],
+              listData: soundController.listSound,
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
@@ -234,6 +216,83 @@ class _SoundScreenState extends State<SoundScreen>
             Container(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _music() {
+    return SingleChildScrollView(
+      child: Container(
+        margin: alignment_20_0_0(),
+        child: Column(children: [
+          cHeight(30),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(17) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Đi vào giấc ngủ'),
+          cHeight(12),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(18) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Bản nhạc thiên nhiên'),
+          cHeight(12),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(12) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Bản nhạc thư giãn'),
+          cHeight(12),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(13) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Tập trung cao độ'),
+          cHeight(12),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(14) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Giải toả tâm trạng'),
+          cHeight(12),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(15) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Bản nhạc trị liệu'),
+          cHeight(12),
+        ]),
       ),
     );
   }

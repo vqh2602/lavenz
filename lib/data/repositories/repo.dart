@@ -1,4 +1,3 @@
-import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:dio/dio.dart';
 
  // String baseUrl =  'http://localhost:8080'; // ios
@@ -32,11 +31,11 @@ class Repo {
       if (statusCode >= 200 && statusCode < 300) {
         return true;
       } else {
-        buildToast(
-            type: TypeToast.failure,
-            title: 'Không thể kết nối đến máy chủ',
-            message:
-                'Vui lòng kiểm tra lại kết nối mạng hoặc liên hệ hỗ trợ báo cáo sự cố');
+        // buildToast(
+        //     type: TypeToast.failure,
+        //     title: 'Không thể kết nối đến máy chủ',
+        //     message:
+        //         'Vui lòng kiểm tra lại kết nối mạng hoặc liên hệ hỗ trợ báo cáo sự cố');
         return false;
       }
     },

@@ -87,12 +87,16 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     cHeight(30),
                     _numSoundPlay(
                         title: 'âm nhạc',
+                        // onClick: (){soundControlController.playAllSound();},
                         num: '${soundControlController.listMusic.length}/1'),
                     _listSoundControl(
-                        listData: soundControlController.listMusic),
+                        listData: soundControlController.listMusic, type: 2),
                     cHeight(30),
                     _numSoundPlay(
                         title: 'âm thanh',
+                        onClick: () {
+                          soundControlController.playAllSound();
+                        },
                         num: '${soundControlController.listAudio.length}/15'),
                     Expanded(
                       child: _listSoundControl(
@@ -109,7 +113,8 @@ class _SoundControlScreenState extends State<SoundControlScreen>
     return _countdownTime();
   }
 
-  Widget _listSoundControl({required List<AudioCustom> listData}) {
+  Widget _listSoundControl(
+      {required List<AudioCustom> listData, int type = 1}) {
     return soundControlController.obx((state) => Container(
           padding: alignment_20_0(),
           child: ListView.builder(
@@ -130,20 +135,34 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     child: Row(
                       children: [
                         Container(
-                            width: 70,
-                            height: 70,
-                            alignment: Alignment.center, //
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                                color: colorF2,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: SvgPicture.file(
-                              File(
-                                  '${soundControlController.downloadAssetsController.assetsDir}/svg_icons/${listData[index].data.image}'),
-                              fit: BoxFit.scaleDown,
-                              colorFilter: const ColorFilter.mode(
-                                  Colors.white, BlendMode.srcIn),
-                            )),
+                          width: 70,
+                          height: 70,
+                          alignment: Alignment.center, //
+                          padding: (type == 1)
+                              ? const EdgeInsets.all(12)
+                              : EdgeInsets.zero,
+                          decoration: BoxDecoration(
+                              color: colorF2,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: (type == 1)
+                              ? SvgPicture.file(
+                                  File(
+                                      '${soundControlController.downloadAssetsController.assetsDir}/svg_icons/${listData[index].data.image}'),
+                                  fit: BoxFit.scaleDown,
+                                  colorFilter: const ColorFilter.mode(
+                                      Colors.white, BlendMode.srcIn),
+                                )
+                              : ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Image.file(
+                                    File(
+                                        '${soundControlController.downloadAssetsController.assetsDir}/images/${listData[index].data.image}'),
+                                    fit: BoxFit.cover,
+                                    width: 70,
+                                    height: 70,
+                                  ),
+                                ),
+                        ),
                         cWidth(12),
                         Expanded(
                           child: Column(
@@ -174,15 +193,15 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                                     activeColor: Colors.white,
                                     inactiveColor: Colors.white30,
                                     onChanged: (val) {
-                                      soundControlController
-                                          .listAudio[index].audioPlayer
-                                          .setVolume(val);
-                                      soundControlController
-                                          .listAudio[index].volume = val;
-                                      soundControlController.updateUI();
+                                      soundControlController.onSetVolume(
+                                          listData[index], val,
+                                          type: type);
                                     },
-                                    value: soundControlController
-                                        .listAudio[index].volume,
+                                    value: (type == 1)
+                                        ? soundControlController
+                                            .listAudio[index].volume
+                                        : soundControlController
+                                            .listMusic[index].volume,
                                   ),
                                 ),
                               )
@@ -191,10 +210,8 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                         ),
                         GFButton(
                           onPressed: () async {
-                            soundControlController.listAudio[index].audioPlayer
-                                .dispose();
-                            soundControlController.listAudio.removeAt(index);
-                            soundControlController.updateUI();
+                            soundControlController
+                                .onPauseMP3(listData[index], index, type: type);
                           },
                           size: GFSize.LARGE,
                           padding: EdgeInsets.zero,
