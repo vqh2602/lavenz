@@ -1,13 +1,7 @@
-import 'package:lavenz/main.dart' as base;
-import 'package:flutter_flavor/flutter_flavor.dart';
+import 'main.dart' as base;
+import 'flavors.dart';
 
 void main() {
-  FlavorConfig(
-    name: 'prod',
-    variables: {
-      "counter": 0,
-      "baseUrl": "https://www.example1.com",
-    },
-  );
+  F.appFlavor = Flavor.prod;
   base.main();
 }

@@ -47,10 +47,11 @@ void buildToast(
       {
         Fluttertoast.showToast(
             msg: message,
-            toastLength: Toast.LENGTH_SHORT,
+            toastLength: Toast.LENGTH_LONG,
             backgroundColor: backgroundColor,
             textColor: textColor,
             fontSize: 16,
+            
             gravity: ToastGravity.BOTTOM);
         break;
       }

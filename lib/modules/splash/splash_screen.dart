@@ -1,4 +1,3 @@
-
 import 'package:lavenz/modules/splash/splash_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/text_custom.dart';
@@ -15,7 +14,7 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>  {
+class _SplashScreenState extends State<SplashScreen> {
   SplashController splashController = Get.put(SplashController());
 
   @override
@@ -78,11 +77,15 @@ class _SplashScreenState extends State<SplashScreen>  {
             ),
             Align(
                 alignment: Alignment.bottomCenter,
-                child: Image.asset(
-                  'assets/background/logo.png',
-                  width: 70,
-                  fit: BoxFit.cover,
-                ))
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  child: Image.asset(
+                    'assets/background/logo.png',
+                    width: 70,
+                    fit: BoxFit.cover,
+                  ),
+                )),
+
           ],
         ));
   }

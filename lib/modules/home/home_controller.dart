@@ -38,6 +38,7 @@ class HomeController extends GetxController
     var checkAllFile =
         await File('${downloadAssetsController.assetsDir}/svg_icons/river.svg').exists();
     log('check down: $downloaded | $checkAllFile | ${downloadAssetsController.assetsDir}');
+   
     // if(downloaded){
     //   await downloadAssetsController.clearAssets();
     // }

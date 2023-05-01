@@ -37,6 +37,9 @@ class _SoundScreenState extends State<SoundScreen>
     tabControllerMin.addListener(() {
       setState(() {});
     });
+    tabController.addListener(() {
+      setState(() {});
+    });
     super.initState();
   }
 
@@ -196,6 +199,7 @@ class _SoundScreenState extends State<SoundScreen>
         body: TabBarView(
           controller: tabControllerMin,
           children: [
+            //all
             listSound(
               onTap: (sound, data) {
                 soundController.onPlaySound(sound, data);
@@ -209,11 +213,122 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-            Container(),
-            Container(),
-            Container(),
-            Container(),
-            Container(),
+            // nước
+            listSound(
+              onTap: (sound, data) {
+                soundController.onPlaySound(sound, data);
+              },
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
+              listData: soundController.listSound
+                  .where((element) => element.tag!.contains(7))
+                  .toList(),
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
+       // thiên nhiên
+            listSound(
+              onTap: (sound, data) {
+                soundController.onPlaySound(sound, data);
+              },
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
+              listData: soundController.listSound
+                  .where((element) => element.tag!.contains(6))
+                  .toList(),
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
+            // đồng quê
+                   
+            listSound(
+              onTap: (sound, data) {
+                soundController.onPlaySound(sound, data);
+              },
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
+              listData: soundController.listSound
+                  .where((element) => element.tag!.contains(5))
+                  .toList(),
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
+                   // thành phố
+            listSound(
+              onTap: (sound, data) {
+                soundController.onPlaySound(sound, data);
+              },
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
+              listData: soundController.listSound
+                  .where((element) => element.tag!.contains(4))
+                  .toList(),
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
+                   // nhà
+            listSound(
+              onTap: (sound, data) {
+                soundController.onPlaySound(sound, data);
+              },
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
+              listData: soundController.listSound
+                  .where((element) => element.tag!.contains(10))
+                  .toList(),
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
+                // sóng não
+            listSound(
+              onTap: (sound, data) {
+                soundController.onPlaySound(sound, data);
+              },
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
+              listData: soundController.listSound
+                  .where((element) => element.tag!.contains(1))
+                  .toList(),
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
+       // động vật
+            listSound(
+              onTap: (sound, data) {
+                soundController.onPlaySound(sound, data);
+              },
+              onTapPlaying: (data) {
+                soundController.onPlaySound('', data, isPlaying: true);
+              },
+              listSelect:
+                  soundControlController.listAudio.map((e) => e.data).toList(),
+              listData: soundController.listSound
+                  .where((element) => element.tag!.contains(2))
+                  .toList(),
+              pathBase:
+                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+            ),
+
+
+
           ],
         ),
       ),
@@ -304,5 +419,11 @@ List<String> dataTab = [
   'Thiên nhiên',
   'Đồng quê',
   'Thành phố',
-  'Nhà'
+  'Nhà',
+  'Sóng não'
+  'Động vật',
+  'Giai điệu',
+  'Thời tiết',
+  'Nhạc cụ',
+  'Vũ trụ'
 ];

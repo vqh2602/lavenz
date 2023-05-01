@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:lavenz/c_lang/c_translations.dart';
 import 'package:lavenz/c_theme/c_theme.dart';
+import 'package:lavenz/config/config.dart';
+import 'package:lavenz/config/get_config.dart';
 import 'package:lavenz/modules/routers.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,9 +14,9 @@ Future<void> main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
+  Env.config = await getConfigBase();
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

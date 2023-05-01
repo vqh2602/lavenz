@@ -169,6 +169,7 @@ class SoundControlController extends GetxController
         for (var element in listMusic) {
           element.audioPlayer.dispose();
           listMusic.remove(element);
+          break;
         }
       }
       updateUI();
@@ -211,15 +212,16 @@ class SoundControlController extends GetxController
 
   onPauseMP3(AudioCustom audioCustom, int index, {required int type}) {
     if (type == 1) {
-                              audioCustom.audioPlayer
-                                  .dispose();
-                              listAudio.removeAt(index);
-                            } else {
-                              clearAllMusic();
-                            }
-                            updateUI();
+      audioCustom.audioPlayer.dispose();
+      listAudio.removeAt(index);
+    } else {
+      audioCustom.audioPlayer.dispose();
+      listMusic.removeAt(index);
+    }
+    updateUI();
     updateUI();
   }
+
   changeUI() {
     change(null, status: RxStatus.success());
   }

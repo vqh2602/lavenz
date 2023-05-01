@@ -6,12 +6,15 @@
     "configurations": [
         {
             "name": "DEV-lavenz",
+            "args":["--flavor","dev"],
             "program": "lib/main_dev.dart",
             "request": "launch",
             "type": "dart"
+            
         },
         {
             "name": "PROD-lavenz",
+            "args":["--flavor","prod"],
             "program": "lib/main_prod.dart",
             "request": "launch",
             "type": "dart"
