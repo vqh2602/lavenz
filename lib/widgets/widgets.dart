@@ -179,8 +179,13 @@ Widget noData({required Function inReload}) {
     ),
   );
 }
-Widget cWidth(double val) => SizedBox(width: val,);
-Widget cHeight(double val) => SizedBox(height: val,);
+
+Widget cWidth(double val) => SizedBox(
+      width: val,
+    );
+Widget cHeight(double val) => SizedBox(
+      height: val,
+    );
 // Widget filterChip(
 //     {required Tag? tag,
 //     required bool isSelect,

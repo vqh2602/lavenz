@@ -229,7 +229,7 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-       // thiên nhiên
+            // thiên nhiên
             listSound(
               onTap: (sound, data) {
                 soundController.onPlaySound(sound, data);
@@ -246,7 +246,7 @@ class _SoundScreenState extends State<SoundScreen>
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
             // đồng quê
-                   
+
             listSound(
               onTap: (sound, data) {
                 soundController.onPlaySound(sound, data);
@@ -262,7 +262,7 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-                   // thành phố
+            // thành phố
             listSound(
               onTap: (sound, data) {
                 soundController.onPlaySound(sound, data);
@@ -278,7 +278,7 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-                   // nhà
+            // nhà
             listSound(
               onTap: (sound, data) {
                 soundController.onPlaySound(sound, data);
@@ -294,7 +294,7 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-                // sóng não
+            // sóng não
             listSound(
               onTap: (sound, data) {
                 soundController.onPlaySound(sound, data);
@@ -310,7 +310,7 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-       // động vật
+            // động vật
             listSound(
               onTap: (sound, data) {
                 soundController.onPlaySound(sound, data);
@@ -326,9 +326,6 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-
-
-
           ],
         ),
       ),
@@ -421,7 +418,7 @@ List<String> dataTab = [
   'Thành phố',
   'Nhà',
   'Sóng não'
-  'Động vật',
+      'Động vật',
   'Giai điệu',
   'Thời tiết',
   'Nhạc cụ',

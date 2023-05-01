@@ -36,9 +36,10 @@ class HomeController extends GetxController
     await downloadAssetsController.init();
     downloaded = await downloadAssetsController.assetsDirAlreadyExists();
     var checkAllFile =
-        await File('${downloadAssetsController.assetsDir}/svg_icons/river.svg').exists();
+        await File('${downloadAssetsController.assetsDir}/svg_icons/river.svg')
+            .exists();
     log('check down: $downloaded | $checkAllFile | ${downloadAssetsController.assetsDir}');
-   
+
     // if(downloaded){
     //   await downloadAssetsController.clearAssets();
     // }

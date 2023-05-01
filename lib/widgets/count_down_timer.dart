@@ -32,20 +32,20 @@ Widget buildTimeCard(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-              Container(
-                // padding: const EdgeInsets.all(20),
-                width: 50,
-                height: 50,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: Colors.white30,
-                    borderRadius: BorderRadius.circular(100)),
-                child: textTitleMedium(
-                  text: time,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+          Container(
+            // padding: const EdgeInsets.all(20),
+            width: 50,
+            height: 50,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.white30,
+                borderRadius: BorderRadius.circular(100)),
+            child: textTitleMedium(
+              text: time,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
           cHeight(12),
           textBodySmall(text: header, color: Colors.white54),
         ],
@@ -54,7 +54,7 @@ Widget buildTimeCard(
 
 Widget lineTime() {
   return Container(
-    margin: const EdgeInsets.only(bottom: 4*9),
-    child: textTitleLarge(text: ':',color: Colors.white54),
+    margin: const EdgeInsets.only(bottom: 4 * 9),
+    child: textTitleLarge(text: ':', color: Colors.white54),
   );
 }

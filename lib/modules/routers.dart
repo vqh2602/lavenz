@@ -15,7 +15,6 @@ import 'package:lavenz/modules/sound_control/sound_control_screen.dart';
 import 'package:lavenz/modules/splash/splash_binding.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
 
-
 import 'package:get/get.dart';
 
 List<GetPage> routes = [
@@ -40,7 +39,7 @@ List<GetPage> routes = [
       name: DashBroadScreen.routeName,
       page: () => const DashBroadScreen(),
       binding: DashBroadBinding(),
-  transition: Transition.downToUp),
+      transition: Transition.downToUp),
   GetPage(
       name: SoundScreen.routeName,
       page: () => const SoundScreen(),

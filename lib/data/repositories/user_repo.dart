@@ -8,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth_android/local_auth_android.dart';
 import 'package:local_auth_ios/types/auth_messages_ios.dart';
+
 class UserRepo extends Repo {
   GetStorage box = GetStorage();
   final LocalAuthentication auth = LocalAuthentication();
@@ -24,7 +25,7 @@ class UserRepo extends Repo {
         user = User.fromJson(result['data']);
         await box.write(Storages.dataUser, jsonEncode(result['data']));
       } else {
-       // buildToast(type: TypeToast.failure, title: result["message"]);
+        // buildToast(type: TypeToast.failure, title: result["message"]);
       }
     }
     return user;
@@ -100,7 +101,6 @@ class UserRepo extends Repo {
           email: box.read(Storages.dataEmail),
           passW: box.read(Storages.dataPassWord));
     } else {
-
       // Get.dialog(CupertinoAlertDialog(
       //   title: textBodyMedium(text: 'chưa bật đăng nhập bằng sinh trắc học'),
       // ));
@@ -135,9 +135,9 @@ class UserRepo extends Repo {
 
     var result = jsonDecode(res.toString());
     if (result["success"]) {
-     // buildToast(type: TypeToast.success, title: result['message']);
+      // buildToast(type: TypeToast.success, title: result['message']);
     } else {
-   //   buildToast(type: TypeToast.failure, title: result["message"]);
+      //   buildToast(type: TypeToast.failure, title: result["message"]);
     }
   }
 
@@ -235,6 +235,4 @@ class UserRepo extends Repo {
       // );
     }
   }
-
-
 }

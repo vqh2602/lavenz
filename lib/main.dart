@@ -17,6 +17,7 @@ Future<void> main() async {
   Env.config = await getConfigBase();
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       translations: Messages(),
       fallbackLocale: const Locale('vi', 'VN'),
       theme: SThemeTask.lightTheme,
-      darkTheme:  SThemeTask.darkTheme,
+      darkTheme: SThemeTask.darkTheme,
       themeMode: ThemeService().theme,
       // builder: (context, child) {
       //   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {

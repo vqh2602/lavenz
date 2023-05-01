@@ -13,11 +13,11 @@ enum TypeToast {
 
 void buildToast(
     {String? title,
-      required String message,
-      required TypeToast status,
-      Duration? duration,
-      Color? backgroundColor,
-      Color? textColor}) {
+    required String message,
+    required TypeToast status,
+    Duration? duration,
+    Color? backgroundColor,
+    Color? textColor}) {
   switch (status) {
     case TypeToast.getSuccess:
       {
@@ -51,7 +51,6 @@ void buildToast(
             backgroundColor: backgroundColor,
             textColor: textColor,
             fontSize: 16,
-            
             gravity: ToastGravity.BOTTOM);
         break;
       }
@@ -79,7 +78,8 @@ void buildToast(
       }
     default:
       {
-        Get.snackbar('Thông báo'.tr, message, duration: const Duration(seconds: 1));
+        Get.snackbar('Thông báo'.tr, message,
+            duration: const Duration(seconds: 1));
       }
   }
 }

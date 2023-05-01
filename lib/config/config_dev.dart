@@ -1,8 +1,7 @@
-
 import 'package:lavenz/config/config.dart';
 
 class Environment extends ModuleConfig {
-  Environment(){
+  Environment() {
     flavor = 'DEV';
     baseUrl = 'aaaaa';
   }
