@@ -57,10 +57,14 @@ dependencies:
   path_provider: ^2.0.14
   url_launcher: ^6.1.10
   flutter_svg: ^2.0.5
-  audioplayers: ^4.0.1
+  # audioplayers: ^4.0.1
   archive: ^3.3.7
   flutter_internet_speed_test: ^1.4.0
   package_info_plus: ^3.1.2
+  just_audio: ^0.9.32
+  just_audio_background: ^0.0.1-beta.9
+  audio_session: ^0.1.13
+  
   # flutter_flavor: ^3.1.1
 
 dev_dependencies:

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:lavenz/modules/home/home_controller.dart';
 import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/color_custom.dart';
@@ -24,21 +25,53 @@ class SoundControlScreen extends StatefulWidget {
 }
 
 class _SoundControlScreenState extends State<SoundControlScreen>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   SoundControlController soundControlController =
       Get.put(SoundControlController());
+  HomeController homeController = Get.find();
   bool showHeader = true;
 
   @override
   void initState() {
     soundControlController.initVideoBackground();
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
     //soundControlController.videoPlayerController?.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImage(const AssetImage("assets/background/bg2.jpeg"), context);
+
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        // --
+        // print('Resumed');
+        break;
+      case AppLifecycleState.inactive:
+        // --
+        // print('Inactive');
+        break;
+      case AppLifecycleState.paused:
+        // --
+        // print('Paused');
+        break;
+      case AppLifecycleState.detached:
+        // --
+        // print('Detached');
+        break;
+    }
   }
 
   @override
@@ -56,7 +89,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
     return soundControlController.obx(
         (state) => Stack(
               children: <Widget>[
-                 Container(
+                Container(
                   width: Get.width,
                   height: Get.height,
                   decoration: const BoxDecoration(
@@ -84,6 +117,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     cHeight(30),
                     _numSoundPlay(
                         title: 'hẹn giờ',
+                        isPlay: false,
                         wIcon: IconButton(
                             onPressed: () {},
                             icon: const Icon(
@@ -94,15 +128,25 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     cHeight(30),
                     _numSoundPlay(
                         title: 'âm nhạc',
-                        // onClick: (){soundControlController.playAllSound();},
+                        isPlay: soundControlController.isPlayMusic,
+                        onClick: () {
+                          if(soundControlController.listMusic.isNotEmpty){
+                          soundControlController.playAllSound(type: 2);
+          
+                              soundControlController.updateUI();}
+                        },
                         num: '${soundControlController.listMusic.length}/1'),
                     _listSoundControl(
                         listData: soundControlController.listMusic, type: 2),
                     cHeight(30),
                     _numSoundPlay(
                         title: 'âm thanh',
+                        isPlay: soundControlController.isPlaySound,
                         onClick: () {
-                          soundControlController.playAllSound();
+                          if(soundControlController.listAudio.isNotEmpty){
+                          soundControlController.playAllSound(type: 1);
+            
+                              soundControlController.updateUI();}
                         },
                         num: '${soundControlController.listAudio.length}/15'),
                     Expanded(
@@ -241,7 +285,11 @@ class _SoundControlScreenState extends State<SoundControlScreen>
   }
 
   Widget _numSoundPlay(
-      {required String title, String? num, Function? onClick, Widget? wIcon}) {
+      {required String title,
+      String? num,
+      Function? onClick,
+      Widget? wIcon,
+      required bool isPlay}) {
     return Container(
       margin: alignment_20_0(),
       child: Row(
@@ -263,8 +311,8 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                   onPressed: () {
                     if (onClick != null) onClick();
                   },
-                  icon: const Icon(
-                    LucideIcons.playCircle,
+                  icon: Icon(
+                    isPlay ?LucideIcons.pauseCircle: LucideIcons.playCircle ,
                     color: Colors.white70,
                   ))
               : wIcon

@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:lavenz/data/models/sound.dart' as sound;
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 
 class SoundControlController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
   GetStorage box = GetStorage();
- // VideoPlayerController? videoPlayerController;
+  // VideoPlayerController? videoPlayerController;
   List<AudioCustom> listAudio = [];
   List<AudioCustom> listMusic = [];
   Timer? debounce;
@@ -23,7 +23,7 @@ class SoundControlController extends GetxController
   // Timer? timer;
   Timer? timer1;
   //bool countDown = true;
-  bool countDown1 = true;
+  bool countDown1 = true, isPlayMusic = false, isPlaySound = false;
   // var hours;
   // var mints;
   // var secs;
@@ -38,13 +38,14 @@ class SoundControlController extends GetxController
   @override
   void dispose() {
     super.dispose();
-   // videoPlayerController?.dispose();
+    // videoPlayerController?.dispose();
     clearAllMusic();
     clearAllSound();
   }
 
   Future initLocalData() async {
     await downloadAssetsController.init();
+    updateUI();
   }
   // void test() {
   //   hours = int.parse("00");
@@ -128,27 +129,32 @@ class SoundControlController extends GetxController
   Future<void> playSoundControl(
       {required String path, required sound.Data data}) async {
     AudioPlayer audioPlayer =
-        AudioPlayer(playerId: 'sound ${listAudio.length + 1}');
+        AudioPlayer(userAgent: 'sound ${listAudio.length + 1}');
     if (data.type == 1) {
+      isPlaySound = false;
+      playAllSound(type: data.type);
       listAudio.add(AudioCustom(
           audioPlayer: audioPlayer,
           volume: 0.5,
           title: data.name ?? '',
           data: data));
-      await listAudio.last.audioPlayer.play(DeviceFileSource(File(path).path));
-      listAudio.last.audioPlayer.setReleaseMode(ReleaseMode.loop);
-      listAudio.last.audioPlayer.setVolume(0.5);
+      await listAudio.last.audioPlayer.setFilePath(File(path).path);
+      await listAudio.last.audioPlayer.setLoopMode(LoopMode.all);
+      await listAudio.last.audioPlayer.setVolume(0.5);
+      await listAudio.last.audioPlayer.play();
     } else {
+      isPlayMusic = false;
+      playAllSound(type: data.type);
       listMusic.add(AudioCustom(
           audioPlayer: audioPlayer,
           volume: 0.5,
           title: data.name ?? '',
           data: data));
-      await listMusic[0].audioPlayer.play(UrlSource(path));
-      listMusic[0].audioPlayer.setReleaseMode(ReleaseMode.loop);
-      listMusic[0].audioPlayer.setVolume(0.5);
+      await listMusic[0].audioPlayer.setUrl(path);
+      await listMusic[0].audioPlayer.setLoopMode(LoopMode.all);
+      await listMusic[0].audioPlayer.setVolume(0.5);
+      await listMusic[0].audioPlayer.play();
     }
-
     updateUI();
   }
 
@@ -175,14 +181,37 @@ class SoundControlController extends GetxController
     });
   }
 
-  Future<void> playAllSound() async {
-    Timer(const Duration(seconds: 0), () {
-      for (var element in listAudio) {
-        element.audioPlayer.setVolume(0.5);
-        element.volume = 0.5;
+  Future<void> playAllSound({num? type = 1}) async {
+    if (type == 1) {
+      if (isPlaySound) {
+        for (var element in listAudio) {
+          element.audioPlayer.pause();
+        }
+        isPlaySound = false;
+      } else {
+        for (var element in listAudio) {
+          element.audioPlayer.setVolume(0.5);
+          element.volume = 0.5;
+          element.audioPlayer.play();
+        }
+        isPlaySound = true;
       }
-      updateUI();
-    });
+    } else {
+      if (isPlayMusic) {
+        for (var element in listMusic) {
+          element.audioPlayer.pause();
+        }
+        isPlayMusic = false;
+      } else {
+        for (var element in listMusic) {
+          element.audioPlayer.setVolume(0.5);
+          element.volume = 0.5;
+          element.audioPlayer.play();
+        }
+        isPlayMusic = true;
+      }
+    }
+    updateUI();
   }
 
   Future<void> clearSoundWithId({required num? id}) async {

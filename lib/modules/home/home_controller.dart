@@ -37,6 +37,7 @@ class HomeController extends GetxController
     await initDown();
   }
 
+
   Future initDown() async {
     downloaded = await downloadAssetsController.assetsDirAlreadyExists();
     var checkAllFile =

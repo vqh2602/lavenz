@@ -29,6 +29,11 @@ class _SettingScreenState extends State<SettingScreen> {
     //splashController.videoPlayerController?.dispose();
     super.dispose();
   }
+      @override
+  void didChangeDependencies() {
+    precacheImage(const AssetImage("assets/background/bg6.jpeg"), context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {

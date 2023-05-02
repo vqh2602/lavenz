@@ -36,76 +36,92 @@ class _SoundScreenState extends State<SoundScreen>
   @override
   void dispose() {
     //soundController.videoPlayerController?.dispose();
-  //  soundController.tabController.dispose();
-  //   soundController.dispose();
+    //  soundController.tabController.dispose();
+    //   soundController.dispose();
     super.dispose();
   }
+      @override
+  void didChangeDependencies() {
+    precacheImage(const AssetImage("assets/background/bg1.jpeg"), context);
+    super.didChangeDependencies();
+  }
+  
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 2,
-        child: soundController.obx((state) => buildBody(
-          context: context,
-          body: _buildBody(),
-          appBar: AppBar(
-            titleSpacing: 0,
-            backgroundColor: Colors.transparent,
-            surfaceTintColor: Colors.transparent,
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(4 * 0),
-              child: Container(
-                padding: alignment_20_0(),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TabBar(
-                    controller: soundController.tabController,
-                    unselectedLabelColor: Colors.transparent,
-                    indicatorColor: Colors.white,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    dividerColor: Colors.transparent,
-                    indicator: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.white,
-                          width: 4.0,
+        child: soundController.obx(
+            (state) => buildBody(
+                  context: context,
+                  body: _buildBody(),
+                  appBar: AppBar(
+                    titleSpacing: 0,
+                    backgroundColor: Colors.transparent,
+                    surfaceTintColor: Colors.transparent,
+                    bottom: PreferredSize(
+                      preferredSize: const Size.fromHeight(4 * 0),
+                      child: Container(
+                        padding: alignment_20_0(),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: TabBar(
+                            controller: soundController.tabController,
+                            unselectedLabelColor: Colors.transparent,
+                            indicatorColor: Colors.white,
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            dividerColor: Colors.transparent,
+                            indicator: const BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: Colors.white,
+                                  width: 4.0,
+                                ),
+                              ),
+                            ),
+                            overlayColor: MaterialStateProperty.all<Color>(
+                                Colors.transparent),
+                            isScrollable: true,
+                            tabs: [
+                              Container(
+                                margin: const EdgeInsets.all(4 * 2),
+                                child: textTitleMedium(
+                                    text: 'Âm thanh',
+                                    fontWeight:
+                                        (soundController.tabController.index ==
+                                                0)
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
+                                    color:
+                                        (soundController.tabController.index ==
+                                                0)
+                                            ? Colors.white
+                                            : Colors.white54),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.all(4 * 2),
+                                child: textTitleMedium(
+                                    text: 'Âm nhạc',
+                                    fontWeight:
+                                        (soundController.tabController.index ==
+                                                1)
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
+                                    color:
+                                        (soundController.tabController.index ==
+                                                1)
+                                            ? Colors.white
+                                            : Colors.white54),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    overlayColor:
-                        MaterialStateProperty.all<Color>(Colors.transparent),
-                    isScrollable: true,
-                    tabs: [
-                      Container(
-                        margin: const EdgeInsets.all(4 * 2),
-                        child: textTitleMedium(
-                            text: 'Âm thanh',
-                            fontWeight: (soundController.tabController.index == 0)
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                            color: (soundController.tabController.index == 0)
-                                ? Colors.white
-                                : Colors.white54),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(4 * 2),
-                        child: textTitleMedium(
-                            text: 'Âm nhạc',
-                            fontWeight: (soundController.tabController.index == 1)
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                            color: (soundController.tabController.index == 1)
-                                ? Colors.white
-                                : Colors.white54),
-                      ),
-                    ],
                   ),
                 ),
-              ),
-            ),
-          ),
-        ))
- ); }
+            onLoading: const LoadingCustom()));
+  }
 
   Widget _buildBody() {
     return soundController.obx(
