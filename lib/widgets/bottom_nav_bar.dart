@@ -1,4 +1,5 @@
 import 'package:lavenz/modules/dashbroad/dashbroad_screen.dart';
+import 'package:lavenz/modules/setting/setting_screen.dart';
 import 'package:lavenz/modules/sound/sound_screen.dart';
 import 'package:lavenz/modules/sound_control/sound_control_screen.dart';
 import 'package:lavenz/widgets/color_custom.dart';
@@ -79,6 +80,7 @@ List<Widget> widgetOptions = <Widget>[
   const DashBroadScreen(),
   const SoundScreen(),
   const SoundControlScreen(),
+  const SettingScreen(),
   Container(
     color: Colors.brown,
   )

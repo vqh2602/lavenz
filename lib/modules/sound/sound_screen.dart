@@ -11,7 +11,6 @@ import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/widgets/widgets.dart';
-import 'package:video_player/video_player.dart';
 
 class SoundScreen extends StatefulWidget {
   const SoundScreen({Key? key}) : super(key: key);
@@ -28,26 +27,17 @@ class _SoundScreenState extends State<SoundScreen>
       Get.put(SoundControlController());
   HomeController homeController = Get.find();
   bool showHeader = true;
-  late TabController tabController, tabControllerMin;
   @override
   void initState() {
-    soundController.initVideoBackground();
-    tabController = TabController(length: 2, vsync: this);
-    tabControllerMin = TabController(length: 6, vsync: this);
-    tabControllerMin.addListener(() {
-      setState(() {});
-    });
-    tabController.addListener(() {
-      setState(() {});
-    });
+    //soundController.initVideoBackground();
     super.initState();
   }
 
   @override
   void dispose() {
-    soundController.videoPlayerController?.dispose();
-    tabController.dispose();
-    tabControllerMin.dispose();
+    //soundController.videoPlayerController?.dispose();
+  //  soundController.tabController.dispose();
+  //   soundController.dispose();
     super.dispose();
   }
 
@@ -55,7 +45,7 @@ class _SoundScreenState extends State<SoundScreen>
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 2,
-        child: buildBody(
+        child: soundController.obx((state) => buildBody(
           context: context,
           body: _buildBody(),
           appBar: AppBar(
@@ -69,7 +59,7 @@ class _SoundScreenState extends State<SoundScreen>
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: TabBar(
-                    controller: tabController,
+                    controller: soundController.tabController,
                     unselectedLabelColor: Colors.transparent,
                     indicatorColor: Colors.white,
                     indicatorSize: TabBarIndicatorSize.tab,
@@ -90,10 +80,10 @@ class _SoundScreenState extends State<SoundScreen>
                         margin: const EdgeInsets.all(4 * 2),
                         child: textTitleMedium(
                             text: 'Âm thanh',
-                            fontWeight: (tabController.index == 0)
+                            fontWeight: (soundController.tabController.index == 0)
                                 ? FontWeight.bold
                                 : FontWeight.normal,
-                            color: (tabController.index == 0)
+                            color: (soundController.tabController.index == 0)
                                 ? Colors.white
                                 : Colors.white54),
                       ),
@@ -101,10 +91,10 @@ class _SoundScreenState extends State<SoundScreen>
                         margin: const EdgeInsets.all(4 * 2),
                         child: textTitleMedium(
                             text: 'Âm nhạc',
-                            fontWeight: (tabController.index == 1)
+                            fontWeight: (soundController.tabController.index == 1)
                                 ? FontWeight.bold
                                 : FontWeight.normal,
-                            color: (tabController.index == 1)
+                            color: (soundController.tabController.index == 1)
                                 ? Colors.white
                                 : Colors.white54),
                       ),
@@ -114,18 +104,26 @@ class _SoundScreenState extends State<SoundScreen>
               ),
             ),
           ),
-        ));
-  }
+        ))
+ ); }
 
   Widget _buildBody() {
     return soundController.obx(
         (state) => Stack(
               children: <Widget>[
-                SizedBox(
+                Container(
                   width: Get.width,
                   height: Get.height,
-                  child: VideoPlayer(soundController.videoPlayerController!),
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/background/bg1.jpeg'),
+                          fit: BoxFit.fill)),
                 ),
+                // SizedBox(
+                //   width: Get.width,
+                //   height: Get.height,
+                //   child: VideoPlayer(soundController.videoPlayerController!),
+                // ),
                 Container(
                   width: Get.width,
                   height: Get.height,
@@ -136,7 +134,7 @@ class _SoundScreenState extends State<SoundScreen>
                 ),
                 SafeArea(
                   child: TabBarView(
-                    controller: tabController,
+                    controller: soundController.tabController,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
                       _sound(),
@@ -162,7 +160,7 @@ class _SoundScreenState extends State<SoundScreen>
           backgroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
           bottom: TabBar(
-            controller: tabControllerMin,
+            controller: soundController.tabControllerMin,
 
             // unselectedLabelColor: Colors.transparent,
             //indicatorColor: Colors.white,
@@ -180,15 +178,15 @@ class _SoundScreenState extends State<SoundScreen>
             //     MaterialStateProperty.all<Color>(Colors.transparent),
             isScrollable: true,
             tabs: [
-              for (int i = 0; i < dataTab.length; i++) ...[
+              for (int i = 0; i < soundController.dataTab.length; i++) ...[
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: textBodySmall(
-                      text: dataTab[i],
-                      fontWeight: (tabControllerMin.index == i)
+                      text: soundController.dataTab[i],
+                      fontWeight: (soundController.tabControllerMin.index == i)
                           ? FontWeight.bold
                           : FontWeight.normal,
-                      color: (tabControllerMin.index == i)
+                      color: (soundController.tabControllerMin.index == i)
                           ? Colors.white
                           : colorF3),
                 ),
@@ -197,7 +195,7 @@ class _SoundScreenState extends State<SoundScreen>
           ),
         ),
         body: TabBarView(
-          controller: tabControllerMin,
+          controller: soundController.tabControllerMin,
           children: [
             //all
             listSound(
@@ -213,119 +211,26 @@ class _SoundScreenState extends State<SoundScreen>
               pathBase:
                   '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
             ),
-            // nước
-            listSound(
-              onTap: (sound, data) {
-                soundController.onPlaySound(sound, data);
-              },
-              onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
-              },
-              listSelect:
-                  soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.listSound
-                  .where((element) => element.tag!.contains(7))
-                  .toList(),
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
-            ),
-            // thiên nhiên
-            listSound(
-              onTap: (sound, data) {
-                soundController.onPlaySound(sound, data);
-              },
-              onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
-              },
-              listSelect:
-                  soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.listSound
-                  .where((element) => element.tag!.contains(6))
-                  .toList(),
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
-            ),
-            // đồng quê
 
-            listSound(
-              onTap: (sound, data) {
-                soundController.onPlaySound(sound, data);
-              },
-              onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
-              },
-              listSelect:
-                  soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.listSound
-                  .where((element) => element.tag!.contains(5))
-                  .toList(),
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
-            ),
-            // thành phố
-            listSound(
-              onTap: (sound, data) {
-                soundController.onPlaySound(sound, data);
-              },
-              onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
-              },
-              listSelect:
-                  soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.listSound
-                  .where((element) => element.tag!.contains(4))
-                  .toList(),
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
-            ),
-            // nhà
-            listSound(
-              onTap: (sound, data) {
-                soundController.onPlaySound(sound, data);
-              },
-              onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
-              },
-              listSelect:
-                  soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.listSound
-                  .where((element) => element.tag!.contains(10))
-                  .toList(),
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
-            ),
-            // sóng não
-            listSound(
-              onTap: (sound, data) {
-                soundController.onPlaySound(sound, data);
-              },
-              onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
-              },
-              listSelect:
-                  soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.listSound
-                  .where((element) => element.tag!.contains(1))
-                  .toList(),
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
-            ),
-            // động vật
-            listSound(
-              onTap: (sound, data) {
-                soundController.onPlaySound(sound, data);
-              },
-              onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
-              },
-              listSelect:
-                  soundControlController.listAudio.map((e) => e.data).toList(),
-              listData: soundController.listSound
-                  .where((element) => element.tag!.contains(2))
-                  .toList(),
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
-            ),
+            for (var x in soundController.listTagSound) ...[
+              listSound(
+                onTap: (sound, data) {
+                  soundController.onPlaySound(sound, data);
+                },
+                onTapPlaying: (data) {
+                  soundController.onPlaySound('', data, isPlaying: true);
+                },
+                listSelect: soundControlController.listAudio
+                    .map((e) => e.data)
+                    .toList(),
+                listData: soundController.listSound
+                    .where((element) =>
+                        element.tag!.contains(num.parse(x.id.toString())))
+                    .toList(),
+                pathBase:
+                    '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+              ),
+            ],
           ],
         ),
       ),
@@ -409,18 +314,3 @@ class _SoundScreenState extends State<SoundScreen>
     );
   }
 }
-
-List<String> dataTab = [
-  'Tất cả',
-  'Nước',
-  'Thiên nhiên',
-  'Đồng quê',
-  'Thành phố',
-  'Nhà',
-  'Sóng não'
-      'Động vật',
-  'Giai điệu',
-  'Thời tiết',
-  'Nhạc cụ',
-  'Vũ trụ'
-];

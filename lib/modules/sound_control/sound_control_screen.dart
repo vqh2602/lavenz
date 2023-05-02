@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/widgets/widgets.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:video_player/video_player.dart';
 
 class SoundControlScreen extends StatefulWidget {
   const SoundControlScreen({Key? key}) : super(key: key);
@@ -38,7 +37,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
 
   @override
   void dispose() {
-    soundControlController.videoPlayerController?.dispose();
+    //soundControlController.videoPlayerController?.dispose();
     super.dispose();
   }
 
@@ -57,12 +56,20 @@ class _SoundControlScreenState extends State<SoundControlScreen>
     return soundControlController.obx(
         (state) => Stack(
               children: <Widget>[
-                SizedBox(
+                 Container(
                   width: Get.width,
                   height: Get.height,
-                  child: VideoPlayer(
-                      soundControlController.videoPlayerController!),
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/background/bg2.jpeg'),
+                          fit: BoxFit.fill)),
                 ),
+                // SizedBox(
+                //   width: Get.width,
+                //   height: Get.height,
+                //   child: VideoPlayer(
+                //       soundControlController.videoPlayerController!),
+                // ),
                 Container(
                   width: Get.width,
                   height: Get.height,

@@ -34,6 +34,10 @@ class HomeController extends GetxController
 
   Future init() async {
     await downloadAssetsController.init();
+    await initDown();
+  }
+
+  Future initDown() async {
     downloaded = await downloadAssetsController.assetsDirAlreadyExists();
     var checkAllFile =
         await File('${downloadAssetsController.assetsDir}/svg_icons/river.svg')
@@ -57,6 +61,13 @@ class HomeController extends GetxController
   //   await downloadAssetsController.clearAssets();
   //   await _downloadAssets();
   // }
+
+  Future clearDown() async {
+    //message = 'tải';
+    await downloadAssetsController.clearAssets();
+    //print(message);
+    // return;
+  }
 
   Future _downloadAssets() async {
     final assetsDownloaded =

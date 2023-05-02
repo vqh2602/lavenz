@@ -66,6 +66,15 @@ Widget buildListItem1x1(
                                 borderRadius: BorderRadius.circular(16.0),
                                 child: Image.file(
                                   File('$pathImages${listData[i].image}'),
+                                  errorBuilder: (context, object, stackTrace) {
+                                    return SizedBox(
+                                      height: double.infinity,
+                                      child: Image.asset(
+                                        'assets/images/image_notfound.jpg',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    );
+                                  },
                                   fit: BoxFit.cover,
                                   height: 150.0,
                                   width: 150.0,

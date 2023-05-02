@@ -5,12 +5,11 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:lavenz/data/models/sound.dart' as sound;
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
-import 'package:video_player/video_player.dart';
 
 class SoundControlController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
   GetStorage box = GetStorage();
-  VideoPlayerController? videoPlayerController;
+ // VideoPlayerController? videoPlayerController;
   List<AudioCustom> listAudio = [];
   List<AudioCustom> listMusic = [];
   Timer? debounce;
@@ -39,7 +38,7 @@ class SoundControlController extends GetxController
   @override
   void dispose() {
     super.dispose();
-    videoPlayerController?.dispose();
+   // videoPlayerController?.dispose();
     clearAllMusic();
     clearAllSound();
   }
@@ -117,13 +116,13 @@ class SoundControlController extends GetxController
   }
 
   initVideoBackground() {
-    videoPlayerController =
-        VideoPlayerController.asset('assets/background/vd4.mp4')
-          ..initialize().then((_) {
-            videoPlayerController?.play();
-            videoPlayerController?.setLooping(true);
-            videoPlayerController?.setVolume(0);
-          });
+    // videoPlayerController =
+    //     VideoPlayerController.asset('assets/background/vd4.mp4')
+    //       ..initialize().then((_) {
+    //         videoPlayerController?.play();
+    //         videoPlayerController?.setLooping(true);
+    //         videoPlayerController?.setVolume(0);
+    //       });
   }
 
   Future<void> playSoundControl(

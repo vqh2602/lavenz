@@ -1,3 +1,5 @@
+
+// ignore_for_file: file_names
 import 'package:lavenz/config/config.dart';
 import 'package:lavenz/config/config_dev.dart' as dev;
 import 'package:lavenz/config/config_prod.dart' as prod;
