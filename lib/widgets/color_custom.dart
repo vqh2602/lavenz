@@ -10,3 +10,4 @@ Color colorBlack6 = const Color(0xfff6f6f6);
 Color colorF1 = const Color(0xff3F2B96);
 Color colorF2 = const Color(0xff376CAD);
 Color colorF3 = const Color(0xffA8C0FF);
+Color colorF4 = const Color(0xff2F8AD7);

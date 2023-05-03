@@ -301,8 +301,8 @@ class _SnakeNavigationBar extends StatelessWidget {
                       //   notifier: notifier,
                       // ),
                       Row(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        //   crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          //   crossAxisAlignment: CrossAxisAlignment.center,
                           children: tiles),
                     ],
                   ),

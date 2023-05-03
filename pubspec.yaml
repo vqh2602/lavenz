@@ -57,8 +57,18 @@ dependencies:
   path_provider: ^2.0.14
   url_launcher: ^6.1.10
   flutter_svg: ^2.0.5
+  # audioplayers: ^4.0.1
+  archive: ^3.3.7
+  flutter_internet_speed_test: ^1.4.0
+  package_info_plus: ^3.1.2
+  just_audio: ^0.9.32
+  just_audio_background: ^0.0.1-beta.9
+  
+  # flutter_flavor: ^3.1.1
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
+  flutter_flavorizr: ^2.1.6
   flutter_test:
     sdk: flutter
 
@@ -112,3 +122,28 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/background/logoapp.png"
+  min_sdk_android: 21 # android min sdk min:16, default 2
+
+flavorizr:
+  flavors:
+    dev:
+      app:
+        name: Lavenz (dev)
+        icon: assets/background/logoapp.png
+      android:
+        applicationId: com.vqh2602.lavenz
+      ios:
+        bundleId: com.vqh2602.lavenz
+    prod:
+      app:
+        name: Lavenz (prod)
+        icon: assets/background/logoapp.png
+      android:
+        applicationId: com.vqh2602.lavenz
+      ios:
+        bundleId: com.vqh2602.lavenz

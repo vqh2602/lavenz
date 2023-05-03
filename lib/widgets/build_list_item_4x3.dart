@@ -22,7 +22,7 @@ Widget buildListItem4x3() {
                 blur: 2,
                 child: Tooltip(
                   message:
-                  'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
+                      'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -38,11 +38,11 @@ Widget buildListItem4x3() {
                       cHeight(4),
                       textTitleSmall(
                           text:
-                          'Những ngày mưa ${(i % 2 == 0 ? '' : ' mauw mua wmuaw ')}',
+                              'Những ngày mưa ${(i % 2 == 0 ? '' : ' mauw mua wmuaw ')}',
                           color: Colors.white),
                       textBodySmall(
                           text:
-                          'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
+                              'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
                           color: Colors.white,
                           maxLines: 2,
                           fontWeight: FontWeight.w100,

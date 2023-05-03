@@ -40,12 +40,11 @@ class SnakeShape {
     EdgeInsets? padding,
   }) {
     return SnakeShape._(
-      shape: shape ?? this.shape,
-      type: type,
-      centered: centered ?? this.centered,
-      padding: padding ?? this.padding,
-      height: height
-    );
+        shape: shape ?? this.shape,
+        type: type,
+        centered: centered ?? this.centered,
+        padding: padding ?? this.padding,
+        height: height);
   }
 
   static const SnakeShape circle = SnakeShape._(

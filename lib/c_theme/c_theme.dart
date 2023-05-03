@@ -134,7 +134,6 @@ class SThemeTask {
             brightness: Brightness.light)
         .copyWith(background: const Color(0xffffffff))
         .copyWith(error: const Color(0xfff0323c)),
-
   );
 
   /// -------------------------- Dark Theme  -------------------------------------------- ///
@@ -254,9 +253,11 @@ class SThemeTask {
     highlightColor: Colors.white.withAlpha(28),
     splashColor: Colors.white.withAlpha(56),
     colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(0xff376CAD), brightness: Brightness.dark,
+      seedColor: const Color(0xff376CAD),
+      brightness: Brightness.dark,
       onBackground: const Color(0xffffffff),
-      background: const Color(0xff000000),)
+      background: const Color(0xff000000),
+    )
         .copyWith(background: const Color(0xff161616))
         .copyWith(error: const Color(0xfff0323c)),
   );

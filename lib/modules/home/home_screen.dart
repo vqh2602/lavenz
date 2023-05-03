@@ -14,39 +14,47 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeController homeController = Get.put(HomeController());
+
+  @override
+  void initState() {
+    homeController.init();
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return homeController.obx(
         (state) => buildBody(
-            context: context,
-            body: _buildBody(),
-            bottomNavigationBar:  bottomNavigationBar(
-                onSelect: (index) => setState(() {
-                  homeController.selectItemScreen = index;
-                  /// control your animation using page controller
-                 homeController.pageController.animateToPage(
-                    index,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeIn,
-                  );
-                  homeController.updateUI();
-                }),
-                pageController: homeController.pageController,
-                selectedIndex: homeController.selectItemScreen),
-            appBar: null,),
+              context: context,
+              body: _buildBody(),
+              bottomNavigationBar: bottomNavigationBar(
+                  onSelect: (index) => setState(() {
+                        homeController.selectItemScreen = index;
+
+                        /// control your animation using page controller
+                        homeController.pageController.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn,
+                        );
+                        homeController.updateUI();
+                      }),
+                  pageController: homeController.pageController,
+                  selectedIndex: homeController.selectItemScreen),
+              appBar: null,
+            ),
         onLoading: const LoadingCustom());
   }
 
   Widget _buildBody() {
     return PageView(
       controller: homeController.pageController,
-        physics: const NeverScrollableScrollPhysics(),
-      children: List.generate(
-          widgetOptions.length, (index) => widgetOptions[index]),
-
+      physics: const NeverScrollableScrollPhysics(),
+      children:
+          List.generate(widgetOptions.length, (index) => widgetOptions[index]),
     );
 
-
-      //widgetOptions.elementAt(homeController.selectItemScreen);
+    //widgetOptions.elementAt(homeController.selectItemScreen);
   }
 }

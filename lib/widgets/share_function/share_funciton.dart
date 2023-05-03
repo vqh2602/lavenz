@@ -3,9 +3,9 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 
 void dateTimePicker(
     {required Function(DateTime) onchange, required Function onComplete}) {
@@ -21,48 +21,6 @@ void dateTimePicker(
             dateOrder: DatePickerDateOrder.dmy,
             mode: CupertinoDatePickerMode.date),
       )).whenComplete(() => onComplete());
-}
-
-enum TypeToast { success, failure, transparent, custom }
-
-buildToast(
-    {required TypeToast type,
-    required String title,
-    String? message,
-    SnackPosition snackPosition = SnackPosition.TOP,
-    Function? snackBarCustom}) {
-  if (type == TypeToast.failure) {
-    Get.snackbar(title, message ?? ' ',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        duration: const Duration(seconds: 2),
-        snackPosition: snackPosition);
-  }
-  switch (type) {
-    case TypeToast.success:
-      Get.snackbar(title, message ?? '',
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          duration: const Duration(seconds: 2),
-          snackPosition: snackPosition);
-      break;
-    case TypeToast.failure:
-      {
-        Get.snackbar(title, message ?? ' ',
-            backgroundColor: Colors.red,
-            colorText: Colors.white,
-            duration: const Duration(seconds: 2),
-            snackPosition: snackPosition);
-        break;
-      }
-    case TypeToast.transparent:
-      Get.snackbar(title, message ?? '',
-          duration: const Duration(seconds: 2), snackPosition: snackPosition);
-      break;
-    case TypeToast.custom:
-      if (snackBarCustom != null) snackBarCustom();
-      break;
-  }
 }
 
 enum TypeDate { ddMMyyyy, yyyyMMdd, ddMMyyyyhhmm, hhmm, dd, yyyy, mM }
@@ -101,3 +59,15 @@ Future<dynamic> convertImageToBase64({File? file, String? base64String}) async {
   }
 }
 
+ Future<String> getCurrentUrl(String url)async{
+    if(Platform.isIOS){
+    String a = url.substring(url.indexOf("Documents/") + 10, url.length) ;
+    Directory dir = await getApplicationDocumentsDirectory();
+    a = "${dir.path}/$a";
+    //print('aaa $a');
+    return a;
+    }
+    else{
+      return url;
+    }
+  }

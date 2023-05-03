@@ -13,11 +13,11 @@ enum TypeToast {
 
 void buildToast(
     {String? title,
-      required String message,
-      required TypeToast status,
-      Duration? duration,
-      Color? backgroundColor,
-      Color? textColor}) {
+    required String message,
+    required TypeToast status,
+    Duration? duration,
+    Color? backgroundColor,
+    Color? textColor}) {
   switch (status) {
     case TypeToast.getSuccess:
       {
@@ -47,7 +47,7 @@ void buildToast(
       {
         Fluttertoast.showToast(
             msg: message,
-            toastLength: Toast.LENGTH_SHORT,
+            toastLength: Toast.LENGTH_LONG,
             backgroundColor: backgroundColor,
             textColor: textColor,
             fontSize: 16,
@@ -78,7 +78,8 @@ void buildToast(
       }
     default:
       {
-        Get.snackbar('Thông báo'.tr, message, duration: const Duration(seconds: 1));
+        Get.snackbar('Thông báo'.tr, message,
+            duration: const Duration(seconds: 1));
       }
   }
 }

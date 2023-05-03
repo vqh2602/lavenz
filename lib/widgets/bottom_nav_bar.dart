@@ -1,4 +1,7 @@
 import 'package:lavenz/modules/dashbroad/dashbroad_screen.dart';
+import 'package:lavenz/modules/setting/setting_screen.dart';
+import 'package:lavenz/modules/sound/sound_screen.dart';
+import 'package:lavenz/modules/sound_control/sound_control_screen.dart';
 import 'package:lavenz/widgets/color_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -75,12 +78,9 @@ List<BottomNavigationBarItem> items = [
 
 List<Widget> widgetOptions = <Widget>[
   const DashBroadScreen(),
-  Container(
-    color: Colors.red,
-  ),
-  Container(
-    color: Colors.cyan,
-  ),
+  const SoundScreen(),
+  const SoundControlScreen(),
+  const SettingScreen(),
   Container(
     color: Colors.brown,
   )

@@ -117,6 +117,7 @@ EdgeInsets alignment_20_8() {
 EdgeInsets alignment_20_0() {
   return const EdgeInsets.fromLTRB(20, 0, 20, 0);
 }
+
 EdgeInsets alignment_20_0_0() {
   return const EdgeInsets.fromLTRB(20, 0, 0, 0);
 }
