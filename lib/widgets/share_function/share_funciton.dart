@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 
 void dateTimePicker(
     {required Function(DateTime) onchange, required Function onComplete}) {
@@ -57,3 +58,16 @@ Future<dynamic> convertImageToBase64({File? file, String? base64String}) async {
     return decodedbytes;
   }
 }
+
+ Future<String> getCurrentUrl(String url)async{
+    if(Platform.isIOS){
+    String a = url.substring(url.indexOf("Documents/") + 10, url.length) ;
+    Directory dir = await getApplicationDocumentsDirectory();
+    a = "${dir.path}/$a";
+    //print('aaa $a');
+    return a;
+    }
+    else{
+      return url;
+    }
+  }

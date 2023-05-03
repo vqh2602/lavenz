@@ -5,8 +5,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
 import 'package:get/get.dart';
+import 'package:lavenz/data/models/down.dart' as down;
+import 'package:lavenz/data/repositories/new_ver_repo.dart';
+import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/dialog_down.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+import 'package:lavenz/widgets/text_custom.dart';
 
 class HomeController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
@@ -18,11 +22,16 @@ class HomeController extends GetxController
   String speedInternet = '0';
   bool downloaded = false;
   final speedTest = FlutterInternetSpeedTest();
+  down.Down downLink = down.Down();
+  NewVersionRepo newVersionRepo = NewVersionRepo();
+  List<Widget> choiseSever = [];
+  down.Link? linkSelect;
 
   @override
   Future<void> onInit() async {
     changeUI();
     // await _downloadAssets();
+    initData();
     super.onInit();
   }
 
@@ -37,6 +46,25 @@ class HomeController extends GetxController
     await initDown();
   }
 
+  Future initData() async {
+    loadingUI();
+    downLink = down.Down.fromJson(await newVersionRepo.getNewVersion());
+    choiseSever.addAll(downLink.link
+            ?.map((e) => obx(
+                  (state) => FilterChip(
+                   onSelected: (b){
+                    linkSelect = e;
+                    updateUI();
+                   },
+                    label: textBodySmall(text: e.name ?? ''),
+                    selected: e.name == linkSelect?.name,
+                  ),
+                ))
+            .toList() ??
+        []);
+        linkSelect = downLink.link?.first;
+    changeUI();
+  }
 
   Future initDown() async {
     downloaded = await downloadAssetsController.assetsDirAlreadyExists();
@@ -50,6 +78,10 @@ class HomeController extends GetxController
     // }
     if (!downloaded || !checkAllFile) {
       //print('show down');
+      await Get.dialog(
+        obx((state) => dialogChoseSever(choise: choiseSever)),
+        barrierDismissible: true,
+      );
       Get.dialog(
         obx((state) => dialogDown(process: message, speed: speedInternet)),
         barrierDismissible: false,
@@ -85,7 +117,7 @@ class HomeController extends GetxController
       testInternetSpeed();
       await downloadAssetsController.startDownload(
           assetsUrl:
-              'https://vqh2602.github.io/lavenz_music_data.github.io/release/data.zip',
+              linkSelect?.url??'',
           onProgress: (progressValue) {
             downloaded = false;
             if (progressValue < 100) {
@@ -101,6 +133,7 @@ class HomeController extends GetxController
     } on DownloadAssetsException catch (e) {
       //print(e.toString());
       downloaded = false;
+      buildToast(message: 'Lỗi tải xuống', status: TypeToast.toastError);
       message = 'Error: ${e.toString()}';
     }
   }

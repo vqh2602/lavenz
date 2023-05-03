@@ -7,6 +7,7 @@ import 'package:lavenz/data/repositories/new_ver_repo.dart';
 import 'package:lavenz/modules/home/home_controller.dart';
 import 'package:lavenz/widgets/check_update_data.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+import 'package:lavenz/widgets/text_custom.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingController extends GetxController
@@ -61,6 +62,7 @@ class SettingController extends GetxController
           onTap: () async {
             var x = await Get.defaultDialog(
                 title: 'Xác nhận tải dữ liệu mới',
+                content: textBodyLarge(text: ''),
                 textCancel: 'Huỷ',
                 textConfirm: 'Xác nhận',
                 onCancel: () {

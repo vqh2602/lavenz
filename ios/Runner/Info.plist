@@ -51,6 +51,11 @@
     <dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
+         <key>NSAllowsArbitraryLoadsForMedia</key>
+    <true/>
     </dict>
+    <key>NSMicrophoneUsageDescription</key>
+<string>This app require permission to access microphone</string>
+
   </dict>
 </plist>
