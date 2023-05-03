@@ -24,10 +24,8 @@ class LoginController extends GetxController
 
   Future<void> login({bool isLoginBiometric = false}) async {
     User? user;
-    !isLoginBiometric
-        ? user = await userRepo.loginWithEmail(
-            email: emailTE.text, passW: passWTE.text)
-        : user = await userRepo.loginWithBiometric();
+     user = await userRepo.loginWithEmail(
+            email: emailTE.text, passW: passWTE.text);
     user != null ? Get.offAllNamed(SplashScreen.routeName) : null;
     changeUI();
   }

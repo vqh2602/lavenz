@@ -39,7 +39,6 @@ dependencies:
   collection: ^1.17.0
   get: ^4.6.5
   dio: ^5.1.1
-  local_auth: ^2.1.6
   google_fonts: ^4.0.3
   lucide_icons: ^0.171.0
   animated_text_kit: ^4.2.2
@@ -50,8 +49,6 @@ dependencies:
   blurrycontainer: ^1.0.2
   get_storage: ^2.1.1
   video_player: ^2.6.1
-  local_auth_ios: ^1.1.1
-  local_auth_android: ^1.0.24
   fluttertoast: ^8.2.1
   uuid: ^3.0.7
   path_provider: ^2.0.14
@@ -63,6 +60,8 @@ dependencies:
   package_info_plus: ^3.1.2
   just_audio: ^0.9.32
   just_audio_background: ^0.0.1-beta.9
+  connectivity_plus: ^3.0.6
+  in_app_purchase: ^3.1.5
   
   # flutter_flavor: ^3.1.1
 

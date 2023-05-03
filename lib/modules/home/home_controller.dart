@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
 import 'package:get/get.dart';
@@ -26,18 +27,21 @@ class HomeController extends GetxController
   NewVersionRepo newVersionRepo = NewVersionRepo();
   List<Widget> choiseSever = [];
   down.Link? linkSelect;
+  StreamSubscription<ConnectivityResult>? connectivityResul;
 
   @override
   Future<void> onInit() async {
     changeUI();
     // await _downloadAssets();
     initData();
+    initConnectInternet();
     super.onInit();
   }
 
   @override
   void dispose() {
     speedTest.disableLog();
+    connectivityResul?.cancel();
     super.dispose();
   }
 
@@ -64,6 +68,52 @@ class HomeController extends GetxController
         []);
     linkSelect = downLink.link?.first;
     changeUI();
+  }
+
+  void initConnectInternet() {
+    connectivityResul = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.mobile) {
+        // I am connected to a mobile network.
+        buildToast(
+            message: 'Đã kết nối mạng di động', status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.wifi) {
+        // I am connected to a wifi network.
+        // I am connected to a mobile network.
+        buildToast(message: 'Đã kết nối wifi', status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.ethernet) {
+        // I am connected to a mobile network.
+        buildToast(
+            message: 'Đã kết nối ethernet', status: TypeToast.toastSuccess);
+        // I am connected to a ethernet network.
+      } else if (result == ConnectivityResult.vpn) {
+        // I am connected to a mobile network.
+        buildToast(message: 'Đã kết nối vpn', status: TypeToast.toastSuccess);
+        // I am connected to a vpn network.
+        // Note for iOS and macOS:
+        // There is no separate network interface type for [vpn].
+        // It returns [other] on any device (also simulator)
+      } else if (result == ConnectivityResult.bluetooth) {
+        // I am connected to a bluetooth.
+        // I am connected to a mobile network.
+        buildToast(
+            message: 'Đã kết nối chia sẻ bluetooth',
+            status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.other) {
+        // I am connected to a network which is not in the above mentioned networks.
+        // I am connected to a mobile network.
+        //  buildToast(
+        //     message: 'Đã kết nối',
+        //     status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.none) {
+        // I am not connected to any network.
+        buildToast(
+            message: 'Không có kết nối',
+            status: TypeToast.toastError,
+        );
+      }
+    });
   }
 
   Future initDown() async {

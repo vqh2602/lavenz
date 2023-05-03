@@ -119,7 +119,9 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                         title: 'hẹn giờ',
                         isPlay: false,
                         wIcon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              soundControlController.resetDownTime();
+                            },
                             icon: const Icon(
                               LucideIcons.alarmMinus,
                               color: Colors.white70,

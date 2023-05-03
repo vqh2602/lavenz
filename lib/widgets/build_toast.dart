@@ -58,7 +58,7 @@ void buildToast(
       {
         Fluttertoast.showToast(
             msg: message,
-            toastLength: Toast.LENGTH_SHORT,
+            toastLength: Toast.LENGTH_LONG,
             backgroundColor: backgroundColor ?? Colors.green,
             textColor: textColor ?? Colors.white,
             fontSize: 16,
@@ -69,7 +69,7 @@ void buildToast(
       {
         Fluttertoast.showToast(
             msg: message,
-            toastLength: Toast.LENGTH_SHORT,
+            toastLength: Toast.LENGTH_LONG,
             backgroundColor: backgroundColor ?? Colors.red,
             textColor: textColor ?? Colors.white,
             fontSize: 16,

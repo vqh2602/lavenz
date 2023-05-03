@@ -5,13 +5,11 @@ import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/data/repositories/repo.dart';
 import 'package:lavenz/data/storage.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:local_auth_android/local_auth_android.dart';
-import 'package:local_auth_ios/types/auth_messages_ios.dart';
+
 
 class UserRepo extends Repo {
   GetStorage box = GetStorage();
-  final LocalAuthentication auth = LocalAuthentication();
+
   // lấy thông tin ng dùng
   Future<User?> getUserByID(
       {required String userID, bool isCached = false}) async {
@@ -63,52 +61,7 @@ class UserRepo extends Repo {
     return user;
   }
 
-  // đăng nhập sinh trắc học
-  Future<User?> loginWithBiometric() async {
-    User? user;
-    bool didAuthenticate = false;
-    if (box.read(Storages.dataBiometric) ?? false) {
-      final bool canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
-      final bool canAuthenticate =
-          canAuthenticateWithBiometrics || await auth.isDeviceSupported();
-      final List<BiometricType> availableBiometrics =
-          await auth.getAvailableBiometrics();
-      if (canAuthenticate && availableBiometrics.isNotEmpty) {
-        didAuthenticate = await auth.authenticate(
-            localizedReason: 'Vui lòng xác thực',
-            options: const AuthenticationOptions(
-              stickyAuth: true,
-            ),
-            authMessages: <AuthMessages>[
-              const AndroidAuthMessages(
-                  signInTitle: 'Xác thực',
-                  biometricHint: 'xác thực để tiếp tục',
-                  cancelButton: 'Hủy',
-                  biometricSuccess: 'Thành công!',
-                  biometricRequiredTitle:
-                      'Chưa thiết lập phương thức bảo mật nào',
-                  biometricNotRecognized: 'Xác thực không thành công!',
-                  goToSettingsButton: 'Cài đặt',
-                  goToSettingsDescription: 'Chuyển đến cài đặt'),
-              const IOSAuthMessages(
-                cancelButton: 'Hủy',
-              ),
-            ]);
-      }
-    }
-    if (didAuthenticate) {
-      user = await loginWithEmail(
-          email: box.read(Storages.dataEmail),
-          passW: box.read(Storages.dataPassWord));
-    } else {
-      // Get.dialog(CupertinoAlertDialog(
-      //   title: textBodyMedium(text: 'chưa bật đăng nhập bằng sinh trắc học'),
-      // ));
-    }
-    log('Đăng nhập sinh trắc học, user: ${user?.toJson().toString()}');
-    return user;
-  }
-
+  
   // đăng ký
   Future<void> signupWithEmail({
     required String name,
