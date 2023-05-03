@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:lavenz/data/models/sound.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/color_custom.dart';
@@ -21,8 +22,12 @@ Widget listSound({
       padding: const EdgeInsets.only(top: 12),
       itemCount: listData.length,
       shrinkWrap: true,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3, crossAxisSpacing: 4, mainAxisSpacing: 4),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 6,
+        mainAxisSpacing: 4,
+        childAspectRatio: Get.width / (Get.height / 2),
+      ),
       itemBuilder: (BuildContext context, int index) {
         bool isPlaying = listSelect.contains(listData[index]);
         return Tooltip(
@@ -74,7 +79,8 @@ Widget listSound({
                     )),
                 cHeight(4),
                 textBodySmall(
-                    text: listData[index].name ?? '',
+                    text:
+                        '${listData[index].vip ?? false ? '♔ ' : ''}${listData[index].name ?? ''}',
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,

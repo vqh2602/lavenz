@@ -18,7 +18,7 @@ class SoundController extends GetxController
       DownloadAssetsController();
   GetStorage box = GetStorage();
   //VideoPlayerController? videoPlayerController;
-    late TabController tabController, tabControllerMin;
+  late TabController tabController, tabControllerMin;
   sound.Sound soundData = sound.Sound();
   tag.Tag tagData = tag.Tag();
   List<sound.Data> listSound = [];
@@ -35,13 +35,12 @@ class SoundController extends GetxController
     initTabbar();
     changeUI();
   }
-  
-  @override
-  void dispose(){
-    super.dispose();
-     tabController.dispose();
-    tabControllerMin.dispose();
 
+  @override
+  void dispose() {
+    super.dispose();
+    tabController.dispose();
+    tabControllerMin.dispose();
   }
 
   initVideoBackground() {
@@ -53,9 +52,10 @@ class SoundController extends GetxController
     //         videoPlayerController?.setVolume(0);
     //       });
   }
-  initTabbar(){
-        tabController = TabController(length: 2, vsync: this);
-    tabControllerMin = TabController(length: listTagSound.length+1, vsync: this);
+  initTabbar() {
+    tabController = TabController(length: 2, vsync: this);
+    tabControllerMin =
+        TabController(length: listTagSound.length + 1, vsync: this);
     tabControllerMin.addListener(() {
       updateUI();
     });
@@ -105,13 +105,13 @@ class SoundController extends GetxController
     }
   }
 
-  onPlaySound(String? sound, dynamic data, {bool isPlaying = false}) {
+  onPlaySound(String? sound, dynamic data, {bool isPlaying = false}) async {
     if (isPlaying) {
-      soundControlController.clearSoundWithId(id: data);
+      await soundControlController.clearSoundWithId(id: data);
       soundControlController.updateUI();
       updateUI();
     } else {
-      playSound(sound: sound ?? '', data: data);
+      await playSound(sound: sound ?? '', data: data);
       soundControlController.updateUI();
       updateUI();
     }
