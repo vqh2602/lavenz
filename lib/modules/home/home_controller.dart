@@ -52,17 +52,17 @@ class HomeController extends GetxController
     choiseSever.addAll(downLink.link
             ?.map((e) => obx(
                   (state) => FilterChip(
-                   onSelected: (b){
-                    linkSelect = e;
-                    updateUI();
-                   },
+                    onSelected: (b) {
+                      linkSelect = e;
+                      updateUI();
+                    },
                     label: textBodySmall(text: e.name ?? ''),
                     selected: e.name == linkSelect?.name,
                   ),
                 ))
             .toList() ??
         []);
-        linkSelect = downLink.link?.first;
+    linkSelect = downLink.link?.first;
     changeUI();
   }
 
@@ -116,8 +116,7 @@ class HomeController extends GetxController
     try {
       testInternetSpeed();
       await downloadAssetsController.startDownload(
-          assetsUrl:
-              linkSelect?.url??'',
+          assetsUrl: linkSelect?.url ?? '',
           onProgress: (progressValue) {
             downloaded = false;
             if (progressValue < 100) {
@@ -125,9 +124,10 @@ class HomeController extends GetxController
               updateUI();
               // print(message);
             } else {
-              message = 'Tải xuống thành công';
+              message =
+                  'Tải xuống thành công\n Đóng và khởi động lại ứng dụng để cập nhật dữ liệu mới';
               downloaded = true;
-              Get.back();
+              //Get.back();
             }
           });
     } on DownloadAssetsException catch (e) {
