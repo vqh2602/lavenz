@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:lavenz/c_lang/c_translations.dart';
 import 'package:lavenz/c_theme/c_theme.dart';
+import 'package:lavenz/config/config.dart';
+import 'package:lavenz/config/get_config.dart';
 import 'package:lavenz/modules/routers.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +14,7 @@ Future<void> main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
+  Env.config = await getConfigBase();
   runApp(const MyApp());
 }
 
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
       translations: Messages(),
       fallbackLocale: const Locale('vi', 'VN'),
       theme: SThemeTask.lightTheme,
-      darkTheme:  SThemeTask.darkTheme,
+      darkTheme: SThemeTask.darkTheme,
       themeMode: ThemeService().theme,
       // builder: (context, child) {
       //   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
@@ -46,7 +49,7 @@ class MyApp extends StatelessWidget {
         // GlobalCupertinoLocalizations.delegate,
         // GlobalWidgetsLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('vi'),Locale('en')],
+      //supportedLocales: const [Locale('vn'),Locale('u')],
       transitionDuration: const Duration(milliseconds: 300),
       defaultTransition: Transition.fadeIn,
       initialRoute: SplashScreen.routeName,

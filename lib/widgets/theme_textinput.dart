@@ -1,7 +1,8 @@
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 
-InputDecoration textFieldInputStyle({required String label, Widget? prefixIcon, Widget? suffixIcon}) {
+InputDecoration textFieldInputStyle(
+    {required String label, Widget? prefixIcon, Widget? suffixIcon}) {
   return InputDecoration(
     //helperText: 'Helper Text',
     //counterText: '0 characters',

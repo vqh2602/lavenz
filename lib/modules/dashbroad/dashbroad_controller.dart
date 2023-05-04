@@ -15,14 +15,15 @@ class DashBroadController extends GetxController
     super.onInit();
     changeUI();
   }
-  initVideoBackground(){
+
+  initVideoBackground() {
     videoPlayerController =
-    VideoPlayerController.asset('assets/background/vd3.mp4')
-      ..initialize().then((_) {
-        videoPlayerController?.play();
-        videoPlayerController?.setLooping(true);
-        videoPlayerController?.setVolume(0);
-      });
+        VideoPlayerController.asset('assets/background/vd3.mp4')
+          ..initialize().then((_) {
+            videoPlayerController?.play();
+            videoPlayerController?.setLooping(true);
+            videoPlayerController?.setVolume(0);
+          });
   }
 
   @override
@@ -56,7 +57,7 @@ class DashBroadController extends GetxController
         DateTime dateTime = DateTime.now();
         DateTime startDate = DateTime.parse(dataTimeOut);
         DateTime endDate =
-        startDate.add(const Duration(hours: Config.dataLoginTimeOut));
+            startDate.add(const Duration(hours: Config.dataLoginTimeOut));
         if (dateTime.isAfter(startDate) && dateTime.isBefore(endDate)) {
           return true;
         } else {}

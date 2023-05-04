@@ -1,8 +1,6 @@
-
 import 'package:lavenz/modules/dashbroad/dashbroad_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/build_item_4x3.dart';
-import 'package:lavenz/widgets/build_list_item_1x1.dart';
 import 'package:lavenz/widgets/build_list_item_4x3.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
 import 'package:lavenz/widgets/text_custom.dart';
@@ -100,13 +98,13 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
     return AnimatedContainer(
       width: showHeader ? Get.width : Get.width,
       height: showHeader ? Get.height * 0.3 : 70,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 500),
       padding: showHeader ? const EdgeInsets.only(top: 30) : EdgeInsets.zero,
       child: Stack(
         children: [
           AnimatedAlign(
             alignment: showHeader ? Alignment.topCenter : Alignment.topLeft,
-            duration: const Duration(milliseconds: 1000),
+            duration: const Duration(milliseconds: 500),
             child: textHeadlineLarge(
                 text: 'Lavenz',
                 color: Get.theme.colorScheme.background,
@@ -132,11 +130,11 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
           buildListItem4x3(),
           cHeight(8),
           buildItem4x3(),
-          cHeight(30),
-          buildListItem1x1(),
-          cHeight(12),
-          buildListItem1x1(),
-          cHeight(12),
+          // cHeight(30),
+          // buildListItem1x1(),
+          // cHeight(12),
+          // buildListItem1x1(),
+          // cHeight(12),
           buildItem4x3(),
           cHeight(100)
         ],

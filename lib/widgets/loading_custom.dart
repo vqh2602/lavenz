@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -24,8 +23,7 @@ class LoadingCustom extends StatelessWidget {
             ),
             Center(
               child: Lottie.asset('assets/background/loadding.json',
-                  width: Get.width,
-                  fit: BoxFit.fill),
+                  width: Get.width, fit: BoxFit.fill),
             ),
           ],
         ),
