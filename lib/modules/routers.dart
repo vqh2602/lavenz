@@ -18,6 +18,8 @@ import 'package:lavenz/modules/splash/splash_binding.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
 
 import 'package:get/get.dart';
+import 'package:lavenz/modules/vip/vip_binding.dart';
+import 'package:lavenz/modules/vip/vip_screen.dart';
 
 List<GetPage> routes = [
   GetPage(
@@ -54,4 +56,8 @@ List<GetPage> routes = [
       name: SettingScreen.routeName,
       page: () => const SettingScreen(),
       binding: SettingBinding()),
+  GetPage(
+      name: VipScreen.routeName,
+      page: () => const VipScreen(),
+      binding: VipBinding()),
 ];
