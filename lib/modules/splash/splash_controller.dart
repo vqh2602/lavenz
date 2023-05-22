@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:lavenz/data/storage.dart';
+import 'package:lavenz/modules/auth/login/login_screen.dart';
 import 'package:lavenz/modules/home/home_screen.dart';
 import 'package:video_player/video_player.dart';
 
@@ -30,20 +31,20 @@ class SplashController extends GetxController
   }
 
   Future<void> checkLogin() async {
-    // var dataUser = await box.read(Storages.dataUser);
+    var dataUser = await box.read(Storages.dataUser);
     //kiểm tra dữ liệu user và thời gian đăng nhập
-    Future.delayed(const Duration(seconds: 5), () {
-      Get.offAndToNamed(HomeScreen.routeName);
-    });
-    // if (dataUser != null && await checkLoginTimeOut()) {
-    //   Future.delayed(const Duration(seconds: 4), () {
-    //     Get.offAndToNamed(HomeScreen.routeName);
-    //   });
-    // } else {
-    //   Future.delayed(const Duration(seconds: 4), () {
-    //     Get.offAndToNamed(LoginScreen.routeName);
-    //   });
-    // }
+    // Future.delayed(const Duration(seconds: 5), () {
+    //   Get.offAndToNamed(HomeScreen.routeName);
+    // });
+    if (dataUser != null && await checkLoginTimeOut()) {
+      Future.delayed(const Duration(seconds: 4), () {
+        Get.offAndToNamed(HomeScreen.routeName);
+      });
+    } else {
+      Future.delayed(const Duration(seconds: 4), () {
+        Get.offAndToNamed(LoginScreen.routeName);
+      });
+    }
   }
 
   Future<bool> checkLoginTimeOut() async {

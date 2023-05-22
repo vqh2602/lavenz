@@ -24,7 +24,7 @@ class _SoundScreenState extends State<SoundScreen>
     with TickerProviderStateMixin {
   SoundController soundController = Get.put(SoundController());
   SoundControlController soundControlController =
-      Get.put(SoundControlController());
+      Get.find();
   HomeController homeController = Get.find();
   bool showHeader = true;
   @override
@@ -40,12 +40,12 @@ class _SoundScreenState extends State<SoundScreen>
     //   soundController.dispose();
     super.dispose();
   }
-      @override
+
+  @override
   void didChangeDependencies() {
     precacheImage(const AssetImage("assets/background/bg1.jpeg"), context);
     super.didChangeDependencies();
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +219,8 @@ class _SoundScreenState extends State<SoundScreen>
                 soundController.onPlaySound(sound, data);
               },
               onTapPlaying: (data) {
-                soundController.onPlaySound('', data, isPlaying: true);
+                soundController.onPlaySound('', null,
+                    id: data, isPlaying: true);
               },
               listSelect:
                   soundControlController.listAudio.map((e) => e.data).toList(),
@@ -234,7 +235,8 @@ class _SoundScreenState extends State<SoundScreen>
                   soundController.onPlaySound(sound, data);
                 },
                 onTapPlaying: (data) {
-                  soundController.onPlaySound('', data, isPlaying: true);
+                  soundController.onPlaySound('', null,
+                      id: data, isPlaying: true);
                 },
                 listSelect: soundControlController.listAudio
                     .map((e) => e.data)

@@ -1,15 +1,20 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 
-Widget buildItem4x3() {
+Widget buildItem4x3(
+    {required Function onTap,
+    required String title,
+    required String des,
+    required String image,
+    required String textButton}) {
   return SizedBox(
       height: 200,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+         // onTap();
+        },
         child: Container(
           width: double.infinity,
           margin: const EdgeInsets.only(right: 12),
@@ -23,7 +28,7 @@ Widget buildItem4x3() {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
                     child: Image.asset(
-                      'assets/background/img1.jpg',
+                      image,
                       fit: BoxFit.cover,
                       height: 200.0,
                       width: double.infinity,
@@ -38,13 +43,13 @@ Widget buildItem4x3() {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           textTitleSmall(
-                              text: 'Mở khoá tất cả tính năng',
+                              text: title,
                               color: Colors.white,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis),
                           textBodySmall(
                               text:
-                                  'Nhận quyền truy cập không giới hạn vào các chức năng của ứng dụng',
+                                  des,
                               color: Colors.white,
                               maxLines: 2,
                               fontWeight: FontWeight.w100,
@@ -57,13 +62,14 @@ Widget buildItem4x3() {
                     alignment: Alignment.bottomCenter,
                     child: GFButton(
                         onPressed: () {
-                          Get.toNamed(VipScreen.routeName);
+                          onTap();
+                 
                         },
                         color: Colors.white,
                         textColor: Colors.black,
                         padding:
                             const EdgeInsets.only(left: 4 * 10, right: 4 * 10),
-                        text: "Đăng kí ngay",
+                        text: textButton,
                         textStyle: josefinSans(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

@@ -12,8 +12,8 @@ class Repo {
     baseUrl: Env.config.baseUrl,
     //baseUrl:'http://127.0.0.1:8080',
     // baseUrl: 'http://192.168.0.196:8080',
-    connectTimeout: const Duration(seconds: 5),
-    receiveTimeout: const Duration(seconds: 10),
+    connectTimeout: const Duration(seconds: 30),
+    receiveTimeout: const Duration(seconds: 30),
     receiveDataWhenStatusError: true,
     // 5s
     headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},

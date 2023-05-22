@@ -1,0 +1,79 @@
+{
+  "identifier" : "D0D78E4F",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6448814317",
+    "_developerTeamID" : "F54V2R3D84",
+    "_lastSynchronizedDate" : 705134856.19496596
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21337338",
+      "localizations" : [
+
+      ],
+      "name" : "1_month",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6448851494",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "one month",
+              "displayName" : "one month",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "1_month",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "1_month",
+          "subscriptionGroupID" : "21337338",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "24.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6448851583",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "one year",
+              "displayName" : "one year",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "1_year",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "1_year",
+          "subscriptionGroupID" : "21337338",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

@@ -1,5 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:lavenz/widgets/widgets.dart';
 
@@ -7,7 +9,7 @@ Widget buildListItem4x3() {
   return SizedBox(
     height: 230,
     child: ListView.builder(
-        itemCount: 15,
+        itemCount: listDataDash.length,
         shrinkWrap: false,
         primary: true,
         scrollDirection: Axis.horizontal,
@@ -22,14 +24,14 @@ Widget buildListItem4x3() {
                 blur: 2,
                 child: Tooltip(
                   message:
-                      'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
+                      listDataDash[i].des,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(16.0),
                         child: Image.asset(
-                          'assets/background/img1.jpg',
+                         listDataDash[i].image,
                           fit: BoxFit.cover,
                           height: 130.0,
                           width: 220.0,
@@ -38,11 +40,11 @@ Widget buildListItem4x3() {
                       cHeight(4),
                       textTitleSmall(
                           text:
-                              'Những ngày mưa ${(i % 2 == 0 ? '' : ' mauw mua wmuaw ')}',
+                              listDataDash[i].title,
                           color: Colors.white),
                       textBodySmall(
                           text:
-                              'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
+                              listDataDash[i].des,
                           color: Colors.white,
                           maxLines: 2,
                           fontWeight: FontWeight.w100,
@@ -55,4 +57,35 @@ Widget buildListItem4x3() {
           );
         }),
   );
+}
+
+List<DataDash> listDataDash = [
+  DataDash(
+      title: 'Hiệu ứng âm thanh'.tr,
+      des: 'Các hiệu ứng âm thanh về các chủ đề khác nhau'.tr,
+      image: 'assets/background/d1.jpeg',
+      onTap: (){}),
+        DataDash(
+      title: 'Âm nhạc của cảm xúc'.tr,
+      des: 'Các bản nhạc thư giãn, tập trung ... cũng có thể là những bản nhạc giải toả tâm trạng'.tr,
+      image: 'assets/background/d2.jpeg',
+      onTap: (){}),
+              DataDash(
+      title: 'Bộ sưu tập'.tr,
+      des: 'Muốn thêm...? Điều chỉnh nhịp thở, giảm căng thẳng, thiền định...'.tr,
+      image: 'assets/background/d3.jpeg',
+      onTap: (){}),
+];
+
+class DataDash {
+  String title;
+  String des;
+  String image;
+  Function onTap;
+  DataDash({
+    required this.title,
+    required this.des,
+    required this.image,
+    required this.onTap,
+  });
 }

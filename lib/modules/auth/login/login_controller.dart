@@ -22,10 +22,18 @@ class LoginController extends GetxController
     passWTE = TextEditingController();
   }
 
-  Future<void> login({bool isLoginBiometric = false}) async {
+  Future<void> login() async {
     User? user;
-     user = await userRepo.loginWithEmail(
-            email: emailTE.text, passW: passWTE.text);
+     user = await userRepo.loginWithGoogle();
+
+    user != null ? Get.offAllNamed(SplashScreen.routeName) : null;
+    changeUI();
+  }
+  Future<void> loginApple() async {
+    User? user;
+     user = 
+     await userRepo.loginWithApple();
+
     user != null ? Get.offAllNamed(SplashScreen.routeName) : null;
     changeUI();
   }

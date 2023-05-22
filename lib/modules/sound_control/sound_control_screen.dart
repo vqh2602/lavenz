@@ -27,7 +27,7 @@ class SoundControlScreen extends StatefulWidget {
 class _SoundControlScreenState extends State<SoundControlScreen>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   SoundControlController soundControlController =
-      Get.put(SoundControlController());
+      Get.find();
   HomeController homeController = Get.find();
   bool showHeader = true;
 
