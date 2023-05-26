@@ -136,7 +136,8 @@ Future<void> onPopDialog(
 
 String getLocalConvertString() {
   Locale? locale = Get.deviceLocale;
-  switch (locale?.languageCode) {
+  //print('vitri : ${locale?.languageCode}');
+  switch (locale?.languageCode.toString()) {
     case 'en':
       return 'en';
     case 'vi':

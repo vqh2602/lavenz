@@ -48,7 +48,7 @@ class SettingController extends GetxController
     user = getUserInBox();
     newVer = await newVersionRepo.getNewVersion();
     String data =
-        await File('${downloadAssetsController.assetsDir}/json_data/data.json')
+        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
             .readAsString();
     oldVer = jsonDecode(data);
   }

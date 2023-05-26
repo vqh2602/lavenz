@@ -11,6 +11,7 @@ import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
+import 'package:lavenz/widgets/share_function/share_funciton.dart';
 
 class SoundController extends GetxController
     with GetTickerProviderStateMixin, StateMixin, UserMixin {
@@ -74,10 +75,10 @@ class SoundController extends GetxController
   Future initLocalData() async {
     await downloadAssetsController.init();
     String data =
-        await File('${downloadAssetsController.assetsDir}/json_data/data.json')
+        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
             .readAsString();
     String dataTag =
-        await File('${downloadAssetsController.assetsDir}/json_data/tag.json')
+        await File('${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
             .readAsString();
     soundData = sound.Sound.fromJson(jsonDecode(data));
     tagData = tag.Tag.fromJson(jsonDecode(dataTag));

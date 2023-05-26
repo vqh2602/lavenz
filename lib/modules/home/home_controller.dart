@@ -14,6 +14,7 @@ import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/dialog_down.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
+import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -153,10 +154,10 @@ class HomeController extends GetxController
     // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
 
     String data =
-        await File('${downloadAssetsController.assetsDir}/json_data/data.json')
+        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
             .readAsString();
     oldVer = jsonDecode(data);
-    bool isUpdate = oldVer["version_data"].contains(packageInfo?.version);
+    bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
     if (!isUpdate) {
       clearDown();
       initDown();
