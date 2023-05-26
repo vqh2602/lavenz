@@ -153,15 +153,20 @@ class HomeController extends GetxController
     }
     // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
 
-    String data =
-        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
-            .readAsString();
-    oldVer = jsonDecode(data);
+    try {
+  String data =
+      await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+          .readAsString();
+  oldVer = jsonDecode(data);  
     bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
     if (!isUpdate) {
       clearDown();
       initDown();
     }
+}  catch (_) {
+  
+}
+
   }
 
   // Future _refresh() async {
