@@ -1,7 +1,10 @@
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/modules/setting/setting_controller.dart';
+import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/base/base.dart';
+import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
+import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +20,7 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  SettingController settingController = Get.put(SettingController());
+  SettingController settingController = Get.find();
 
   @override
   void initState() {
@@ -29,7 +32,8 @@ class _SettingScreenState extends State<SettingScreen> {
     //splashController.videoPlayerController?.dispose();
     super.dispose();
   }
-      @override
+
+  @override
   void didChangeDependencies() {
     precacheImage(const AssetImage("assets/background/bg6.jpeg"), context);
     super.didChangeDependencies();
@@ -118,7 +122,9 @@ class _SettingScreenState extends State<SettingScreen> {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 0),
                         child: textBodyMedium(
-                            text: 'Vip',
+                            text: settingController.getTimeVip() != null
+                                ? 'còn ${settingController.getTimeVip()} ngày'
+                                : 'Miễn phí',
                             fontWeight: FontWeight.w700,
                             color: Colors.white),
                       ),
@@ -129,16 +135,38 @@ class _SettingScreenState extends State<SettingScreen> {
                         padding: const EdgeInsets.only(top: 0),
                         child: GFButton(
                           color: const Color.fromARGB(255, 255, 216, 59),
-                          onPressed: () {},
+                          onPressed: () {
+                            if (settingController.user.latestPurchaseDate !=
+                                    null &&
+                                settingController.checkExpiry(
+                                    user: settingController.user)) {
+                            } else {
+                              Get.toNamed(VipScreen.routeName);
+                            }
+                          },
                           shape: GFButtonShape.pills,
                           padding: const EdgeInsets.only(left: 20, right: 20),
                           child: textBodyMedium(
-                              text: 'Gói đăng kí', fontWeight: FontWeight.bold),
+                              text: settingController.getTitileVip() ??
+                                  'Gói đăng kí',
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     )
                   ]),
-                )
+                ),
+                cHeight(12),
+                _blockItem(
+                  title: 'Mã đổi quà',
+                  onTap: () {
+                    settingController.user = settingController.user.copyWith(
+                        identifier: '1_month',
+                        latestPurchaseDate: DateTime.now());
+                    settingController.saveUserInBox(
+                        user: settingController.user);
+                    settingController.clearAndResetApp();
+                  },
+                ),
               ]),
           cHeight(30),
           Column(
@@ -152,7 +180,11 @@ class _SettingScreenState extends State<SettingScreen> {
                 cHeight(12),
                 _blockItem(
                     title: 'Phiên bản ứng dụng',
-                    onTap: () {},
+                    onTap: () {
+                      buildToast(
+                          message: settingController.packageInfo?.version ?? '',
+                          status: TypeToast.toastDefault);
+                    },
                     value: settingController.packageInfo?.version ?? ''),
                 cHeight(4),
                 _blockItem(
@@ -174,22 +206,43 @@ class _SettingScreenState extends State<SettingScreen> {
                 cHeight(12),
                 _blockItem(
                   title: 'Hỗ trợ & Giúp đỡ',
-                  onTap: () {},
+                  onTap: () {
+                    showWebInApp('https://www.facebook.com/vqhapps');
+                  },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Điều khoản dịch vụ',
-                  onTap: () {},
+                  onTap: () {
+                    showWebInApp('https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html');
+                  },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Chính sách bảo mật',
-                  onTap: () {},
+                  onTap: () {
+                    showWebInApp('https://vqhapps.blogspot.com/p/chinh-sach-bao-mat.html');
+                  },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Thông tin thêm',
-                  onTap: () {},
+                  onTap: () {showWebInApp('https://vqhapps.blogspot.com/');},
+                ),
+                cHeight(4),
+                _blockItem(
+                  title: 'Đăng xuất',
+                  onTap: () {
+                    onPopDialog(
+                        context: context,
+                        onCancel: () {
+                          Get.back();
+                        },
+                        onSubmit: () {
+                          settingController.logout();
+                        },
+                        title: 'Bạn muốn đăng xuất');
+                  },
                 ),
               ])
         ],

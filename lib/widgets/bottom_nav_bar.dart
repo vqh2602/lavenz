@@ -2,6 +2,7 @@ import 'package:lavenz/modules/dashbroad/dashbroad_screen.dart';
 import 'package:lavenz/modules/setting/setting_screen.dart';
 import 'package:lavenz/modules/sound/sound_screen.dart';
 import 'package:lavenz/modules/sound_control/sound_control_screen.dart';
+import 'package:lavenz/modules/tools/tools_screen.dart';
 import 'package:lavenz/widgets/color_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -81,7 +82,5 @@ List<Widget> widgetOptions = <Widget>[
   const SoundScreen(),
   const SoundControlScreen(),
   const SettingScreen(),
-  Container(
-    color: Colors.brown,
-  )
+  const ToolsScreen(),
 ];

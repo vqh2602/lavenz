@@ -18,6 +18,12 @@ import 'package:lavenz/modules/splash/splash_binding.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
 
 import 'package:get/get.dart';
+import 'package:lavenz/modules/tools/breath/breath_binding.dart';
+import 'package:lavenz/modules/tools/breath/breath_screen.dart';
+import 'package:lavenz/modules/tools/meditation/meditation_binding.dart';
+import 'package:lavenz/modules/tools/meditation/meditation_screen.dart';
+import 'package:lavenz/modules/tools/tools_binding.dart';
+import 'package:lavenz/modules/tools/tools_screen.dart';
 import 'package:lavenz/modules/vip/vip_binding.dart';
 import 'package:lavenz/modules/vip/vip_screen.dart';
 
@@ -60,4 +66,16 @@ List<GetPage> routes = [
       name: VipScreen.routeName,
       page: () => const VipScreen(),
       binding: VipBinding()),
+  GetPage(
+      name: ToolsScreen.routeName,
+      page: () => const ToolsScreen(),
+      binding: ToolsBinding()),
+  GetPage(
+      name: BreathScreen.routeName,
+      page: () => const BreathScreen(),
+      binding: BreathBinding(),),
+    GetPage(
+      name: MeditationScreen.routeName,
+      page: () => const MeditationScreen(),
+      binding: MeditationBinding(),),
 ];

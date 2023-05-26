@@ -182,7 +182,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       dateTimePicker(
                           onchange: (dt) {
                             signupController.birthTE.text = formatDate(
-                                type: TypeDate.yyyyMMdd, dateTime: dt);
+                                type: TypeDate.yyyyMMdd, dateTime: dt) ?? '';
                             // signupController.birthTE?.text = formatDate(
                             //     type: TypeDate.ddMMyyyy, dateTime: dt);
                           },

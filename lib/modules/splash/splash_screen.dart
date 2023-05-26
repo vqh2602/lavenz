@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    //splashController.videoPlayerController?.dispose();
+    splashController.videoPlayerController?.dispose();
     super.dispose();
   }
 

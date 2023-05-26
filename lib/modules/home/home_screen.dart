@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HomeController homeController = Get.put(HomeController());
+  HomeController homeController = Get.find();
 
   @override
   void initState() {

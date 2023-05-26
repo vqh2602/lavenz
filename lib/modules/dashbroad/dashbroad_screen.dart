@@ -1,8 +1,12 @@
 import 'package:lavenz/modules/dashbroad/dashbroad_controller.dart';
+import 'package:lavenz/modules/sound/sound_controller.dart';
+import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/build_item_4x3.dart';
+import 'package:lavenz/widgets/build_list_item_1x1.dart';
 import 'package:lavenz/widgets/build_list_item_4x3.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
+import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +22,8 @@ class DashBroadScreen extends StatefulWidget {
 }
 
 class _DashBroadScreenState extends State<DashBroadScreen> {
-  DashBroadController dashBroadController = Get.put(DashBroadController());
+  DashBroadController dashBroadController = Get.find();
+  SoundController soundController = Get.find();
   bool showHeader = true;
   ScrollController scrollController = ScrollController();
 
@@ -113,7 +118,10 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: textBodySmall(
-              text: 'Chào buổi tối, Huy',
+              text: 'Chào buổi tối'.trParams({
+                'name': dashBroadController.user?.name ?? '',
+                'day': getSesisonDay()
+              }),
               color: Get.theme.colorScheme.background,
             ),
           )
@@ -129,13 +137,55 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
         children: [
           buildListItem4x3(),
           cHeight(8),
-          buildItem4x3(),
-          // cHeight(30),
-          // buildListItem1x1(),
-          // cHeight(12),
-          // buildListItem1x1(),
-          // cHeight(12),
-          buildItem4x3(),
+          buildItem4x3(
+              des: 'nhận quyền không giới hạn truy cập vào các tính năng',
+              image: 'assets/background/img1.jpg',
+              onTap: () {
+                dashBroadController.checkExpiry(user: dashBroadController.user!)
+                    ? null
+                    : Get.toNamed(VipScreen.routeName);
+              },
+              textButton: dashBroadController.checkExpiry(
+                      user: dashBroadController.user!)
+                  ? 'Đã đăng kí'
+                  : 'Đăng kí ngay',
+              title: 'Mở khoá tất cả tính năng'),
+          cHeight(30),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(17) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Đi vào giấc ngủ'),
+          cHeight(12),
+          buildListItem1x1(
+              onTap: (sound, data) async {
+                soundController.onPlayMusic(sound, data);
+              },
+              listData: soundController.listMusic
+                  .where((element) => element.tag?.contains(13) ?? false)
+                  .toList(),
+              pathImages:
+                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              title: 'Tập trung cao độ'),
+          cHeight(12),
+          buildItem4x3(
+              des: 'nhận quyền không giới hạn truy cập vào các tính năng',
+              image: 'assets/background/img1.jpg',
+              onTap: () {
+                dashBroadController.checkExpiry(user: dashBroadController.user!)
+                    ? null
+                    : Get.toNamed(VipScreen.routeName);
+              },
+              textButton: dashBroadController.checkExpiry(
+                      user: dashBroadController.user!)
+                  ? 'Đã đăng kí'
+                  : 'Đăng kí ngay',
+              title: 'Mở khoá tất cả tính năng'),
           cHeight(100)
         ],
       ),

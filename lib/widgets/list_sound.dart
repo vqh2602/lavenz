@@ -41,51 +41,53 @@ Widget listSound({
                   : onTapPlaying(listData[index].id);
               //soundController.playSound();
             },
-            child: Column(
-              children: [
-                Container(
-                    width: 70,
-                    height: 70,
-                    alignment: Alignment.center, //
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: isPlaying ? Colors.white : colorF2,
-                        boxShadow: [
-                          isPlaying
-                              ? BoxShadow(
-                                  color: colorF4,
-                                  spreadRadius: 4,
-                                  blurRadius: 12,
-                                  offset: const Offset(
-                                      0, 0), // changes position of shadow
-                                )
-                              : const BoxShadow(),
-                        ],
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: SvgPicture.file(
-                        File('$pathBase${listData[index].image}'),
-                        fit: BoxFit.scaleDown,
-                        colorFilter: !isPlaying
-                            ? const ColorFilter.mode(
-                                Colors.white, BlendMode.srcIn)
-                            : ColorFilter.mode(colorF2, BlendMode.srcIn),
-                        // child: SvgPicture.asset(
-                        //   'assets/background/noun-wind-3100898.svg',
-                        //   fit: BoxFit.scaleDown,
-                        //   colorFilter: const ColorFilter.mode(
-                        //       Colors.white, BlendMode.srcIn),
-                      ),
-                    )),
-                cHeight(4),
-                textBodySmall(
-                    text:
-                        '${listData[index].vip ?? false ? '♔ ' : ''}${listData[index].name ?? ''}',
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    color: Colors.white),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                      width: 70,
+                      height: 70,
+                      alignment: Alignment.center, //
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                          color: isPlaying ? Colors.white : colorF2,
+                          boxShadow: [
+                            isPlaying
+                                ? BoxShadow(
+                                    color: colorF4,
+                                    spreadRadius: 4,
+                                    blurRadius: 12,
+                                    offset: const Offset(
+                                        0, 0), // changes position of shadow
+                                  )
+                                : const BoxShadow(),
+                          ],
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                        child: SvgPicture.file(
+                          File('$pathBase${listData[index].image}'),
+                          fit: BoxFit.scaleDown,
+                          colorFilter: !isPlaying
+                              ? const ColorFilter.mode(
+                                  Colors.white, BlendMode.srcIn)
+                              : ColorFilter.mode(colorF2, BlendMode.srcIn),
+                          // child: SvgPicture.asset(
+                          //   'assets/background/noun-wind-3100898.svg',
+                          //   fit: BoxFit.scaleDown,
+                          //   colorFilter: const ColorFilter.mode(
+                          //       Colors.white, BlendMode.srcIn),
+                        ),
+                      )),
+                  cHeight(4),
+                  textBodySmall(
+                      text:
+                          '${listData[index].vip ?? false ? '♔ ' : ''}${listData[index].name ?? ''}',
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      color: Colors.white),
+                ],
+              ),
             ),
           ),
         );

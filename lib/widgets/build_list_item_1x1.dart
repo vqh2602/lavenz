@@ -46,52 +46,56 @@ Widget buildListItem1x1(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, i) {
                 return Material(
-                  child: InkWell(
-                    onTap: () {
-                      onTap(listData[i].sound ?? '', listData[i]);
-                    },
-                    child: Container(
-                      width: 150,
-                      margin: const EdgeInsets.only(right: 20),
-                      child: BlurryContainer(
-                        padding: EdgeInsets.zero,
-                        blur: 2,
-                        child: Tooltip(
-                          message:
-                              'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(16.0),
-                                child: Image.file(
-                                  File('$pathImages${listData[i].image}'),
-                                  errorBuilder: (context, object, stackTrace) {
-                                    return SizedBox(
-                                      height: double.infinity,
-                                      child: Image.asset(
-                                        'assets/images/image_notfound.jpg',
-                                        fit: BoxFit.fill,
-                                      ),
-                                    );
-                                  },
-                                  fit: BoxFit.cover,
-                                  height: 150.0,
-                                  width: 150.0,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 20),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    child: InkWell(
+                      onTap: () {
+                        onTap(listData[i].sound ?? '', listData[i]);
+                      },
+                      borderRadius: BorderRadius.circular(20),
+                      child: SizedBox(
+                        width: 150,
+                        child: BlurryContainer(
+                          padding: EdgeInsets.zero,
+                          blur: 2,
+                          child: Tooltip(
+                            message: listData[i].describe ?? '',
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  child: Image.file(
+                                    File('$pathImages${listData[i].image}'),
+                                    errorBuilder:
+                                        (context, object, stackTrace) {
+                                      return SizedBox(
+                                        height: double.infinity,
+                                        child: Image.asset(
+                                          'assets/images/image_notfound.jpg',
+                                          fit: BoxFit.fill,
+                                        ),
+                                      );
+                                    },
+                                    fit: BoxFit.cover,
+                                    height: 150.0,
+                                    width: 150.0,
+                                  ),
                                 ),
-                              ),
-                              cHeight(4),
-                              textTitleSmall(
-                                  text: listData[i].name ?? '',
-                                  color: Colors.white),
-                              textBodySmall(
-                                  text:
-                                      'Các hiệu ứng âm thanh về chủ đề thời tiết, thư giãn và dễ chịu',
-                                  color: Colors.white,
-                                  maxLines: 3,
-                                  fontWeight: FontWeight.w100,
-                                  overflow: TextOverflow.ellipsis)
-                            ],
+                                cHeight(4),
+                                textTitleSmall(
+                                    text: listData[i].name ?? '',
+                                    color: Colors.white),
+                                textBodySmall(
+                                    text: listData[i].describe ?? '',
+                                    color: Colors.white,
+                                    maxLines: 3,
+                                    fontWeight: FontWeight.w100,
+                                    overflow: TextOverflow.ellipsis)
+                              ],
+                            ),
                           ),
                         ),
                       ),

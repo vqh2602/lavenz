@@ -89,6 +89,7 @@ class SoundControlController extends GetxController
   void startTimer1({required Duration duration}) {
     duration1 = duration;
     if (timer1 != null) timer1?.cancel();
+    playAll();
     timer1 =
         Timer.periodic(const Duration(seconds: 1), (_) => addTimeDownTime());
     updateUI();
@@ -110,10 +111,35 @@ class SoundControlController extends GetxController
     final seconds = duration1.inSeconds - addSeconds;
     if (seconds < 0) {
       timer1?.cancel();
+      pauseAll();
     } else {
       duration1 = Duration(seconds: seconds);
     }
     updateUI();
+  }
+
+//dừng all nhạc, music
+  void pauseAll() {
+    if (listAudio.isNotEmpty) {
+      isPlaySound = true;
+      playAllSound(type: 1);
+    }
+    if (listMusic.isNotEmpty) {
+      isPlayMusic = true;
+      playAllSound(type: 2);
+    }
+  }
+
+  // phát tất cả nhạc
+  void playAll() {
+    if (listAudio.isNotEmpty) {
+      isPlaySound = false;
+      playAllSound(type: 1);
+    }
+    if (listMusic.isNotEmpty) {
+      isPlayMusic = false;
+      playAllSound(type: 2);
+    }
   }
 
   initVideoBackground() {
@@ -252,7 +278,6 @@ class SoundControlController extends GetxController
       audioCustom.audioPlayer.dispose();
       listMusic.removeAt(index);
     }
-    updateUI();
     updateUI();
   }
 

@@ -3,20 +3,22 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:lavenz/data/models/sound.dart' as sound;
 import 'package:lavenz/data/models/tag.dart' as tag;
+import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
+import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+import 'package:lavenz/widgets/mixin/user_mixin.dart';
+import 'package:lavenz/widgets/share_function/share_funciton.dart';
 
 class SoundController extends GetxController
-    with GetTickerProviderStateMixin, StateMixin {
+    with GetTickerProviderStateMixin, StateMixin, UserMixin {
   SoundControlController soundControlController =
       Get.put(SoundControlController());
   DownloadAssetsController downloadAssetsController =
       DownloadAssetsController();
-  GetStorage box = GetStorage();
   //VideoPlayerController? videoPlayerController;
   late TabController tabController, tabControllerMin;
   sound.Sound soundData = sound.Sound();
@@ -27,10 +29,12 @@ class SoundController extends GetxController
   List<String> dataTab = [
     'Tất cả',
   ];
+  User? user;
   @override
   Future<void> onInit() async {
     super.onInit();
     loadingUI();
+    initUserData();
     await initLocalData();
     initTabbar();
     changeUI();
@@ -64,13 +68,17 @@ class SoundController extends GetxController
     });
   }
 
+  initUserData() {
+    user = getUserInBox();
+  }
+
   Future initLocalData() async {
     await downloadAssetsController.init();
     String data =
-        await File('${downloadAssetsController.assetsDir}/json_data/data.json')
+        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
             .readAsString();
     String dataTag =
-        await File('${downloadAssetsController.assetsDir}/json_data/tag.json')
+        await File('${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
             .readAsString();
     soundData = sound.Sound.fromJson(jsonDecode(data));
     tagData = tag.Tag.fromJson(jsonDecode(dataTag));
@@ -105,32 +113,41 @@ class SoundController extends GetxController
     }
   }
 
-  onPlaySound(String? sound, dynamic data, {bool isPlaying = false}) async {
-    if (isPlaying) {
-      await soundControlController.clearSoundWithId(id: data);
-      soundControlController.updateUI();
-      updateUI();
+  onPlaySound(String? sound, sound.Data? data,
+      {bool isPlaying = false, num? id}) async {
+    if ((data?.vip ?? false) && !checkExpiry(user: user!)) {
+      Get.toNamed(VipScreen.routeName);
     } else {
-      await playSound(sound: sound ?? '', data: data);
-      soundControlController.updateUI();
-      updateUI();
+      if (isPlaying) {
+        await soundControlController.clearSoundWithId(id: id);
+        soundControlController.updateUI();
+        updateUI();
+      } else {
+        await playSound(sound: sound ?? '', data: data!);
+        soundControlController.updateUI();
+        updateUI();
+      }
     }
   }
 
-  Future<void> onPlayMusic(String sound, dynamic data) async {
-    buildToast(
-      status: TypeToast.toastDefault,
-      message: 'Đang tải và phát...',
-    );
-    soundControlController.loadingUI();
-    loadingUI();
-    await soundControlController.clearAllMusic();
-    Future.delayed(const Duration(seconds: 1), () async {
-      await playSound(sound: sound, data: data);
-      soundControlController.changeUI();
-      changeUI();
-    });
-    soundControlController.updateUI();
+  Future<void> onPlayMusic(String sound, sound.Data data) async {
+    if ((data.vip ?? false) && !checkExpiry(user: user!)) {
+      Get.toNamed(VipScreen.routeName);
+    } else {
+      buildToast(
+        status: TypeToast.toastDefault,
+        message: 'Đang tải và phát...',
+      );
+      soundControlController.loadingUI();
+      loadingUI();
+      await soundControlController.clearAllMusic();
+      Future.delayed(const Duration(seconds: 1), () async {
+        await playSound(sound: sound, data: data);
+        soundControlController.changeUI();
+        changeUI();
+      });
+      soundControlController.updateUI();
+    }
     updateUI();
   }
 

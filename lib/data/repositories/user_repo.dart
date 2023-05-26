@@ -5,107 +5,86 @@ import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/data/repositories/repo.dart';
 import 'package:lavenz/data/storage.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:local_auth_android/local_auth_android.dart';
-import 'package:local_auth_ios/types/auth_messages_ios.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:lavenz/widgets/build_toast.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: [
+    'email',
+    'https://www.googleapis.com/auth/contacts.readonly',
+  ],
+);
 
 class UserRepo extends Repo {
   GetStorage box = GetStorage();
-  final LocalAuthentication auth = LocalAuthentication();
-  // lấy thông tin ng dùng
-  Future<User?> getUserByID(
-      {required String userID, bool isCached = false}) async {
-    User? user;
-    if (isCached) {
-      user = User.fromJson(jsonDecode(box.read(Storages.dataUser)));
-    } else {
-      var res = await dioRepo.get('/api/v1/users/$userID');
-      var result = jsonDecode(res.toString());
-      if (result["success"]) {
-        user = User.fromJson(result['data']);
-        await box.write(Storages.dataUser, jsonEncode(result['data']));
-      } else {
-        // buildToast(type: TypeToast.failure, title: result["message"]);
-      }
-    }
-    return user;
-  }
 
   // đăng nhập
-  Future<User?> loginWithEmail({
-    required String email,
-    required String passW,
-  }) async {
+  Future<User?> loginWithGoogle() async {
     User? user;
-    var res = await dioRepo
-        .post('/api/login', data: {"email": email, "password": passW});
-    var result = jsonDecode(res.toString());
-    if (result["success"] ?? false) {
-      user = User.fromJson(result['data']);
-      await box.write(Storages.dataUser, jsonEncode(result['data']));
-      await box.write(Storages.dataEmail, email);
-      await box.write(Storages.dataPassWord, passW);
-      await box.write(Storages.dataLoginTime, DateTime.now().toString());
-      if (await box.read(Storages.historyDataEmail) != null &&
-          await box.read(Storages.historyDataEmail) == email) {
-      } else {
-        await box.write(Storages.dataUrlAvatarUser, null);
-      }
-      // buildToast(
-      //     type: TypeToast.success,
-      //     title: 'Đăng nhập thành công',
-      //     message: 'Chào mừng ${splitNameUser(name: user.name ?? '',isLastName: true)}');
-    } else {
-      // buildToast(
-      //     type: TypeToast.failure, title: result["message"] ?? 'có lỗi sảy ra');
+    String error = '';
+    try {
+      await _googleSignIn.signIn();
+    } catch (e) {
+      //print(error);
+      error = e.toString();
     }
-    log('Đăng nhập, user: ${user?.toJson().toString()}');
+    if (_googleSignIn.currentUser != null) {
+      user = User(
+          email: _googleSignIn.currentUser?.email,
+          id: _googleSignIn.currentUser?.id,
+          name: _googleSignIn.currentUser?.displayName);
+      await box.write(Storages.dataUser, user.toJson());
+      await box.write(Storages.dataLoginTime, DateTime.now().toString());
+      buildToast(
+          status: TypeToast.getSuccess,
+          title: 'Đăng nhập thành công',
+          message: 'Chào mừng ${user.name}');
+    } else {
+      buildToast(
+          status: TypeToast.getError, title: 'có lỗi sảy ra', message: error);
+    }
+    log('Đăng nhập, user: ${_googleSignIn.currentUser}');
     return user;
   }
 
-  // đăng nhập sinh trắc học
-  Future<User?> loginWithBiometric() async {
+  Future<User?> loginWithApple() async {
     User? user;
-    bool didAuthenticate = false;
-    if (box.read(Storages.dataBiometric) ?? false) {
-      final bool canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
-      final bool canAuthenticate =
-          canAuthenticateWithBiometrics || await auth.isDeviceSupported();
-      final List<BiometricType> availableBiometrics =
-          await auth.getAvailableBiometrics();
-      if (canAuthenticate && availableBiometrics.isNotEmpty) {
-        didAuthenticate = await auth.authenticate(
-            localizedReason: 'Vui lòng xác thực',
-            options: const AuthenticationOptions(
-              stickyAuth: true,
-            ),
-            authMessages: <AuthMessages>[
-              const AndroidAuthMessages(
-                  signInTitle: 'Xác thực',
-                  biometricHint: 'xác thực để tiếp tục',
-                  cancelButton: 'Hủy',
-                  biometricSuccess: 'Thành công!',
-                  biometricRequiredTitle:
-                      'Chưa thiết lập phương thức bảo mật nào',
-                  biometricNotRecognized: 'Xác thực không thành công!',
-                  goToSettingsButton: 'Cài đặt',
-                  goToSettingsDescription: 'Chuyển đến cài đặt'),
-              const IOSAuthMessages(
-                cancelButton: 'Hủy',
-              ),
-            ]);
-      }
+    String error = '';
+    AuthorizationCredentialAppleID? credential;
+    try {
+      credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        //nonce: nonce,
+        // webAuthenticationOptions: WebAuthenticationOptions(
+        //   clientId: 'com.vqh2602.lavenz',
+        //   redirectUri: Uri.parse('https://lavenz-d7f47.firebaseapp.com/__/auth/handler'),
+        // ),
+      );
+    } catch (e) {
+      error = e.toString();
     }
-    if (didAuthenticate) {
-      user = await loginWithEmail(
-          email: box.read(Storages.dataEmail),
-          passW: box.read(Storages.dataPassWord));
+    //print('login apple: ${credential.toString()}');
+
+    if (credential?.userIdentifier != null) {
+      user = User(
+          email: credential?.email,
+          id: credential?.userIdentifier,
+          name: credential?.givenName);
+      await box.write(Storages.dataUser, user.toJson());
+      await box.write(Storages.dataLoginTime, DateTime.now().toString());
+      buildToast(
+          status: TypeToast.getSuccess,
+          title: 'Đăng nhập thành công',
+          message: 'Chào mừng ${user.name}');
     } else {
-      // Get.dialog(CupertinoAlertDialog(
-      //   title: textBodyMedium(text: 'chưa bật đăng nhập bằng sinh trắc học'),
-      // ));
+      buildToast(
+          status: TypeToast.getError, title: 'có lỗi sảy ra', message: error);
     }
-    log('Đăng nhập sinh trắc học, user: ${user?.toJson().toString()}');
+    log('Đăng nhập, user: ${_googleSignIn.currentUser}');
     return user;
   }
 

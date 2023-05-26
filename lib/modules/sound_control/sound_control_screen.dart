@@ -17,7 +17,8 @@ import 'package:lavenz/widgets/widgets.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class SoundControlScreen extends StatefulWidget {
-  const SoundControlScreen({Key? key}) : super(key: key);
+  final bool? isShowDownTime;
+  const SoundControlScreen({Key? key, this.isShowDownTime}) : super(key: key);
   static const String routeName = '/SoundControl';
 
   @override
@@ -26,8 +27,7 @@ class SoundControlScreen extends StatefulWidget {
 
 class _SoundControlScreenState extends State<SoundControlScreen>
     with TickerProviderStateMixin, WidgetsBindingObserver {
-  SoundControlController soundControlController =
-      Get.put(SoundControlController());
+  SoundControlController soundControlController = Get.find();
   HomeController homeController = Get.find();
   bool showHeader = true;
 
@@ -115,25 +115,29 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     child: Column(
                   children: [
                     cHeight(30),
+                    if(widget.isShowDownTime ?? true)...[
                     _numSoundPlay(
                         title: 'hẹn giờ',
                         isPlay: false,
                         wIcon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              soundControlController.resetDownTime();
+                            },
                             icon: const Icon(
                               LucideIcons.alarmMinus,
                               color: Colors.white70,
                             ))),
                     _header(),
-                    cHeight(30),
+                    cHeight(30),],
                     _numSoundPlay(
                         title: 'âm nhạc',
                         isPlay: soundControlController.isPlayMusic,
                         onClick: () {
-                          if(soundControlController.listMusic.isNotEmpty){
-                          soundControlController.playAllSound(type: 2);
-          
-                              soundControlController.updateUI();}
+                          if (soundControlController.listMusic.isNotEmpty) {
+                            soundControlController.playAllSound(type: 2);
+
+                            soundControlController.updateUI();
+                          }
                         },
                         num: '${soundControlController.listMusic.length}/1'),
                     _listSoundControl(
@@ -143,10 +147,11 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                         title: 'âm thanh',
                         isPlay: soundControlController.isPlaySound,
                         onClick: () {
-                          if(soundControlController.listAudio.isNotEmpty){
-                          soundControlController.playAllSound(type: 1);
-            
-                              soundControlController.updateUI();}
+                          if (soundControlController.listAudio.isNotEmpty) {
+                            soundControlController.playAllSound(type: 1);
+
+                            soundControlController.updateUI();
+                          }
                         },
                         num: '${soundControlController.listAudio.length}/15'),
                     Expanded(
@@ -312,7 +317,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     if (onClick != null) onClick();
                   },
                   icon: Icon(
-                    isPlay ?LucideIcons.pauseCircle: LucideIcons.playCircle ,
+                    isPlay ? LucideIcons.pauseCircle : LucideIcons.playCircle,
                     color: Colors.white70,
                   ))
               : wIcon

@@ -1,21 +1,29 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/data/models/down.dart' as down;
+import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/data/repositories/new_ver_repo.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/dialog_down.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+import 'package:lavenz/widgets/mixin/user_mixin.dart';
+import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class HomeController extends GetxController
-    with GetTickerProviderStateMixin, StateMixin {
+    with GetTickerProviderStateMixin, StateMixin, UserMixin {
   int selectItemScreen = 0;
-  PageController pageController = PageController();
+  PageController pageController = PageController(
+    viewportFraction: 1.0,
+  );
   DownloadAssetsController downloadAssetsController =
       DownloadAssetsController();
   String message = 'Đang kết nối đến máy chủ'.tr;
@@ -26,18 +34,24 @@ class HomeController extends GetxController
   NewVersionRepo newVersionRepo = NewVersionRepo();
   List<Widget> choiseSever = [];
   down.Link? linkSelect;
+  PackageInfo? packageInfo;
+  StreamSubscription<ConnectivityResult>? connectivityResul;
+  User user = User();
+  Map<String, dynamic> oldVer = {};
 
   @override
   Future<void> onInit() async {
     changeUI();
     // await _downloadAssets();
     initData();
+    initConnectInternet();
     super.onInit();
   }
 
   @override
   void dispose() {
     speedTest.disableLog();
+    connectivityResul?.cancel();
     super.dispose();
   }
 
@@ -48,6 +62,8 @@ class HomeController extends GetxController
 
   Future initData() async {
     loadingUI();
+    user = getUserInBox();
+    packageInfo = await PackageInfo.fromPlatform();
     downLink = down.Down.fromJson(await newVersionRepo.getNewVersion());
     choiseSever.addAll(downLink.link
             ?.map((e) => obx(
@@ -66,12 +82,58 @@ class HomeController extends GetxController
     changeUI();
   }
 
+  void initConnectInternet() {
+    connectivityResul = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.mobile) {
+        // I am connected to a mobile network.
+        // buildToast(
+        // message: 'Đã kết nối mạng di động', status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.wifi) {
+        // I am connected to a wifi network.
+        // I am connected to a mobile network.
+        // buildToast(message: 'Đã kết nối wifi', status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.ethernet) {
+        // I am connected to a mobile network.
+        //      message: 'Đã kết nối ethernet', status: TypeToast.toastSuccess);
+        // I am connected to a ethernet network.
+      } else if (result == ConnectivityResult.vpn) {
+        // I am connected to a mobile network.
+        //buildToast(message: 'Đã kết nối vpn', status: TypeToast.toastSuccess);
+        // I am connected to a vpn network.
+        // Note for iOS and macOS:
+        // There is no separate network interface type for [vpn].
+        // It returns [other] on any device (also simulator)
+      } else if (result == ConnectivityResult.bluetooth) {
+        // I am connected to a bluetooth.
+        // I am connected to a mobile network.
+        // buildToast(
+        //     message: 'Đã kết nối chia sẻ bluetooth',
+        //     status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.other) {
+        // I am connected to a network which is not in the above mentioned networks.
+        // I am connected to a mobile network.
+        //  buildToast(
+        //     message: 'Đã kết nối',
+        //     status: TypeToast.toastSuccess);
+      } else if (result == ConnectivityResult.none) {
+        // I am not connected to any network.
+        buildToast(
+          message: 'Không có kết nối',
+          status: TypeToast.toastError,
+        );
+      }
+    });
+  }
+
   Future initDown() async {
     downloaded = await downloadAssetsController.assetsDirAlreadyExists();
     var checkAllFile =
         await File('${downloadAssetsController.assetsDir}/svg_icons/river.svg')
             .exists();
     log('check down: $downloaded | $checkAllFile | ${downloadAssetsController.assetsDir}');
+    log('check user vip: ${checkExpiry(user: user)} | ${user.toJson()}');
 
     // if(downloaded){
     //   await downloadAssetsController.clearAssets();
@@ -83,10 +145,22 @@ class HomeController extends GetxController
         barrierDismissible: true,
       );
       Get.dialog(
-        obx((state) => dialogDown(process: message, speed: speedInternet)),
+        obx((state) => dialogDown(
+            process: message, speed: speedInternet, isDone: downloaded)),
         barrierDismissible: false,
       );
       _downloadAssets();
+    }
+    // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
+
+    String data =
+        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+            .readAsString();
+    oldVer = jsonDecode(data);
+    bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
+    if (!isUpdate) {
+      clearDown();
+      initDown();
     }
   }
 
@@ -125,9 +199,12 @@ class HomeController extends GetxController
               // print(message);
             } else {
               message =
-                  'Tải xuống thành công\n Đóng và khởi động lại ứng dụng để cập nhật dữ liệu mới';
+                  'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới';
               downloaded = true;
               //Get.back();
+              Future.delayed(const Duration(seconds: 2), () {
+                clearAndResetApp();
+              });
             }
           });
     } on DownloadAssetsException catch (e) {

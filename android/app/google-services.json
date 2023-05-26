@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "355544304131",
+    "project_id": "lavenz-d7f47",
+    "storage_bucket": "lavenz-d7f47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355544304131:android:ae1c219190ed3d563adc36",
+        "android_client_info": {
+          "package_name": "com.vqh2602.lavenz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355544304131-5dhhifnqlu1hrhc9r9sisqs94108jidn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoS_6NnhJb_F4Le81lfIolvCGzAMRnJOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355544304131-5dhhifnqlu1hrhc9r9sisqs94108jidn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

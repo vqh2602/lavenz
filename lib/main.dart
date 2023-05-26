@@ -1,21 +1,33 @@
 import 'dart:io';
 
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:lavenz/c_lang/c_translations.dart';
 import 'package:lavenz/c_theme/c_theme.dart';
 import 'package:lavenz/config/config.dart';
 import 'package:lavenz/config/get_config.dart';
+import 'package:lavenz/modules/init.dart';
 import 'package:lavenz/modules/routers.dart';
-import 'package:lavenz/modules/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:lavenz/modules/splash/splash_screen.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
   Env.config = await getConfigBase();
-  runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await initialize();
+  runApp(
+    Phoenix(
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,6 +36,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: routes,
