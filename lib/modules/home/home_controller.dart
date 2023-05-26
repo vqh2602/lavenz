@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -14,6 +15,7 @@ import 'package:lavenz/widgets/dialog_down.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:lavenz/widgets/text_custom.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class HomeController extends GetxController
     with GetTickerProviderStateMixin, StateMixin, UserMixin {
@@ -31,8 +33,10 @@ class HomeController extends GetxController
   NewVersionRepo newVersionRepo = NewVersionRepo();
   List<Widget> choiseSever = [];
   down.Link? linkSelect;
+  PackageInfo? packageInfo;
   StreamSubscription<ConnectivityResult>? connectivityResul;
   User user = User();
+  Map<String, dynamic> oldVer = {};
 
   @override
   Future<void> onInit() async {
@@ -58,6 +62,7 @@ class HomeController extends GetxController
   Future initData() async {
     loadingUI();
     user = getUserInBox();
+    packageInfo = await PackageInfo.fromPlatform();
     downLink = down.Down.fromJson(await newVersionRepo.getNewVersion());
     choiseSever.addAll(downLink.link
             ?.map((e) => obx(
@@ -145,6 +150,17 @@ class HomeController extends GetxController
       );
       _downloadAssets();
     }
+    // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
+
+    String data =
+        await File('${downloadAssetsController.assetsDir}/json_data/data.json')
+            .readAsString();
+    oldVer = jsonDecode(data);
+    bool isUpdate = oldVer["version_data"].contains(packageInfo?.version);
+    if (!isUpdate) {
+      clearDown();
+      initDown();
+    }
   }
 
   // Future _refresh() async {
@@ -185,9 +201,9 @@ class HomeController extends GetxController
                   'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới';
               downloaded = true;
               //Get.back();
-               Future.delayed(const Duration(seconds: 2),(){
+              Future.delayed(const Duration(seconds: 2), () {
                 clearAndResetApp();
-               });
+              });
             }
           });
     } on DownloadAssetsException catch (e) {

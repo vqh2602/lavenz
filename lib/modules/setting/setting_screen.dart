@@ -1,8 +1,8 @@
 import 'package:getwidget/getwidget.dart';
-import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/modules/setting/setting_controller.dart';
 import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/base/base.dart';
+import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
 import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
@@ -180,7 +180,11 @@ class _SettingScreenState extends State<SettingScreen> {
                 cHeight(12),
                 _blockItem(
                     title: 'Phiên bản ứng dụng',
-                    onTap: () {},
+                    onTap: () {
+                      buildToast(
+                          message: settingController.packageInfo?.version ?? '',
+                          status: TypeToast.toastDefault);
+                    },
                     value: settingController.packageInfo?.version ?? ''),
                 cHeight(4),
                 _blockItem(
@@ -202,22 +206,28 @@ class _SettingScreenState extends State<SettingScreen> {
                 cHeight(12),
                 _blockItem(
                   title: 'Hỗ trợ & Giúp đỡ',
-                  onTap: () {},
+                  onTap: () {
+                    showWebInApp('https://www.facebook.com/vqhapps');
+                  },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Điều khoản dịch vụ',
-                  onTap: () {},
+                  onTap: () {
+                    showWebInApp('https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html');
+                  },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Chính sách bảo mật',
-                  onTap: () {},
+                  onTap: () {
+                    showWebInApp('https://vqhapps.blogspot.com/p/chinh-sach-bao-mat.html');
+                  },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Thông tin thêm',
-                  onTap: () {},
+                  onTap: () {showWebInApp('https://vqhapps.blogspot.com/');},
                 ),
                 cHeight(4),
                 _blockItem(

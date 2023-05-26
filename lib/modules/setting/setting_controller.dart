@@ -62,7 +62,7 @@ class SettingController extends GetxController
   String? getTimeVip() {
     if (user.latestPurchaseDate == null) return null;
     return daysBetween(
-      from: user.latestPurchaseDate!,
+      from: DateTime.now(),
       to: user.identifier == '1_month'
           ? user.latestPurchaseDate!.add(const Duration(days: 30))
           : user.latestPurchaseDate!.add(const Duration(days: 365)),

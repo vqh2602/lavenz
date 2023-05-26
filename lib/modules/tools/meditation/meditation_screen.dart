@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:lavenz/modules/tools/breath/breath_controller.dart';
+import 'package:lavenz/modules/sound/sound_screen.dart';
+import 'package:lavenz/modules/sound_control/sound_control_screen.dart';
+import 'package:lavenz/modules/tools/meditation/meditation_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
+import 'package:lavenz/widgets/block_bottomsheet.dart';
 import 'package:lavenz/widgets/count_down_timer.dart';
+import 'package:lavenz/widgets/count_time.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,17 +14,17 @@ import 'package:lavenz/widgets/widgets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-class BreathScreen extends StatefulWidget {
-  const BreathScreen({Key? key}) : super(key: key);
-  static const String routeName = '/breath';
+class MeditationScreen extends StatefulWidget {
+  const MeditationScreen({Key? key}) : super(key: key);
+  static const String routeName = '/meditation';
 
   @override
-  State<BreathScreen> createState() => _BreathScreenState();
+  State<MeditationScreen> createState() => _MeditationScreenState();
 }
 
-class _BreathScreenState extends State<BreathScreen>
+class _MeditationScreenState extends State<MeditationScreen>
     with TickerProviderStateMixin {
-  BreathController breathController = Get.find();
+  MeditationController meditationController = Get.find();
   // late AnimationController controller;
   // bool inhale = false;
   @override
@@ -30,7 +34,7 @@ class _BreathScreenState extends State<BreathScreen>
 
   @override
   void dispose() {
-    breathController.controller.dispose();
+    meditationController.controller.dispose();
     super.dispose();
   }
 
@@ -39,13 +43,35 @@ class _BreathScreenState extends State<BreathScreen>
     return buildBody(
       context: context,
       body: _buildBody(),
+      createFloatingActionButton: Wrap(
+        spacing: 8,
+        children: [
+          FloatingActionButton(
+            heroTag: "btn1",
+            onPressed: () {
+              showBlockDetail(widget: const SoundScreen());
+            },
+            child: const Icon(LucideIcons.music),
+          ),
+          FloatingActionButton(
+            heroTag: "btn2",
+            onPressed: () {
+              showBlockDetail(
+                  widget: const SoundControlScreen(
+                isShowDownTime: false,
+              ));
+            },
+            child: const Icon(LucideIcons.towerControl),
+          ),
+        ],
+      ),
       appBar: null,
     );
   }
 
   Widget _buildBody() {
-    return breathController.obx((state) => Hero(
-          tag: 'tools0',
+    return meditationController.obx((state) => Hero(
+          tag: 'tools1',
           child: Stack(
             children: <Widget>[
               Container(
@@ -53,7 +79,7 @@ class _BreathScreenState extends State<BreathScreen>
                 height: Get.height,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/background/t1.jpeg'),
+                        image: AssetImage('assets/background/t2.jpeg'),
                         fit: BoxFit.cover)),
               ),
               Container(
@@ -74,15 +100,15 @@ class _BreathScreenState extends State<BreathScreen>
                   fit: BoxFit.fill,
                 ),
               ),
-              AnimatedOpacity(
-                opacity: breathController.inhale ? 1.0 : 0.0,
-                duration: const Duration(milliseconds: 4000),
-                child: Container(
-                  width: Get.width,
-                  height: Get.height,
-                  color: Colors.teal,
-                ),
-              ),
+              // AnimatedOpacity(
+              //   opacity: meditationController.inhale ? 1.0 : 0.0,
+              //   duration: const Duration(milliseconds: 4000),
+              //   child: Container(
+              //     width: Get.width,
+              //     height: Get.height,
+              //     color: Colors.teal,
+              //   ),
+              // ),
               SizedBox(
                   height: Get.height,
                   width: Get.width,
@@ -95,33 +121,40 @@ class _BreathScreenState extends State<BreathScreen>
                           height: Get.width,
                           margin: const EdgeInsets.only(top: 20),
                           child: Lottie.asset(
-                            'assets/animation/breath.json',
-                            controller: breathController.controller,
+                            'assets/animation/meditation.json',
+                            controller: meditationController.controller,
                             repeat: true,
                             //  frameRate: FrameRate(60),
                             fit: BoxFit.fill,
                             onLoaded: (composition) {
-                              breathController.controller.duration =
+                              meditationController.controller.duration =
                                   composition.duration;
 
                               // controller.forward();
                             },
                           ),
                         ),
+                        cHeight(12),
+                        textTitleSmall(
+                            text: 'Hẹn giờ'.toUpperCase(), color: Colors.white),
                         _countdownTime(),
+                        cHeight(12),
+                        textTitleSmall( 
+                            text: 'Điếm giờ'.toUpperCase(),
+                            color: Colors.white),
+                        buildTime(duration: meditationController.duration),
                         cHeight(20),
                         GFButton(
                           onPressed: () {
                             setState(() {
-                              if (breathController.controller.isAnimating) {
-                                breathController.controller.stop();
-                                 breathController.controller.reset();
-                                breathController.closeStartTime();
-            
+                              if (meditationController.controller.isAnimating) {
+                                meditationController.controller.stop();
+                                meditationController.controller.reset();
+                                meditationController.closeStartTime();
                               } else {
-                                breathController.controller.reset();
-                                breathController.controller.forward();
-                                breathController.playStartTime();
+                                meditationController.controller.reset();
+                                meditationController.controller.forward();
+                                meditationController.playStartTime();
                               }
                             });
                           },
@@ -131,9 +164,10 @@ class _BreathScreenState extends State<BreathScreen>
                           size: 50,
                           color: Colors.white,
                           child: textBodyMedium(
-                              text: (breathController.controller.isAnimating)
-                                  ? 'dừng'
-                                  : 'phát',
+                              text:
+                                  (meditationController.controller.isAnimating)
+                                      ? 'Dừng'
+                                      : 'Bắt đầu',
                               color: Colors.white),
                         ),
                       ],
@@ -174,14 +208,14 @@ class _BreathScreenState extends State<BreathScreen>
                 secondInterval: 10,
                 initialTimerDuration: Duration.zero,
                 onTimerDurationChanged: (Duration changedtimer) {
-                  // if (breathController.debounce != null) {
-                  //   breathController.debounce?.cancel();
+                  // if (meditationController.debounce != null) {
+                  //   meditationController.debounce?.cancel();
                   // }
-                  breathController.duration1 = changedtimer;
-                  breathController.updateUI();
-                  // breathController.debounce =
+                  meditationController.duration1 = changedtimer;
+                  meditationController.updateUI();
+                  // meditationController.debounce =
                   //     Timer(const Duration(seconds: 3), () {
-                  //   breathController.startTimer1(duration: changedtimer);
+                  //   meditationController.startTimer1(duration: changedtimer);
                   // }
                   // );
                 },
@@ -193,7 +227,7 @@ class _BreathScreenState extends State<BreathScreen>
         child: Container(
             margin: alignment_20_0(),
             alignment: Alignment.center,
-            child: buildTime1(duration: breathController.duration1)),
+            child: buildTime1(duration: meditationController.duration1)),
       ),
     );
   }

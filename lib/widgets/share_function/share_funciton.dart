@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void dateTimePicker(
     {required Function(DateTime) onchange, required Function onComplete}) {
@@ -131,4 +132,22 @@ Future<void> onPopDialog(
       ],
     ),
   );
+}
+
+String getLocalConvertString() {
+  Locale? locale = Get.deviceLocale;
+  switch (locale?.languageCode) {
+    case 'en':
+      return 'en';
+    case 'vi':
+      return 'vi';
+    default:
+      return 'en';
+  }
+}
+
+showWebInApp(String url) async {
+  if (!await launchUrl(Uri.parse(url),mode: LaunchMode.inAppWebView)) {
+    throw Exception('Could not launch $url');
+  }
 }
