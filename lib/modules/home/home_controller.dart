@@ -120,7 +120,7 @@ class HomeController extends GetxController
       } else if (result == ConnectivityResult.none) {
         // I am not connected to any network.
         buildToast(
-          message: 'Không có kết nối',
+          message: 'Không có kết nối'.tr,
           status: TypeToast.toastError,
         );
       }
@@ -153,15 +153,20 @@ class HomeController extends GetxController
     }
     // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
 
-    String data =
-        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
-            .readAsString();
-    oldVer = jsonDecode(data);
+    try {
+  String data =
+      await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+          .readAsString();
+  oldVer = jsonDecode(data);  
     bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
     if (!isUpdate) {
       clearDown();
       initDown();
     }
+}  catch (_) {
+  
+}
+
   }
 
   // Future _refresh() async {
@@ -199,7 +204,7 @@ class HomeController extends GetxController
               // print(message);
             } else {
               message =
-                  'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới';
+                  'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới'.tr;
               downloaded = true;
               //Get.back();
               Future.delayed(const Duration(seconds: 2), () {
@@ -210,7 +215,7 @@ class HomeController extends GetxController
     } on DownloadAssetsException catch (e) {
       //print(e.toString());
       downloaded = false;
-      buildToast(message: 'Lỗi tải xuống', status: TypeToast.toastError);
+      buildToast(message: 'Lỗi tải xuống'.tr, status: TypeToast.toastError);
       message = 'Error: ${e.toString()}';
     }
   }

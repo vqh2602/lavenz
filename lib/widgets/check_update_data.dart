@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/color_custom.dart';
@@ -26,13 +27,19 @@ Widget wCheckUpdateData(
               child: Lottie.asset('assets/background/rocket.json',
                   height: 120, width: 120, fit: BoxFit.cover)),
           textBodyMedium(
-              text: 'Phiên bản dữ liệu hiện tại: \n $dataVer',
+              text: 'Phiên bản dữ liệu hiện tại:'.trParams({
+                'dataVer': ' \n $dataVer'
+              }),
               color: Colors.white),
           textBodyMedium(
-              text: 'Phiên bản dữ liệu mới nhất: \n $dataNewVer',
+              text: 'Phiên bản dữ liệu mới nhất:'.trParams({
+                'dataNewVer': ' \n $dataNewVer'
+              }),
               color: Colors.white),
           textBodyMedium(
-              text: 'Hỗ trợ các phiên bản ứng dụng: \n $appSupport',
+              text: 'Hỗ trợ các phiên bản ứng dụng:'.trParams({
+                'appSupport': ' \n $appSupport'
+              }),
               color: Colors.white),
           isDown
               ? GFButton(
@@ -44,11 +51,11 @@ Widget wCheckUpdateData(
                   blockButton: true,
                   size: 50,
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: textTitleMedium(text: 'Cập nhật ngay'))
+                  child: textTitleMedium(text: 'Cập nhật ngay'.tr))
               : textBodyMedium(
                   text: isUpdate
-                      ? 'Phiên bản ứng dụng đã quá cũ, vui lòng cập nhật ứng dụng lên phiên bản mới nhất'
-                      : 'Không có bản cập nhật nào',
+                      ? 'Phiên bản ứng dụng đã quá cũ, vui lòng cập nhật ứng dụng lên phiên bản mới nhất'.tr
+                      : 'Không có bản cập nhật nào'.tr,
                   color: isUpdate ? Colors.red : Colors.white),
         ]),
   );

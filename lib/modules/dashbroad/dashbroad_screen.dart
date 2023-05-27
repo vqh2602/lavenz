@@ -138,7 +138,7 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
           buildListItem4x3(),
           cHeight(8),
           buildItem4x3(
-              des: 'nhận quyền không giới hạn truy cập vào các tính năng',
+              des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
               image: 'assets/background/img1.jpg',
               onTap: () {
                 dashBroadController.checkExpiry(user: dashBroadController.user!)
@@ -147,9 +147,9 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
               },
               textButton: dashBroadController.checkExpiry(
                       user: dashBroadController.user!)
-                  ? 'Đã đăng kí'
-                  : 'Đăng kí ngay',
-              title: 'Mở khoá tất cả tính năng'),
+                  ? 'Đã đăng kí'.tr
+                  : 'Đăng kí ngay'.tr,
+              title: 'Mở khoá tất cả tính năng'.tr),
           cHeight(30),
           buildListItem1x1(
               onTap: (sound, data) async {
@@ -160,7 +160,7 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Đi vào giấc ngủ'),
+              title: 'Đi vào giấc ngủ'.tr),
           cHeight(12),
           buildListItem1x1(
               onTap: (sound, data) async {
@@ -171,10 +171,10 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Tập trung cao độ'),
+              title: 'Tập trung cao độ'.tr),
           cHeight(12),
           buildItem4x3(
-              des: 'nhận quyền không giới hạn truy cập vào các tính năng',
+              des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
               image: 'assets/background/img1.jpg',
               onTap: () {
                 dashBroadController.checkExpiry(user: dashBroadController.user!)
@@ -183,9 +183,9 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
               },
               textButton: dashBroadController.checkExpiry(
                       user: dashBroadController.user!)
-                  ? 'Đã đăng kí'
-                  : 'Đăng kí ngay',
-              title: 'Mở khoá tất cả tính năng'),
+                  ? 'Đã đăng kí'.tr
+                  : 'Đăng kí ngay'.tr,
+              title: 'Mở khoá tất cả tính năng'.tr),
           cHeight(100)
         ],
       ),

@@ -28,20 +28,25 @@ Widget dialogDown({dynamic process, dynamic speed, bool isDone = false}) {
                 children: [
                   cHeight(12),
                   textTitleMedium(
-                      text: 'Yêu cầu tải gói dữ liệu', color: Colors.white),
+                      text: 'Yêu cầu tải gói dữ liệu'.tr, color: Colors.white),
                   cHeight(8),
                   textBodySmall(
                       text:
-                          'Ứng dụng sẽ không thể hoạt động nếu không có dữ liệu bổ sung.',
+                          'Ứng dụng sẽ không thể hoạt động nếu không có dữ liệu bổ sung.'
+                              .tr,
                       color: Colors.white),
                   textBodySmall(
                       text:
-                          'Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...',
+                          'Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...'
+                              .tr,
                       color: Colors.white),
-                  isDone ? Lottie.asset('assets/animation/welldone.json') :Lottie.asset('assets/background/loadding_dowb.json'),
+                  isDone
+                      ? Lottie.asset('assets/animation/welldone.json')
+                      : Lottie.asset('assets/background/loadding_dowb.json'),
                   textTitleSmall(text: '$process', color: Colors.white),
                   textBodySmall(
-                      text: 'Tốc độ internet: $speed', color: Colors.white),
+                      text: 'Tốc độ internet:'.trParams({'speed': speed}),
+                      color: Colors.white),
                 ],
               ),
             ),

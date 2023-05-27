@@ -120,7 +120,7 @@ class _VipScreenState extends State<VipScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   textHeadlineLarge(
-                                    text: 'Unlock Lavenz',
+                                    text: 'Unlock Lavenz'.tr,
                                     color: Get.theme.colorScheme.background,
                                     fontWeight: FontWeight.w900,
                                   ),
@@ -174,13 +174,13 @@ class _VipScreenState extends State<VipScreen> {
                                           vipController.restorePucharses();
                                         },
                                         icon: textBodySmall(
-                                            text: 'Khôi phục mua hàng',
+                                            text: 'Khôi phục mua hàng'.tr,
                                             color: Colors.white70,
                                             textAlign: TextAlign.right)),
                                   )
                                 ,
                         buttonCustom(
-                          title: 'Đăng ký',
+                          title: 'Đăng ký'.tr,
                           onTap: () {
                             vipController.buyApp();
                           },
@@ -262,8 +262,8 @@ class _VipScreenState extends State<VipScreen> {
                                   text: vipController
                                               .listProduct[index].identifier ==
                                           '1_month'
-                                      ? '1 tháng'
-                                      : '1 năm',
+                                      ? '1 tháng'.tr
+                                      : '1 năm'.tr,
                                   color: Colors.white)),
                           Align(
                               alignment: Alignment.bottomRight,

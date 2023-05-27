@@ -86,7 +86,7 @@ class _SoundScreenState extends State<SoundScreen>
                               Container(
                                 margin: const EdgeInsets.all(4 * 2),
                                 child: textTitleMedium(
-                                    text: 'Âm thanh',
+                                    text: 'Âm thanh'.tr,
                                     fontWeight:
                                         (soundController.tabController.index ==
                                                 0)
@@ -101,7 +101,7 @@ class _SoundScreenState extends State<SoundScreen>
                               Container(
                                 margin: const EdgeInsets.all(4 * 2),
                                 child: textTitleMedium(
-                                    text: 'Âm nhạc',
+                                    text: 'Âm nhạc'.tr,
                                     fontWeight:
                                         (soundController.tabController.index ==
                                                 1)
@@ -270,7 +270,7 @@ class _SoundScreenState extends State<SoundScreen>
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Đi vào giấc ngủ'),
+              title: 'Đi vào giấc ngủ'.tr),
           cHeight(12),
           buildListItem1x1(
               onTap: (sound, data) async {
@@ -281,7 +281,7 @@ class _SoundScreenState extends State<SoundScreen>
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Bản nhạc thiên nhiên'),
+              title: 'Bản nhạc thiên nhiên'.tr),
           cHeight(12),
           buildListItem1x1(
               onTap: (sound, data) async {
@@ -292,7 +292,7 @@ class _SoundScreenState extends State<SoundScreen>
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Bản nhạc thư giãn'),
+              title: 'Bản nhạc thư giãn'.tr),
           cHeight(12),
           buildListItem1x1(
               onTap: (sound, data) async {
@@ -303,7 +303,7 @@ class _SoundScreenState extends State<SoundScreen>
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Tập trung cao độ'),
+              title: 'Tập trung cao độ'.tr),
           cHeight(12),
           buildListItem1x1(
               onTap: (sound, data) async {

@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 
@@ -11,9 +12,10 @@ Widget buildItem4x3(
     required String textButton}) {
   return SizedBox(
       height: 200,
+      // width: double.infinity,
       child: InkWell(
         onTap: () {
-         // onTap();
+          // onTap();
         },
         child: Container(
           width: double.infinity,
@@ -22,7 +24,7 @@ Widget buildItem4x3(
             padding: EdgeInsets.zero,
             blur: 2,
             child: Tooltip(
-              message: 'Mua hàng một cách nhanh chóng, đăng kí ngay',
+              message: 'Mua hàng một cách nhanh chóng, đăng kí ngay'.tr,
               child: Stack(
                 children: [
                   ClipRRect(
@@ -35,21 +37,22 @@ Widget buildItem4x3(
                     ),
                   ),
                   Align(
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.topLeft,
                     child: Container(
                       padding:
                           const EdgeInsets.only(top: 20, left: 12, right: 12),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           textTitleSmall(
                               text: title,
                               color: Colors.white,
                               maxLines: 2,
+                              textAlign: TextAlign.left,
                               overflow: TextOverflow.ellipsis),
                           textBodySmall(
-                              text:
-                                  des,
+                              text: des,
                               color: Colors.white,
                               maxLines: 2,
                               fontWeight: FontWeight.w100,
@@ -63,7 +66,6 @@ Widget buildItem4x3(
                     child: GFButton(
                         onPressed: () {
                           onTap();
-                 
                         },
                         color: Colors.white,
                         textColor: Colors.black,

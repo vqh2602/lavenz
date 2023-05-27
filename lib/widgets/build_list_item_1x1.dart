@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/data/models/sound.dart';
 import 'package:lavenz/widgets/text_custom.dart';
@@ -30,7 +31,7 @@ Widget buildListItem1x1(
                 shape: GFButtonShape.pills,
                 color: Colors.transparent,
                 child: textBodySmall(
-                    text: 'Tất cả >',
+                    text: 'Tất cả >'.tr,
                     color: Colors.white,
                     fontWeight: FontWeight.w100),
               )
