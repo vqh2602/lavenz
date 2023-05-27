@@ -9,7 +9,6 @@ import 'package:lavenz/widgets/check_update_data.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:lavenz/widgets/share_function/share_funciton.dart';
-import 'package:lavenz/widgets/text_custom.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingController extends GetxController
@@ -47,15 +46,17 @@ class SettingController extends GetxController
   Future initData() async {
     user = getUserInBox();
     newVer = await newVersionRepo.getNewVersion();
-    String data =
-        await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
-            .readAsString();
-    oldVer = jsonDecode(data);
+    try {
+      String data = await File(
+              '${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+          .readAsString();
+      oldVer = jsonDecode(data);
+    } on Exception catch (_) {}
   }
 
   String? getTitileVip() {
-    if (user.identifier == '1_month') return '1 tháng';
-    if (user.identifier == '1_year') return '1 năm';
+    if (user.identifier == '1_month') return '1 tháng'.tr;
+    if (user.identifier == '1_year') return '1 năm'.tr;
     return null;
   }
 
@@ -67,7 +68,6 @@ class SettingController extends GetxController
           ? user.latestPurchaseDate!.add(const Duration(days: 30))
           : user.latestPurchaseDate!.add(const Duration(days: 365)),
     ).toString();
-   
   }
 
   Future logout() async {
@@ -85,21 +85,17 @@ class SettingController extends GetxController
           dataNewVer: newVer["version_data"],
           appSupport: newVer["version_app"].toString(),
           onTap: () async {
-            var x = await Get.defaultDialog(
-                title: 'Xác nhận tải dữ liệu mới',
-                content: textBodyLarge(text: ''),
-                textCancel: 'Huỷ',
-                textConfirm: 'Xác nhận',
+            onPopDialog(
+                context: Get.context!,
                 onCancel: () {
                   Get.back(result: false);
                 },
-                onConfirm: () {
-                  Get.back(result: true);
-                });
-            if (x != null && x) {
-              await homeController.clearDown();
-              await homeController.initDown();
-            }
+                onSubmit: () async {
+                  Get.back();
+                  await homeController.clearDown();
+                  await homeController.initDown();
+                },
+                title: 'Xác nhận tải gói dữ liệu mới'.tr);
           },
           isDown: !isDown,
           isUpdate: !isUpdate),

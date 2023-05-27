@@ -98,7 +98,7 @@ class _SettingScreenState extends State<SettingScreen> {
               children: [
                 cHeight(30),
                 textTitleSmall(
-                    text: 'Dịch vụ'.toUpperCase(),
+                    text: 'Dịch vụ'.tr.toUpperCase(),
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
                 cHeight(12),
@@ -114,7 +114,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 0),
                         child: textBodySmall(
-                            text: 'Gói đăng kí', color: Colors.white70),
+                            text: 'Gói đăng kí'.tr, color: Colors.white70),
                       ),
                     ),
                     Align(
@@ -123,8 +123,10 @@ class _SettingScreenState extends State<SettingScreen> {
                         padding: const EdgeInsets.only(top: 0),
                         child: textBodyMedium(
                             text: settingController.getTimeVip() != null
-                                ? 'còn ${settingController.getTimeVip()} ngày'
-                                : 'Miễn phí',
+                                ? 'Còn ngày'.trParams({
+                                  'day': settingController.getTimeVip().toString()
+                                })
+                                : 'Miễn phí'.tr,
                             fontWeight: FontWeight.w700,
                             color: Colors.white),
                       ),
@@ -148,7 +150,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           padding: const EdgeInsets.only(left: 20, right: 20),
                           child: textBodyMedium(
                               text: settingController.getTitileVip() ??
-                                  'Gói đăng kí',
+                                  'Gói đăng kí'.tr,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -157,7 +159,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 cHeight(12),
                 _blockItem(
-                  title: 'Mã đổi quà',
+                  title: 'Mã đổi quà'.tr,
                   onTap: () {
                     settingController.user = settingController.user.copyWith(
                         identifier: '1_month',
@@ -174,12 +176,12 @@ class _SettingScreenState extends State<SettingScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 textTitleSmall(
-                    text: 'Dữ liệu'.toUpperCase(),
+                    text: 'Dữ liệu'.tr.toUpperCase(),
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
                 cHeight(12),
                 _blockItem(
-                    title: 'Phiên bản ứng dụng',
+                    title: 'Phiên bản ứng dụng'.tr,
                     onTap: () {
                       buildToast(
                           message: settingController.packageInfo?.version ?? '',
@@ -188,7 +190,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     value: settingController.packageInfo?.version ?? ''),
                 cHeight(4),
                 _blockItem(
-                    title: 'Phiên bản dữ liệu',
+                    title: 'Phiên bản dữ liệu'.tr,
                     onTap: () {
                       settingController.checkUpdateData();
                     },
@@ -200,38 +202,38 @@ class _SettingScreenState extends State<SettingScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 textTitleSmall(
-                    text: 'Khác'.toUpperCase(),
+                    text: 'Khác'.tr.toUpperCase(),
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
                 cHeight(12),
                 _blockItem(
-                  title: 'Hỗ trợ & Giúp đỡ',
+                  title: 'Hỗ trợ & Giúp đỡ'.tr,
                   onTap: () {
                     showWebInApp('https://www.facebook.com/vqhapps');
                   },
                 ),
                 cHeight(4),
                 _blockItem(
-                  title: 'Điều khoản dịch vụ',
+                  title: 'Điều khoản dịch vụ'.tr,
                   onTap: () {
                     showWebInApp('https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html');
                   },
                 ),
                 cHeight(4),
                 _blockItem(
-                  title: 'Chính sách bảo mật',
+                  title: 'Chính sách bảo mật'.tr,
                   onTap: () {
                     showWebInApp('https://vqhapps.blogspot.com/p/chinh-sach-bao-mat.html');
                   },
                 ),
                 cHeight(4),
                 _blockItem(
-                  title: 'Thông tin thêm',
+                  title: 'Thông tin thêm'.tr,
                   onTap: () {showWebInApp('https://vqhapps.blogspot.com/');},
                 ),
                 cHeight(4),
                 _blockItem(
-                  title: 'Đăng xuất',
+                  title: 'Đăng xuất'.tr,
                   onTap: () {
                     onPopDialog(
                         context: context,
@@ -241,7 +243,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         onSubmit: () {
                           settingController.logout();
                         },
-                        title: 'Bạn muốn đăng xuất');
+                        title: 'Bạn muốn đăng xuất'.tr);
                   },
                 ),
               ])

@@ -122,7 +122,7 @@ class VipController extends GetxController
               customerInfo!.entitlements.all["premium"]?.productIdentifier);
       await saveUserInBox(user: user!);
       buildToast(
-          message: 'Mua hàng thành công', status: TypeToast.toastSuccess);
+          message: 'Mua hàng thành công'.tr, status: TypeToast.toastSuccess);
       clearAndResetApp();
     }
     // } on PlatformException catch (e) {
@@ -151,13 +151,13 @@ class VipController extends GetxController
                   customerInfo!.entitlements.all["premium"]?.productIdentifier);
           saveUserInBox(user: user!);
           buildToast(
-              message: 'Khôi phục thành công', status: TypeToast.toastSuccess);
+              message: 'Khôi phục thành công'.tr, status: TypeToast.toastSuccess);
           clearAndResetApp();
         } else {
           user = user?.copyWith(latestPurchaseDate: null, identifier: null);
           saveUserInBox(user: user!);
           buildToast(
-              message: 'Khôi phục thất bại', status: TypeToast.toastError);
+              message: 'Khôi phục thất bại'.tr, status: TypeToast.toastError);
         }
       } on PlatformException catch (e) {
         var errorCode = PurchasesErrorHelper.getErrorCode(e);
@@ -174,14 +174,14 @@ class VipController extends GetxController
   addStringDes() {
     vipOffer.clear();
     vipOffer.addAll([
-      'Không có quảng cáo',
-      '200+ hiệu ứng âm thanh thư giãn',
-      'Không giới hạn tính năng nâng cao',
-      'Không giới hạn bản nhạc thư giãn',
+      'Không có quảng cáo'.tr,
+      '200+ hiệu ứng âm thanh thư giãn'.tr,
+      'Không giới hạn tính năng nâng cao'.tr,
+      'Không giới hạn bản nhạc thư giãn'.tr,
       (storeProductSelect?.identifier == '1_year')
-          ? 'Tăng giới hạn mix âm thanh lên tối đa'
-          : 'Tăng giới hạn mix âm thanh lên 10',
-      if (storeProductSelect?.identifier == '1_year') 'Tiết kiệm lên đến 10%',
+          ? 'Tăng giới hạn mix âm thanh lên tối đa'.tr
+          : 'Tăng giới hạn mix âm thanh lên 10'.tr,
+      if (storeProductSelect?.identifier == '1_year') 'Tiết kiệm lên đến 10%'.tr,
     ]);
   }
 

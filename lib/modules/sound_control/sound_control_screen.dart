@@ -117,7 +117,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     cHeight(30),
                     if(widget.isShowDownTime ?? true)...[
                     _numSoundPlay(
-                        title: 'hẹn giờ',
+                        title: 'Hẹn giờ'.tr,
                         isPlay: false,
                         wIcon: IconButton(
                             onPressed: () {
@@ -130,7 +130,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     _header(),
                     cHeight(30),],
                     _numSoundPlay(
-                        title: 'âm nhạc',
+                        title: 'Âm nhạc'.tr,
                         isPlay: soundControlController.isPlayMusic,
                         onClick: () {
                           if (soundControlController.listMusic.isNotEmpty) {
@@ -144,7 +144,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                         listData: soundControlController.listMusic, type: 2),
                     cHeight(30),
                     _numSoundPlay(
-                        title: 'âm thanh',
+                        title: 'Âm thanh'.tr,
                         isPlay: soundControlController.isPlaySound,
                         onClick: () {
                           if (soundControlController.listAudio.isNotEmpty) {
@@ -153,7 +153,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                             soundControlController.updateUI();
                           }
                         },
-                        num: '${soundControlController.listAudio.length}/15'),
+                        num: '${soundControlController.listAudio.length}/${soundControlController.checkVipPlaySound()}'),
                     Expanded(
                       child: _listSoundControl(
                           listData: soundControlController.listAudio),

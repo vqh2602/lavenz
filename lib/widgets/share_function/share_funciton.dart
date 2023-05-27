@@ -58,10 +58,10 @@ int daysBetween({required DateTime from, required DateTime to}) {
 //tính buổi
 String getSesisonDay() {
   DateTime dt = DateTime.now();
-  if (dt.hour >= 18 || (dt.hour >= 0 && dt.hour < 4)) return 'tối';
-  if (dt.hour >= 4 && dt.hour < 11) return 'sáng';
-  if (dt.hour >= 11 && dt.hour < 13) return 'trưa';
-  return 'chiều';
+  if (dt.hour >= 18 || (dt.hour >= 0 && dt.hour < 4)) return 'tối'.tr;
+  if (dt.hour >= 4 && dt.hour < 11) return 'sáng'.tr;
+  if (dt.hour >= 11 && dt.hour < 13) return 'trưa'.tr;
+  return 'chiều'.tr;
 }
 
 Future<dynamic> convertImageToBase64({File? file, String? base64String}) async {

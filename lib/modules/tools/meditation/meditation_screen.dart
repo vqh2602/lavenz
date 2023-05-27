@@ -61,7 +61,7 @@ class _MeditationScreenState extends State<MeditationScreen>
                 isShowDownTime: false,
               ));
             },
-            child: const Icon(LucideIcons.slidersHorizontal),
+            child: const Icon(LucideIcons.slidersHorizontal), 
           ),
         ],
       ),
@@ -136,16 +136,20 @@ class _MeditationScreenState extends State<MeditationScreen>
                             ),
                           ),
                           cHeight(12),
-                          textTitleSmall(
-                              text: 'Hẹn giờ'.toUpperCase(), color: Colors.white),
+                          Material(
+                            child: textTitleSmall(
+                                text: 'Hẹn giờ'.tr.toUpperCase(), color: Colors.white),
+                          ),
                           cHeight(4),
                           _countdownTime(),
                           cHeight(12),
-                          textTitleSmall(
-                              text: 'Điếm giờ'.toUpperCase(),
-                              color: Colors.white),
+                          Material(
+                            child: textTitleSmall(
+                                text: 'Điếm giờ'.tr.toUpperCase(),
+                                color: Colors.white),
+                          ),
                           cHeight(4),
-                          buildTime(duration: meditationController.duration),
+                          Material(child: buildTime(duration: meditationController.duration)),
                           cHeight(20),
                           GFButton(
                             onPressed: () {
@@ -169,8 +173,8 @@ class _MeditationScreenState extends State<MeditationScreen>
                             child: textBodyMedium(
                                 text:
                                     (meditationController.controller.isAnimating)
-                                        ? 'Dừng'
-                                        : 'Bắt đầu',
+                                        ? 'Dừng'.tr
+                                        : 'Bắt đầu'.tr,
                                 color: Colors.white),
                           ),
                         ],

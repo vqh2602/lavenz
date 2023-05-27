@@ -27,7 +27,7 @@ class SoundController extends GetxController
   List<sound.Data> listMusic = [];
   List<tag.Data> listTagSound = [];
   List<String> dataTab = [
-    'Tất cả',
+    'Tất cả'.tr,
   ];
   User? user;
   @override
@@ -139,7 +139,7 @@ class SoundController extends GetxController
     } else {
       buildToast(
         status: TypeToast.toastDefault,
-        message: 'Đang tải và phát...',
+        message: 'Đang tải và phát...'.tr,
       );
       soundControlController.loadingUI();
       loadingUI();

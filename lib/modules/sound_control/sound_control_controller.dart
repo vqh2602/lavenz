@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:lavenz/data/models/sound.dart' as sound;
+import 'package:lavenz/data/models/user.dart';
+import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+import 'package:lavenz/widgets/mixin/user_mixin.dart';
 
 class SoundControlController extends GetxController
-    with GetTickerProviderStateMixin, StateMixin {
-  GetStorage box = GetStorage();
+    with GetTickerProviderStateMixin, StateMixin, UserMixin {
   // VideoPlayerController? videoPlayerController;
   List<AudioCustom> listAudio = [];
   List<AudioCustom> listMusic = [];
@@ -27,10 +28,12 @@ class SoundControlController extends GetxController
   // var hours;
   // var mints;
   // var secs;
+  User user = User();
 
   @override
   Future<void> onInit() async {
     super.onInit();
+
     initLocalData();
     changeUI();
   }
@@ -45,6 +48,7 @@ class SoundControlController extends GetxController
 
   Future initLocalData() async {
     await downloadAssetsController.init();
+    user = getUserInBox();
     updateUI();
   }
   // void test() {
@@ -157,23 +161,29 @@ class SoundControlController extends GetxController
     AudioPlayer audioPlayer =
         AudioPlayer(userAgent: 'sound ${listAudio.length + 1}');
     if (data.type == 1) {
-      isPlaySound = false;
-      playAllSound(type: data.type);
-      listAudio.add(AudioCustom(
-          audioPlayer: audioPlayer,
-          volume: 0.5,
-          title: data.name ?? '',
-          data: data));
-      //await listAudio.last.audioPlayer.setFilePath(File(path).path);
-      //  print('url sound:$path');
-      // String a = 'sound:/Users/vuongquanghuy/Library/Developer/CoreSimulator/Devices/8E45B80C-0A53-4FB2-A778-9E8AE9428544/data/Containers/Data/Application/3695801F-7F20-4A2D-9C99-87C2BAF712E1/Documents/assets/sound/unspokenWords.mp3';
-      File file = File(path);
-      file.readAsBytesSync();
+      if (listAudio.length < checkVipPlaySound()) {
+        isPlaySound = false;
+        playAllSound(type: data.type);
+        listAudio.add(AudioCustom(
+            audioPlayer: audioPlayer,
+            volume: 0.5,
+            title: data.name ?? '',
+            data: data));
+        //await listAudio.last.audioPlayer.setFilePath(File(path).path);
+        //  print('url sound:$path');
+        // String a = 'sound:/Users/vuongquanghuy/Library/Developer/CoreSimulator/Devices/8E45B80C-0A53-4FB2-A778-9E8AE9428544/data/Containers/Data/Application/3695801F-7F20-4A2D-9C99-87C2BAF712E1/Documents/assets/sound/unspokenWords.mp3';
+        File file = File(path);
+        file.readAsBytesSync();
 
-      await listAudio.last.audioPlayer.setFilePath(path);
-      await listAudio.last.audioPlayer.setLoopMode(LoopMode.all);
-      await listAudio.last.audioPlayer.setVolume(0.5);
-      await listAudio.last.audioPlayer.play();
+        await listAudio.last.audioPlayer.setFilePath(path);
+        await listAudio.last.audioPlayer.setLoopMode(LoopMode.all);
+        await listAudio.last.audioPlayer.setVolume(0.5);
+        await listAudio.last.audioPlayer.play();
+      } else {
+        buildToast(
+            message: 'Đã đạt giới hạn mix âm thanh',
+            status: TypeToast.toastDefault);
+      }
     } else {
       isPlayMusic = false;
       playAllSound(type: data.type);
@@ -279,6 +289,12 @@ class SoundControlController extends GetxController
       listMusic.removeAt(index);
     }
     updateUI();
+  }
+
+  int checkVipPlaySound() {
+    if (user.identifier == '1_month') return 10;
+    if (user.identifier == '1_year') return 15;
+    return 5;
   }
 
   changeUI() {

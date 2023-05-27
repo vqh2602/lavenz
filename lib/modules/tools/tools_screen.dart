@@ -119,8 +119,8 @@ class _ToolsScreenState extends State<ToolsScreen> {
                                       child: Material(
                                         child: textBodySmall(
                                             text: listData[i].isVip
-                                                ? 'Preium'
-                                                : 'Free',
+                                                ? 'Preium'.tr
+                                                : 'Free'.tr,
                                             color: Colors.white),
                                       ),
                                     ),
@@ -141,16 +141,16 @@ class _ToolsScreenState extends State<ToolsScreen> {
         onTap: () {
           Get.toNamed(BreathScreen.routeName);
         },
-        title: 'Breath',
-        des: 'điểu chỉnh nhịp thở',
+        title: 'Thở'.tr,
+        des: 'điểu chỉnh nhịp thở'.tr,
         isVip: true),
             ToolsItem(
         image: 'assets/background/t2.jpeg',
         onTap: () {
           Get.toNamed(MeditationScreen.routeName);
         },
-        title: 'Thiền định',
-        des: 'thiền định hẹn giờ và đếm thời gian',
+        title: 'Thiền định'.tr,
+        des: 'thiền định hẹn giờ và đếm thời gian'.tr,
         isVip: true),
   ];
 }
