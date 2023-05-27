@@ -21,8 +21,8 @@ Map<String, String> vi = {
   "Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới":
       "Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới",
   "Lỗi tải xuống": "Lỗi tải xuống",
-  "1 tháng": "2 tháng",
-  "1 năm": "2 năm",
+  "1 tháng": "1 tháng",
+  "1 năm": "1 năm",
   "Xác nhận tải gói dữ liệu mới": "Xác nhận tải gói dữ liệu mới",
   "Dịch vụ": "Dịch vụ",
   "Gói đăng kí": "Gói đăng kí",
@@ -105,4 +105,6 @@ Map<String, String> vi = {
   "Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...":
       "Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...",
   "Tốc độ internet:": "Tốc độ internet: @speed",
+  "Đổi mã thành công":"Đổi mã thành công",
+  "Mã hết hạn hoặc không đúng":"Mã hết hạn hoặc không đúng",
 };

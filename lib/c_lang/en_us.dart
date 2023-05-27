@@ -25,9 +25,9 @@ Map<String, String> en = {
   "1 năm": "1 years",
   "Xác nhận tải gói dữ liệu mới": "New data pack download confirmation",
   "Dịch vụ": "Service",
-  "Gói đăng kí": "Subscription package",
+  "Gói đăng kí": "Subscription",
   "Còn ngày": "And @day day",
-  "Miễn phí": "Free of charge",
+  "Miễn phí": "Free",
   "Mã đổi quà": "Redemption code",
   "Dữ liệu": "Data",
   "Phiên bản ứng dụng": "App version",
@@ -103,4 +103,6 @@ Map<String, String> en = {
   "Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...":
       "Note: During the download process do not close the application, turn off the screen...",
   "Tốc độ internet:": "Internet speed: @speed",
+  "Đổi mã thành công": "Success code change",
+  "Mã hết hạn hoặc không đúng": "The code is expired or incorrect",
 };

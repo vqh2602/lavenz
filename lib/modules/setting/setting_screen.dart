@@ -124,8 +124,10 @@ class _SettingScreenState extends State<SettingScreen> {
                         child: textBodyMedium(
                             text: settingController.getTimeVip() != null
                                 ? 'Còn ngày'.trParams({
-                                  'day': settingController.getTimeVip().toString()
-                                })
+                                    'day': settingController
+                                        .getTimeVip()
+                                        .toString()
+                                  })
                                 : 'Miễn phí'.tr,
                             fontWeight: FontWeight.w700,
                             color: Colors.white),
@@ -161,12 +163,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 _blockItem(
                   title: 'Mã đổi quà'.tr,
                   onTap: () {
-                    settingController.user = settingController.user.copyWith(
-                        identifier: '1_month',
-                        latestPurchaseDate: DateTime.now());
-                    settingController.saveUserInBox(
-                        user: settingController.user);
-                    settingController.clearAndResetApp();
+                    settingController.checkShowAddGift();
                   },
                 ),
               ]),
@@ -216,20 +213,24 @@ class _SettingScreenState extends State<SettingScreen> {
                 _blockItem(
                   title: 'Điều khoản dịch vụ'.tr,
                   onTap: () {
-                    showWebInApp('https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html');
+                    showWebInApp(
+                        'https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html');
                   },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Chính sách bảo mật'.tr,
                   onTap: () {
-                    showWebInApp('https://vqhapps.blogspot.com/p/chinh-sach-bao-mat.html');
+                    showWebInApp(
+                        'https://vqhapps.blogspot.com/p/chinh-sach-bao-mat.html');
                   },
                 ),
                 cHeight(4),
                 _blockItem(
                   title: 'Thông tin thêm'.tr,
-                  onTap: () {showWebInApp('https://vqhapps.blogspot.com/');},
+                  onTap: () {
+                    showWebInApp('https://vqhapps.blogspot.com/');
+                  },
                 ),
                 cHeight(4),
                 _blockItem(
