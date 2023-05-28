@@ -77,17 +77,21 @@ class _QuoteScreenState extends State<QuoteScreen>
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        textDisplayLarge(
-                            text: DateTime.now().day.toString(),
-                            color: Colors.white,
-                            height: 0,
-                            fontWeight: FontWeight.normal),
-                        textBodySmall(
-                            text: DateFormat.yMMMM().format(DateTime.now()),
-                            color: Colors.white60),
+                        Material(
+                          child: textDisplayLarge(
+                              text: DateTime.now().day.toString(),
+                              color: Colors.white,
+                              height: 0,
+                              fontWeight: FontWeight.normal),
+                        ),
+                        Material(
+                          child: textBodySmall(
+                              text: DateFormat.yMMMM().format(DateTime.now()),
+                              color: Colors.white60),
+                        ),
                         cHeight(20),
                         SelectableText(
-                          quoteController.dataQuote["content"],
+                          quoteController.dataQuote["content"]??'',
                           style: josefinSans(
                               fontWeight: FontWeight.normal,
                               color: Colors.white,
@@ -111,7 +115,7 @@ class _QuoteScreenState extends State<QuoteScreen>
                         ),
                         cHeight(8),
                         textBodySmall(
-                            text: quoteController.dataQuote["author"],
+                            text: quoteController.dataQuote["author"]??'',
                             fontStyle: FontStyle.italic,
                             color: Colors.white60),
                         cHeight(Get.height * 0.1)
