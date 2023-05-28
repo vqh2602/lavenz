@@ -6,6 +6,7 @@ import 'package:lavenz/modules/tools/horoscope/horoscope_screen.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_screen.dart';
 import 'package:lavenz/modules/tools/quote/quote_screen.dart';
 import 'package:lavenz/modules/tools/tools_controller.dart';
+import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:lavenz/widgets/widgets.dart';
@@ -66,7 +67,16 @@ class _ToolsScreenState extends State<ToolsScreen> {
                     itemCount: listData.length,
                     itemBuilder: (context, i) => InkWell(
                           onTap: () {
-                            listData[i].onTap();
+                            if (listData[i].isVip) {
+                              if (toolsController.checkExpiry(
+                                  user: toolsController.user)) {
+                                listData[i].onTap();
+                              } else {
+                                Get.toNamed(VipScreen.routeName);
+                              }
+                            } else {
+                              listData[i].onTap();
+                            }
                           },
                           child: Hero(
                             tag: 'tools$i',
@@ -108,7 +118,8 @@ class _ToolsScreenState extends State<ToolsScreen> {
                                           cHeight(8),
                                           Material(
                                             child: Padding(
-                                              padding: const EdgeInsets.only(left: 4,right: 4),
+                                              padding: const EdgeInsets.only(
+                                                  left: 4, right: 4),
                                               child: textBodySmall(
                                                   text: listData[i].des,
                                                   textAlign: TextAlign.center,
@@ -156,7 +167,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: 'Thiền định'.tr,
         des: 'thiền định hẹn giờ và đếm thời gian'.tr,
         isVip: true),
-        ToolsItem(
+    ToolsItem(
         image: 'assets/background/t3.jpeg',
         onTap: () {
           Get.toNamed(HoroscopeScreen.routeName);
@@ -164,7 +175,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: 'Lá số tử vi'.tr,
         des: 'thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày'.tr,
         isVip: true),
-        ToolsItem(
+    ToolsItem(
         image: 'assets/background/t4.jpeg',
         onTap: () {
           Get.toNamed(QuoteScreen.routeName);

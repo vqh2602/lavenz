@@ -110,4 +110,6 @@ Map<String, String> vi = {
   "Lá số tử vi": "Lá số tử vi",
   "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày":
       "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày",
+      "Châm ngôn":"Châm ngôn",
+      "Những câu châm ngôn mỗi ngày":"Những câu châm ngôn mỗi ngày"
 };
