@@ -106,10 +106,13 @@ class _ToolsScreenState extends State<ToolsScreen> {
                                           ),
                                           cHeight(8),
                                           Material(
-                                            child: textBodySmall(
-                                                text: listData[i].des,
-                                                textAlign: TextAlign.center,
-                                                color: Colors.white60),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 4,right: 4),
+                                              child: textBodySmall(
+                                                  text: listData[i].des,
+                                                  textAlign: TextAlign.center,
+                                                  color: Colors.white60),
+                                            ),
                                           )
                                         ]),
                                   ),
