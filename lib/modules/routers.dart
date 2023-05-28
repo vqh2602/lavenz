@@ -24,6 +24,8 @@ import 'package:lavenz/modules/tools/horoscope/horoscope_binding.dart';
 import 'package:lavenz/modules/tools/horoscope/horoscope_screen.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_binding.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_screen.dart';
+import 'package:lavenz/modules/tools/quote/quote_binding.dart';
+import 'package:lavenz/modules/tools/quote/quote_screen.dart';
 import 'package:lavenz/modules/tools/tools_binding.dart';
 import 'package:lavenz/modules/tools/tools_screen.dart';
 import 'package:lavenz/modules/vip/vip_binding.dart';
@@ -86,5 +88,10 @@ List<GetPage> routes = [
     name: HoroscopeScreen.routeName,
     page: () => const HoroscopeScreen(),
     binding: HoroscopeBinding(),
+  ),
+  GetPage(
+    name: QuoteScreen.routeName,
+    page: () => const QuoteScreen(),
+    binding: QuoteBinding(),
   ),
 ];

@@ -12,15 +12,15 @@ class HoroscopeController extends GetxController
     changeUI();
     initData();
     super.onInit();
-    
-
   }
 
   Future<void> initData() async {
+    Future.delayed(const Duration(seconds: 2), () {
+      loadingUI();
+    });
     if (await webScraper.loadWebPage('/daily-astroguide')) {
       title = webScraper.getElement('div.px-3 > p.astroDates', ['']);
     }
-    loadingUI();
     if (await webScraper.loadWebPage('/daily-astroguide')) {
       elements = webScraper.getElement('div.px-3 > p.astroText', ['']);
       // print(jsonEncode(elements));

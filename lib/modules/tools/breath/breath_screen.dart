@@ -132,8 +132,8 @@ class _BreathScreenState extends State<BreathScreen>
                           color: Colors.white,
                           child: textBodyMedium(
                               text: (breathController.controller.isAnimating)
-                                  ? 'Dừng'.tr
-                                  : 'Phát'.tr,
+                                  ? 'dừng'.tr
+                                  : 'phát'.tr,
                               color: Colors.white),
                         ),
                       ],

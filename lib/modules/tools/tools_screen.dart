@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lavenz/modules/tools/breath/breath_screen.dart';
 import 'package:lavenz/modules/tools/horoscope/horoscope_screen.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_screen.dart';
+import 'package:lavenz/modules/tools/quote/quote_screen.dart';
 import 'package:lavenz/modules/tools/tools_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/text_custom.dart';
@@ -162,6 +163,14 @@ class _ToolsScreenState extends State<ToolsScreen> {
         },
         title: 'Lá số tử vi'.tr,
         des: 'thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày'.tr,
+        isVip: true),
+        ToolsItem(
+        image: 'assets/background/t4.jpeg',
+        onTap: () {
+          Get.toNamed(QuoteScreen.routeName);
+        },
+        title: 'Châm ngôn'.tr,
+        des: 'Những câu châm ngôn mỗi ngày'.tr,
         isVip: true),
   ];
 }
