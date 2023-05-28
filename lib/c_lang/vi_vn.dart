@@ -105,6 +105,9 @@ Map<String, String> vi = {
   "Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...":
       "Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...",
   "Tốc độ internet:": "Tốc độ internet: @speed",
-  "Đổi mã thành công":"Đổi mã thành công",
-  "Mã hết hạn hoặc không đúng":"Mã hết hạn hoặc không đúng",
+  "Đổi mã thành công": "Đổi mã thành công",
+  "Mã hết hạn hoặc không đúng": "Mã hết hạn hoặc không đúng",
+  "Lá số tử vi": "Lá số tử vi",
+  "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày":
+      "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày",
 };

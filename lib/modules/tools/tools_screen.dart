@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:lavenz/modules/tools/breath/breath_screen.dart';
+import 'package:lavenz/modules/tools/horoscope/horoscope_screen.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_screen.dart';
 import 'package:lavenz/modules/tools/tools_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
@@ -64,7 +64,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
                 child: ListView.builder(
                     itemCount: listData.length,
                     itemBuilder: (context, i) => InkWell(
-                          onTap: (){
+                          onTap: () {
                             listData[i].onTap();
                           },
                           child: Hero(
@@ -108,6 +108,7 @@ class _ToolsScreenState extends State<ToolsScreen> {
                                           Material(
                                             child: textBodySmall(
                                                 text: listData[i].des,
+                                                textAlign: TextAlign.center,
                                                 color: Colors.white60),
                                           )
                                         ]),
@@ -130,7 +131,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
                             ),
                           ),
                         ))),
-            
           ],
         ));
   }
@@ -144,13 +144,21 @@ class _ToolsScreenState extends State<ToolsScreen> {
         title: 'Thở'.tr,
         des: 'điểu chỉnh nhịp thở'.tr,
         isVip: true),
-            ToolsItem(
+    ToolsItem(
         image: 'assets/background/t2.jpeg',
         onTap: () {
           Get.toNamed(MeditationScreen.routeName);
         },
         title: 'Thiền định'.tr,
         des: 'thiền định hẹn giờ và đếm thời gian'.tr,
+        isVip: true),
+        ToolsItem(
+        image: 'assets/background/t3.jpeg',
+        onTap: () {
+          Get.toNamed(HoroscopeScreen.routeName);
+        },
+        title: 'Lá số tử vi'.tr,
+        des: 'thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày'.tr,
         isVip: true),
   ];
 }

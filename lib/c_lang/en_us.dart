@@ -105,4 +105,7 @@ Map<String, String> en = {
   "Tốc độ internet:": "Internet speed: @speed",
   "Đổi mã thành công": "Success code change",
   "Mã hết hạn hoặc không đúng": "The code is expired or incorrect",
+    "Lá số tử vi": "Horoscope",
+  "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày":
+      "astrological information about the zodiac is refreshed every day",
 };
