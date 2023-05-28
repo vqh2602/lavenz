@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:lavenz/data/repositories/user_repo.dart';
-import 'package:lavenz/data/storage.dart';
 import 'package:lavenz/modules/auth/login/login_screen.dart';
 import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,7 +55,7 @@ class SignupController extends GetxController
       //print('convert image to base64: $base64ImageConvert');
       base64Image =
           await convertImageToBase64(base64String: base64ImageConvert);
-      await box.write(Storages.dataUrlAvatarUser, base64ImageConvert);
+     // await box.write(Storages.dataUrlAvatarUser, base64ImageConvert);
       avatarConverted = base64ImageConvert;
     } catch (_) {}
     changeUI();

@@ -20,8 +20,12 @@ import 'package:lavenz/modules/splash/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/modules/tools/breath/breath_binding.dart';
 import 'package:lavenz/modules/tools/breath/breath_screen.dart';
+import 'package:lavenz/modules/tools/horoscope/horoscope_binding.dart';
+import 'package:lavenz/modules/tools/horoscope/horoscope_screen.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_binding.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_screen.dart';
+import 'package:lavenz/modules/tools/quote/quote_binding.dart';
+import 'package:lavenz/modules/tools/quote/quote_screen.dart';
 import 'package:lavenz/modules/tools/tools_binding.dart';
 import 'package:lavenz/modules/tools/tools_screen.dart';
 import 'package:lavenz/modules/vip/vip_binding.dart';
@@ -71,11 +75,23 @@ List<GetPage> routes = [
       page: () => const ToolsScreen(),
       binding: ToolsBinding()),
   GetPage(
-      name: BreathScreen.routeName,
-      page: () => const BreathScreen(),
-      binding: BreathBinding(),),
-    GetPage(
-      name: MeditationScreen.routeName,
-      page: () => const MeditationScreen(),
-      binding: MeditationBinding(),),
+    name: BreathScreen.routeName,
+    page: () => const BreathScreen(),
+    binding: BreathBinding(),
+  ),
+  GetPage(
+    name: MeditationScreen.routeName,
+    page: () => const MeditationScreen(),
+    binding: MeditationBinding(),
+  ),
+  GetPage(
+    name: HoroscopeScreen.routeName,
+    page: () => const HoroscopeScreen(),
+    binding: HoroscopeBinding(),
+  ),
+  GetPage(
+    name: QuoteScreen.routeName,
+    page: () => const QuoteScreen(),
+    binding: QuoteBinding(),
+  ),
 ];

@@ -8,7 +8,9 @@ import 'package:lavenz/modules/init.dart';
 mixin UserMixin {
   GetStorage box = GetStorage();
   User getUserInBox() {
-    return box.read(Storages.dataUser) != null ? User.fromJson(box.read(Storages.dataUser)) : User();
+    return box.read(Storages.dataUser) != null
+        ? User.fromJson(box.read(Storages.dataUser))
+        : User();
   }
 
   Future<void> saveUserInBox({required User user}) async {
@@ -37,9 +39,8 @@ mixin UserMixin {
     }
   }
 
-
   Future<void> clearDataUser() async {
-   await box.remove(Storages.dataUser);
+    await box.remove(Storages.dataUser);
   }
 
   Future<void> clearAndResetApp() async {
@@ -48,5 +49,4 @@ mixin UserMixin {
     Get.reset(); // resetting getx
     await initialize();
   }
-  
 }

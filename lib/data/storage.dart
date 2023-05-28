@@ -11,23 +11,8 @@ class Storages {
   static const String dataLoginTime = 'data_login_time';
 // đăng nhập sinh trắc học
   static const String dataBiometric = 'data_biometric';
-// tự động phát video
-  static const String dataPlayVideo = 'data_auto_play_video';
-  // url hỉnh ảnh ng dùng => base64
-  static const String dataUrlAvatarUser = 'data_avatar_user';
-  // dữ liệu workout
-  static const String dataWorkout = 'data_workout';
-  // dữ liệu tag
-  static const String dataTag = 'data_workout';
-
-  //data blog
-  static const String dataBlog = 'data_blog';
-
-  //data dataTrainingPlan
-  static const String dataTrainingPlan = 'data_training_plan';
-
-  // data tag training, lưu trạng thái kế hoạch tập luyen
-  static const String dataTrainingTagPlan = 'data_training_tag_plan';
+// data quote trong ngày => 1 ngày chỉ lấy 1 quote
+  static const String dataQuote = 'data_quote';
 }
 
 class Config {

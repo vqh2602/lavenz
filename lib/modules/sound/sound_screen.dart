@@ -23,13 +23,21 @@ class SoundScreen extends StatefulWidget {
 class _SoundScreenState extends State<SoundScreen>
     with TickerProviderStateMixin {
   SoundController soundController = Get.put(SoundController());
-  SoundControlController soundControlController =
-      Get.find();
+  SoundControlController soundControlController = Get.find();
   HomeController homeController = Get.find();
   bool showHeader = true;
+  // var indexTab = Get.arguments["indexTab"];
   @override
   void initState() {
     //soundController.initVideoBackground();
+    // if (indexTab != null) {
+    //   if (indexTab == 0) {
+    //     soundController.tabController.animateTo(0);
+    //   }
+    //   if (indexTab == 1) {
+    //     soundController.tabController.animateTo(1);
+    //   }
+    // }
     super.initState();
   }
 
