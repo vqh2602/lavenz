@@ -12,21 +12,27 @@ class QuoteController extends GetxController
   Map<String, dynamic> dataQuote = {};
   @override
   Future<void> onInit() async {
-    initData();
+    changeUI();
+       Future.delayed(const Duration(milliseconds: 500),(){
+        loadingUI();
+       });
+    Future.delayed(const Duration(milliseconds: 1000), () {
+   
+      initData();
+    });
     super.onInit();
   }
 
   Future<void> initData() async {
-    loadingUI();
     Map<String, dynamic>? dataBox;
-
-    try {
-      dataBox = jsonDecode(await box.read(Storages.dataQuote));
-    } on Exception catch (_) {}
+    dataBox = await box.read(Storages.dataQuote) != null
+        ? jsonDecode(await box.read(Storages.dataQuote))
+        : null;
 
     if (dataBox != null &&
         int.parse(dataBox["days"].toString()) == DateTime.now().day) {
       dataQuote = dataBox;
+      changeUI();
     } else {
       dataQuote = await quoteRepo.getQuote();
       await box.write(
@@ -36,6 +42,7 @@ class QuoteController extends GetxController
             "author": dataQuote["author"],
             "content": dataQuote["content"]
           }));
+          changeUI();
     }
     // parser = await Chaleno().load('https://www.deccanchronicle.com/daily-astroguide');
     //  print(parser!.title());
@@ -46,7 +53,7 @@ class QuoteController extends GetxController
     //   break;
     //  }
     // results.map((item) => print(item.text));
-    changeUI();
+   // changeUI();
   }
 
   changeUI() {
