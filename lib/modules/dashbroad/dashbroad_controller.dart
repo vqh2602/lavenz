@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:lavenz/data/models/user.dart';
+import 'package:lavenz/widgets/mixin/admod_mixin.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:video_player/video_player.dart';
 
 class DashBroadController extends GetxController
-    with GetTickerProviderStateMixin, StateMixin, UserMixin {
+    with GetTickerProviderStateMixin, StateMixin, UserMixin, ADmodMixin {
   VideoPlayerController? videoPlayerController;
   User? user;
 

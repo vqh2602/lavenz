@@ -1,3 +1,4 @@
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lavenz/modules/dashbroad/dashbroad_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
 import 'package:lavenz/modules/vip/vip_screen.dart';
@@ -137,19 +138,31 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
         children: [
           buildListItem4x3(),
           cHeight(8),
-          buildItem4x3(
-              des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
-              image: 'assets/background/img1.jpg',
-              onTap: () {
-                dashBroadController.checkExpiry(user: dashBroadController.user!)
-                    ? null
-                    : Get.toNamed(VipScreen.routeName);
-              },
-              textButton: dashBroadController.checkExpiry(
-                      user: dashBroadController.user!)
-                  ? 'Đã đăng kí'.tr
-                  : 'Đăng kí ngay'.tr,
-              title: 'Mở khoá tất cả tính năng'.tr),
+          Container(
+            margin: const EdgeInsets.only(right: 20),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+            child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: double.infinity, // minimum recommended width
+                  minHeight: 200, // minimum recommended height
+                  maxWidth: double.infinity,
+                  maxHeight: 200,
+                ),
+                child: AdWidget(ad: dashBroadController.myNative)),
+          ),
+          // buildItem4x3(
+          //     des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
+          //     image: 'assets/background/img1.jpg',
+          //     onTap: () {
+          //       dashBroadController.checkExpiry(user: dashBroadController.user!)
+          //           ? null
+          //           : Get.toNamed(VipScreen.routeName);
+          //     },
+          //     textButton: dashBroadController.checkExpiry(
+          //             user: dashBroadController.user!)
+          //         ? 'Đã đăng kí'.tr
+          //         : 'Đăng kí ngay'.tr,
+          //     title: 'Mở khoá tất cả tính năng'.tr),
           cHeight(30),
           buildListItem1x1(
               onTap: (sound, data) async {

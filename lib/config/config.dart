@@ -4,5 +4,9 @@ class Env {
 
 class ModuleConfig {
   String flavor = 'base';
-  String baseUrl = 'JgfdaHCDSf';
+  String baseUrl = '';
+  String idADSNativeAndroid = '';
+  String idADSNativeIos = '';
+    String idADSInterstitialAdAndroid = '';
+  String idADSInterstitialAdIos = '';
 }

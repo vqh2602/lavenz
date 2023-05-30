@@ -13,13 +13,14 @@ import 'package:lavenz/data/repositories/new_ver_repo.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/dialog_down.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+import 'package:lavenz/widgets/mixin/admod_mixin.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class HomeController extends GetxController
-    with GetTickerProviderStateMixin, StateMixin, UserMixin {
+    with GetTickerProviderStateMixin, StateMixin, UserMixin, ADmodMixin {
   int selectItemScreen = 0;
   PageController pageController = PageController(
     viewportFraction: 1.0,
@@ -38,6 +39,7 @@ class HomeController extends GetxController
   StreamSubscription<ConnectivityResult>? connectivityResul;
   User user = User();
   Map<String, dynamic> oldVer = {};
+  Timer? timer;
 
   @override
   Future<void> onInit() async {
@@ -45,6 +47,7 @@ class HomeController extends GetxController
     // await _downloadAssets();
     initData();
     initConnectInternet();
+    initInterstitialAd();
     super.onInit();
   }
 
@@ -58,6 +61,15 @@ class HomeController extends GetxController
   Future init() async {
     await downloadAssetsController.init();
     await initDown();
+  }
+
+  Future<void> initInterstitialAd() async {
+    if(!checkExpiry(user: user)) {
+      timer = Timer.periodic(
+        const Duration(minutes: 5),
+        (_) async =>
+            {await createInitInterstitialAd(), interstitialAd?.show()});
+    }
   }
 
   Future initData() async {
@@ -154,19 +166,16 @@ class HomeController extends GetxController
     // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
 
     try {
-  String data =
-      await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+      String data = await File(
+              '${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
           .readAsString();
-  oldVer = jsonDecode(data);  
-    bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
-    if (!isUpdate) {
-      clearDown();
-      initDown();
-    }
-}  catch (_) {
-  
-}
-
+      oldVer = jsonDecode(data);
+      bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
+      if (!isUpdate) {
+        clearDown();
+        initDown();
+      }
+    } catch (_) {}
   }
 
   // Future _refresh() async {
@@ -204,7 +213,8 @@ class HomeController extends GetxController
               // print(message);
             } else {
               message =
-                  'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới'.tr;
+                  'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới'
+                      .tr;
               downloaded = true;
               //Get.back();
               Future.delayed(const Duration(seconds: 2), () {
