@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lavenz/c_lang/c_translations.dart';
 import 'package:lavenz/c_theme/c_theme.dart';
 import 'package:lavenz/config/config.dart';
@@ -19,6 +20,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
   Env.config = await getConfigBase();
+  MobileAds.instance.initialize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -36,7 +38,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: routes,
