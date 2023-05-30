@@ -4,8 +4,9 @@ import 'package:web_scraper/web_scraper.dart';
 
 class HoroscopeController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
-  final webScraper = WebScraper('https://www.deccanchronicle.com');
+  final webScraper = WebScraper('https://nypost.com');
   List<Map<String, dynamic>> title = [];
+  List<Map<String, dynamic>> subTitle = [];
   List<Map<String, dynamic>> elements = [];
   @override
   Future<void> onInit() async {
@@ -19,11 +20,14 @@ class HoroscopeController extends GetxController
   Future<void> initData() async {
     loadingUI();
 
-    if (await webScraper.loadWebPage('/daily-astroguide')) {
-      title = webScraper.getElement('div.px-3 > p.astroDates', ['']);
+    if (await webScraper.loadWebPage('/horoscopes')) {
+      title = webScraper.getElement('h3.horoscope__heading > a', ['']);
     }
-    if (await webScraper.loadWebPage('/daily-astroguide')) {
-      elements = webScraper.getElement('div.px-3 > p.astroText', ['']);
+    if (await webScraper.loadWebPage('/horoscopes')) {
+      subTitle = webScraper.getElement('span.horoscope__date', ['']);
+    }
+    if (await webScraper.loadWebPage('/horoscopes')) {
+      elements = webScraper.getElement('div.horoscope__description > p', ['']);
       // print(jsonEncode(elements));
     }
 

@@ -111,11 +111,23 @@ class _HoroscopeScreenState extends State<HoroscopeScreen>
                                           //     color: Colors.white),
                                           SelectableText(
                                             horoscopeController.title[index]
-                                                ["title"],
+                                                    ["title"]
+                                                .toString()
+                                                .trim(),
                                             style: josefinSans(
                                                 fontWeight: FontWeight.w800,
                                                 color: Colors.white,
                                                 fontSize: 20),
+                                          ),
+                                          SelectableText(
+                                            horoscopeController.subTitle[index]
+                                                    ["title"]
+                                                .toString()
+                                                .trim(),
+                                            style: josefinSans(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                                fontSize: 17),
                                           ),
                                           const Divider(
                                             color: Colors.white30,
@@ -127,7 +139,9 @@ class _HoroscopeScreenState extends State<HoroscopeScreen>
                                           //     textAlign: TextAlign.center),
                                           SelectableText(
                                             horoscopeController.elements[index]
-                                                ["title"],
+                                                    ["title"]
+                                                .toString()
+                                                .trim(),
                                             style: josefinSans(
                                                 fontWeight: FontWeight.normal,
                                                 color: Colors.white60,
