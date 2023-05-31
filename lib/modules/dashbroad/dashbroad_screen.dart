@@ -138,18 +138,20 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
         children: [
           buildListItem4x3(),
           cHeight(8),
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-            child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minWidth: double.infinity, // minimum recommended width
-                  minHeight: 200, // minimum recommended height
-                  maxWidth: double.infinity,
-                  maxHeight: 200,
-                ),
-                child: AdWidget(ad: dashBroadController.myNative)),
-          ),
+          if (dashBroadController.isAdLoad)
+            Container(
+              margin: const EdgeInsets.only(right: 20),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minWidth: 320, // minimum recommended width
+                    minHeight: 90, // minimum recommended height
+                    maxWidth: 400,
+                    maxHeight: 200,
+                  ),
+                  child: AdWidget(ad: dashBroadController.myNative!)),
+            ),
           // buildItem4x3(
           //     des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
           //     image: 'assets/background/img1.jpg',
