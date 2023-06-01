@@ -25,6 +25,9 @@ class _HoroscopeScreenState extends State<HoroscopeScreen>
   // bool inhale = false;
   @override
   void initState() {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      horoscopeController.initData();
+    });
     super.initState();
   }
 
@@ -73,84 +76,96 @@ class _HoroscopeScreenState extends State<HoroscopeScreen>
                       height: Get.height,
                       width: Get.width,
                       child: SafeArea(
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            padding: const EdgeInsets.only(bottom: 30, top: 30),
-                            itemCount: horoscopeController.title.length,
-                            itemBuilder: (context, index) => Container(
-                                  margin: const EdgeInsets.only(
-                                      left: 20, right: 20, top: 10),
-                                  child: BlurryContainer(
-                                      blur: 5,
-                                      color: Colors.black12,
-                                      child: Column(
-                                        // crossAxisAlignment:
-                                        //     CrossAxisAlignment.start,
-                                        // mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            width: Get.width * 0.3,
-                                            height: Get.width * 0.3,
-                                            child: SvgPicture.asset(
-                                              horoscopeController
-                                                  .getZodiacImage(
-                                                      horoscopeController
-                                                              .title[index]
-                                                          ["title"]),
-                                              fit: BoxFit.scaleDown,
-                                              colorFilter:
-                                                  const ColorFilter.mode(
-                                                      Colors.white,
-                                                      BlendMode.srcIn),
+                        child: RefreshIndicator(
+                          color: Colors.white,
+                          backgroundColor: Colors.blue,
+                          strokeWidth: 4.0,
+                          onRefresh: () async {
+                            Future.delayed(const Duration(milliseconds: 500),
+                                () {
+                              horoscopeController.initData();
+                            });
+                          },
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              padding:
+                                  const EdgeInsets.only(bottom: 30, top: 30),
+                              itemCount: horoscopeController.title.length,
+                              itemBuilder: (context, index) => Container(
+                                    margin: const EdgeInsets.only(
+                                        left: 20, right: 20, top: 10),
+                                    child: BlurryContainer(
+                                        blur: 5,
+                                        color: Colors.black12,
+                                        child: Column(
+                                          // crossAxisAlignment:
+                                          //     CrossAxisAlignment.start,
+                                          // mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              width: Get.width * 0.3,
+                                              height: Get.width * 0.3,
+                                              child: SvgPicture.asset(
+                                                horoscopeController
+                                                    .getZodiacImage(
+                                                        horoscopeController
+                                                                .title[index]
+                                                            ["title"]),
+                                                fit: BoxFit.scaleDown,
+                                                colorFilter:
+                                                    const ColorFilter.mode(
+                                                        Colors.white,
+                                                        BlendMode.srcIn),
+                                              ),
                                             ),
-                                          ),
-                                          cHeight(12),
-                                          // textTitleMedium(
-                                          //     text: horoscopeController
-                                          //         .title[index]["title"],
-                                          //     color: Colors.white),
-                                          SelectableText(
-                                            horoscopeController.title[index]
-                                                    ["title"]
-                                                .toString()
-                                                .trim(),
-                                            style: josefinSans(
-                                                fontWeight: FontWeight.w800,
-                                                color: Colors.white,
-                                                fontSize: 20),
-                                          ),
-                                          SelectableText(
-                                            horoscopeController.subTitle[index]
-                                                    ["title"]
-                                                .toString()
-                                                .trim(),
-                                            style: josefinSans(
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white,
-                                                fontSize: 17),
-                                          ),
-                                          const Divider(
-                                            color: Colors.white30,
-                                          ),
-                                          // textBodySmall(
-                                          //     text: horoscopeController
-                                          //         .elements[index]["title"],
-                                          //     color: Colors.white60,
-                                          //     textAlign: TextAlign.center),
-                                          SelectableText(
-                                            horoscopeController.elements[index]
-                                                    ["title"]
-                                                .toString()
-                                                .trim(),
-                                            style: josefinSans(
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.white60,
-                                                fontSize: 14),
-                                          ),
-                                          cHeight(8),
-                                        ],
-                                      )),
-                                )),
+                                            cHeight(12),
+                                            // textTitleMedium(
+                                            //     text: horoscopeController
+                                            //         .title[index]["title"],
+                                            //     color: Colors.white),
+                                            SelectableText(
+                                              horoscopeController.title[index]
+                                                      ["title"]
+                                                  .toString()
+                                                  .trim(),
+                                              style: josefinSans(
+                                                  fontWeight: FontWeight.w800,
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            SelectableText(
+                                              horoscopeController
+                                                  .subTitle[index]["title"]
+                                                  .toString()
+                                                  .trim(),
+                                              style: josefinSans(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                  fontSize: 17),
+                                            ),
+                                            const Divider(
+                                              color: Colors.white30,
+                                            ),
+                                            // textBodySmall(
+                                            //     text: horoscopeController
+                                            //         .elements[index]["title"],
+                                            //     color: Colors.white60,
+                                            //     textAlign: TextAlign.center),
+                                            SelectableText(
+                                              horoscopeController
+                                                  .elements[index]["title"]
+                                                  .toString()
+                                                  .trim(),
+                                              style: josefinSans(
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Colors.white60,
+                                                  fontSize: 14),
+                                            ),
+                                            cHeight(8),
+                                          ],
+                                        )),
+                                  )),
+                        ),
                       )),
                   SafeArea(
                     child: Align(

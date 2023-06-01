@@ -11,23 +11,22 @@ class HoroscopeController extends GetxController
   @override
   Future<void> onInit() async {
     changeUI();
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      initData();
-    });
+    // Future.delayed(const Duration(milliseconds: 500), () {
+    //   initData();
+    // });
     super.onInit();
   }
 
   Future<void> initData() async {
     loadingUI();
-
-    if (await webScraper.loadWebPage('/horoscopes')) {
+    if (await webScraper.loadWebPage('/horoscopes/')) {
       title = webScraper.getElement('h3.horoscope__heading > a', ['']);
     }
-    if (await webScraper.loadWebPage('/horoscopes')) {
+    if (await webScraper.loadWebPage('/horoscopes/')) {
       subTitle = webScraper.getElement('span.horoscope__date', ['']);
     }
-    if (await webScraper.loadWebPage('/horoscopes')) {
-      elements = webScraper.getElement('div.horoscope__description > p', ['']);
+    if (await webScraper.loadWebPage('/horoscopes/')) {
+      elements = webScraper.getElement('div.layout__inner > div.horoscope > div.horoscope__description > p', ['']);
       // print(jsonEncode(elements));
     }
 
