@@ -6,6 +6,7 @@ import 'package:lavenz/c_lang/c_translations.dart';
 import 'package:lavenz/c_theme/c_theme.dart';
 import 'package:lavenz/config/config.dart';
 import 'package:lavenz/config/get_config.dart';
+import 'package:lavenz/modules/home/home_screen.dart';
 import 'package:lavenz/modules/init.dart';
 import 'package:lavenz/modules/routers.dart';
 import 'package:flutter/cupertino.dart';
@@ -66,7 +67,8 @@ class MyApp extends StatelessWidget {
       //supportedLocales: const [Locale('vn'),Locale('u')],
       transitionDuration: const Duration(milliseconds: 300),
       defaultTransition: Transition.fadeIn,
-      initialRoute: SplashScreen.routeName,
+      // initialRoute: SplashScreen.routeName,
+      initialRoute: HomeScreen.routeName,
     );
   }
 }

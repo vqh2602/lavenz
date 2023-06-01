@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:lavenz/widgets/color_custom.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,27 +15,44 @@ Widget searchBar(
     // margin: const EdgeInsets.symmetric(horizontal: 4 * 5),
     width: Get.width * width,
     decoration: BoxDecoration(
-      color: Colors.grey.withOpacity(0.05),
+      color: colorF3.withOpacity(0.1),
       borderRadius: BorderRadius.circular(30),
     ),
     child: TextField(
       onChanged: onChange,
       controller: controller,
       textAlign: TextAlign.left,
-      decoration: const InputDecoration(
+      style: josefinSans(
+        fontSize: 14,
+        color: Colors.white,
+      ),
+      decoration: InputDecoration(
         // contentPadding: EdgeInsets.all(4 * 3),
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        hintText: "Tìm kiếm ...",
-        hintStyle: TextStyle(
-          color: Colors.grey,
-          fontSize: 12,
+        contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        border: const OutlineInputBorder(),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+          borderSide: const BorderSide(
+            color: Colors.white,
+            width: 0.7,
+          ),
         ),
-        prefixIcon: Icon(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(
+            color: Colors.white,
+            width: 0.7,
+          ),
+        ),
+        hintText: "Tìm kiếm ...",
+        hintStyle: josefinSans(
+          fontSize: 14,
+          color: Colors.white,
+        ),
+        prefixIcon: const Icon(
           LucideIcons.search,
-          size: 16,
+          size: 30,
+          color: Colors.white,
         ),
       ),
     ),

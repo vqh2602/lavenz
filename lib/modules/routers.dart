@@ -9,6 +9,8 @@ import 'package:lavenz/modules/home/home_binding.dart';
 import 'package:lavenz/modules/home/home_screen.dart';
 import 'package:lavenz/modules/setting/setting_binding.dart';
 import 'package:lavenz/modules/setting/setting_screen.dart';
+import 'package:lavenz/modules/sound/all_sound/all_sound_binding.dart';
+import 'package:lavenz/modules/sound/all_sound/all_sound_screen.dart';
 import 'package:lavenz/modules/sound/sound_binding.dart';
 import 'package:lavenz/modules/sound/sound_screen.dart';
 import 'package:lavenz/modules/sound_control/sound_control_binding.dart';
@@ -93,5 +95,10 @@ List<GetPage> routes = [
     name: QuoteScreen.routeName,
     page: () => const QuoteScreen(),
     binding: QuoteBinding(),
+  ),
+  GetPage(
+    name: AllSoundScreen.routeName,
+    page: () => const AllSoundScreen(),
+    binding: AllSoundBinding(),
   ),
 ];

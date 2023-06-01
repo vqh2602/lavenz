@@ -173,7 +173,8 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Đi vào giấc ngủ'.tr),
+              title: 'Đi vào giấc ngủ'.tr,
+              type: 17),
           cHeight(12),
           buildListItem1x1(
               onTap: (sound, data) async {
@@ -184,7 +185,8 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
                   .toList(),
               pathImages:
                   '${soundController.downloadAssetsController.assetsDir}/images/',
-              title: 'Tập trung cao độ'.tr),
+              title: 'Tập trung cao độ'.tr,
+              type: 13),
           cHeight(12),
           buildItem4x3(
               des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
