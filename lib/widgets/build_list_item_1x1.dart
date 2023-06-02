@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/data/models/sound.dart';
+import 'package:lavenz/modules/sound/all_sound/all_sound_screen.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:lavenz/widgets/widgets.dart';
 
@@ -12,7 +13,8 @@ Widget buildListItem1x1(
     {required String title,
     required Function(String, dynamic) onTap,
     required List<Data> listData,
-    required String pathImages}) {
+    required String pathImages,
+    required num type}) {
   return SizedBox(
     height: 330,
     child: Column(
@@ -27,7 +29,12 @@ Widget buildListItem1x1(
                 color: Colors.white,
               ),
               GFButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(
+                    AllSoundScreen.routeName,
+                    arguments: {'musicType': type},
+                  );
+                },
                 shape: GFButtonShape.pills,
                 color: Colors.transparent,
                 child: textBodySmall(
