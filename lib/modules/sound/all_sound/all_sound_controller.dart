@@ -18,18 +18,20 @@ class AllSoundController extends GetxController
 
   @override
   Future<void> onInit() async {
-    super.onInit();
+    await getDataAllSound(musicType);
     loadingUI();
     changeUI();
-    await getDataAllSound();
-    print('listmusic: $listAllMusic');
-    print('list ${musicType.runtimeType == num}');
+    super.onInit();
   }
 
-  Future<void> getDataAllSound() async {
+  Future<void> getDataAllSound(musicType) async {
     listAllMusic.addAll(soundController.listMusic
-        .where((element) => element.tag?.contains(17) ?? false)
+        .where((element) =>
+            element.tag!.contains(num.tryParse(musicType.toString())))
         .toList());
+
+    listAllMusicResult.addAll(listAllMusic);
+
     updateUI();
     changeUI();
   }

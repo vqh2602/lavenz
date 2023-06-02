@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,6 +29,7 @@ class _AllSoundScreenState extends State<AllSoundScreen>
   void initState() {
     super.initState();
     allSoundController.musicType = musicType;
+    allSoundController.getDataAllSound(musicType);
   }
 
   @override
@@ -146,7 +146,7 @@ class _AllSoundScreenState extends State<AllSoundScreen>
       (state) => Container(
         margin: const EdgeInsets.only(top: 4 * 15),
         child: ListView.builder(
-          itemCount: allSoundController.listAllMusic.length,
+          itemCount: allSoundController.listAllMusicResult.length,
           shrinkWrap: false,
           primary: true,
           scrollDirection: Axis.vertical,
@@ -155,8 +155,8 @@ class _AllSoundScreenState extends State<AllSoundScreen>
               (state) => InkWell(
                 onTap: () {
                   soundController.onPlayMusic(
-                    allSoundController.listAllMusic[i].sound ?? '',
-                    allSoundController.listAllMusic[i],
+                    allSoundController.listAllMusicResult[i].sound ?? '',
+                    allSoundController.listAllMusicResult[i],
                   );
                 },
                 child: Container(
@@ -171,7 +171,7 @@ class _AllSoundScreenState extends State<AllSoundScreen>
                         borderRadius: BorderRadius.circular(16.0),
                         child: Image.file(
                           File(
-                              '${soundController.downloadAssetsController.assetsDir}/images/${allSoundController.listAllMusic[i].image}'),
+                              '${soundController.downloadAssetsController.assetsDir}/images/${allSoundController.listAllMusicResult[i].image}'),
                           errorBuilder: (context, object, stackTrace) {
                             return SizedBox(
                               height: double.infinity,
@@ -192,13 +192,14 @@ class _AllSoundScreenState extends State<AllSoundScreen>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             textTitleSmall(
-                                text: allSoundController.listAllMusic[i].name ??
+                                text: allSoundController
+                                        .listAllMusicResult[i].name ??
                                     '',
                                 color: Colors.white),
                             textBodySmall(
-                              text:
-                                  allSoundController.listAllMusic[i].describe ??
-                                      '',
+                              text: allSoundController
+                                      .listAllMusicResult[i].describe ??
+                                  '',
                               color: Colors.white,
                               maxLines: 3,
                               fontWeight: FontWeight.w100,
