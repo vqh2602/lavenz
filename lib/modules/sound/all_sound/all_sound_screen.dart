@@ -1,12 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/modules/sound/all_sound/all_sound_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
+import 'package:lavenz/widgets/build_list_sound_item.dart';
 import 'package:lavenz/widgets/color_custom.dart';
-import 'package:lavenz/widgets/text_custom.dart';
 import 'package:lavenz/widgets/widgets.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
@@ -29,7 +27,6 @@ class _AllSoundScreenState extends State<AllSoundScreen>
   void initState() {
     super.initState();
     allSoundController.musicType = musicType;
-    allSoundController.getDataAllSound(musicType);
   }
 
   @override
@@ -123,11 +120,37 @@ class _AllSoundScreenState extends State<AllSoundScreen>
                   color: Colors.white,
                   width: 1,
                 ),
-                color: colorF3.withOpacity(0.1),
+                color: colorF3.withOpacity(0.3),
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () => filterAlertTags(
+                  result: allSoundController.listTagMusic,
+                  choices: allSoundController.listTagMusicChoices,
+                  onChange: (tag) {
+                    bool add = true;
+                    if (allSoundController.listTagMusicChoices.isNotEmpty) {
+                      for (var item in allSoundController.listTagMusicChoices) {
+                        if (item?.id == tag?.id) {
+                          allSoundController.listTagMusicChoices.remove(item);
+                          add = false;
+                          break;
+                        }
+                      }
+                    } else {
+                      // foodController.listTagsWorkoutsChoices
+                      //     .add(tag);
+                    }
+                    add
+                        ? allSoundController.listTagMusicChoices.add(tag)
+                        : null;
+                    allSoundController.changeUI();
+                    allSoundController.updateUI();
+                  },
+                  onSubmit: () {
+                    allSoundController.searchListSoundInTag();
+                  },
+                ),
                 icon: const Icon(
                   LucideIcons.filter,
                   color: Colors.white,
@@ -152,66 +175,8 @@ class _AllSoundScreenState extends State<AllSoundScreen>
           scrollDirection: Axis.vertical,
           itemBuilder: (context, i) {
             return allSoundController.obx(
-              (state) => InkWell(
-                onTap: () {
-                  soundController.onPlayMusic(
-                    allSoundController.listAllMusicResult[i].sound ?? '',
-                    allSoundController.listAllMusicResult[i],
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4 * 6,
-                    vertical: 4 * 2,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16.0),
-                        child: Image.file(
-                          File(
-                              '${soundController.downloadAssetsController.assetsDir}/images/${allSoundController.listAllMusicResult[i].image}'),
-                          errorBuilder: (context, object, stackTrace) {
-                            return SizedBox(
-                              height: double.infinity,
-                              child: Image.asset(
-                                'assets/images/image_notfound.jpg',
-                                fit: BoxFit.fill,
-                              ),
-                            );
-                          },
-                          fit: BoxFit.cover,
-                          height: 75.0,
-                          width: 75.0,
-                        ),
-                      ),
-                      cWidth(4 * 4),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            textTitleSmall(
-                                text: allSoundController
-                                        .listAllMusicResult[i].name ??
-                                    '',
-                                color: Colors.white),
-                            textBodySmall(
-                              text: allSoundController
-                                      .listAllMusicResult[i].describe ??
-                                  '',
-                              color: Colors.white,
-                              maxLines: 3,
-                              fontWeight: FontWeight.w100,
-                              overflow: TextOverflow.ellipsis,
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+              (state) => buildListSoundItem(
+                  index: i, listData: allSoundController.listAllMusicResult),
             );
           },
         ),
