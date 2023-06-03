@@ -51,7 +51,9 @@ Widget buildListSoundItem({
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                cHeight(4),
                 textTitleSmall(
                     text: listData[index].name ?? '', color: Colors.white),
                 textBodySmall(

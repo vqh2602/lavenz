@@ -13,7 +13,7 @@ class F {
       case Flavor.dev:
         return 'Lavenz (dev)';
       case Flavor.prod:
-        return 'Lavenz (prod)';
+        return 'Lavenz ';
       default:
         return 'title';
     }

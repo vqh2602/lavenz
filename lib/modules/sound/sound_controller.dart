@@ -75,25 +75,24 @@ class SoundController extends GetxController
   Future initLocalData() async {
     await downloadAssetsController.init();
     try {
-  String data =
-      await File('${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+      String data = await File(
+              '${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
           .readAsString();
-  String dataTag =
-      await File('${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
+      String dataTag = await File(
+              '${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
           .readAsString();
-  soundData = sound.Sound.fromJson(jsonDecode(data));
-  tagData = tag.Tag.fromJson(jsonDecode(dataTag));
-  listSound =
-      soundData.data?.where((element) => element.type == 1).toList() ?? [];
-  listMusic =
-      soundData.data?.where((element) => element.type == 2).toList() ?? [];
-  listTagSound = tagData.data
-          ?.where((element) => num.parse(element.type.toString()) == 1)
-          .toList() ??
-      [];
-  dataTab.addAll(listTagSound.map((e) => e.name ?? '').toList());
-}catch (_) {
-}
+      soundData = sound.Sound.fromJson(jsonDecode(data));
+      tagData = tag.Tag.fromJson(jsonDecode(dataTag));
+      listSound =
+          soundData.data?.where((element) => element.type == 1).toList() ?? [];
+      listMusic =
+          soundData.data?.where((element) => element.type == 2).toList() ?? [];
+      listTagSound = tagData.data
+              ?.where((element) => num.parse(element.type.toString()) == 1)
+              .toList() ??
+          [];
+      dataTab.addAll(listTagSound.map((e) => e.name ?? '').toList());
+    } catch (_) {}
     //print('listMusic: ${listMusic.length}');
     // print('sond path ${downloadAssetsController.assetsDir}');
     // if(downloaded){
@@ -139,15 +138,16 @@ class SoundController extends GetxController
     } else {
       buildToast(
         status: TypeToast.toastDefault,
-        message: 'Đang tải và phát...'.tr,
+        message: 'Đang tải và phát: ${data.name}...'.tr,
       );
       soundControlController.loadingUI();
-      loadingUI();
+      // loadingUI();
       await soundControlController.clearAllMusic();
       Future.delayed(const Duration(seconds: 1), () async {
         await playSound(sound: sound, data: data);
         soundControlController.changeUI();
-        changeUI();
+        //changeUI();
+        updateUI();
       });
       soundControlController.updateUI();
     }

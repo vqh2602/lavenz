@@ -40,23 +40,23 @@ class _AllSoundScreenState extends State<AllSoundScreen>
     return buildBody(
       context: context,
       body: _buildBody(),
-      appBar: AppBar(
-        titleSpacing: 0,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(
-            LucideIcons.x,
-            color: Colors.white,
-            size: 36,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   titleSpacing: 0,
+      //   elevation: 0,
+      //   scrolledUnderElevation: 0,
+      //   backgroundColor: Colors.transparent,
+      //   surfaceTintColor: Colors.transparent,
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       Get.back();
+      //     },
+      //     icon: const Icon(
+      //       LucideIcons.x,
+      //       color: Colors.white,
+      //       size: 36,
+      //     ),
+      //   ),
+      // ),
     );
   }
 
@@ -103,17 +103,31 @@ class _AllSoundScreenState extends State<AllSoundScreen>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              margin: const EdgeInsets.only(top: 4, bottom: 4),
-              child: searchBar(
-                width: 0.75,
-                controller: allSoundController.searchTE,
-                onChange: (value) {
-                  allSoundController.searchListMusic(search: value);
-                },
+            IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(
+                LucideIcons.x,
+                color: Colors.white,
+                size: 36,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                margin: const EdgeInsets.only(top: 4, bottom: 4),
+                child: searchBar(
+                  width: double.infinity,
+                  controller: allSoundController.searchTE,
+                  onChange: (value) {
+                    allSoundController.searchListMusic(search: value);
+                  },
+                ),
               ),
             ),
             // filterButton(context),
+            cWidth(8),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
@@ -170,8 +184,8 @@ class _AllSoundScreenState extends State<AllSoundScreen>
         margin: const EdgeInsets.only(top: 4 * 15),
         child: ListView.builder(
           itemCount: allSoundController.listAllMusicResult.length,
-          shrinkWrap: false,
-          primary: true,
+          shrinkWrap: true,
+          primary: true, 
           scrollDirection: Axis.vertical,
           itemBuilder: (context, i) {
             return allSoundController.obx(

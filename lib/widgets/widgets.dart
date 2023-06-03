@@ -9,12 +9,12 @@ import 'package:lucide_icons/lucide_icons.dart';
 import 'package:lavenz/data/models/tag.dart' as tag;
 
 Widget searchBar(
-    {double width = 1,
+    {double? width,
     Function(String)? onChange,
     required TextEditingController controller}) {
   return Container(
     // margin: const EdgeInsets.symmetric(horizontal: 4 * 5),
-    width: Get.width * width,
+    width:width ?? Get.width ,
     decoration: BoxDecoration(
       color: colorF3.withOpacity(0.3),
       borderRadius: BorderRadius.circular(30),

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		36591FF12A05E271000FFBC5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36591FF02A05E271000FFBC5 /* StoreKit.framework */; };
-		36DFD0E42A18944100618848 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 36DFD0E32A18944100618848 /* StoreKitTestCertificate.cer */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		60B09D2A254D1789E3C990FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FFDEE9A0521C602B5CDC107 /* GoogleService-Info.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -41,7 +40,6 @@
 		36137DF32A078102006F3E7A /* lavenzDEV.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = lavenzDEV.storekit; sourceTree = "<group>"; };
 		36591FF02A05E271000FFBC5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		367227AE2A04A09700927C89 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
-		36DFD0E32A18944100618848 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../../../../../Downloads/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3C6229E7C0F3206CF8859215 /* Pods-Runner.release-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dev.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dev.xcconfig"; sourceTree = "<group>"; };
 		3FFDEE9A0521C602B5CDC107 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				36137DF32A078102006F3E7A /* lavenzDEV.storekit */,
-				36DFD0E32A18944100618848 /* StoreKitTestCertificate.cer */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -236,7 +233,6 @@
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
-				36DFD0E42A18944100618848 /* StoreKitTestCertificate.cer in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				8A0D12B572F262F7C0C3C595 /* devLaunchScreen.storyboard in Resources */,
 				9694BD2673459EEB18F3F209 /* prodLaunchScreen.storyboard in Resources */,
@@ -494,7 +490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -517,7 +513,7 @@
 			baseConfigurationReference = 68CD01D23F58DEEA94378041 /* Pods-Runner.debug-dev.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				INFOPLIST_KEY_CFBundleDisplayName = Lavenz;
 				MARKETING_VERSION = 1.0.0;
@@ -530,7 +526,7 @@
 			baseConfigurationReference = 48734F907E0121BE9BA1D2F3 /* Pods-Runner.profile-dev.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				INFOPLIST_KEY_CFBundleDisplayName = Lavenz;
 				MARKETING_VERSION = 1.0.0;
@@ -543,7 +539,7 @@
 			baseConfigurationReference = 3C6229E7C0F3206CF8859215 /* Pods-Runner.release-dev.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				INFOPLIST_KEY_CFBundleDisplayName = Lavenz;
 				MARKETING_VERSION = 1.0.0;
@@ -556,7 +552,7 @@
 			baseConfigurationReference = 7D2AA1335990B91A4A7B50D0 /* Pods-Runner.debug-prod.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				INFOPLIST_KEY_CFBundleDisplayName = Lavenz;
 				MARKETING_VERSION = 1.0.0;
@@ -569,7 +565,7 @@
 			baseConfigurationReference = 814B97674C1C21C85986CD2E /* Pods-Runner.profile-prod.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				INFOPLIST_KEY_CFBundleDisplayName = Lavenz;
 				MARKETING_VERSION = 1.0.0;
@@ -582,7 +578,7 @@
 			baseConfigurationReference = FA14C8126DA5563E752DF835 /* Pods-Runner.release-prod.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				INFOPLIST_KEY_CFBundleDisplayName = Lavenz;
 				MARKETING_VERSION = 1.0.0;
@@ -920,7 +916,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -946,7 +942,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = F54V2R3D84;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
