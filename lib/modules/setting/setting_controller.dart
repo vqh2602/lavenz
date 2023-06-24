@@ -189,6 +189,19 @@ class SettingController extends GetxController
     );
   }
 
+  Future<void> deleteAllData() async {
+    onPopDialog(
+        context: Get.context!,
+        title: 'Bạn muốn xoá tất cả dữ liệu?'.tr,
+        onCancel: () {
+          Get.back(result: false);
+        },
+        onSubmit: () async {
+          await downloadAssetsController.clearAssets();
+          await clearAndResetApp();
+        });
+  }
+
   changeUI() {
     change(null, status: RxStatus.success());
   }

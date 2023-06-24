@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 import 'package:lavenz/data/models/down.dart' as down;
 import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/data/repositories/new_ver_repo.dart';
+import 'package:lavenz/data/storage.dart';
+import 'package:lavenz/modules/vip/vip_controller.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/dialog_down.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
@@ -21,6 +23,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class HomeController extends GetxController
     with GetTickerProviderStateMixin, StateMixin, UserMixin, ADmodMixin {
+  VipController vipController = Get.find();
   int selectItemScreen = 0;
   PageController pageController = PageController(
     viewportFraction: 1.0,
@@ -64,11 +67,11 @@ class HomeController extends GetxController
   }
 
   Future<void> initInterstitialAd() async {
-    if(!checkExpiry(user: user)) {
+    if (!checkExpiry(user: user)) {
       timer = Timer.periodic(
-        const Duration(minutes: 5),
-        (_) async =>
-            {await createInitInterstitialAd(), interstitialAd?.show()});
+          const Duration(minutes: 5),
+          (_) async =>
+              {await createInitInterstitialAd(), interstitialAd?.show()});
     }
   }
 
@@ -146,7 +149,7 @@ class HomeController extends GetxController
             .exists();
     log('check down: $downloaded | $checkAllFile | ${downloadAssetsController.assetsDir}');
     log('check user vip: ${checkExpiry(user: user)} | ${user.toJson()}');
-
+    renewSubscriptions(checkExpiry(user: user));
     // if(downloaded){
     //   await downloadAssetsController.clearAssets();
     // }
@@ -158,7 +161,23 @@ class HomeController extends GetxController
       );
       Get.dialog(
         obx((state) => dialogDown(
-            process: message, speed: speedInternet, isDone: downloaded)),
+            process: message,
+            speed: speedInternet,
+            size: downLink.size,
+            reloadDown: () async {
+              onPopDialog(
+                  context: Get.context!,
+                  title: "Khởi động lại quá trình tải?".tr,
+                  onCancel: () async {
+                    Get.back();
+                  },
+                  onSubmit: () async {
+                    Get.close(2);
+                    await downloadAssetsController.clearAssets();
+                    clearAndResetApp();
+                  });
+            },
+            isDone: downloaded)),
         barrierDismissible: false,
       );
       _downloadAssets();
@@ -208,7 +227,8 @@ class HomeController extends GetxController
           onProgress: (progressValue) {
             downloaded = false;
             if (progressValue < 100) {
-              message = 'Đang tải - ${progressValue.toStringAsFixed(2)} %';
+              message = "Đang tải".trParams(
+                  {'process': '${progressValue.toStringAsFixed(2)} %'});
               updateUI();
               // print(message);
             } else {
@@ -252,6 +272,14 @@ class HomeController extends GetxController
       onUploadComplete: (TestResult data) {},
       onCancel: () {},
     );
+  }
+
+// tự động làm mới
+  Future<void> renewSubscriptions(bool isVip) async {
+    bool isRenew = await box.read(Storages.dataRenewSub);
+    if (!isVip && isRenew) {
+      vipController.restorePucharses();
+    }
   }
 
   changeUI() {

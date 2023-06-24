@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lavenz/c_lang/c_translations.dart';
@@ -13,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lavenz/modules/splash/splash_screen.dart';
+import 'firebase_analytics_service/firebase_analytics_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -27,14 +27,14 @@ Future<void> main() async {
   await initialize();
   runApp(
     Phoenix(
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  final firebaseAnalyticsService = FirebaseAnalyticsService();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -43,6 +43,9 @@ class MyApp extends StatelessWidget {
       getPages: routes,
       locale: Get.deviceLocale,
       translations: Messages(),
+      navigatorObservers: [
+        firebaseAnalyticsService.appAnalyticsObserver(),
+      ],
       fallbackLocale: const Locale('vi', 'VN'),
       theme: SThemeTask.lightTheme,
       darkTheme: SThemeTask.darkTheme,

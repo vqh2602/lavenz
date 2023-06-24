@@ -8,8 +8,14 @@ import 'package:lavenz/widgets/color_custom.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:lavenz/widgets/widgets.dart';
 import 'package:lottie/lottie.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
-Widget dialogDown({dynamic process, dynamic speed, bool isDone = false}) {
+Widget dialogDown(
+    {dynamic process,
+    dynamic speed,
+    String? size,
+    required Function reloadDown,
+    bool isDone = false}) {
   return AlertDialog(
       elevation: 0,
       backgroundColor: Colors.transparent,
@@ -27,8 +33,24 @@ Widget dialogDown({dynamic process, dynamic speed, bool isDone = false}) {
               child: Column(
                 children: [
                   cHeight(12),
-                  textTitleMedium(
-                      text: 'Yêu cầu tải gói dữ liệu'.tr, color: Colors.white),
+                  Wrap(
+                    spacing: 4,
+                    alignment: WrapAlignment.start,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      textTitleMedium(
+                          text: 'Yêu cầu tải gói dữ liệu'.tr + (' - $size'),
+                          color: Colors.white),
+                      IconButton(
+                          onPressed: () async {
+                            await reloadDown();
+                          },
+                          icon: const Icon(
+                            LucideIcons.refreshCw,
+                            color: Colors.white,
+                          ))
+                    ],
+                  ),
                   cHeight(8),
                   textBodySmall(
                       text:
@@ -40,9 +62,12 @@ Widget dialogDown({dynamic process, dynamic speed, bool isDone = false}) {
                           'Lưu ý: Trong quá trình tải không đóng ứng dụng, tắt màn hình...'
                               .tr,
                       color: Colors.white),
-                  isDone
-                      ? Lottie.asset('assets/animation/welldone.json')
-                      : Lottie.asset('assets/background/loadding_dowb.json'),
+                  SizedBox(
+                    height: Get.height * 0.2,
+                    child: isDone
+                        ? Lottie.asset('assets/animation/welldone.json')
+                        : Lottie.asset('assets/background/loadding_dowb.json'),
+                  ),
                   textTitleSmall(text: '$process', color: Colors.white),
                   textBodySmall(
                       text: 'Tốc độ internet:'.trParams({'speed': speed}),
@@ -75,16 +100,18 @@ Widget dialogChoseSever({List<Widget>? choise}) {
                         children: [
                           cHeight(12),
                           textTitleMedium(
-                              text: 'Chọn máy chủ', color: Colors.white),
+                              text: 'Chọn máy chủ'.tr, color: Colors.white),
                           cHeight(12),
                           if (choise != null) ...choise,
                           cHeight(8),
                           textBodySmall(
                               text:
-                                  'Nếu máy chủ mặc định bị lỗi bạn có thể chọn các máy chủ dự phòng khác',
+                                  'Nếu máy chủ mặc định bị lỗi bạn có thể chọn các máy chủ dự phòng khác'
+                                      .tr,
                               color: Colors.white),
                           textBodySmall(
-                              text: 'Lưu ý: Máy chủ mặc định được chọn là one',
+                              text:
+                                  'Lưu ý: Máy chủ mặc định được chọn là one'.tr,
                               color: Colors.white),
                           cHeight(12),
                           Align(
@@ -95,7 +122,7 @@ Widget dialogChoseSever({List<Widget>? choise}) {
                               },
                               shape: GFButtonShape.pills,
                               color: Colors.white,
-                              child: textBodySmall(text: 'Xác nhận và tải'),
+                              child: textBodySmall(text: 'Xác nhận và tải'.tr),
                             ),
                           )
                         ],

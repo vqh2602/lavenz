@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/data/models/user.dart';
+import 'package:lavenz/data/storage.dart';
+import 'package:lavenz/firebase_analytics_service/firebase_analytics_service.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -17,6 +19,8 @@ class VipController extends GetxController
   List<String> vipOffer = [];
   late RiveAnimationController controller;
   User? user;
+  FirebaseAnalyticsService firebaseAnalyticsService =
+      FirebaseAnalyticsService();
 
   @override
   Future<void> onInit() async {
@@ -92,8 +96,8 @@ class VipController extends GetxController
       storeProductSelect = listProduct.isNotEmpty ? listProduct[0] : null;
 
       if (offerings?.current != null && offerings?.current!.monthly != null) {
-        //StoreProduct? product = 
-       // offerings?.current?.monthly?.storeProduct;
+        //StoreProduct? product =
+        // offerings?.current?.monthly?.storeProduct;
         //print('product ưu đãi: ${product}');
       }
     } catch (e) {
@@ -101,29 +105,30 @@ class VipController extends GetxController
     }
   }
 
-  Future<void> setConfigUserkey() async {
-    await Purchases.configure(PurchasesConfiguration('dsafhjjk'));
-  }
-
   Future<void> buyApp() async {
     loadingUI();
+    try {
+      customerInfo = await Purchases.purchasePackage(
+          storeProductSelect?.identifier == '1_month'
+              ? offerings!.current!.monthly!
+              : offerings!.current!.annual!);
 
-    customerInfo = await Purchases.purchasePackage(
-        storeProductSelect?.identifier == '1_month'
-            ? offerings!.current!.monthly!
-            : offerings!.current!.annual!);
-
-    if (customerInfo?.entitlements.all["premium"]?.isActive ?? false) {
-      // Unlock that great "pro" content
-      user = user?.copyWith(
-          latestPurchaseDate: DateTime.parse(
-              customerInfo!.entitlements.all["premium"]!.latestPurchaseDate),
-          identifier:
-              customerInfo!.entitlements.all["premium"]?.productIdentifier);
-      await saveUserInBox(user: user!);
-      buildToast(
-          message: 'Mua hàng thành công'.tr, status: TypeToast.toastSuccess);
-      clearAndResetApp();
+      if (customerInfo?.entitlements.all["premium"]?.isActive ?? false) {
+        // Unlock that great "pro" content
+        user = user?.copyWith(
+            latestPurchaseDate: DateTime.parse(
+                customerInfo!.entitlements.all["premium"]!.latestPurchaseDate),
+            identifier:
+                customerInfo!.entitlements.all["premium"]?.productIdentifier);
+        await saveUserInBox(user: user!);
+        buildToast(
+            message: 'Mua hàng thành công'.tr, status: TypeToast.toastSuccess);
+        await firebaseAnalyticsService.evenBuyApp();
+        clearAndResetApp();
+      }
+    } on Exception catch (_) {
+      buildToast(message: 'Có lỗi sảy ra'.tr, status: TypeToast.toastError);
+      changeUI();
     }
     // } on PlatformException catch (e) {
     //   var errorCode = PurchasesErrorHelper.getErrorCode(e);
@@ -151,13 +156,16 @@ class VipController extends GetxController
                   customerInfo!.entitlements.all["premium"]?.productIdentifier);
           saveUserInBox(user: user!);
           buildToast(
-              message: 'Khôi phục thành công'.tr, status: TypeToast.toastSuccess);
+              message: 'Khôi phục thành công'.tr,
+              status: TypeToast.toastSuccess);
+          await box.write(Storages.dataRenewSub, true);
           clearAndResetApp();
         } else {
           user = user?.copyWith(latestPurchaseDate: null, identifier: null);
           saveUserInBox(user: user!);
           buildToast(
               message: 'Khôi phục thất bại'.tr, status: TypeToast.toastError);
+          await box.write(Storages.dataRenewSub, false);
         }
       } on PlatformException catch (e) {
         var errorCode = PurchasesErrorHelper.getErrorCode(e);
@@ -181,7 +189,8 @@ class VipController extends GetxController
       (storeProductSelect?.identifier == '1_year')
           ? 'Tăng giới hạn mix âm thanh lên tối đa'.tr
           : 'Tăng giới hạn mix âm thanh lên 10'.tr,
-      if (storeProductSelect?.identifier == '1_year') 'Tiết kiệm lên đến 10%'.tr,
+      if (storeProductSelect?.identifier == '1_year')
+        'Tiết kiệm lên đến 10%'.tr,
     ]);
   }
 

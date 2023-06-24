@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+22
+version: 1.0.1+23
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -40,7 +40,7 @@ dependencies:
   get: ^4.6.5
   dio: ^5.1.1
   google_fonts: ^4.0.3
-  lucide_icons: ^0.171.0
+  lucide_icons: ^0.252.0
   animated_text_kit: ^4.2.2
   sqflite: ^2.2.7
   getwidget: ^3.1.1
@@ -57,22 +57,23 @@ dependencies:
   # audioplayers: ^4.0.1
   archive: ^3.3.7
   flutter_internet_speed_test: ^1.4.0
-  package_info_plus: ^3.1.2
+  package_info_plus: ^4.0.2
   just_audio: ^0.9.32
   just_audio_background: ^0.0.1-beta.9
   connectivity_plus: ^3.0.6
   shared_preferences: ^2.0.0
-  purchases_flutter: ^4.12.0
-  rive: ^0.10.4
-  sign_in_with_apple: ^4.3.0
+  purchases_flutter: ^5.1.0
+  rive: ^0.11.3
+  sign_in_with_apple: ^5.0.0
   font_awesome_flutter: ^10.4.0
   firebase_core: ^2.13.0
   google_sign_in: ^6.1.0
   flutter_phoenix: ^1.1.1
-  in_app_purchase_storekit: ^0.3.6+3
+  in_app_purchase_storekit: ^0.3.6+4
   chaleno: ^0.0.6
   web_scraper: ^0.1.4
   google_mobile_ads: ^3.0.0
+  firebase_analytics: ^10.4.3
   
   
   # flutter_flavor: ^3.1.1

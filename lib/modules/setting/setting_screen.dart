@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/modules/setting/setting_controller.dart';
 import 'package:lavenz/modules/vip/vip_screen.dart';
@@ -113,8 +116,20 @@ class _SettingScreenState extends State<SettingScreen> {
                       alignment: Alignment.topLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(top: 0),
-                        child: textBodySmall(
-                            text: 'Gói đăng kí'.tr, color: Colors.white70),
+                        child: Wrap(
+                          alignment: WrapAlignment.start,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          spacing: 4,
+                          children: [
+                            const Icon(
+                              LucideIcons.crown,
+                              color: Colors.white70,
+                              size: 20,
+                            ),
+                            textBodySmall(
+                                text: 'Gói đăng kí'.tr, color: Colors.white70),
+                          ],
+                        ),
                       ),
                     ),
                     Align(
@@ -159,12 +174,35 @@ class _SettingScreenState extends State<SettingScreen> {
                     )
                   ]),
                 ),
-                cHeight(12),
+                cHeight(4),
+                _blockItem(
+                  title: 'Mã định danh'.tr,
+                  onTap: () {
+                    Clipboard.setData(
+                            ClipboardData(text: settingController.user.id))
+                        .then((_) {
+                      buildToast(
+                          message: 'Copy: ${settingController.user.id}',
+                          status: TypeToast.toastDefault);
+                    });
+                  },
+                  icon: const Icon(
+                    LucideIcons.userCircle2,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
+                ),
+                cHeight(4),
                 _blockItem(
                   title: 'Mã đổi quà'.tr,
                   onTap: () {
                     settingController.checkShowAddGift();
                   },
+                  icon: const Icon(
+                    LucideIcons.gift,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
                 ),
               ]),
           cHeight(30),
@@ -178,21 +216,46 @@ class _SettingScreenState extends State<SettingScreen> {
                     color: Colors.white),
                 cHeight(12),
                 _blockItem(
-                    title: 'Phiên bản ứng dụng'.tr,
-                    onTap: () {
-                      buildToast(
-                          message: settingController.packageInfo?.version ?? '',
-                          status: TypeToast.toastDefault);
-                    },
-                    value: settingController.packageInfo?.version ?? ''),
+                  title: 'Phiên bản ứng dụng'.tr,
+                  onTap: () {
+                    buildToast(
+                        message: settingController.packageInfo?.version ?? '',
+                        status: TypeToast.toastDefault);
+                  },
+                  value: settingController.packageInfo?.version ?? '',
+                  icon: const Icon(
+                    LucideIcons.layoutPanelLeft,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
+                ),
                 cHeight(4),
                 _blockItem(
-                    title: 'Phiên bản dữ liệu'.tr,
-                    onTap: () {
-                      settingController.checkUpdateData();
-                    },
-                    value: settingController.oldVer["version_data"] ?? ''),
+                  title: 'Phiên bản dữ liệu'.tr,
+                  onTap: () {
+                    settingController.checkUpdateData();
+                  },
+                  value: settingController.oldVer["version_data"] ?? '',
+                  icon: const Icon(
+                    LucideIcons.database,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
+                ),
               ]),
+          cHeight(4),
+          _blockItem(
+            title: 'Xoá dữ liệu'.tr,
+            onTap: () {
+              settingController.deleteAllData();
+            },
+            icon: const Icon(
+              LucideIcons.packageMinus,
+              color: Colors.white70,
+              size: 20,
+            ),
+          ),
+          cHeight(4),
           cHeight(30),
           Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -208,14 +271,27 @@ class _SettingScreenState extends State<SettingScreen> {
                   onTap: () {
                     showWebInApp('https://www.facebook.com/vqhapps');
                   },
+                  icon: const Icon(
+                    LucideIcons.messagesSquare,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
                 ),
                 cHeight(4),
                 _blockItem(
-                  title: 'Điều khoản dịch vụ'.tr,
+                  title: Platform.isIOS
+                      ? 'Terms of Use (EULA)'.tr
+                      : 'Điều khoản dịch vụ'.tr,
                   onTap: () {
-                    showWebInApp(
-                        'https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html');
+                    showWebInApp(Platform.isAndroid
+                        ? 'https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html'
+                        : 'https://www.vqhapp.name.vn/p/eula-lavenz.html');
                   },
+                  icon: const Icon(
+                    LucideIcons.helpingHand,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
                 ),
                 cHeight(4),
                 _blockItem(
@@ -224,6 +300,11 @@ class _SettingScreenState extends State<SettingScreen> {
                     showWebInApp(
                         'https://vqhapps.blogspot.com/p/chinh-sach-bao-mat.html');
                   },
+                  icon: const Icon(
+                    LucideIcons.shield,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
                 ),
                 cHeight(4),
                 _blockItem(
@@ -231,6 +312,11 @@ class _SettingScreenState extends State<SettingScreen> {
                   onTap: () {
                     showWebInApp('https://vqhapps.blogspot.com/');
                   },
+                  icon: const Icon(
+                    LucideIcons.info,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
                 ),
                 cHeight(4),
                 _blockItem(
@@ -246,6 +332,11 @@ class _SettingScreenState extends State<SettingScreen> {
                         },
                         title: 'Bạn muốn đăng xuất'.tr);
                   },
+                  icon: const Icon(
+                    LucideIcons.logOut,
+                    color: Colors.white70,
+                    size: 20,
+                  ),
                 ),
               ])
         ],
@@ -254,7 +345,10 @@ class _SettingScreenState extends State<SettingScreen> {
   }
 
   Widget _blockItem(
-      {required String title, required Function onTap, String? value}) {
+      {required String title,
+      required Function onTap,
+      String? value,
+      Widget? icon}) {
     return Container(
       height: value != null ? 90 : 70,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 12),
@@ -269,7 +363,15 @@ class _SettingScreenState extends State<SettingScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                textBodySmall(text: title, color: Colors.white70),
+                Wrap(
+                  alignment: WrapAlignment.start,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 4,
+                  children: [
+                    if (icon != null) icon,
+                    textBodySmall(text: title, color: Colors.white70),
+                  ],
+                ),
                 IconButton(
                   onPressed: () {
                     onTap();

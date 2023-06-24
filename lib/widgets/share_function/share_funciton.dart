@@ -52,7 +52,8 @@ String? formatDate({required TypeDate type, required DateTime? dateTime}) {
 int daysBetween({required DateTime from, required DateTime to}) {
   from = DateTime(from.year, from.month, from.day);
   to = DateTime(to.year, to.month, to.day);
-  return (to.difference(from).inHours / 24).round();
+  int days = (to.difference(from).inHours / 24).round();
+  return days <= 0 ? 0 : days;
 }
 
 //tính buổi
@@ -148,7 +149,7 @@ String getLocalConvertString() {
 }
 
 showWebInApp(String url) async {
-  if (!await launchUrl(Uri.parse(url),mode: LaunchMode.inAppWebView)) {
+  if (!await launchUrl(Uri.parse(url), mode: LaunchMode.inAppWebView)) {
     throw Exception('Could not launch $url');
   }
 }

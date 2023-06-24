@@ -13,6 +13,8 @@ class Storages {
   static const String dataBiometric = 'data_biometric';
 // data quote trong ngày => 1 ngày chỉ lấy 1 quote
   static const String dataQuote = 'data_quote';
+  // data biến tự động làm mới giao dịch mua
+  static const String dataRenewSub = 'data_renewSub';
 }
 
 class Config {

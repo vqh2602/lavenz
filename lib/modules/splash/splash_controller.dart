@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:lavenz/data/storage.dart';
+import 'package:lavenz/firebase_analytics_service/firebase_analytics_service.dart';
 import 'package:lavenz/modules/auth/login/login_screen.dart';
 import 'package:lavenz/modules/home/home_screen.dart';
 import 'package:video_player/video_player.dart';
@@ -10,6 +11,7 @@ class SplashController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
   GetStorage box = GetStorage();
   VideoPlayerController? videoPlayerController;
+  FirebaseAnalyticsService firebaseAnalyticsService = FirebaseAnalyticsService();
 
   @override
   Future<void> onInit() async {
@@ -21,6 +23,7 @@ class SplashController extends GetxController
             videoPlayerController?.setLooping(true);
             videoPlayerController?.setVolume(0);
           });
+    firebaseAnalyticsService.evenFistOpen();
     changeUI();
   }
 

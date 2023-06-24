@@ -5,6 +5,8 @@ Map<String, String> vi = {
   "SECONDS": "GIÂY",
   "Tiếp tục với Apple": "Tiếp tục với Apple",
   "Tiếp tục với Google": "Tiếp tục với Google",
+  "Tiếp tục với TikTok": "Tiếp tục với TikTok",
+  "Tiếp tục với Facebook": "Tiếp tục với Facebook",
   "Đăng nhập để tiếp tục\n sử dụng ứng dụng":
       "Đăng nhập để tiếp tục\n sử dụng ứng dụng",
   "Khi bạn đăng nhập ứng dụng cũng có nghĩa sẽ đồng ý với các điều khoản của chúng tôi.":
@@ -70,7 +72,7 @@ Map<String, String> vi = {
   "Không giới hạn bản nhạc thư giãn": "Không giới hạn bản nhạc thư giãn",
   "Tăng giới hạn mix âm thanh lên tối đa":
       "Tăng giới hạn mix âm thanh lên tối đa",
-  "Tăng giới hạn mix âm thanh lên 10": "Tăng giới hạn mix âm thanh lên 11",
+  "Tăng giới hạn mix âm thanh lên 10": "Tăng giới hạn mix âm thanh lên 10",
   "Tiết kiệm lên đến 10%": "Tiết kiệm lên đến 10%",
   "Huỷ": "Huỷ",
   "Xác nhận": "Xác nhận",
@@ -110,6 +112,19 @@ Map<String, String> vi = {
   "Lá số tử vi": "Lá số tử vi",
   "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày":
       "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày",
-      "Châm ngôn":"Châm ngôn",
-      "Những câu châm ngôn mỗi ngày":"Những câu châm ngôn mỗi ngày"
+  "Châm ngôn": "Châm ngôn",
+  "Những câu châm ngôn mỗi ngày": "Những câu châm ngôn mỗi ngày",
+  "Chọn máy chủ": "Chọn máy chủ",
+  "Nếu máy chủ mặc định bị lỗi bạn có thể chọn các máy chủ dự phòng khác":
+      "Nếu máy chủ mặc định bị lỗi bạn có thể chọn các máy chủ dự phòng khác",
+  "Lưu ý: Máy chủ mặc định được chọn là one":
+      "Lưu ý: Máy chủ mặc định được chọn là one",
+  "Xác nhận và tải": "Xác nhận và tải",
+  "Có lỗi sảy ra": "Có lỗi sảy ra",
+  "Mã định danh": "Mã định danh",
+  "thiền định hẹn giờ và đếm thời gian": "thiền định hẹn giờ và đếm thời gian",
+  "Xoá dữ liệu": "Xoá dữ liệu",
+  "Bạn muốn xoá tất cả dữ liệu?": "Bạn muốn xoá tất cả dữ liệu?",
+  "Khởi động lại quá trình tải?": "Khởi động lại quá trình tải?",
+  "Đang tải": "Đang tải - @process",
 };

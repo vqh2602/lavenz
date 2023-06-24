@@ -5,6 +5,8 @@ Map<String, String> en = {
   "SECONDS": "SECONDS",
   "Tiếp tục với Apple": "Continue with Apple",
   "Tiếp tục với Google": "Continue with Google",
+  "Tiếp tục với TikTok": "Continue with TikTok",
+  "Tiếp tục với Facebook": "Continue with Facebook",
   "Đăng nhập để tiếp tục\n sử dụng ứng dụng":
       "Sign in to continue\n use the app",
   "Khi bạn đăng nhập ứng dụng cũng có nghĩa sẽ đồng ý với các điều khoản của chúng tôi.":
@@ -70,13 +72,13 @@ Map<String, String> en = {
   "Không giới hạn bản nhạc thư giãn": "Unlimited relaxing music",
   "Tăng giới hạn mix âm thanh lên tối đa":
       "Increase the limit of audio mixing to the maximum",
-  "Tăng giới hạn mix âm thanh lên 10": "Increase audio mix limit to 11",
+  "Tăng giới hạn mix âm thanh lên 10": "Increase audio mix limit to 10",
   "Tiết kiệm lên đến 10%": "Save up to 10%",
   "Huỷ": "Cancel",
   "Xác nhận": "Confirm",
   "Thông báo": "Notification",
-  "tối": "dark",
-  "sáng": "bright",
+  "tối": "evening",
+  "sáng": "morning",
   "trưa": "lunch",
   "chiều": "afternoon",
   "Mua hàng một cách nhanh chóng, đăng kí ngay": "Buy quickly, register now",
@@ -109,5 +111,18 @@ Map<String, String> en = {
   "thông tin chiêm tinh về cung hoàng đạo được làm mới mỗi ngày":
       "astrological information about the zodiac is refreshed every day",
   "Châm ngôn": "Proverbs",
-  "Những câu châm ngôn mỗi ngày": "Everyday Proverbs"
+  "Những câu châm ngôn mỗi ngày": "Everyday Proverbs",
+  "Chọn máy chủ": "Select host",
+  "Nếu máy chủ mặc định bị lỗi bạn có thể chọn các máy chủ dự phòng khác":
+      "If the default host was error you can select the host project project other",
+  "Lưu ý: Máy chủ mặc định được chọn là one":
+      "Note: The default server selected is one",
+  "Xác nhận và tải": "Confirm and load",
+  "Có lỗi sảy ra": "An error occurred",
+  "Mã định danh": "Identifiers",
+  "thiền định hẹn giờ và đếm thời gian": "Timer meditation and timer",
+  "Xoá dữ liệu": "Delete data",
+  "Bạn muốn xoá tất cả dữ liệu?": "Want to erase all data?",
+  "Khởi động lại quá trình tải?": "Restart the download?",
+  "Đang tải": "Loading - @process",
 };

@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/gestures.dart';
@@ -8,6 +9,7 @@ import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/button_custom.dart';
 import 'package:lavenz/widgets/color_custom.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
+import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:lavenz/widgets/widgets.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -167,20 +169,50 @@ class _VipScreenState extends State<VipScreen> {
                         const EdgeInsets.only(bottom: 20, left: 20, right: 20),
                     child: Wrap(
                       children: [
-                         Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: IconButton(
-                                        onPressed: () {
-                                          vipController.restorePucharses();
-                                        },
-                                        icon: textBodySmall(
-                                            text: 'Khôi phục mua hàng'.tr,
-                                            color: Colors.white70,
-                                            textAlign: TextAlign.right)),
-                                  )
-                                ,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            
+                            InkWell(
+                              onTap: () {
+                                showWebInApp(
+                                    'https://vqhapps.blogspot.com/p/chinh-sach-bao-mat.html');
+                              },
+                              child: textBodySmall(
+                                  text: 'Privacy Policy'.tr,
+                                  color: Colors.white70,
+                                  textAlign: TextAlign.right),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                showWebInApp(Platform.isAndroid
+                                    ? 'https://vqhapps.blogspot.com/p/ieu-khoan-va-ieu-kien.html'
+                                    : 'https://www.vqhapp.name.vn/p/eula-lavenz.html');
+                              },
+                              child: textBodySmall(
+                                  text: Platform.isIOS
+                                      ? 'Terms of Use (EULA)'.tr
+                                      : 'Terms & Conditions'.tr,
+                                  color: Colors.white70,
+                                  textAlign: TextAlign.right),
+                            ),
+                          ],
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: IconButton(
+                              onPressed: () {
+                                vipController.restorePucharses();
+                              },
+                              icon: textBodySmall(
+                                  text: 'Khôi phục mua hàng'.tr,
+                                  color: Colors.white70,
+                                  textAlign: TextAlign.right)),
+                        ),
                         buttonCustom(
-                          title: 'Đăng ký'.tr,
+                          title: 'Đăng ký'.tr +
+                              (' ${vipController.storeProductSelect?.identifier == '1_year' ? '1 năm'.tr : '1 tháng'.tr}') +
+                              (' ${vipController.storeProductSelect?.priceString ?? ''}'),
                           onTap: () {
                             vipController.buyApp();
                           },
