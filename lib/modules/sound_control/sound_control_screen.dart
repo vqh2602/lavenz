@@ -26,7 +26,7 @@ class SoundControlScreen extends StatefulWidget {
 }
 
 class _SoundControlScreenState extends State<SoundControlScreen>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+    with TickerProviderStateMixin {
   SoundControlController soundControlController = Get.find();
   HomeController homeController = Get.find();
   bool showHeader = true;
@@ -34,14 +34,12 @@ class _SoundControlScreenState extends State<SoundControlScreen>
   @override
   void initState() {
     soundControlController.initVideoBackground();
-    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
     //soundControlController.videoPlayerController?.dispose();
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -51,29 +49,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
 
     super.didChangeDependencies();
   }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        // --
-        // print('Resumed');
-        break;
-      case AppLifecycleState.inactive:
-        // --
-        // print('Inactive');
-        break;
-      case AppLifecycleState.paused:
-        // --
-        // print('Paused');
-        break;
-      case AppLifecycleState.detached:
-        // --
-        // print('Detached');
-        break;
-    }
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
