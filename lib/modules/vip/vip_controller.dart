@@ -108,10 +108,11 @@ class VipController extends GetxController
   Future<void> buyApp() async {
     loadingUI();
     try {
-      customerInfo = await Purchases.purchasePackage(
-          storeProductSelect?.identifier == '1_month'
-              ? offerings!.current!.monthly!
-              : offerings!.current!.annual!);
+      customerInfo = await Purchases.purchasePackage(storeProductSelect
+                  ?.identifier ==
+              (Platform.isAndroid ? '1_month:1-month-subscription' : '1_month')
+          ? offerings!.current!.monthly!
+          : offerings!.current!.annual!);
 
       if (customerInfo?.entitlements.all["premium"]?.isActive ?? false) {
         // Unlock that great "pro" content
@@ -186,10 +187,12 @@ class VipController extends GetxController
       '200+ hiệu ứng âm thanh thư giãn'.tr,
       'Không giới hạn tính năng nâng cao'.tr,
       'Không giới hạn bản nhạc thư giãn'.tr,
-      (storeProductSelect?.identifier == '1_year')
-          ? 'Tăng giới hạn mix âm thanh lên tối đa'.tr
-          : 'Tăng giới hạn mix âm thanh lên 10'.tr,
-      if (storeProductSelect?.identifier == '1_year')
+      (storeProductSelect?.identifier ==
+              (Platform.isAndroid ? '1_month:1-month-subscription' : '1_month'))
+          ? 'Tăng giới hạn mix âm thanh lên 10'.tr
+          : 'Tăng giới hạn mix âm thanh lên tối đa'.tr,
+      if (storeProductSelect?.identifier ==
+          (Platform.isAndroid ? '1_month:1-month-subscription' : '1_month'))
         'Tiết kiệm lên đến 10%'.tr,
     ]);
   }

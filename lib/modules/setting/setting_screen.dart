@@ -179,7 +179,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   title: 'Mã định danh'.tr,
                   onTap: () {
                     Clipboard.setData(
-                            ClipboardData(text: settingController.user.id))
+                            ClipboardData(text: settingController.user.id??''))
                         .then((_) {
                       buildToast(
                           message: 'Copy: ${settingController.user.id}',

@@ -276,8 +276,8 @@ class HomeController extends GetxController
 
 // tự động làm mới
   Future<void> renewSubscriptions(bool isVip) async {
-    bool isRenew = await box.read(Storages.dataRenewSub);
-    if (!isVip && isRenew) {
+    bool? isRenew = box.read(Storages.dataRenewSub);
+    if (!isVip && (isRenew ?? false)) {
       vipController.restorePucharses();
     }
   }

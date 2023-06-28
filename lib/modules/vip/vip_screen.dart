@@ -172,7 +172,6 @@ class _VipScreenState extends State<VipScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            
                             InkWell(
                               onTap: () {
                                 showWebInApp(
@@ -211,7 +210,7 @@ class _VipScreenState extends State<VipScreen> {
                         ),
                         buttonCustom(
                           title: 'Đăng ký'.tr +
-                              (' ${vipController.storeProductSelect?.identifier == '1_year' ? '1 năm'.tr : '1 tháng'.tr}') +
+                              (' ${vipController.storeProductSelect?.identifier == (Platform.isAndroid ? '1_month:1-month-subscription' : '1_month') ? '1 tháng'.tr : '1 năm'.tr}') +
                               (' ${vipController.storeProductSelect?.priceString ?? ''}'),
                           onTap: () {
                             vipController.buyApp();
@@ -239,10 +238,12 @@ class _VipScreenState extends State<VipScreen> {
             size: 28.0,
           ),
           cWidth(8),
-          textBodySmall(
-            text: text,
-            color: Get.theme.colorScheme.background,
-            fontWeight: FontWeight.w300,
+          Expanded(
+            child: textBodySmall(
+              text: text,
+              color: Get.theme.colorScheme.background,
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ],
       ),
@@ -266,6 +267,7 @@ class _VipScreenState extends State<VipScreen> {
                 onTap: () {
                   vipController.storeProductSelect =
                       vipController.listProduct[index];
+                  // print("chojn ds sp: ${vipController.storeProductSelect}");
                   vipController.addStringDes();
                   vipController.updateUI();
                 },
@@ -293,7 +295,9 @@ class _VipScreenState extends State<VipScreen> {
                               child: textTitleMedium(
                                   text: vipController
                                               .listProduct[index].identifier ==
-                                          '1_month'
+                                          (Platform.isAndroid
+                                              ? '1_month:1-month-subscription'
+                                              : '1_month')
                                       ? '1 tháng'.tr
                                       : '1 năm'.tr,
                                   color: Colors.white)),
