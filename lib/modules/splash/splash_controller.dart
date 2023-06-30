@@ -43,9 +43,8 @@ class SplashController extends GetxController
     //   Get.offAndToNamed(HomeScreen.routeName);
     // });
     try {
-  await checkHMS();
-} on Exception catch (_) {
-}
+      await checkHMS();
+    } on Exception catch (_) {}
     if (dataUser != null && await checkLoginTimeOut()) {
       Future.delayed(const Duration(seconds: 4), () {
         Get.offAndToNamed(HomeScreen.routeName);
