@@ -7,7 +7,6 @@ import 'package:lavenz/data/models/sound.dart' as sound;
 import 'package:lavenz/data/models/tag.dart' as tag;
 import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
-import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
@@ -117,9 +116,9 @@ class SoundController extends GetxController
 
   onPlaySound(String? sound, sound.Data? data,
       {bool isPlaying = false, num? id}) async {
-    if ((data?.vip ?? false) && !checkExpiry(user: user!)) {
-      Get.toNamed(VipScreen.routeName);
-    } else {
+    // if ((data?.vip ?? false) && !checkExpiry(user: user!)) {
+    //   Get.toNamed(VipScreen.routeName);
+    // } else {
       if (isPlaying) {
         await soundControlController.clearSoundWithId(id: id);
         soundControlController.updateUI();
@@ -129,13 +128,13 @@ class SoundController extends GetxController
         soundControlController.updateUI();
         updateUI();
       }
-    }
+    // }
   }
 
   Future<void> onPlayMusic(String sound, sound.Data data) async {
-    if ((data.vip ?? false) && !checkExpiry(user: user!)) {
-      Get.toNamed(VipScreen.routeName);
-    } else {
+    // if ((data.vip ?? false) && !checkExpiry(user: user!)) {
+    //   Get.toNamed(VipScreen.routeName);
+    // } else {
       buildToast(
         status: TypeToast.toastDefault,
         message: 'Đang tải và phát: ${data.name}...'.tr,
@@ -150,7 +149,7 @@ class SoundController extends GetxController
         updateUI();
       });
       soundControlController.updateUI();
-    }
+    // }
     updateUI();
   }
 

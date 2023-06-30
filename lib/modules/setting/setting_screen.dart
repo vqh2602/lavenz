@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/modules/setting/setting_controller.dart';
-import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
@@ -143,7 +142,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                         .getTimeVip()
                                         .toString()
                                   })
-                                : 'Miễn phí'.tr,
+                                : 'Preium'.tr,
                             fontWeight: FontWeight.w700,
                             color: Colors.white),
                       ),
@@ -155,13 +154,17 @@ class _SettingScreenState extends State<SettingScreen> {
                         child: GFButton(
                           color: const Color.fromARGB(255, 255, 216, 59),
                           onPressed: () {
-                            if (settingController.user.latestPurchaseDate !=
-                                    null &&
-                                settingController.checkExpiry(
-                                    user: settingController.user)) {
-                            } else {
-                              Get.toNamed(VipScreen.routeName);
-                            }
+                            buildToast(
+                                message:
+                                    "Vip status is always available for huawei users",
+                                status: TypeToast.toastDefault);
+                            // if (settingController.user.latestPurchaseDate !=
+                            //         null &&
+                            //     settingController.checkExpiry(
+                            //         user: settingController.user)) {
+                            // } else {
+                            //   Get.toNamed(VipScreen.routeName);
+                            // }
                           },
                           shape: GFButtonShape.pills,
                           padding: const EdgeInsets.only(left: 20, right: 20),
@@ -178,8 +181,8 @@ class _SettingScreenState extends State<SettingScreen> {
                 _blockItem(
                   title: 'Mã định danh'.tr,
                   onTap: () {
-                    Clipboard.setData(
-                            ClipboardData(text: settingController.user.id??''))
+                    Clipboard.setData(ClipboardData(
+                            text: settingController.user.id ?? ''))
                         .then((_) {
                       buildToast(
                           message: 'Copy: ${settingController.user.id}',

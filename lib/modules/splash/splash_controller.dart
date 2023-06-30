@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:huawei_hmsavailability/huawei_hmsavailability.dart';
 import 'package:lavenz/data/storage.dart';
 import 'package:lavenz/firebase_analytics_service/firebase_analytics_service.dart';
 import 'package:lavenz/modules/auth/login/login_screen.dart';
@@ -11,11 +12,13 @@ class SplashController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
   GetStorage box = GetStorage();
   VideoPlayerController? videoPlayerController;
-  FirebaseAnalyticsService firebaseAnalyticsService = FirebaseAnalyticsService();
+  FirebaseAnalyticsService firebaseAnalyticsService =
+      FirebaseAnalyticsService();
 
   @override
   Future<void> onInit() async {
     super.onInit();
+
     videoPlayerController =
         VideoPlayerController.asset('assets/background/vd3.mp4')
           ..initialize().then((_) {
@@ -39,6 +42,10 @@ class SplashController extends GetxController
     // Future.delayed(const Duration(seconds: 5), () {
     //   Get.offAndToNamed(HomeScreen.routeName);
     // });
+    try {
+  await checkHMS();
+} on Exception catch (_) {
+}
     if (dataUser != null && await checkLoginTimeOut()) {
       Future.delayed(const Duration(seconds: 4), () {
         Get.offAndToNamed(HomeScreen.routeName);
@@ -67,6 +74,27 @@ class SplashController extends GetxController
       }
     }
     return false;
+  }
+
+  Future<void> checkHMS() async {
+    HmsApiAvailability client = HmsApiAvailability();
+    // 0: HMS Core (APK) is available.
+// 1: No HMS Core (APK) is found on device.
+// 2: HMS Core (APK) installed is out of date.
+// 3: HMS Core (APK) installed on the device is unavailable.
+// 9: HMS Core (APK) installed on the device is not the official version.
+// 21: The device is too old to support HMS Core (APK).
+    int status = await client.isHMSAvailable();
+    //print('trang thai hms: $status');
+    if (status != 0) {
+      // Set a listener to track events
+      client.setResultListener = ((AvailabilityResultListener listener) {})
+          as AvailabilityResultListener;
+      client.getErrorDialog(status, 1000, true);
+    }
+
+// Specify the status code you get, a request code and decide if
+// you want to listen dialog cancellations.
   }
 
   changeUI() {

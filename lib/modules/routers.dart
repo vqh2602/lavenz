@@ -30,8 +30,6 @@ import 'package:lavenz/modules/tools/quote/quote_binding.dart';
 import 'package:lavenz/modules/tools/quote/quote_screen.dart';
 import 'package:lavenz/modules/tools/tools_binding.dart';
 import 'package:lavenz/modules/tools/tools_screen.dart';
-import 'package:lavenz/modules/vip/vip_binding.dart';
-import 'package:lavenz/modules/vip/vip_screen.dart';
 
 List<GetPage> routes = [
   GetPage(
@@ -68,10 +66,10 @@ List<GetPage> routes = [
       name: SettingScreen.routeName,
       page: () => const SettingScreen(),
       binding: SettingBinding()),
-  GetPage(
-      name: VipScreen.routeName,
-      page: () => const VipScreen(),
-      binding: VipBinding()),
+  // GetPage(
+  //     name: VipScreen.routeName,
+  //     page: () => const VipScreen(),
+  //     binding: VipBinding()),
   GetPage(
       name: ToolsScreen.routeName,
       page: () => const ToolsScreen(),

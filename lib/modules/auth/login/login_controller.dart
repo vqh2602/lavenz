@@ -24,19 +24,19 @@ class LoginController extends GetxController
 
   Future<void> login() async {
     User? user;
-     user = await userRepo.loginWithGoogle();
+     user = await userRepo.loginWithHuawei();
 
     user != null ? Get.offAllNamed(SplashScreen.routeName) : null;
     changeUI();
   }
-  Future<void> loginApple() async {
-    User? user;
-     user = 
-     await userRepo.loginWithApple();
+  // Future<void> loginApple() async {
+  //   User? user;
+  //    user = 
+  //    await userRepo.loginWithApple();
 
-    user != null ? Get.offAllNamed(SplashScreen.routeName) : null;
-    changeUI();
-  }
+  //   user != null ? Get.offAllNamed(SplashScreen.routeName) : null;
+  //   changeUI();
+  // }
 
   String? validateEmail(String? value) {
     bool emailValid = RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value ?? '');

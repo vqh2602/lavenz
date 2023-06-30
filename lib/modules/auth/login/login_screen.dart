@@ -1,12 +1,9 @@
-import 'dart:io';
-
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:huawei_account/huawei_account.dart';
 import 'package:lavenz/modules/auth/login/login_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:lavenz/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -71,39 +68,42 @@ class _LoginScreenState extends State<LoginScreen> {
                           textAlign: TextAlign.center,
                           color: Get.theme.colorScheme.background),
                       cHeight(12),
-                      GFButton(
-                        onPressed: () {
-                          loginController.login();
-                        },
-                        color: Colors.white,
-                        text: "Tiếp tục với Google".tr,
-                        textStyle: josefinSans(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        textColor: Colors.black,
-                        shape: GFButtonShape.pills,
-                        blockButton: true,
-                        size: GFSize.LARGE,
-                        padding: EdgeInsets.zero,
-                        icon: const Icon(FontAwesomeIcons.google),
-                      ),
-                      if (Platform.isIOS) GFButton(
-                        onPressed: () {
-                          loginController.loginApple();
-                        },
-                        color: Colors.white,
-                        text: "Tiếp tục với Apple".tr,
-                        textStyle: josefinSans(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        textColor: Colors.black,
-                        shape: GFButtonShape.pills,
-                        blockButton: true,
-                        size: GFSize.LARGE,
-                        padding: EdgeInsets.zero,
-                        icon: const Icon(
-                          FontAwesomeIcons.apple,
-                          size: 30,
-                        ),
-                      ),
+                      HuaweiIdAuthButton(onPressed: () {
+                        loginController.login();
+                      }),
+                      // GFButton(
+                      //   onPressed: () {
+                      //     loginController.login();
+                      //   },
+                      //   color: Colors.white,
+                      //   text: "Tiếp tục với Google".tr,
+                      //   textStyle: josefinSans(
+                      //       fontSize: 16, fontWeight: FontWeight.bold),
+                      //   textColor: Colors.black,
+                      //   shape: GFButtonShape.pills,
+                      //   blockButton: true,
+                      //   size: GFSize.LARGE,
+                      //   padding: EdgeInsets.zero,
+                      //   icon: const Icon(FontAwesomeIcons.google),
+                      // ),
+                      // if (Platform.isIOS) GFButton(
+                      //   onPressed: () {
+                      //     loginController.loginApple();
+                      //   },
+                      //   color: Colors.white,
+                      //   text: "Tiếp tục với Apple".tr,
+                      //   textStyle: josefinSans(
+                      //       fontSize: 16, fontWeight: FontWeight.bold),
+                      //   textColor: Colors.black,
+                      //   shape: GFButtonShape.pills,
+                      //   blockButton: true,
+                      //   size: GFSize.LARGE,
+                      //   padding: EdgeInsets.zero,
+                      //   icon: const Icon(
+                      //     FontAwesomeIcons.apple,
+                      //     size: 30,
+                      //   ),
+                      // ),
                       cHeight(12),
 
                       // Align

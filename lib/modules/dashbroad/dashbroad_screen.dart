@@ -1,16 +1,17 @@
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lavenz/modules/dashbroad/dashbroad_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
-import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/build_item_4x3.dart';
 import 'package:lavenz/widgets/build_list_item_1x1.dart';
 import 'package:lavenz/widgets/build_list_item_4x3.dart';
+import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/loading_custom.dart';
 import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lavenz/widgets/weather_widget.dart';
 import 'package:lavenz/widgets/widgets.dart';
 import 'package:video_player/video_player.dart';
 
@@ -103,7 +104,7 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
   Widget _header() {
     return AnimatedContainer(
       width: showHeader ? Get.width : Get.width,
-      height: showHeader ? Get.height * 0.3 : 70,
+      height: showHeader ? Get.height * 0.3 : 100,
       duration: const Duration(milliseconds: 500),
       padding: showHeader ? const EdgeInsets.only(top: 30) : EdgeInsets.zero,
       child: Stack(
@@ -115,6 +116,20 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
                 text: 'Lavenz',
                 color: Get.theme.colorScheme.background,
                 fontWeight: FontWeight.w700),
+          ),
+          AnimatedAlign(
+            alignment: showHeader ? Alignment.center : Alignment.centerLeft,
+            duration: const Duration(milliseconds: 500),
+            child: dashBroadController.obx(
+              (state) => currentWeather(
+                  dashBroadController
+                      .weatherResponse?.weatherSituation?.city?.name,
+                  (dashBroadController.weatherResponse?.weatherSituation
+                          ?.situation?.temperatureC)
+                      .toString(),
+                  dashBroadController.weatherResponse?.weatherSituation
+                      ?.situation?.weatherId),
+            ),
           ),
           Align(
             alignment: Alignment.bottomLeft,
@@ -194,9 +209,12 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
               des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
               image: 'assets/background/img1.jpg',
               onTap: () {
-                dashBroadController.checkExpiry(user: dashBroadController.user!)
-                    ? null
-                    : Get.toNamed(VipScreen.routeName);
+                buildToast(
+                    message: "Vip status is always available for huawei users",
+                    status: TypeToast.toastDefault);
+                // dashBroadController.checkExpiry(user: dashBroadController.user!)
+                //     ? null
+                //     : Get.toNamed(VipScreen.routeName);
               },
               textButton: dashBroadController.checkExpiry(
                       user: dashBroadController.user!)

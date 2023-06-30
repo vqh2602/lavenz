@@ -5,7 +5,6 @@ import 'package:lavenz/modules/setting/setting_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
 import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
 import 'package:lavenz/modules/tools/tools_controller.dart';
-import 'package:lavenz/modules/vip/vip_controller.dart';
 
 Future<void> initialize() async {
 //hinh anh
@@ -14,9 +13,9 @@ Future<void> initialize() async {
   Get.lazyPut<HomeController>(
     () => HomeController(),
   );
-  Get.lazyPut<VipController>(
-    () => VipController(),
-  );
+  // Get.lazyPut<VipController>(
+  //   () => VipController(),
+  // );
   Get.lazyPut<DashBroadController>(
     () => DashBroadController(),
   );

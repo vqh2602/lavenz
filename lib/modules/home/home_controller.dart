@@ -5,25 +5,32 @@ import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
 import 'package:get/get.dart';
+import 'package:huawei_hmsavailability/huawei_hmsavailability.dart';
+import 'package:huawei_push/huawei_push.dart';
 import 'package:lavenz/data/models/down.dart' as down;
 import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/data/repositories/new_ver_repo.dart';
-import 'package:lavenz/data/storage.dart';
-import 'package:lavenz/modules/vip/vip_controller.dart';
 import 'package:lavenz/widgets/build_toast.dart';
 import 'package:lavenz/widgets/dialog_down.dart';
 import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/admod_mixin.dart';
+import 'package:lavenz/widgets/mixin/hms_push_mixin.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class HomeController extends GetxController
-    with GetTickerProviderStateMixin, StateMixin, UserMixin, ADmodMixin {
-  VipController vipController = Get.find();
+    with
+        GetTickerProviderStateMixin,
+        StateMixin,
+        UserMixin,
+        ADmodMixin,
+        HmsPushMixin {
+  // VipController vipController = Get.find();
   int selectItemScreen = 0;
   PageController pageController = PageController(
     viewportFraction: 1.0,
@@ -43,14 +50,37 @@ class HomeController extends GetxController
   User user = User();
   Map<String, dynamic> oldVer = {};
   Timer? timer;
-
+  HmsApiAvailability client = HmsApiAvailability();
+  String token = '';
   @override
   Future<void> onInit() async {
     changeUI();
+    // Create an HmsApiAvailability instance
+
+// 0: HMS Core (APK) is available.
+// 1: No HMS Core (APK) is found on device.
+// 2: HMS Core (APK) installed is out of date.
+// 3: HMS Core (APK) installed on the device is unavailable.
+// 9: HMS Core (APK) installed on the device is not the official version.
+// 21: The device is too old to support HMS Core (APK).
+    // int status = await client.isHMSAvailable();
+    // // Set a listener to track events
+    // client.setResultListener = ((AvailabilityEvent? listener) {
+    //   // Here you can do your implementation.
+    // });
+    // client.getErrorDialog(status, 1000, true);
+
     // await _downloadAssets();
     initData();
     initConnectInternet();
-    initInterstitialAd();
+    // initInterstitialAd();
+
+    getId();
+    getAAID();
+    getToken();
+    subscribe();
+    initTokenStream();
+
     super.onInit();
   }
 
@@ -66,14 +96,14 @@ class HomeController extends GetxController
     await initDown();
   }
 
-  Future<void> initInterstitialAd() async {
-    if (!checkExpiry(user: user)) {
-      timer = Timer.periodic(
-          const Duration(minutes: 5),
-          (_) async =>
-              {await createInitInterstitialAd(), interstitialAd?.show()});
-    }
-  }
+  // Future<void> initInterstitialAd() async {
+  //   if (!checkExpiry(user: user)) {
+  //     timer = Timer.periodic(
+  //         const Duration(minutes: 5),
+  //         (_) async =>
+  //             {await createInitInterstitialAd(), interstitialAd?.show()});
+  //   }
+  // }
 
   Future initData() async {
     loadingUI();
@@ -276,9 +306,48 @@ class HomeController extends GetxController
 
 // tự động làm mới
   Future<void> renewSubscriptions(bool isVip) async {
-    bool? isRenew = box.read(Storages.dataRenewSub);
-    if (!isVip && (isRenew ?? false)) {
-      vipController.restorePucharses();
+    // bool? isRenew = box.read(Storages.dataRenewSub);
+    // if (!isVip && (isRenew ?? false)) {
+    //   vipController.restorePucharses();
+    // }
+  }
+
+  //** dịch vụ push của huawei */
+  void _onTokenEvent(String event) {
+    token = event;
+    if (token != '') {
+      // print("TokenEvent: " + token);
+    }
+  }
+
+  void _onTokenError(PlatformException error) {
+    // print("TokenErrorEvent: " + error.toString());
+  }
+
+  void subscribe() async {
+    String topic = "meow";
+    // String result =
+    await Push.subscribe(topic);
+  }
+
+  Future<void> initTokenStream() async {
+    if (token != '') {
+      Push.getTokenStream.listen(_onTokenEvent, onError: _onTokenError);
+    }
+  }
+
+  Future<void> getToken() async {
+    try {
+      Push.enableLogger();
+
+      Push.getToken("");
+
+      // print('Huawei push token ::  ');
+
+      Push.disableLogger();
+    } catch (e) {
+      // print(e.toString());
+      // print('THISIS EXCEPTION');
     }
   }
 

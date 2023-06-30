@@ -34,6 +34,7 @@ apply plugin: 'com.google.gms.google-services'
 // END: FlutterFire Configuration
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.huawei.agconnect' // Add this line after above configurations 
 
 android {
 
@@ -76,7 +77,7 @@ android {
         applicationId "com.vqh2602.lavenz"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 19
+        minSdkVersion 24
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -97,7 +98,11 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             //signingConfig signingConfigs.debug
             signingConfig signingConfigs.release
-
+            minifyEnabled true
+            // Unused resources will be removed.
+            shrinkResources true
+            // fix crash khi dùng hms
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
