@@ -292,9 +292,9 @@ class SoundControlController extends GetxController
   }
 
   int checkVipPlaySound() {
-    if (user.identifier == '1_month') return 10;
-    if (user.identifier == '1_year') return 15;
-    return 5;
+    // if (user.identifier == '1_month') return 10;
+    // if (user.identifier == '1_year') return 15;
+    return 15;
   }
 
   changeUI() {

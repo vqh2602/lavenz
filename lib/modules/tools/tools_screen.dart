@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:lavenz/modules/tools/breath/breath_screen.dart';
+import 'package:lavenz/modules/tools/hms/safety_detect_kit.dart';
 import 'package:lavenz/modules/tools/horoscope/horoscope_screen.dart';
 import 'package:lavenz/modules/tools/meditation/meditation_screen.dart';
 import 'package:lavenz/modules/tools/quote/quote_screen.dart';
+import 'package:lavenz/modules/tools/hms/scan_kit.dart';
 import 'package:lavenz/modules/tools/tools_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
 import 'package:lavenz/widgets/text_custom.dart';
@@ -182,6 +184,22 @@ class _ToolsScreenState extends State<ToolsScreen> {
         },
         title: 'Châm ngôn'.tr,
         des: 'Những câu châm ngôn mỗi ngày'.tr,
+        isVip: true),
+    ToolsItem(
+        image: 'assets/background/t5.jpeg',
+        onTap: () {
+          Get.to(const ScanKitWithHMS());
+        },
+        title: 'Scan QR'.tr,
+        des: 'Scan barcodes quickly'.tr,
+        isVip: true),
+        ToolsItem(
+        image: 'assets/background/t6.jpeg',
+        onTap: () {
+          Get.to(const SafeKitHMS());
+        },
+        title: 'Scan url'.tr,
+        des: 'Scan dangerous urls'.tr,
         isVip: true),
   ];
 }

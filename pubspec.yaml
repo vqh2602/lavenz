@@ -80,6 +80,10 @@ dependencies:
   huawei_location: ^6.4.0+300
   huawei_awareness: ^3.1.0+302
   permission_handler: ^10.4.0
+  huawei_scan: ^2.10.0+301
+  rflutter_alert: ^2.0.7
+  flutter_linkify: ^6.0.0
+  huawei_safetydetect: ^6.4.0+302
   
   
   # flutter_flavor: ^3.1.1

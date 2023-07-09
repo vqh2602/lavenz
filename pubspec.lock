@@ -350,6 +350,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.1"
+  flutter_linkify:
+    dependency: "direct main"
+    description:
+      name: flutter_linkify
+      sha256: "74669e06a8f358fee4512b4320c0b80e51cffc496607931de68d28f099254073"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -576,6 +584,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.10.0+300"
+  huawei_safetydetect:
+    dependency: "direct main"
+    description:
+      name: huawei_safetydetect
+      sha256: b4e0c4cbb7f4ec4d6194779fcca2d7c1b71da17635797f12091f7f261ad1cdac
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.4.0+302"
+  huawei_scan:
+    dependency: "direct main"
+    description:
+      name: huawei_scan
+      sha256: "7d70a1bdb020925dafb4bedd8795ebc3f5f7ff7cbc88159efa8ca80f3312b4d5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.10.0+301"
   image:
     dependency: transitive
     description:
@@ -728,6 +752,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.8"
+  linkify:
+    dependency: transitive
+    description:
+      name: linkify
+      sha256: "4139ea77f4651ab9c315b577da2dd108d9aa0bd84b5d03d33323f1970c645832"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.0"
   lints:
     dependency: transitive
     description:
@@ -984,6 +1016,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
+  rflutter_alert:
+    dependency: "direct main"
+    description:
+      name: rflutter_alert
+      sha256: "8ff35e3f9712ba24c746499cfa95bf320385edf38901a1a4eab0fe555867f66c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   rive:
     dependency: "direct main"
     description:

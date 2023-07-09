@@ -17,7 +17,7 @@ class DashBroadController extends GetxController
   bool isAdLoad = false;
   FusedLocationProviderClient locationService = FusedLocationProviderClient();
   WeatherResponse? weatherResponse;
-  
+
   @override
   Future<void> onInit() async {
     initData();
@@ -55,6 +55,7 @@ class DashBroadController extends GetxController
 
     changeUI();
   }
+
   //**Lấy vị trí và thông tin thời tiết */
   Future<void> checkLocationAndGetWeather() async {
     loadingUI();
@@ -80,15 +81,16 @@ class DashBroadController extends GetxController
       // print(e.toString());
     }
     try {
-      Location location = await locationService.getLastLocation();
-      await getWeather(location);
+      // Location location =
+      await locationService.getLastLocation();
     } catch (e) {
       // print(e.toString());
     }
+    await getWeather(null);
     changeUI();
   }
 
-  Future<WeatherResponse?> getWeather(Location location) async {
+  Future<WeatherResponse?> getWeather(Location? location) async {
     //print('thoitiet1: ');
     weatherResponse = await AwarenessCaptureClient.getWeatherByDevice();
     //  print('thoitiet: ${response.toString()}');

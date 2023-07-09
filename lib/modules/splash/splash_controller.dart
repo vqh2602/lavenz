@@ -87,9 +87,8 @@ class SplashController extends GetxController
     //print('trang thai hms: $status');
     if (status != 0) {
       // Set a listener to track events
-      client.setResultListener = ((AvailabilityResultListener listener) {})
-          as AvailabilityResultListener;
-      client.getErrorDialog(status, 1000, true);
+      client.setResultListener = ((AvailabilityEvent? listener) {});
+      client.getErrorDialog(status, 1000, false);
     }
 
 // Specify the status code you get, a request code and decide if

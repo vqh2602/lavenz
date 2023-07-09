@@ -11,11 +11,11 @@ Widget currentWeather(String? city, String? temp, int? status) {
       // crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Text(
-          '$city,',
+          '${city != 'null' ? city : '...'},',
           style: const TextStyle(color: Colors.white60, fontFamily: 'Inter'),
         ),
         Text(
-          ' $temp℃  ',
+          ' ${temp != 'null' ? temp : '...'}℃  ',
           style: const TextStyle(
             color: Colors.white60,
             fontFamily: 'Inter',
@@ -30,7 +30,7 @@ Widget currentWeather(String? city, String? temp, int? status) {
       ],
     ),
   );
-} 
+}
 
 String getIconWeather(int? x) {
   TimeOfDay day = TimeOfDay.now();
