@@ -11,7 +11,7 @@ Widget currentWeather(String? city, String? temp, int? status) {
       // crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Text(
-          '${city != 'null' ? city : '...'},',
+          '${(city != null && city != 'null') ? city : '...'},',
           style: const TextStyle(color: Colors.white60, fontFamily: 'Inter'),
         ),
         Text(

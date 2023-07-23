@@ -1,4 +1,3 @@
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lavenz/modules/dashbroad/dashbroad_controller.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
@@ -153,21 +152,21 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
         children: [
           buildListItem4x3(),
           cHeight(8),
-          if (dashBroadController.isAdLoad)
-            Container(
-              margin: const EdgeInsets.only(right: 20),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
-              child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    minWidth: 320, // minimum recommended width
-                    minHeight: 90, // minimum recommended height
-                    maxWidth: 400,
-                    maxHeight: 200,
-                  ),
-                  child: AdWidget(ad: dashBroadController.myNative!)),
-            ),
-          // buildItem4x3(
+          // if (dashBroadController.isAdLoad)
+          //   Container(
+          //     margin: const EdgeInsets.only(right: 20),
+          //     decoration:
+          //         BoxDecoration(borderRadius: BorderRadius.circular(20)),
+          //     child: ConstrainedBox(
+          //         constraints: const BoxConstraints(
+          //           minWidth: 320, // minimum recommended width
+          //           minHeight: 90, // minimum recommended height
+          //           maxWidth: 400,
+          //           maxHeight: 200,
+          //         ),
+          //         child: AdWidget(ad: dashBroadController.myNative!)),
+          //   ),
+          // // buildItem4x3(
           //     des: 'nhận quyền không giới hạn truy cập vào các tính năng'.tr,
           //     image: 'assets/background/img1.jpg',
           //     onTap: () {
