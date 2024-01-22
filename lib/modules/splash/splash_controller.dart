@@ -5,33 +5,19 @@ import 'package:lavenz/data/storage.dart';
 import 'package:lavenz/firebase_analytics_service/firebase_analytics_service.dart';
 import 'package:lavenz/modules/auth/login/login_screen.dart';
 import 'package:lavenz/modules/home/home_screen.dart';
-import 'package:video_player/video_player.dart';
 
 class SplashController extends GetxController
     with GetTickerProviderStateMixin, StateMixin {
   GetStorage box = GetStorage();
-  VideoPlayerController? videoPlayerController;
   FirebaseAnalyticsService firebaseAnalyticsService = FirebaseAnalyticsService();
 
   @override
   Future<void> onInit() async {
     super.onInit();
-    videoPlayerController =
-        VideoPlayerController.asset('assets/background/vd3.mp4')
-          ..initialize().then((_) {
-            videoPlayerController?.play();
-            videoPlayerController?.setLooping(true);
-            videoPlayerController?.setVolume(0);
-          });
     firebaseAnalyticsService.evenFistOpen();
     changeUI();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    videoPlayerController?.dispose();
-  }
 
   Future<void> checkLogin() async {
     var dataUser = await box.read(Storages.dataUser);

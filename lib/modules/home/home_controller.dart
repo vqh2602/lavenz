@@ -5,7 +5,6 @@ import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/data/models/down.dart' as down;
 import 'package:lavenz/data/models/user.dart';
@@ -33,7 +32,6 @@ class HomeController extends GetxController
   String message = 'Đang kết nối đến máy chủ'.tr;
   String speedInternet = '0';
   bool downloaded = false;
-  final speedTest = FlutterInternetSpeedTest();
   down.Down downLink = down.Down();
   NewVersionRepo newVersionRepo = NewVersionRepo();
   List<Widget> choiseSever = [];
@@ -56,7 +54,6 @@ class HomeController extends GetxController
 
   @override
   void dispose() {
-    speedTest.disableLog();
     connectivityResul?.cancel();
     super.dispose();
   }
@@ -221,7 +218,6 @@ class HomeController extends GetxController
     }
 
     try {
-      testInternetSpeed();
       await downloadAssetsController.startDownload(
           assetsUrl: linkSelect?.url ?? '',
           onProgress: (progressValue) {
@@ -250,30 +246,7 @@ class HomeController extends GetxController
     }
   }
 
-  void testInternetSpeed() {
-    speedTest.startTesting(
-      useFastApi: false, //true(default)
-      downloadTestServer:
-          'https://vqh2602.github.io/lavenz_music_data.github.io', //Your download test server URL goes here,//Your upload test server URL goes here,//File size to be tested
-      onStarted: () {},
-      onCompleted: (TestResult download, TestResult upload) {},
-      onProgress: (double percent, TestResult data) {
-        speedInternet =
-            '${data.transferRate} ${data.unit == SpeedUnit.kbps ? 'Kbps' : 'Mbps'}';
-      },
-      onError: (String errorMessage, String speedTestError) {},
-      onDefaultServerSelectionInProgress: () {
-        //Only when you use useFastApi parameter as true(default)
-      },
-      onDefaultServerSelectionDone: (Client? client) {
-        ///Only when you use useFastApi parameter as true(default)
-      },
-      onDownloadComplete: (TestResult data) {},
-      onUploadComplete: (TestResult data) {},
-      onCancel: () {},
-    );
-  }
-
+  
 // tự động làm mới
   Future<void> renewSubscriptions(bool isVip) async {
     bool? isRenew = box.read(Storages.dataRenewSub);

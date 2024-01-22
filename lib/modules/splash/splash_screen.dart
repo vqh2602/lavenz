@@ -4,7 +4,6 @@ import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/widgets/widgets.dart';
-import 'package:video_player/video_player.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -25,7 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    splashController.videoPlayerController?.dispose();
     super.dispose();
   }
 
@@ -44,7 +42,8 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(
               width: Get.width,
               height: Get.height,
-              child: VideoPlayer(splashController.videoPlayerController!),
+              child:
+                  Image.asset('assets/background/vd3.gif', fit: BoxFit.cover),
             ),
             Container(
               width: Get.width,

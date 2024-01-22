@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lavenz/modules/auth/login/login_controller.dart';
 import 'package:lavenz/widgets/base/base.dart';
@@ -84,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         blockButton: true,
                         size: GFSize.LARGE,
                         padding: EdgeInsets.zero,
-                        icon: const Icon(FontAwesomeIcons.google),
+                        icon: const FaIcon(FontAwesomeIcons.googlePlusG),
                       ),
                       if (Platform.isIOS) GFButton(
                         onPressed: () {

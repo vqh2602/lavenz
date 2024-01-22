@@ -12,7 +12,6 @@ import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/widgets/widgets.dart';
-import 'package:video_player/video_player.dart';
 
 class DashBroadScreen extends StatefulWidget {
   const DashBroadScreen({Key? key}) : super(key: key);
@@ -30,7 +29,6 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
 
   @override
   void initState() {
-    dashBroadController.initVideoBackground();
     scrollController.addListener(() {
       if (scrollController.position.pixels <=
           scrollController.position.minScrollExtent + 20) {
@@ -49,7 +47,6 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
 
   @override
   void dispose() {
-    dashBroadController.videoPlayerController?.dispose();
     scrollController.dispose();
     super.dispose();
   }
@@ -71,7 +68,7 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
                   width: Get.width,
                   height: Get.height,
                   child:
-                      VideoPlayer(dashBroadController.videoPlayerController!),
+                      Image.asset('assets/background/vd3.gif', fit: BoxFit.cover),
                 ),
                 Container(
                   width: Get.width,
