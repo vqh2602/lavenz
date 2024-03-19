@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,9 +29,13 @@ Widget buildListSoundItem({
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
-            child: Image.file(
-              File(
-                  '${soundController.downloadAssetsController.assetsDir}/images/${listData[index].image}'),
+            child:
+                //  Image.file(
+                //   File(
+                //       '${soundController.downloadAssetsController.assetsDir}/images/${listData[index].image}'),
+
+                Image.asset(
+              'assets/data/images/${listData[index].image}',
               errorBuilder: (context, object, stackTrace) {
                 return SizedBox(
                   height: double.infinity,

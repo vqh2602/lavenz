@@ -178,8 +178,8 @@ class _SettingScreenState extends State<SettingScreen> {
                 _blockItem(
                   title: 'Mã định danh'.tr,
                   onTap: () {
-                    Clipboard.setData(
-                            ClipboardData(text: settingController.user.id??''))
+                    Clipboard.setData(ClipboardData(
+                            text: settingController.user.id ?? ''))
                         .then((_) {
                       buildToast(
                           message: 'Copy: ${settingController.user.id}',
@@ -192,18 +192,18 @@ class _SettingScreenState extends State<SettingScreen> {
                     size: 20,
                   ),
                 ),
-                cHeight(4),
-                _blockItem(
-                  title: 'Mã đổi quà'.tr,
-                  onTap: () {
-                    settingController.checkShowAddGift();
-                  },
-                  icon: const Icon(
-                    LucideIcons.gift,
-                    color: Colors.white70,
-                    size: 20,
-                  ),
-                ),
+                // cHeight(4),
+                // _blockItem(
+                //   title: 'Mã đổi quà'.tr,
+                //   onTap: () {
+                //     settingController.checkShowAddGift();
+                //   },
+                //   icon: const Icon(
+                //     LucideIcons.gift,
+                //     color: Colors.white70,
+                //     size: 20,
+                //   ),
+                // ),
               ]),
           cHeight(30),
           Column(
@@ -229,32 +229,32 @@ class _SettingScreenState extends State<SettingScreen> {
                     size: 20,
                   ),
                 ),
-                cHeight(4),
-                _blockItem(
-                  title: 'Phiên bản dữ liệu'.tr,
-                  onTap: () {
-                    settingController.checkUpdateData();
-                  },
-                  value: settingController.oldVer["version_data"] ?? '',
-                  icon: const Icon(
-                    LucideIcons.database,
-                    color: Colors.white70,
-                    size: 20,
-                  ),
-                ),
+                // cHeight(4),
+                // _blockItem(
+                //   title: 'Phiên bản dữ liệu'.tr,
+                //   onTap: () {
+                //     settingController.checkUpdateData();
+                //   },
+                //   value: settingController.oldVer["version_data"] ?? '',
+                //   icon: const Icon(
+                //     LucideIcons.database,
+                //     color: Colors.white70,
+                //     size: 20,
+                //   ),
+                // ),
               ]),
-          cHeight(4),
-          _blockItem(
-            title: 'Xoá dữ liệu'.tr,
-            onTap: () {
-              settingController.deleteAllData();
-            },
-            icon: const Icon(
-              LucideIcons.packageMinus,
-              color: Colors.white70,
-              size: 20,
-            ),
-          ),
+          // cHeight(4),
+          // _blockItem(
+          //   title: 'Xoá dữ liệu'.tr,
+          //   onTap: () {
+          //     settingController.deleteAllData();
+          //   },
+          //   icon: const Icon(
+          //     LucideIcons.packageMinus,
+          //     color: Colors.white70,
+          //     size: 20,
+          //   ),
+          // ),
           cHeight(4),
           cHeight(30),
           Column(

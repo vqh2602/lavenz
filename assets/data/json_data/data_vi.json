@@ -1,0 +1,3178 @@
+{
+  "version_data": "1.0.8",
+  "date": "26/02/2023",
+  "version_app": [
+      "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "1.0.4"
+  ],
+  "data": [
+    {
+      "id": 1,
+      "name": "Tiếng chim 1",
+      "describe": "Tiếng chim kêu",
+      "sound": "bird1.mp3",
+      "image": "noun-bird.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 2,
+      "name": "Tiếng chim 2",
+      "describe": "Tiếng chim kêu",
+      "sound": "bird2.mp3",
+      "image": "noun-bird.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 3,
+      "name": "Tiếng chim 3",
+      "describe": "Tiếng chim kêu",
+      "sound": "bird3.mp3",
+      "image": "noun-bird.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 4,
+      "name": "Tiếng dế 1",
+      "describe": "Tiếng dế kêu",
+      "sound": "cricket.mp3",
+      "image": "cricket.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 5,
+      "name": "Tiếng ếch 1",
+      "describe": "Tiếng ếch kêu",
+      "sound": "frog.mp3",
+      "image": "frog.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 6,
+      "name": "Tiếng cú 1",
+      "describe": "Tiếng cú kêu",
+      "sound": "owl.mp3",
+      "image": "noun-owl-1313812.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 7,
+      "name": "Tiếng ồn nâu",
+      "describe": "Tiếng ồn nâu thư giãn",
+      "sound": "brown_noise.mp3",
+      "image": "noun-noise-1352911.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 8,
+      "name": "Tiếng mèo thư giãn 1",
+      "describe": "Tiếng mèo đang trong trạng thái thoải mái",
+      "sound": "cat_purring.mp3",
+      "image": "noun-cat-3864448.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 9,
+      "name": "Tiếng ve sầu 1",
+      "describe": "Tiếng ve sầu mùa hè",
+      "sound": "cicada.mp3",
+      "image": "noun-cicada-147416.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 10,
+      "name": "Nông trại 1",
+      "describe": "Âm thanh vùng nông tại",
+      "sound": "farm.mp3",
+      "image": "noun-farm-1046384.svg",
+      "tag": [
+        5
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 11,
+      "name": "Xây dựng 1",
+      "describe": "Công trường đang xây dựng",
+      "sound": "construction_site.mp3",
+      "image": "noun-construction-2361471.svg",
+      "tag": [
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 12,
+      "name": "Đám đông 1",
+      "describe": "Đám đông nói chuyện",
+      "sound": "crowd.mp3",
+      "image": "noun-crowd-591860.svg",
+      "tag": [
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 13,
+      "name": "Máy sấy 1",
+      "describe": "Máy sấy",
+      "sound": "dryer.mp3",
+      "image": "noun-dryer-1953343.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 14,
+      "name": "Đồng cỏ",
+      "describe": "Đồng cỏ ",
+      "sound": "grassland.mp3",
+      "image": "noun-grass-3729338.svg",
+      "tag": [
+        6,
+        5
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 15,
+      "name": "Đàn tranh 1",
+      "describe": "Nhạc cụ đàn tranh",
+      "sound": "guzheng.mp3",
+      "image": "noun-guzheng-4070458.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 16,
+      "name": "Máy sấy tóc 1",
+      "describe": "Máy sấy tóc gia đình",
+      "sound": "hair_dryer.mp3",
+      "image": "noun-dryer-1953343.svg",
+      "tag": [
+        10
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 17,
+      "name": "Du dương 1",
+      "describe": "Bản nhạc du dương",
+      "sound": "harmony.mp3",
+      "image": "noun-harmony-3404511.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 18,
+      "name": "Thụ cầm 1",
+      "describe": "Nhạc cụ thụ cầm",
+      "sound": "harp.mp3",
+      "image": "noun-harp-5667491.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 19,
+      "name": "Nhịp tim 1",
+      "describe": "Nhịp tim 1",
+      "sound": "heartbeat.mp3",
+      "image": "noun-heartbeat-1406203.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 20,
+      "name": "Hy vọng tốt hơn 1",
+      "describe": "Hy vọng tốt hơn 1",
+      "sound": "hope_for_better.mp3",
+      "image": "noun-hope-2714888.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 21,
+      "name": "Động cơ máy bay 1",
+      "describe": "Động cơ máy bay 1",
+      "sound": "instrument_aircraft.mp3",
+      "image": "noun-aircraft-1828810.svg",
+      "tag": [
+        4
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 22,
+      "name": "Động cơ ô tô 1",
+      "describe": "Động cơ ô tô 1",
+      "sound": "instrument_car.mp3",
+      "image": "noun-car-2389506.svg",
+      "tag": [
+        4
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 23,
+      "name": "Đồng hồ 1",
+      "describe": "Đồng hồ 1",
+      "sound": "instrument_clock.mp3",
+      "image": "noun-clock-1018611.svg",
+      "tag": [
+        10
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 24,
+      "name": "Động cơ quạt 1",
+      "describe": "Động cơ quạt 1",
+      "sound": "instrument_fan.mp3",
+      "image": "noun-fan-1112059.svg",
+      "tag": [
+        10
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 25,
+      "name": "Âm thanh đánh máy 1",
+      "describe": "Âm thanh đánh máy 1",
+      "sound": "instrument_keyborad.mp3",
+      "image": "noun-keyborad-1996781.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 26,
+      "name": "Âm thanh tàu hoả 1",
+      "describe": "Âm thanh tàu hoả 1",
+      "sound": "instrument_train.mp3",
+      "image": "noun-train-1034587.svg",
+      "tag": [
+        4
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 27,
+      "name": "Sâu bên trong 1",
+      "describe": "Sâu bên trong 1",
+      "sound": "look_within.mp3",
+      "image": "noun-dice-310066.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 28,
+      "name": "Tiếng hú 1",
+      "describe": "Tiếng hú 1",
+      "sound": "loon.mp3",
+      "image": "noun-circle-1018759.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 29,
+      "name": "Chuông 1",
+      "describe": "Chuông 1",
+      "sound": "meditation_bell.mp3",
+      "image": "noun-bell-1161605.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 30,
+      "name": "Nước nhỏ giọt",
+      "describe": "Nước nhỏ giọt thiên nhiên",
+      "sound": "nature_dripping.mp3",
+      "image": "noun-drip-3020736.svg",
+      "tag": [
+        6
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 31,
+      "name": "Lửa cháy tự nhiên",
+      "describe": "Lửa cháy trong tự nhiên",
+      "sound": "nature_firewood.mp3",
+      "image": "noun-firewood-2914345.svg",
+      "tag": [
+        6
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 32,
+      "name": "Rừng tự nhiên 1",
+      "describe": "Rừng tự nhiên 1",
+      "sound": "nature_forest.mp3",
+      "image": "noun-forest-2079132.svg",
+      "tag": [
+        6
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 33,
+      "name": "Mưa rào 1",
+      "describe": "Mưa rào 1",
+      "sound": "nature_heavy_rain.mp3",
+      "image": "noun-heavy-rain-2761652.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 34,
+      "name": "Mưa trong rừng",
+      "describe": "Mưa trong rừng",
+      "sound": "nature_rain.mp3",
+      "image": "noun-rain-1028581.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 35,
+      "name": "Biển 1",
+      "describe": "Biển 1",
+      "sound": "nature_sea.mp3",
+      "image": "noun-sea-1755277.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 36,
+      "name": "Sấm sét 1",
+      "describe": "Sấm sét 1",
+      "sound": "nature_thunder.mp3",
+      "image": "noun-thunder-1982565.svg",
+      "tag": [
+        6,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 37,
+      "name": "Nước chảy 1",
+      "describe": "Nước chảy 1",
+      "sound": "nature_water_flow.mp3",
+      "image": "noun-waves-2109300.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 38,
+      "name": "Gió 1",
+      "describe": "Gió 1",
+      "sound": "nature_wind.mp3",
+      "image": "noun-wind-1037200.svg",
+      "tag": [
+        6,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 39,
+      "name": "Đại dương 1",
+      "describe": "Đại dương 1",
+      "sound": "ocean.mp3",
+      "image": "noun-ocean-1043943.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 40,
+      "name": "Tiếng ồn hồng",
+      "describe": "Tiếng ồn hồng",
+      "sound": "pink_noise.mp3",
+      "image": "noun-noise-1352911.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 41,
+      "name": "Mưa trên vũng nước",
+      "describe": "Mưa trên vũng nước",
+      "sound": "rain_on_puddle.mp3",
+      "image": "noun-muddy-1746354.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 42,
+      "name": "Mưa trên mái",
+      "describe": "Mưa trên mái",
+      "sound": "rain_on_roof.mp3",
+      "image": "noun-house-roof-804341.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 43,
+      "name": "Mưa  trên lều",
+      "describe": "Mưa  trên lều",
+      "sound": "rain_on_tent.mp3",
+      "image": "noun-camping-tent-737923.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 44,
+      "name": "Mưa trên ô",
+      "describe": "Mưa trên ô",
+      "sound": "rain_on_umbrella.mp3",
+      "image": "noun-umbrella-4200013.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 45,
+      "name": "Mưa bên cửa sổ  ",
+      "describe": "Mưa bên cửa sổ  ",
+      "sound": "rain_on_window.mp3",
+      "image": "downpour.svg",
+      "tag": [
+        7,
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 46,
+      "name": "Chim hải âu 1",
+      "describe": "Chim hải âu 1",
+      "sound": "seagull.mp3",
+      "image": "noun-seagull-3584318.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 47,
+      "name": "Ngủ ngon",
+      "describe": "Ngủ ngon",
+      "sound": "sleep_tight.mp3",
+      "image": "noun-sleep-18279.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 48,
+      "name": "Tuyết 1",
+      "describe": "Tuyết 1",
+      "sound": "snow.mp3",
+      "image": "noun-snow-1988247.svg",
+      "tag": [
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 49,
+      "name": "Dưới nước ",
+      "describe": "Dưới nước ",
+      "sound": "under_water.mp3",
+      "image": "noun-under-2693339.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 50,
+      "name": "Máy hút bụi 1",
+      "describe": "Máy hút bụi 1",
+      "sound": "vacuum_cleaner.mp3",
+      "image": "noun-vacuum-1664633.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 51,
+      "name": "Violin 1",
+      "describe": "1",
+      "sound": "violin.mp3",
+      "image": "noun-violin-1681046.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 52,
+      "name": "Thác nước",
+      "describe": "Thác nước",
+      "sound": "waterfall.mp3",
+      "image": "noun-waterfall-2979917.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 53,
+      "name": "Tiếng ồn trắng",
+      "describe": "Tiếng ồn trắng",
+      "sound": "white_noise.mp3",
+      "image": "noun-noise-1352911.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 54,
+      "name": "Tiếng chó sói",
+      "describe": "Tiếng chó sói",
+      "sound": "wolf.mp3",
+      "image": "noun-wolf-1968301.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 55,
+      "name": "Chuông gió 1",
+      "describe": "Chuông gió 1",
+      "sound": "wind_chime.mp3",
+      "image": "noun-wind-4543513.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 56,
+      "name": "Cá voi",
+      "describe": "Cá voi",
+      "sound": "whale.mp3",
+      "image": "noun-whale-1515697.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 57,
+      "name": "Wiper",
+      "describe": "Wiper",
+      "sound": "wiper.mp3",
+      "image": "noun-wiper-1720452.svg",
+      "tag": [
+        10
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 58,
+      "name": "Gió thổi qua tán cây",
+      "describe": "Gió thổi qua tán cây",
+      "sound": "wind_leaves.mp3",
+      "image": "noun-wind-3884512.svg",
+      "tag": [
+        6
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 59,
+      "name": "Thác nước 2",
+      "describe": "Thác nước 2",
+      "sound": "waterfall2.mp3",
+      "image": "noun-waterfall-2979917.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 60,
+      "name": "Tiếng dế kêu 2",
+      "describe": "Tiếng dế kêu 2",
+      "sound": "cricket2.mp3",
+      "image": "cricket.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 61,
+      "name": "Tiếng cú 2",
+      "describe": "Tiếng cú 2",
+      "sound": "owl2.mp3",
+      "image": "noun-owl-1313812.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 62,
+      "name": "Lửa trại ",
+      "describe": "Lửa trại ",
+      "sound": "firewood2.mp3",
+      "image": "noun-fire-5672455.svg",
+      "tag": [
+        6
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 63,
+      "name": "Cơn mưa",
+      "describe": "Cơn mưa",
+      "sound": "rain.mp3",
+      "image": "noun-heavy-rain-2761652.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 64,
+      "name": "Mưa trong lều",
+      "describe": "Mưa trong lều",
+      "sound": "bosque_lluviatiendacampana.mp3",
+      "image": "noun-camping-tent-737923.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 65,
+      "name": "Sói 2",
+      "describe": "Sói 2",
+      "sound": "bosque_lobo.mp3",
+      "image": "noun-wolf-1968301.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 66,
+      "name": "Chim gõ kiến",
+      "describe": "Chim gõ kiến",
+      "sound": "bosque_pajarocarpintero.mp3",
+      "image": "noun-bird-1048621.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 67,
+      "name": "Tiếng chim trong rừng",
+      "describe": "Tiếng chim trong rừng",
+      "sound": "bosque_pajaros.mp3",
+      "image": "noun-bird.svg",
+      "tag": [
+        2,
+        6
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 68,
+      "name": "Nhiều ếch lêu",
+      "describe": "Nhiều ếch lêu",
+      "sound": "bosque_ranas.mp3",
+      "image": "frog.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 69,
+      "name": "Dòng sông",
+      "describe": "Dòng sông",
+      "sound": "bosque_rio.mp3",
+      "image": "noun-river-1592655.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 70,
+      "name": "Bão , dông tố",
+      "describe": "Bão , dông tố",
+      "sound": "bosque_tormenta.mp3",
+      "image": "noun-thunder-1988276.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 71,
+      "name": "Gió 2",
+      "describe": "Gió 2",
+      "sound": "bosque_viento.mp3",
+      "image": "noun-wind-1037200.svg",
+      "tag": [
+        6,
+        8
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 72,
+      "name": "Ngựa hí",
+      "describe": "Ngựa hí",
+      "sound": "campo_caballo.mp3",
+      "image": "noun-horse-1080123.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 73,
+      "name": "Tiếng lợn",
+      "describe": "Tiếng lợn",
+      "sound": "campo_cerdos.mp3",
+      "image": "noun-pig-1687431.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 74,
+      "name": "Tiếng gà",
+      "describe": "Tiếng gà",
+      "sound": "campo_gallinas.mp3",
+      "image": "noun-chicken-2599175.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 75,
+      "name": "Tiếng gà trống gáy",
+      "describe": "Tiếng gà trống gáy",
+      "sound": "campo_gallo.mp3",
+      "image": "noun-rooster-853781.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 76,
+      "name": "Cơn mưa 3",
+      "describe": "Cơn mưa 3",
+      "sound": "campo_lluvia.mp3",
+      "image": "noun-rain-5671025.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 77,
+      "name": "Con cừu",
+      "describe": "Con cừu",
+      "sound": "campo_oveja.mp3",
+      "image": "noun-sheep-3386401.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 78,
+      "name": "Cánh đồng nhiều chim kêu",
+      "describe": "Cánh đồng nhiều chim kêu",
+      "sound": "campo_pajaros.mp3",
+      "image": "noun-field-3531121.svg",
+      "tag": [
+        2,
+        5
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 79,
+      "name": "Chó sủa",
+      "describe": "Chó sủa",
+      "sound": "campo_perro.mp3",
+      "image": "noun-dog-2274831.svg",
+      "tag": [
+        2
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 80,
+      "name": "Con suối chảy nhỏ",
+      "describe": "Con suối chảy nhỏ",
+      "sound": "campo_riachuelo.mp3",
+      "image": "noun-river-5082237.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 81,
+      "name": "Cơn bão có sấm sét",
+      "describe": "Cơn bão có sấm sét",
+      "sound": "campo_tormenta.mp3",
+      "image": "noun-thunder-1982565.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 82,
+      "name": "Tiếng bò kêu",
+      "describe": "Tiếng bò kêu",
+      "sound": "campo_vaca.mp3",
+      "image": "noun-cow-5057030.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 83,
+      "name": "Mưa ở thành phố",
+      "describe": "Cơn mua trong thành phố",
+      "sound": "ciudad_lluvia.mp3",
+      "image": "noun-weather-3420364.svg",
+      "tag": [
+        4,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 84,
+      "name": "Mưa bên cửa sổ ",
+      "describe": "Cơn mưa bên cửa sổ trong thành phố",
+      "sound": "ciudad_lluviaventana.mp3",
+      "image": "downpour.svg",
+      "tag": [
+        4,
+        7,
+        10,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 85,
+      "name": "Máy hút bụi",
+      "describe": "Máy hút bụi gia đình",
+      "sound": "hogar_aspirador.mp3",
+      "image": "noun-vacuum-1664633.svg",
+      "tag": [
+        10
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 86,
+      "name": "Máy pha cà",
+      "describe": "Máy pha cà phê gia đình",
+      "sound": "hogar_cafetera.mp3",
+      "image": "noun-cafe-1235109.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 87,
+      "name": "Lò sưởi gia đình",
+      "describe": "Lò sưởi gia đình",
+      "sound": "hogar_chimenea.mp3",
+      "image": "noun-heater-3528626.svg",
+      "tag": [
+        10
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 88,
+      "name": "Vòi tắm ở nhà",
+      "describe": "Vòi tắm ở nhà",
+      "sound": "hogar_ducha.mp3",
+      "image": "shower.svg",
+      "tag": [
+        10,
+        7
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 89,
+      "name": "Tiếng mèo thư giãn 2",
+      "describe": "Tiếng mèo thư giãn 3",
+      "sound": "hogar_gato.mp3",
+      "image": "noun-cat-3864448.svg",
+      "tag": [
+        2,
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 90,
+      "name": "Nước nhỏ giọt",
+      "describe": "Nước nhỏ giọt",
+      "sound": "hogar_gotas.mp3",
+      "image": "water_dripping.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 91,
+      "name": "Nhịm tim 2",
+      "describe": "Nhịm tim 3",
+      "sound": "hogar_latidos.mp3",
+      "image": "noun-heartbeat-1406203.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 92,
+      "name": "Máy giặt gia đình",
+      "describe": "Máy giặt gia đình",
+      "sound": "hogar_lavadora.mp3",
+      "image": "noun-washing-machine-5663714.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 93,
+      "name": "Tiếng đồng hồ  2",
+      "describe": "Tiếng đồng hồ  2",
+      "sound": "hogar_reloj.mp3",
+      "image": "noun-clock-1018611.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 94,
+      "name": "Máy sấy đa dụng ở nhà",
+      "describe": "Máy sấy đa dụng ở nhà",
+      "sound": "hogar_secador.mp3",
+      "image": "noun-dryer-1049734.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 95,
+      "name": "Tiếng đánh máy bàn phím 2",
+      "describe": "Tiếng đánh máy bàn phím 2",
+      "sound": "hogar_teclado.mp3",
+      "image": "noun-keyborad-1996781.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 96,
+      "name": "Tiếng quạt gió 2",
+      "describe": "Tiếng quạt gió 2",
+      "sound": "hogar_ventilador.mp3",
+      "image": "noun-fan-1112059.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 97,
+      "name": "Tiếng gió hiu quạnh",
+      "describe": "Tiếng gió hiu quạnh",
+      "sound": "hogar_viento.mp3",
+      "image": "noun-wind-3100898.svg",
+      "tag": [
+        6,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 98,
+      "name": "Bản nhạc andantino",
+      "describe": "Bản nhạc andantino",
+      "sound": "musical_andantino.mp3",
+      "image": "noun-relax-3893416.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 99,
+      "name": "Bản nhạc deep relax",
+      "describe": "Bản nhạc deep relax",
+      "sound": "musical_deeprelax.mp3",
+      "image": "noun-relax-3893416.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 100,
+      "name": "Âm nhạc ",
+      "describe": "Âm nhạc ",
+      "sound": "musical_gymnopedie.mp3",
+      "image": "noun-sports-2819599.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 101,
+      "name": "Đàn hạc 2",
+      "describe": "Đàn hạc 2",
+      "sound": "musical_harpa.mp3",
+      "image": "noun-harp-5667491.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 102,
+      "name": "Đàn kalimba",
+      "describe": "Đàn kalimba",
+      "sound": "musical_kalimba.mp3",
+      "image": "noun-kalimba-5291887.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 103,
+      "name": "Thiền",
+      "describe": "Thiền",
+      "sound": "musical_meditation.mp3",
+      "image": "noun-meditation-4372450.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 104,
+      "name": "Bài hát ru",
+      "describe": "Bài hát ru",
+      "sound": "musical_nana.mp3",
+      "image": "noun-singing-lullaby-5574369.svg",
+      "tag": [
+        3,
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 105,
+      "name": "Sao hải vương",
+      "describe": "Sao hải vương",
+      "sound": "musical_neptune.mp3",
+      "image": "noun-neptune-1573963.svg",
+      "tag": [
+        11
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 106,
+      "name": "Đá quý",
+      "describe": "Đá quý",
+      "sound": "musical_shappire.mp3",
+      "image": "noun-diamond-4723163.svg",
+      "tag": [
+        6,
+        11
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 107,
+      "name": "Violin 2",
+      "describe": "Violin 2",
+      "sound": "musical_violin.mp3",
+      "image": "noun-violin-1681046.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 108,
+      "name": "Đài phun nước công viên",
+      "describe": "Đài phun nước công viên",
+      "sound": "parque_fuente.mp3",
+      "image": "fountain.svg",
+      "tag": [
+        4,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 109,
+      "name": "Sóng nước ở trong hồ",
+      "describe": "Sóng nước ở trong hồ",
+      "sound": "parque_olaslago.mp3",
+      "image": "noun-lake-5299388.svg",
+      "tag": [
+        5,
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 110,
+      "name": "Tiếng chim trong công viên",
+      "describe": "Tiếng chim trong công viên",
+      "sound": "parque_pajaros.mp3",
+      "image": "noun-bird.svg",
+      "tag": [
+        2,
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 111,
+      "name": "Tiếng vịt",
+      "describe": "Tiếng vịt",
+      "sound": "parque_patos.mp3",
+      "image": "noun-duck-5662182.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 112,
+      "name": "Đàn guitar",
+      "describe": "Đàn guitar",
+      "sound": "playa_guitarra.mp3",
+      "image": "noun-guitar-1004621.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 113,
+      "name": "Mưa trên bãi biển",
+      "describe": "Mưa trên bãi biển",
+      "sound": "playa_lluvia.mp3",
+      "image": "noun-surf-beach-rain-796110.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 114,
+      "name": "Lửa trại trên bãi biển",
+      "describe": "Lửa trại trên bãi biển",
+      "sound": "playa_hoguera.mp3",
+      "image": "noun-fire-5672455.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 115,
+      "name": "Giai điệu guitar",
+      "describe": "Giai điệu guitar",
+      "sound": "playa_melodiaguitarra.mp3",
+      "image": "noun-guitar-1004621.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 116,
+      "name": "Sóng ",
+      "describe": "Sóng ",
+      "sound": "playa_olas.mp3",
+      "image": "noun-wave-4334997.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 117,
+      "name": "Mái chèo",
+      "describe": "Mái chèo",
+      "sound": "playa_remos.mp3",
+      "image": "noun-paddle-1206373.svg",
+      "tag": [
+        5,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 118,
+      "name": "Bão trên bãi biển",
+      "describe": "Bão trên bãi biển",
+      "sound": "playa_tormenta.mp3",
+      "image": "noun-surf-beach-rain-796110.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 119,
+      "name": "Ở dưới nước",
+      "describe": "Ở dưới nước",
+      "sound": "submarino_ambiente.mp3",
+      "image": "noun-under-2693339.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 120,
+      "name": "Tàu ngầm dưới biển",
+      "describe": "Tàu ngầm dưới biển",
+      "sound": "submarino_bajomar.mp3",
+      "image": "noun-sea-5255637.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 121,
+      "name": "Cá heo dưới biển",
+      "describe": "Cá heo dưới biển",
+      "sound": "submarino_ballenita.mp3",
+      "image": "noun-whale-1515697.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 122,
+      "name": "Bơi trên biển",
+      "describe": "Bơi trên biển",
+      "sound": "submarino_burbujas.mp3",
+      "image": "noun-swim-in-sea-2001292.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 123,
+      "name": "Sân bay",
+      "describe": "Sân bay",
+      "sound": "urbano_aeropuerto.mp3",
+      "image": "noun-airport-4992873.svg",
+      "tag": [
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 124,
+      "name": "Chim bồ câu ở thành phố",
+      "describe": "Chim bồ câu ở thành phố",
+      "sound": "urbano_palomas.mp3",
+      "image": "noun-dove-394629.svg",
+      "tag": [
+        2,
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 125,
+      "name": "Giao thông ở thành phố",
+      "describe": "Giao thông ở thành phố",
+      "sound": "urbano_trafico.mp3",
+      "image": "noun-highway-582833.svg",
+      "tag": [
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 126,
+      "name": "Tàu hoả ở thành phố",
+      "describe": "Tàu hoả ở thành phố",
+      "sound": "urbano_tren.mp3",
+      "image": "noun-train-1034587.svg",
+      "tag": [
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 127,
+      "name": "Dòng sông 2",
+      "describe": "Dòng sông 2",
+      "sound": "sound1.mp3",
+      "image": "noun-river-1592655.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 128,
+      "name": "Sóng biển 3",
+      "describe": "Sóng biển 3",
+      "sound": "sound2.mp3",
+      "image": "noun-sea-1755277.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 129,
+      "name": "Tiếng nước chảy từ trên cao",
+      "describe": "Tiếng nước chảy từ trên cao",
+      "sound": "sound4.mp3",
+      "image": "noun-water-1218076.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 130,
+      "name": "Gió thổi mạnh",
+      "describe": "Gió thổi mạnh",
+      "sound": "sound5.mp3",
+      "image": "noun-wind-1037200.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 131,
+      "name": "Âm thanh chim trong rừng 2",
+      "describe": "Âm thanh chim trong rừng 2",
+      "sound": "sound8.mp3",
+      "image": "noun-bird.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 132,
+      "name": "Mưa 5",
+      "describe": "Mưa 5",
+      "sound": "sound11.mp3",
+      "image": "noun-rain-5671025.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 133,
+      "name": "Dế kêu đêm muộn",
+      "describe": "Dế kêu đêm muộn",
+      "sound": "sound16.mp3",
+      "image": "cricket.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 134,
+      "name": "Bão, gió , mưa",
+      "describe": "Bão, gió , mưa",
+      "sound": "sound12.mp3",
+      "image": "noun-thunder-2139898.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 135,
+      "name": "Vòi tắm ở nhà 2",
+      "describe": "Vòi tắm ở nhà 2",
+      "sound": "sound27.mp3",
+      "image": "shower.svg",
+      "tag": [
+        10,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 136,
+      "name": "Chuông gió 2",
+      "describe": "Chuông gió 2",
+      "sound": "sound28.mp3",
+      "image": "noun-wind-4543513.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 137,
+      "name": "Mưa rào 2",
+      "describe": "Mưa rào 2",
+      "sound": "sound26.mp3",
+      "image": "rain.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 138,
+      "name": "Mưa rào ở nhà 2",
+      "describe": "Mưa rào ở nhà 2",
+      "sound": "sound61.mp3",
+      "image": "noun-house-roof-804341.svg",
+      "tag": [
+        6,
+        7,
+        8,
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 139,
+      "name": "Lặn dưới nước",
+      "describe": "Lặn dưới nước",
+      "sound": "sound63.mp3",
+      "image": "noun-dive-2612504.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 140,
+      "name": "Nổi trên mặt nước",
+      "describe": "Nổi trên mặt nước",
+      "sound": "sound64.mp3",
+      "image": "noun-sea-2933136.svg",
+      "tag": [
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 141,
+      "name": "Sóng biển dạt dào",
+      "describe": "Sóng biển dạt dào",
+      "sound": "sound69.mp3",
+      "image": "ocean.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 142,
+      "name": "Mưa trước sân nhà",
+      "describe": "Mưa trước sân nhà",
+      "sound": "sound70.mp3",
+      "image": "noun-house-roof-804341.svg",
+      "tag": [
+        7,
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 143,
+      "name": "Mưa trên mái nhà",
+      "describe": "Mưa trên mái nhà",
+      "sound": "sound73.mp3",
+      "image": "noun-house-roof-804341.svg",
+      "tag": [
+        7,
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 144,
+      "name": "Đồng hồ 3",
+      "describe": "Đồng hồ 3",
+      "sound": "sound78.mp3",
+      "image": "noun-clock-1018611.svg",
+      "tag": [
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 145,
+      "name": "Ếch kêu gần hồ",
+      "describe": "Ếch kêu gần hồ",
+      "sound": "sound79.mp3",
+      "image": "frog.svg",
+      "tag": [
+        2
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 146,
+      "name": "Sấm sét 2",
+      "describe": "Sấm sét 2",
+      "sound": "sound83.mp3",
+      "image": "noun-thunder-1988276.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 147,
+      "name": "Phương tiện đi lại",
+      "describe": "Phương tiện đi lại",
+      "sound": "sound84.mp3",
+      "image": "noun-way-3783009.svg",
+      "tag": [
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 148,
+      "name": "Đám đông 2",
+      "describe": "Đám đông 2",
+      "sound": "sound101.mp3",
+      "image": "noun-crowd-591860.svg",
+      "tag": [
+        4
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 149,
+      "name": "5.4hz",
+      "describe": "Thở thư giãn",
+      "sound": "binaural1.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 150,
+      "name": "8.6hz",
+      "describe": "Giảm lo lắng",
+      "sound": "binaural2.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 151,
+      "name": "12hz",
+      "describe": "Kích thích minh mẫn",
+      "sound": "binaural3.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 152,
+      "name": "3.5hz",
+      "describe": "Giảm căng thẳng",
+      "sound": "binaural4.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 153,
+      "name": "6hz",
+      "describe": "Kích thích sáng tạo",
+      "sound": "binaural5.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 154,
+      "name": "0.1hz",
+      "describe": "Trạng thái thiền định",
+      "sound": "binaural6.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 155,
+      "name": "3.4hz",
+      "describe": "Giấc ngủ sâu",
+      "sound": "binaural7.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 156,
+      "name": "432hz",
+      "describe": "Phổ tần số",
+      "sound": "binaural8.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 157,
+      "name": "528hz",
+      "describe": "Chữa bệnh dna",
+      "sound": "binaural9.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 158,
+      "name": "2hz",
+      "describe": "Châm cứu",
+      "sound": "isocronico_acupuntura.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 159,
+      "name": "5.9hz",
+      "describe": "Vòng tuần hoàn",
+      "sound": "isocronico_circulacion.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 160,
+      "name": "15.4hz",
+      "describe": "Giảm trầm cảm",
+      "sound": "isocronico_depresion.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 161,
+      "name": "73hz",
+      "describe": "Sự thông minh",
+      "sound": "isocronico_inteligencia.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 162,
+      "name": "23hz",
+      "describe": "Đau đầu",
+      "sound": "isocronico_jaqueca.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 163,
+      "name": "144hz",
+      "describe": "Sự tái tạo",
+      "sound": "isocronico_regeneracion.mp3",
+      "image": "noun-sound-1560834.svg",
+      "tag": [
+        1
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 164,
+      "name": "Chuông bát tây tạng 3",
+      "describe": "Chuông bát tây tạng 3",
+      "sound": "oriental_tibetansilverbells.mp3",
+      "image": "noun-singing-bowl-4975215.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 165,
+      "name": "Tụng kinh, thiền",
+      "describe": "Tụng kinh, thiền",
+      "sound": "oriental_om.mp3",
+      "image": "noun-meditation-5641679.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 166,
+      "name": "Chuông bát tây tạng 1",
+      "describe": "Chuông bát tây tạng 1",
+      "sound": "oriental_boltibetano.mp3",
+      "image": "noun-singing-bowl-4975215.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 167,
+      "name": "Chuông bát tây tạng 2",
+      "describe": "Chuông bát tây tạng 2",
+      "sound": "oriental_cuenco.mp3",
+      "image": "noun-singing-bowl-4975215.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 168,
+      "name": "Kèn duduk",
+      "describe": "Kèn duduk",
+      "sound": "oriental_duduk.mp3",
+      "image": "noun-duduk-4168223.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 169,
+      "name": "Gió thổi rừng tre",
+      "describe": "Gió thổi rừng tre",
+      "sound": "oriental_vientobambu.mp3",
+      "image": "noun-bamboo-4284866.svg",
+      "tag": [
+        6,
+        8,
+        5
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 170,
+      "name": "Tiếg trống",
+      "describe": "Tiếg trống",
+      "sound": "oriental_taiko.mp3",
+      "image": "noun-drum-5674271.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 171,
+      "name": "Tiếng sáo trúc",
+      "describe": "Tiếng sáo trúc",
+      "sound": "oriental_flautachina.mp3",
+      "image": "noun-bamboo-flute-3412609.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 172,
+      "name": "Tiếng sáo trúc 2",
+      "describe": "Tiếng sáo trúc 2",
+      "sound": "sound3.mp3",
+      "image": "noun-bamboo-flute-3412609.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 173,
+      "name": "Hộp nhạc",
+      "describe": "Hộp nhạc",
+      "sound": "sound6.mp3",
+      "image": "noun-music-box-4889929.svg",
+      "tag": [
+        9,
+        10
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 174,
+      "name": "Đàn piano 2",
+      "describe": "Đàn piano 2",
+      "sound": "sound9.mp3",
+      "image": "noun-piano-1092329.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 175,
+      "name": "Dàn nhạc giao hưởng ",
+      "describe": "Dàn nhạc giao hưởng ",
+      "sound": "sound10.mp3",
+      "image": "noun-conductor-1196848.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 176,
+      "name": "Giai điệu ",
+      "describe": "Giai điệu ",
+      "sound": "sound15.mp3",
+      "image": "noun-spa-3596786.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 177,
+      "name": "Bươm bướm ",
+      "describe": "Bươm bướm ",
+      "sound": "sound48.mp3",
+      "image": "noun-butterfly-4927181.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 178,
+      "name": "Sóng biển dạt vào bờ lớn",
+      "describe": "Sóng biển dạt vào bờ lớn",
+      "sound": "sound59.mp3",
+      "image": "noun-island-3326650.svg",
+      "tag": [
+        6,
+        7
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 179,
+      "name": "Duduk 2",
+      "describe": "Duduk 2",
+      "sound": "sound74.mp3",
+      "image": "noun-duduk-4168223.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 180,
+      "name": "Hát ru",
+      "describe": "Hát ru",
+      "sound": "sound77.mp3",
+      "image": "noun-singing-lullaby-5574369.svg",
+      "tag": [
+        10,
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 181,
+      "name": "Nhạc ngủ trẻ em",
+      "describe": "Nhạc ngủ trẻ em",
+      "sound": "sound110.mp3",
+      "image": "noun-child-bed-2109046.svg",
+      "tag": [
+        10,
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 182,
+      "name": "Vĩnh cửu",
+      "describe": "Vĩnh cửu",
+      "sound": "sound113.mp3",
+      "image": "noun-universe-3789594.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 183,
+      "name": "Chén Tây Tạng nhỏ",
+      "describe": "Chén Tây Tạng nhỏ",
+      "sound": "sound125.mp3",
+      "image": "noun-singing-bowl-4975215.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 184,
+      "name": "Mơ thư giãn",
+      "describe": "Mơ thư giãn",
+      "sound": "sound126.mp3",
+      "image": "noun-dream-catcher-2170413.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 185,
+      "name": "Wiky way",
+      "describe": "Wiky way",
+      "sound": "sound13.mp3",
+      "image": "noun-concentrate-3940623.svg",
+      "tag": [
+        3
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 186,
+      "name": "Quạt điện 3",
+      "describe": "Quạt điện 3",
+      "sound": "Fan.mp3",
+      "image": "noun-fan-1112059.svg",
+      "tag": [
+        10
+      ],
+      "vip": false,
+      "type": 1
+    },
+    {
+      "id": 187,
+      "name": "Guitar",
+      "describe": "Guitar",
+      "sound": "Guitar.mp3",
+      "image": "noun-guitar-1004621.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 188,
+      "name": "Piano",
+      "describe": "Piano",
+      "sound": "Piano.mp3",
+      "image": "noun-piano-1092329.svg",
+      "tag": [
+        9
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 189,
+      "name": "Mưa gió trên lá",
+      "describe": "Mưa gió trên lá",
+      "sound": "wind_leaves.mp3",
+      "image": "noun-wind-3100898.svg",
+      "tag": [
+        6,
+        7,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 190,
+      "name": "Gió 3",
+      "describe": "Gió 3",
+      "sound": "Wind.mp3",
+      "image": "noun-wind-1037200.svg",
+      "tag": [
+        6,
+        8
+      ],
+      "vip": true,
+      "type": 1
+    },
+    {
+      "id": 191,
+      "name": "Bầu trời đầy sao",
+      "describe": "Bầu trời đầy sao những ngôi sao lấp lánh vô dịnh trong khoảng không",
+      "sound": "peacefulgarden.mp3",
+      "image": "902a7cc9c4bc9f31024c7475c13b5f31.jpg",
+      "tag": [
+        12
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 192,
+      "name": "Tình yêu đích thực",
+      "describe": "Yêu đời? Cảm thấy có niềm vui nhẹ nhàng đến kỳ lạ",
+      "sound": "ms01.mp3",
+      "image": "0153d6f4c7efdd9f8aa1a56d7278ccb1.jpg",
+      "tag": [
+        12
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 193,
+      "name": "Búp bê",
+      "describe": "Dễ thương nhưng chỉ là một món đồ chơi không cảm xúc",
+      "sound": "ADoll'sBeginning.mp3",
+      "image": "e761884e2386a1dfb7c43ba4a2ddfdb0.jpg",
+      "tag": [
+        13
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 194,
+      "name": "Những lời không thể nói",
+      "describe": "Những lời không thể nói, liệu rằng …",
+      "sound": "unspokenWords.mp3",
+      "image": "d35e8f581f006c58d171f20e3db7aba1.jpg",
+      "tag": [
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 195,
+      "name": "Tưởng Nhớ",
+      "describe": "Cũng chỉ còn là tồn tại trong tâm trí, những kỷ niệm ấy",
+      "sound": "InRemembrance.mp3",
+      "image": "0007ea8d1b4f087ce93f4e5e7ef635e5.jpg",
+      "tag": [
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 196,
+      "name": "Bầu trời vô tận",
+      "describe": "Thả trôi tâm hồn theo dòng cuốn của gió đưa đến chân trời",
+      "sound": "DeepSleepCalmingRelaxingandSoothingMusic.mp3",
+      "image": "2377643da9de98e9a27e4bb9eed9affb.jpg",
+      "tag": [
+        12,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 197,
+      "name": "Suy tư",
+      "describe": "Nghĩ suy về điều gì?",
+      "sound": "MinuteSuperDeepMeditationMusic.mp3",
+      "image": "9ea757e518f794bfdb58def29bc212c5.jpg",
+      "tag": [
+        12,
+        16
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 198,
+      "name": "Lofi relax 1",
+      "describe": "Lofi relax 1",
+      "sound": "CHILL_LOFI_SOUND.mp3",
+      "image": "dd95fdf1e47504c434c0a7e759c46baf.jpg",
+      "tag": [
+        12
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 199,
+      "name": "Không gian linh hồn",
+      "describe": "Khoảng không làm sạch tâm trí, đặt lại trạng thái tâm hồn",
+      "sound": "DeepSleepin10MinutesSleep.mp3",
+      "image": "496be08e014ab481351e79ed81f5ba35.jpg",
+      "tag": [
+        12,
+        16,
+        15
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 200,
+      "name": "OM",
+      "describe": "OM",
+      "sound": "15MinutesOMMeditation.mp3",
+      "image": "6f96b861a62d37cec56513e60530f8cd.jpg",
+      "tag": [
+        16
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 201,
+      "name": "Tình yêu ở nơi đâu?",
+      "describe": "Tình yêu liệu có tự đến, hay phải đi tìm? Nó ở đâu?",
+      "sound": "WHERE_MY_LOVE.mp3",
+      "image": "165a712429c6fd2a87be9ee62a184591.jpg",
+      "tag": [
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 202,
+      "name": "Bức tượng",
+      "describe": "Đã mất đi cảm xúc, chỉ còn là một bức tượng với một khuân cảm xúc đã định sẵn",
+      "sound": "VisionsofGideon10min.mp3",
+      "image": "e7ef03a7a20ec354bc791e4278af604f.jpg",
+      "tag": [
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 203,
+      "name": "Buồn",
+      "describe": "Quá nhiều thứ dồn nén đến tâm trí, cần định tâm lại trái tim",
+      "sound": "SadPianoMusic.mp3",
+      "image": "ec96e5f1682c91c7df29e71134b0b103.jpg",
+      "tag": [
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 204,
+      "name": "Mất đi trái tim",
+      "describe": "Tình yêu cũng đem đến sự hạnh phúc nhưng hạnh phúc cũng sẽ biến mất nếu bị mất đi trái tim",
+      "sound": "oneheart.mp3",
+      "image": "7d773a68c6d5f27e495dae057d463239.jpg",
+      "tag": [
+        14,
+        12
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 205,
+      "name": "Bừng sáng",
+      "describe": "Tia sáng loé trong khoảng không tối tăm mù mịt",
+      "sound": "aglow.mp3",
+      "image": "82f94ca615dde77ffb2e7226f83db795.jpg",
+      "tag": [
+        12,
+        14,
+        16
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 206,
+      "name": "Kết thúc",
+      "describe": "Vậy là kết thúc rồi?",
+      "sound": "close.mp3",
+      "image": "b32886ede8accf67c79702d4a14baf2d.jpg",
+      "tag": [
+        12,
+        14,
+        15
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 207,
+      "name": "Thước phim buồn",
+      "describe": "Thước phim buồn, xem lại thước phim cũng như đang quay lại quá khứ",
+      "sound": "SadCinematic.mp3",
+      "image": "8ac1dd793b41d9bd397f20f0693273b0.jpg",
+      "tag": [
+        12,
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 208,
+      "name": "Tôi muốn cậu",
+      "describe": "Tôi muốn cậu, rất muốn. Cảm xúc trào dâng, nhịp tim mất kiên nhẫn",
+      "sound": "iWantY.mp3",
+      "image": "13bbc63ddf091ddc95586996a536c121.jpg",
+      "tag": [
+        13
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 209,
+      "name": "Quá khứ",
+      "describe": "Quá khứ nên để cho qua",
+      "sound": "SadEmotional.mp3",
+      "image": "483484605b371264ee9110cb669a3f78.jpg",
+      "tag": [
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 210,
+      "name": "Áp lực cuộc sống",
+      "describe": "Áp lực cuộc sống, mệt mọi với mọi thứ, tại sao mình tồn tại?",
+      "sound": "SadEpicEmotional.mp3",
+      "image": "683c2d9752625019063ee5403b4ae2ce.jpg",
+      "tag": [
+        14
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 211,
+      "name": "Mưa xoá quá khứ",
+      "describe": "Mưa xoá quá khứ, rửa trôi đi mọi muộn phiền",
+      "sound": "SoundofRain.mp3",
+      "image": "0600f774ec403dc14d6eb2d7886abe0b.jpg",
+      "tag": [
+        14,
+        18
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 212,
+      "name": "Dòng suối",
+      "describe": "Dòng suối chảy róc rách, thư giãn",
+      "sound": "SleepMeditation.mp3",
+      "image": "4e29551408f594fb48bee48885ab14a1.jpg",
+      "tag": [
+        12,
+        13,
+        15,
+        16,
+        17,
+        18
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 213,
+      "name": "Tự do",
+      "describe": "Bản nhạc đem đến sự tập tung, chữa lành",
+      "sound": "Healing.mp3",
+      "image": "c45d432b9081519d648e8dea67d586ca.jpg",
+      "tag": [
+        12,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 214,
+      "name": "Hòn đảo tự do",
+      "describe": "Hòn đảo tự do",
+      "sound": "Ocean.mp3",
+      "image": "9710e808cffd595d96c8d136107a0dc0.jpg",
+      "tag": [
+        12,
+        13,
+        15,
+        16,
+        17,
+        18
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 215,
+      "name": "Vũ trụ",
+      "describe": "Vũ trụ bao la đến đâu nhưng tin rằng nó vẫn có cực hạn",
+      "sound": "vutru.mp3",
+      "image": "8e6e0b3964548962f6e231f27d9e1252.jpg",
+      "tag": [
+        12,
+        13,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 216,
+      "name": "Bầu trời giấc mơ",
+      "describe": "Bầu trời giấc mơ đưa đến những điều tốt đẹp",
+      "sound": "SkyfulofDreams.mp3",
+      "image": "01a5dcfbcfd3a1a429111c02ecbfab42.jpg",
+      "tag": [
+        12,
+        13,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 217,
+      "name": "Dải ngân hà",
+      "describe": "Dải ngân hà những ngôi sao nhiều sắc màu cũng như tâm trí hỗn loạn",
+      "sound": "Breksta.mp3",
+      "image": "1bb1113a68bbe691ba99a910c260e268.jpg",
+      "tag": [
+        12,
+        13,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 218,
+      "name": "Tịnh tâm",
+      "describe": "Tâm trí không còn những suy nghĩ, chỉ còn trống rỗng",
+      "sound": "RootChakraCleansing.mp3",
+      "image": "42daf46c3c4b0ff99e11343ea4b76381.jpg",
+      "tag": [
+        15,
+        16
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 219,
+      "name": "Thế giới loài chim",
+      "describe": "Thế giới loài chim",
+      "sound": " BirdSongs.mp3",
+      "image": "6005dd5f12f09cceeeb3bdbe52401af3.jpg",
+      "tag": [
+        12,
+        13,
+        16,
+        17,
+        18
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 220,
+      "name": "Thác nước",
+      "describe": "Thác nước",
+      "sound": "thacnuoc.mp3",
+      "image": "de9346b5a6f46fe30dcf0d0d407314df.jpg",
+      "tag": [
+        12,
+        13,
+        16,
+        17,
+        18
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 221,
+      "name": "Bồ công anh",
+      "describe": "Bồ công anh cùng gió đem theo phiền muộn, mang đến tập trung",
+      "sound": "Nature.mp3",
+      "image": "af9452b57464a4fbd897880fd2e0f9db.jpg",
+      "tag": [
+        12,
+        13,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 222,
+      "name": "Tập trung",
+      "describe": "Tập trung cực độ, loại bỏ những ý nghĩ gây nhiễu",
+      "sound": "HealingNature.mp3",
+      "image": "97fb701d91191119e0c86b3e8a0422b3.jpg",
+      "tag": [
+        14,
+        15,
+        16
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 223,
+      "name": "Trong veo",
+      "describe": "Chưa bao giờ thấy nhẹ nhõm một cách kỳ lạ đến vậy",
+      "sound": "RelaxingMusic.mp3",
+      "image": "832ca390fc72b8e644ef91d867e8fa8b.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 224,
+      "name": "Mùa thu",
+      "describe": "Mùa thu",
+      "sound": "AutumnFog-RelaxingpianomusicCalmingMusicRelaxingmusic.mp3",
+      "image": "e7dc979d750b5dae358d75444e46d6a9.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 225,
+      "name": "Qua ô của sổ",
+      "describe": "Qua ô của sổ",
+      "sound": "AmbientMusic-peacefulcalmpianomusicstudyfocus.mp3",
+      "image": "d85f6ff24aadfbd88288c7266c2c028a.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 226,
+      "name": "Xinh đẹp",
+      "describe": "Xinh đẹp",
+      "sound": "BeautifulPianoMusicMusicforStressReliefMeditationMusicMusicforreadingandstudying.mp3",
+      "image": "f917ad52b8a56f0c47cd31dcd9b51001.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 227,
+      "name": "Bầu trời",
+      "describe": "Bầu trời",
+      "sound": "Beautifulrelaxingmusic-AntidepressiveMusic-Antistressmusic.mp3",
+      "image": "832192ec5a509616ad655b0d6004d981.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 228,
+      "name": "Hoàn hôn tháng 11",
+      "describe": "Hoàn hôn tháng 11",
+      "sound": "BeautifulRelaxingMusicPeacefulInstrumentalMusic",
+      "NovemberRelax": ".mp3",
+      "image": "b1390892f03c1bc5472c43dc5ccbe8ba.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 229,
+      "name": "Bình minh",
+      "describe": "Bình minh",
+      "sound": "BeautifulRelaxingMusicPeacefulSoothingInstrumentalMusic.mp3",
+      "image": "624b9d13765164121e181ca4513226c2.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 230,
+      "name": "Sương sớm",
+      "describe": "Sương sớm",
+      "sound": "BeautifulRelaxingPianoMusicForStressReliefStudyandMeditation.mp3",
+      "image": "d3bac5dcc6a97dc11d73498bfee96c0d.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 231,
+      "name": "Giấc ngủ",
+      "describe": "Âm nhạc chữa lành đưa đến giấc ngủ sâu",
+      "sound": "DeepSleepCalmingRelaxingandSoothingMusic.mp3",
+      "image": "58332fc2bf5e7bd234c08643f2bbbc67.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 232,
+      "name": "Bình minh cánh rừng",
+      "describe": "Bình minh cánh rừng, từng tia sáng len lỏi qua từng kẽ lá, vạn vật hoạt động",
+      "sound": "HealingMusic♪PianoMusicForStressReliefPositiveEnergyMeditationMusicSleepMusic.mp3",
+      "image": "36a06c7549c30df4ded6ace89a980cf7.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 233,
+      "name": "Mặt trời trên biển",
+      "describe": "Mặt trời trên biển lênh đênh mà mơ hồ",
+      "sound": "Morningrelaxingpianomusic.mp3",
+      "image": "7822074b3886583de12c80b4d0ab795e.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 234,
+      "name": "Biển lặng",
+      "describe": "Biển cũng thấy mệt mỏi sao? ",
+      "sound": "Relaxmusicforstudyingfocusworkrelaxingstressreliefspacalmmindmusic.mp3",
+      "image": "a4a9edba8c0fa5d55eaf80e883ae239e.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 235,
+      "name": "Tuyết rơi",
+      "describe": "Tuyết rơi",
+      "sound": "RelaxingChristmasSoftPianoMusicSleepCalmRelax.mp3",
+      "image": "4df0090b1c70821c8bded638ec44ee47.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 236,
+      "name": "Một ngày mưa",
+      "describe": "Một ngày mưa, cảm xúc cứ vậy mà dâng cao",
+      "sound": "RelaxingMusic&RainSounds-BeautifulPianoMusicBackgroundMusicSleepMusic•You&Me.mp3",
+      "image": "26d13889247809ff4fa4fa4bebe420c4.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 237,
+      "name": "Căn phòng",
+      "describe": "Hướng nội? Chỉ muốn ở một mình ngay lúc này?",
+      "sound": "RelaxingPianoandViolinMusicForStudyandFocus.mp3",
+      "image": "683a7eeba5e6105d82a44dd205490bbf.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 238,
+      "name": "Rừng phong",
+      "describe": "Rừng phong, con gió luồn qua, khu rừng vắng lặng",
+      "sound": "RelaxingPianoMusic•SleepMusicMeditationMusicBackgroundMusicStudyMusic.mp3",
+      "image": "4f5500a9130d4b9f8d4bf2da50d1777b.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 239,
+      "name": "Caffe",
+      "describe": "Caffe",
+      "sound": "RelaxingPianoMusicMusicforStressReliefMeditationMusicMusicforreadingandstudying.mp3",
+      "image": "e39575d90aabf77afd9cb71fda8b11c8.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 240,
+      "name": "Ngọn núi",
+      "describe": "Ngọn núi",
+      "sound": "RelaxingPianoMusicMeditationMusicRelaxingMusicSoftMusicRelaxationMusic.mp3",
+      "image": "0c65bf4d868d4df06900e51bae62eda6.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 241,
+      "name": "Cánh đồng hoa",
+      "describe": "Cánh đồng hoa",
+      "sound": "SlowPeacefulandCalmingPianoMusic-StudyReadSleepMeditation.mp3",
+      "image": "1e7f648e730e4de980f1e17ee79da6c5.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 242,
+      "name": "Chiều tối",
+      "describe": "Chiều tối",
+      "sound": "SoothingSleepMusicRelaxingPianoMusicSleepingMusicFallAsleep.mp3",
+      "image": "27abba72d5ee30780f716fe871e8320d.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 243,
+      "name": "Lạc",
+      "describe": "Lạc",
+      "sound": "TheForestMaiden(SoloPiano).mp3",
+      "image": "501aa00adff1bf485bdc594d040b5b96.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    },
+    {
+      "id": 244,
+      "name": "Mùa đông",
+      "describe": "Mùa đông",
+      "sound": "Winterchill-PianoMusic•SleepMusicMeditationMusicBackgroundMusicStudyMusic.mp3",
+      "image": "a16c040e0ea95737b8b287ab1a4440ef.jpg",
+      "tag": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "vip": true,
+      "type": 2
+    }
+  ]
+}

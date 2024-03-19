@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:just_audio_background/just_audio_background.dart';
 import 'package:lavenz/c_lang/c_translations.dart';
 import 'package:lavenz/c_theme/c_theme.dart';
 import 'package:lavenz/config/config.dart';
@@ -25,11 +24,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await JustAudioBackground.init(
-    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
-    androidNotificationChannelName: 'Audio playback',
-    androidNotificationOngoing: true,
-  );
+
   await initialize();
   runApp(
     Phoenix(

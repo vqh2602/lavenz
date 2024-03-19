@@ -170,8 +170,10 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(17) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+                  pathImages:
+                  'assets/data/images/',
               title: 'Đi vào giấc ngủ'.tr,
               type: 17),
           cHeight(12),
@@ -182,8 +184,9 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(13) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Tập trung cao độ'.tr,
               type: 13),
           cHeight(12),

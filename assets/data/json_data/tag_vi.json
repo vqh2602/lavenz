@@ -1,0 +1,120 @@
+{
+  "version_data": "1.0.8",
+  "date": "26/02/2023",
+  "version_app": [
+   "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "1.0.4"
+  ],
+  "data": [
+    {
+      "id": "1",
+      "name": "Sóng não",
+      "des": "Brainwave",
+      "type": "1"
+    },
+    {
+      "id": "2",
+      "name": "Động vật",
+      "des": "Animal",
+      "type": "1"
+    },
+    {
+      "id": "3",
+      "name": "Giai điệu",
+      "des": "Melodies",
+      "type": "1"
+    },
+    {
+      "id": "4",
+      "name": "Thành phố",
+      "des": "City",
+      "type": "1"
+    },
+    {
+      "id": "5",
+      "name": "Đồng quê",
+      "des": "Bucolic",
+      "type": "1"
+    },
+    {
+      "id": "6",
+      "name": "Thiên nhiên",
+      "des": "Nature",
+      "type": "1"
+    },
+    {
+      "id": "7",
+      "name": "Nước",
+      "des": "Water",
+      "type": "1"
+    },
+    {
+      "id": "8",
+      "name": "Thời tiết",
+      "des": "Weather",
+      "type": "1"
+    },
+    {
+      "id": "9",
+      "name": "Nhạc cụ",
+      "des": "Instrument",
+      "type": "1"
+    },
+    {
+      "id": "10",
+      "name": "Nhà",
+      "des": "Home",
+      "type": "1"
+    },
+    {
+      "id": "11",
+      "name": "Vũ trụ",
+      "des": "Universe",
+      "type": "1"
+    },
+    {
+      "id": "12",
+      "name": " Thư giãn",
+      "des": "relax",
+      "type": "2"
+    },
+    {
+      "id": "13",
+      "name": "Tập trung",
+      "des": "",
+      "type": "2"
+    },
+    {
+      "id": "14",
+      "name": "Tâm trạng",
+      "des": "",
+      "type": "2"
+    },
+    {
+      "id": "15",
+      "name": "Tri liệu",
+      "des": "",
+      "type": "2"
+    },
+    {
+      "id": "16",
+      "name": "Thiền",
+      "des": "Meditation",
+      "type": "2"
+    },
+    {
+      "id": "17",
+      "name": "Ngủ",
+      "des": "Deep Sleep",
+      "type": "2"
+    },
+    {
+      "id": "18",
+      "name": "Thiên nhiên",
+      "des": "",
+      "type": "2"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="202.682 81.872 458.717 466.833" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(0.865328, 0, 0, 0.865328, 129.17569, 72.996658)" style="">
+    <path d="m140 308h84v84h-84z"/>
+    <path d="m196 420v56h-28v-56h-56v112h140v-112z"/>
+    <path d="m308 308h84v84h-84z"/>
+    <path d="m364 420v56h-28v-56h-56v112h140v-112z"/>
+    <path d="m476 308h84v84h-84z"/>
+    <path d="m532 420v56h-28v-56h-56v112h140v-112z"/>
+    <path d="m140 28h84v84h-84z"/>
+    <path d="m196 140v56h-28v-56h-56v112h140v-112z"/>
+    <path d="m308 28h84v84h-84z"/>
+    <path d="m364 140v56h-28v-56h-56v112h140v-112z"/>
+    <path d="m476 28h84v84h-84z"/>
+    <path d="m532 140v56h-28v-56h-56v112h140v-112z"/>
+  </g>
+</svg>

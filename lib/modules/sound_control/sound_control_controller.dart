@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:lavenz/data/models/sound.dart' as sound;
 import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/widgets/build_toast.dart';
-import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 
 class SoundControlController extends GetxController
@@ -14,8 +12,8 @@ class SoundControlController extends GetxController
   List<AudioCustom> listAudio = [];
   List<AudioCustom> listMusic = [];
   Timer? debounce;
-  DownloadAssetsController downloadAssetsController =
-      DownloadAssetsController();
+  // DownloadAssetsController downloadAssetsController =
+  //     DownloadAssetsController();
 
   // static var countdownDuration = const Duration(minutes: 10);
   // static var countdownDuration1 = const Duration(minutes: 10);
@@ -47,7 +45,7 @@ class SoundControlController extends GetxController
   }
 
   Future initLocalData() async {
-    await downloadAssetsController.init();
+    // await downloadAssetsController.init();
     user = getUserInBox();
     updateUI();
   }
@@ -172,10 +170,11 @@ class SoundControlController extends GetxController
         //await listAudio.last.audioPlayer.setFilePath(File(path).path);
         //  print('url sound:$path');
         // String a = 'sound:/Users/vuongquanghuy/Library/Developer/CoreSimulator/Devices/8E45B80C-0A53-4FB2-A778-9E8AE9428544/data/Containers/Data/Application/3695801F-7F20-4A2D-9C99-87C2BAF712E1/Documents/assets/sound/unspokenWords.mp3';
-        File file = File(path);
-        file.readAsBytesSync();
+        // File file = File(path);
+        // file.readAsBytesSync();
 
-        await listAudio.last.audioPlayer.setFilePath(path);
+        // await listAudio.last.audioPlayer.setFilePath(file.path);
+        await listAudio.last.audioPlayer.setAsset(path);
         await listAudio.last.audioPlayer.setLoopMode(LoopMode.all);
         await listAudio.last.audioPlayer.setVolume(0.5);
         await listAudio.last.audioPlayer.play();

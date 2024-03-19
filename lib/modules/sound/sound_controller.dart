@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/data/models/sound.dart' as sound;
 import 'package:lavenz/data/models/tag.dart' as tag;
@@ -9,7 +9,7 @@ import 'package:lavenz/data/models/user.dart';
 import 'package:lavenz/modules/sound_control/sound_control_controller.dart';
 import 'package:lavenz/modules/vip/vip_screen.dart';
 import 'package:lavenz/widgets/build_toast.dart';
-import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+// import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:lavenz/widgets/share_function/share_funciton.dart';
 
@@ -17,8 +17,8 @@ class SoundController extends GetxController
     with GetTickerProviderStateMixin, StateMixin, UserMixin {
   SoundControlController soundControlController =
       Get.put(SoundControlController());
-  DownloadAssetsController downloadAssetsController =
-      DownloadAssetsController();
+  // DownloadAssetsController downloadAssetsController =
+  //     DownloadAssetsController();
   //VideoPlayerController? videoPlayerController;
   late TabController tabController, tabControllerMin;
   sound.Sound soundData = sound.Sound();
@@ -73,14 +73,20 @@ class SoundController extends GetxController
   }
 
   Future initLocalData() async {
-    await downloadAssetsController.init();
+    // await downloadAssetsController.init();
     try {
-      String data = await File(
-              '${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
-          .readAsString();
-      String dataTag = await File(
-              '${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
-          .readAsString();
+      // String data = await File(
+      //         '${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+      //     .readAsString();
+      // String dataTag = await File(
+      //         '${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
+      //     .readAsString();
+
+      String data = await rootBundle.loadString(
+          'assets/data/json_data/data_${getLocalConvertString()}.json');
+      String dataTag = await rootBundle.loadString(
+          'assets/data/json_data/tag_${getLocalConvertString()}.json');
+
       soundData = sound.Sound.fromJson(jsonDecode(data));
       tagData = tag.Tag.fromJson(jsonDecode(dataTag));
       listSound =
@@ -105,7 +111,8 @@ class SoundController extends GetxController
       {required String sound, required sound.Data data}) async {
     if (data.type == 1) {
       soundControlController.playSoundControl(
-          path: '${downloadAssetsController.assetsDir}/sound/$sound',
+          // path: '${downloadAssetsController.assetsDir}/sound/$sound',
+           path: 'assets/data/sound/$sound',
           data: data);
     } else {
       soundControlController.playSoundControl(

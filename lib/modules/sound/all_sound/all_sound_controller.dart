@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/modules/sound/sound_controller.dart';
-import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/admod_mixin.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
 import 'package:lavenz/data/models/sound.dart' as sound;
@@ -15,8 +14,8 @@ class AllSoundController extends GetxController
     with GetTickerProviderStateMixin, StateMixin, UserMixin, ADmodMixin {
   TextEditingController searchTE = TextEditingController();
 
-  DownloadAssetsController downloadAssetsController =
-      DownloadAssetsController();
+  // DownloadAssetsController downloadAssetsController =
+  //     DownloadAssetsController();
 
   tag.Tag tagData = tag.Tag();
   sound.Sound soundData = sound.Sound();
@@ -39,11 +38,14 @@ class AllSoundController extends GetxController
   }
 
   Future initLocalData() async {
-    await downloadAssetsController.init();
+    // await downloadAssetsController.init();
     try {
-      String dataTag = await File(
-              '${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
-          .readAsString();
+      // String dataTag = await File(
+      //         '${downloadAssetsController.assetsDir}/json_data/tag_${getLocalConvertString()}.json')
+      // .readAsString();
+
+      String dataTag = await rootBundle.loadString(
+          'assets/data/json_data/tag_${getLocalConvertString()}.json');
       tagData = tag.Tag.fromJson(jsonDecode(dataTag));
       listTagMusic = tagData.data
               ?.where((element) => num.parse(element.type.toString()) == 2)

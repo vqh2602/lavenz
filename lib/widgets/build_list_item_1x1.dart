@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
@@ -75,8 +74,11 @@ Widget buildListItem1x1(
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(16.0),
-                                  child: Image.file(
-                                    File('$pathImages${listData[i].image}'),
+                                  child:
+                                      //  Image.file(
+                                      //   File('$pathImages${listData[i].image}'),
+                                      Image.asset(
+                                    '$pathImages${listData[i].image}',
                                     errorBuilder:
                                         (context, object, stackTrace) {
                                       return SizedBox(

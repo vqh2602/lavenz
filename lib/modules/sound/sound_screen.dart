@@ -233,8 +233,10 @@ class _SoundScreenState extends State<SoundScreen>
               listSelect:
                   soundControlController.listAudio.map((e) => e.data).toList(),
               listData: soundController.listSound,
-              pathBase:
-                  '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+              // pathBase:
+              //     '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+
+              pathBase: 'assets/data/svg_icons/',
             ),
 
             for (var x in soundController.listTagSound) ...[
@@ -253,8 +255,9 @@ class _SoundScreenState extends State<SoundScreen>
                     .where((element) =>
                         element.tag!.contains(num.parse(x.id.toString())))
                     .toList(),
-                pathBase:
-                    '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+                // pathBase:
+                //     '${soundController.downloadAssetsController.assetsDir}/svg_icons/',
+                pathBase: 'assets/data/svg_icons/',
               ),
             ],
           ],
@@ -276,8 +279,9 @@ class _SoundScreenState extends State<SoundScreen>
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(17) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Đi vào giấc ngủ'.tr,
               type: 17),
           cHeight(12),
@@ -288,8 +292,9 @@ class _SoundScreenState extends State<SoundScreen>
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(18) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Bản nhạc thiên nhiên'.tr,
               type: 18),
           cHeight(12),
@@ -300,8 +305,9 @@ class _SoundScreenState extends State<SoundScreen>
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(12) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Bản nhạc thư giãn'.tr,
               type: 12),
           cHeight(12),
@@ -312,8 +318,9 @@ class _SoundScreenState extends State<SoundScreen>
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(13) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Tập trung cao độ'.tr,
               type: 13),
           cHeight(12),
@@ -324,8 +331,9 @@ class _SoundScreenState extends State<SoundScreen>
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(14) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Giải toả tâm trạng',
               type: 14),
           cHeight(12),
@@ -336,8 +344,9 @@ class _SoundScreenState extends State<SoundScreen>
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(15) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Bản nhạc trị liệu',
               type: 15),
           cHeight(12),

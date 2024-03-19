@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -64,8 +63,11 @@ Widget listSound({
                           ],
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
-                        child: SvgPicture.file(
-                          File('$pathBase${listData[index].image}'),
+                        child:
+                            // SvgPicture.file(
+                            //   File('$pathBase${listData[index].image}'),
+                            SvgPicture.asset(
+                          '$pathBase${listData[index].image}',
                           fit: BoxFit.scaleDown,
                           colorFilter: !isPlaying
                               ? const ColorFilter.mode(
