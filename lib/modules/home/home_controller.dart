@@ -1,11 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/data/models/down.dart' as down;
 import 'package:lavenz/data/models/user.dart';
@@ -13,11 +9,9 @@ import 'package:lavenz/data/repositories/new_ver_repo.dart';
 import 'package:lavenz/data/storage.dart';
 import 'package:lavenz/modules/vip/vip_controller.dart';
 import 'package:lavenz/widgets/build_toast.dart';
-import 'package:lavenz/widgets/dialog_down.dart';
-import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
+// import 'package:lavenz/widgets/library/down_assets/download_assets.dart';
 import 'package:lavenz/widgets/mixin/admod_mixin.dart';
 import 'package:lavenz/widgets/mixin/user_mixin.dart';
-import 'package:lavenz/widgets/share_function/share_funciton.dart';
 import 'package:lavenz/widgets/text_custom.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -28,12 +22,11 @@ class HomeController extends GetxController
   PageController pageController = PageController(
     viewportFraction: 1.0,
   );
-  DownloadAssetsController downloadAssetsController =
-      DownloadAssetsController();
+  // DownloadAssetsController downloadAssetsController =
+  //     DownloadAssetsController();
   String message = 'Đang kết nối đến máy chủ'.tr;
   String speedInternet = '0';
   bool downloaded = false;
-  final speedTest = FlutterInternetSpeedTest();
   down.Down downLink = down.Down();
   NewVersionRepo newVersionRepo = NewVersionRepo();
   List<Widget> choiseSever = [];
@@ -56,22 +49,20 @@ class HomeController extends GetxController
 
   @override
   void dispose() {
-    speedTest.disableLog();
     connectivityResul?.cancel();
     super.dispose();
   }
 
   Future init() async {
-    await downloadAssetsController.init();
-    await initDown();
+    // await downloadAssetsController.init();
+    // await initDown();
   }
 
   Future<void> initInterstitialAd() async {
     if (!checkExpiry(user: user)) {
       timer = Timer.periodic(
           const Duration(minutes: 5),
-          (_) async =>
-              {await createInitInterstitialAd(), interstitialAd?.show()});
+          (_) async {await createInitInterstitialAd(); interstitialAd?.show();});
     }
   }
 
@@ -142,138 +133,114 @@ class HomeController extends GetxController
     });
   }
 
-  Future initDown() async {
-    downloaded = await downloadAssetsController.assetsDirAlreadyExists();
-    var checkAllFile =
-        await File('${downloadAssetsController.assetsDir}/svg_icons/river.svg')
-            .exists();
-    log('check down: $downloaded | $checkAllFile | ${downloadAssetsController.assetsDir}');
-    log('check user vip: ${checkExpiry(user: user)} | ${user.toJson()}');
-    renewSubscriptions(checkExpiry(user: user));
-    // if(downloaded){
-    //   await downloadAssetsController.clearAssets();
-    // }
-    if (!downloaded || !checkAllFile) {
-      //print('show down');
-      await Get.dialog(
-        obx((state) => dialogChoseSever(choise: choiseSever)),
-        barrierDismissible: true,
-      );
-      Get.dialog(
-        obx((state) => dialogDown(
-            process: message,
-            speed: speedInternet,
-            size: downLink.size,
-            reloadDown: () async {
-              onPopDialog(
-                  context: Get.context!,
-                  title: "Khởi động lại quá trình tải?".tr,
-                  onCancel: () async {
-                    Get.back();
-                  },
-                  onSubmit: () async {
-                    Get.close(2);
-                    await downloadAssetsController.clearAssets();
-                    clearAndResetApp();
-                  });
-            },
-            isDone: downloaded)),
-        barrierDismissible: false,
-      );
-      _downloadAssets();
-    }
-    // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
+  // Future initDown() async {
+  //   downloaded = await downloadAssetsController.assetsDirAlreadyExists();
+  //   var checkAllFile =
+  //       await File('${downloadAssetsController.assetsDir}/svg_icons/river.svg')
+  //           .exists();
+  //   log('check down: $downloaded | $checkAllFile | ${downloadAssetsController.assetsDir}');
+  //   log('check user vip: ${checkExpiry(user: user)} | ${user.toJson()}');
+  //   renewSubscriptions(checkExpiry(user: user));
+  //   // if(downloaded){
+  //   //   await downloadAssetsController.clearAssets();
+  //   // }
+  //   if (!downloaded || !checkAllFile) {
+  //     //print('show down');
+  //     await Get.dialog(
+  //       obx((state) => dialogChoseSever(choise: choiseSever)),
+  //       barrierDismissible: true,
+  //     );
+  //     Get.dialog(
+  //       obx((state) => dialogDown(
+  //           process: message,
+  //           speed: speedInternet,
+  //           size: downLink.size,
+  //           reloadDown: () async {
+  //             onPopDialog(
+  //                 context: Get.context!,
+  //                 title: "Khởi động lại quá trình tải?".tr,
+  //                 onCancel: () async {
+  //                   Get.back();
+  //                 },
+  //                 onSubmit: () async {
+  //                   Get.close(2);
+  //                   await downloadAssetsController.clearAssets();
+  //                   clearAndResetApp();
+  //                 });
+  //           },
+  //           isDone: downloaded)),
+  //       barrierDismissible: false,
+  //     );
+  //     _downloadAssets();
+  //   }
+  //   // kiểm tra xem dữ liệu tải về còn dùng đc ho phiên bản mơi shay k
 
-    try {
-      String data = await File(
-              '${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
-          .readAsString();
-      oldVer = jsonDecode(data);
-      bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
-      if (!isUpdate) {
-        clearDown();
-        initDown();
-      }
-    } catch (_) {}
-  }
-
-  // Future _refresh() async {
-  //   await downloadAssetsController.clearAssets();
-  //   await _downloadAssets();
+  //   try {
+  //     String data = await File(
+  //             '${downloadAssetsController.assetsDir}/json_data/data_${getLocalConvertString()}.json')
+  //         .readAsString();
+  //     oldVer = jsonDecode(data);
+  //     bool isUpdate = oldVer["version_app"].contains(packageInfo?.version);
+  //     if (!isUpdate) {
+  //       clearDown();
+  //       initDown();
+  //     }
+  //   } catch (_) {}
   // }
 
-  Future clearDown() async {
-    //message = 'tải';
-    await downloadAssetsController.clearAssets();
-    //print(message);
-    // return;
-  }
+  // // Future _refresh() async {
+  // //   await downloadAssetsController.clearAssets();
+  // //   await _downloadAssets();
+  // // }
 
-  Future _downloadAssets() async {
-    final assetsDownloaded =
-        await downloadAssetsController.assetsDirAlreadyExists();
+  // Future clearDown() async {
+  //   //message = 'tải';
+  //   await downloadAssetsController.clearAssets();
+  //   //print(message);
+  //   // return;
+  // }
 
-    if (assetsDownloaded) {
-      //message = 'tải';
-      await downloadAssetsController.clearAssets();
-      //print(message);
-      // return;
-    }
+  // Future _downloadAssets() async {
+  //   final assetsDownloaded =
+  //       await downloadAssetsController.assetsDirAlreadyExists();
 
-    try {
-      testInternetSpeed();
-      await downloadAssetsController.startDownload(
-          assetsUrl: linkSelect?.url ?? '',
-          onProgress: (progressValue) {
-            downloaded = false;
-            if (progressValue < 100) {
-              message = "Đang tải".trParams(
-                  {'process': '${progressValue.toStringAsFixed(2)} %'});
-              updateUI();
-              // print(message);
-            } else {
-              message =
-                  'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới'
-                      .tr;
-              downloaded = true;
-              //Get.back();
-              Future.delayed(const Duration(seconds: 2), () {
-                clearAndResetApp();
-              });
-            }
-          });
-    } on DownloadAssetsException catch (e) {
-      //print(e.toString());
-      downloaded = false;
-      buildToast(message: 'Lỗi tải xuống'.tr, status: TypeToast.toastError);
-      message = 'Error: ${e.toString()}';
-    }
-  }
+  //   if (assetsDownloaded) {
+  //     //message = 'tải';
+  //     await downloadAssetsController.clearAssets();
+  //     //print(message);
+  //     // return;
+  //   }
 
-  void testInternetSpeed() {
-    speedTest.startTesting(
-      useFastApi: false, //true(default)
-      downloadTestServer:
-          'https://vqh2602.github.io/lavenz_music_data.github.io', //Your download test server URL goes here,//Your upload test server URL goes here,//File size to be tested
-      onStarted: () {},
-      onCompleted: (TestResult download, TestResult upload) {},
-      onProgress: (double percent, TestResult data) {
-        speedInternet =
-            '${data.transferRate} ${data.unit == SpeedUnit.kbps ? 'Kbps' : 'Mbps'}';
-      },
-      onError: (String errorMessage, String speedTestError) {},
-      onDefaultServerSelectionInProgress: () {
-        //Only when you use useFastApi parameter as true(default)
-      },
-      onDefaultServerSelectionDone: (Client? client) {
-        ///Only when you use useFastApi parameter as true(default)
-      },
-      onDownloadComplete: (TestResult data) {},
-      onUploadComplete: (TestResult data) {},
-      onCancel: () {},
-    );
-  }
+  //   try {
+  //     await downloadAssetsController.startDownload(
+  //         assetsUrl: linkSelect?.url ?? '',
+  //         onProgress: (progressValue) {
+  //           downloaded = false;
+  //           if (progressValue < 100) {
+  //             message = "Đang tải".trParams(
+  //                 {'process': '${progressValue.toStringAsFixed(2)} %'});
+  //             updateUI();
+  //             // print(message);
+  //           } else {
+  //             message =
+  //                 'Tải xuống thành công\nĐóng và khởi động lại ứng dụng để cập nhật dữ liệu mới'
+  //                     .tr;
+  //             downloaded = true;
+  //             //Get.back();
+  //             Future.delayed(const Duration(seconds: 2), () {
+  //               clearAndResetApp();
+  //             });
+  //           }
+  //         });
+  //   } on DownloadAssetsException catch (e) {
+  //     //print(e.toString());
+  //     downloaded = false;
+  //     buildToast(message: 'Lỗi tải xuống'.tr, status: TypeToast.toastError);
+  //     message = 'Error: ${e.toString()}';
+  //   }
+  // }
 
+  
 // tự động làm mới
   Future<void> renewSubscriptions(bool isVip) async {
     bool? isRenew = box.read(Storages.dataRenewSub);

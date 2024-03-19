@@ -12,7 +12,6 @@ import 'package:lavenz/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lavenz/widgets/widgets.dart';
-import 'package:video_player/video_player.dart';
 
 class DashBroadScreen extends StatefulWidget {
   const DashBroadScreen({Key? key}) : super(key: key);
@@ -30,7 +29,6 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
 
   @override
   void initState() {
-    dashBroadController.initVideoBackground();
     scrollController.addListener(() {
       if (scrollController.position.pixels <=
           scrollController.position.minScrollExtent + 20) {
@@ -49,7 +47,6 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
 
   @override
   void dispose() {
-    dashBroadController.videoPlayerController?.dispose();
     scrollController.dispose();
     super.dispose();
   }
@@ -71,7 +68,7 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
                   width: Get.width,
                   height: Get.height,
                   child:
-                      VideoPlayer(dashBroadController.videoPlayerController!),
+                      Image.asset('assets/background/vd3.gif', fit: BoxFit.cover),
                 ),
                 Container(
                   width: Get.width,
@@ -173,8 +170,10 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(17) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+                  pathImages:
+                  'assets/data/images/',
               title: 'Đi vào giấc ngủ'.tr,
               type: 17),
           cHeight(12),
@@ -185,8 +184,9 @@ class _DashBroadScreenState extends State<DashBroadScreen> {
               listData: soundController.listMusic
                   .where((element) => element.tag?.contains(13) ?? false)
                   .toList(),
-              pathImages:
-                  '${soundController.downloadAssetsController.assetsDir}/images/',
+              // pathImages:
+              //     '${soundController.downloadAssetsController.assetsDir}/images/',
+              pathImages: 'assets/data/images/',
               title: 'Tập trung cao độ'.tr,
               type: 13),
           cHeight(12),

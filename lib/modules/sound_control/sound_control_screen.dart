@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +48,7 @@ class _SoundControlScreenState extends State<SoundControlScreen>
 
     super.didChangeDependencies();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -91,20 +90,21 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                     child: Column(
                   children: [
                     cHeight(30),
-                    if(widget.isShowDownTime ?? true)...[
-                    _numSoundPlay(
-                        title: 'Hẹn giờ'.tr,
-                        isPlay: false,
-                        wIcon: IconButton(
-                            onPressed: () {
-                              soundControlController.resetDownTime();
-                            },
-                            icon: const Icon(
-                              LucideIcons.alarmMinus,
-                              color: Colors.white70,
-                            ))),
-                    _header(),
-                    cHeight(30),],
+                    if (widget.isShowDownTime ?? true) ...[
+                      _numSoundPlay(
+                          title: 'Hẹn giờ'.tr,
+                          isPlay: false,
+                          wIcon: IconButton(
+                              onPressed: () {
+                                soundControlController.resetDownTime();
+                              },
+                              icon: const Icon(
+                                LucideIcons.alarmMinus,
+                                color: Colors.white70,
+                              ))),
+                      _header(),
+                      cHeight(30),
+                    ],
                     _numSoundPlay(
                         title: 'Âm nhạc'.tr,
                         isPlay: soundControlController.isPlayMusic,
@@ -129,7 +129,8 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                             soundControlController.updateUI();
                           }
                         },
-                        num: '${soundControlController.listAudio.length}/${soundControlController.checkVipPlaySound()}'),
+                        num:
+                            '${soundControlController.listAudio.length}/${soundControlController.checkVipPlaySound()}'),
                     Expanded(
                       child: _listSoundControl(
                           listData: soundControlController.listAudio),
@@ -177,18 +178,23 @@ class _SoundControlScreenState extends State<SoundControlScreen>
                               color: colorF2,
                               borderRadius: BorderRadius.circular(20)),
                           child: (type == 1)
-                              ? SvgPicture.file(
-                                  File(
-                                      '${soundControlController.downloadAssetsController.assetsDir}/svg_icons/${listData[index].data.image}'),
+                              ?
+                              // SvgPicture.file(
+                              //     File(
+                              //         '${soundControlController.downloadAssetsController.assetsDir}/svg_icons/${listData[index].data.image}'),
+                              SvgPicture.asset(
+                                  'assets/data/svg_icons/${listData[index].data.image}',
                                   fit: BoxFit.scaleDown,
                                   colorFilter: const ColorFilter.mode(
                                       Colors.white, BlendMode.srcIn),
                                 )
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(20.0),
-                                  child: Image.file(
-                                    File(
-                                        '${soundControlController.downloadAssetsController.assetsDir}/images/${listData[index].data.image}'),
+                                  child: Image.asset(
+                                    'assets/data/images/${listData[index].data.image}',
+                                    //  Image.file(
+                                    //   File(
+                                    //       '${soundControlController.downloadAssetsController.assetsDir}/images/${listData[index].data.image}'),
                                     fit: BoxFit.cover,
                                     width: 70,
                                     height: 70,

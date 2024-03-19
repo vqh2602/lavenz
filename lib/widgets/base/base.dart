@@ -12,7 +12,7 @@ Widget buildBody(
     Widget? createFloatingActionButton,
     bool isCheckBeforePop = false,
     FloatingActionButtonLocation? floatingActionButtonLocation}) {
-  return WillPopScope(
+  return PopScope(
       child: Scaffold(
           extendBodyBehindAppBar: true,
           extendBody: true,
@@ -22,7 +22,7 @@ Widget buildBody(
           floatingActionButton: createFloatingActionButton,
           floatingActionButtonLocation: floatingActionButtonLocation,
           body: body),
-      onWillPop: () async => onWillPop(context, isCheckBeforePop));
+      onPopInvoked: (val) async => onWillPop(context, isCheckBeforePop));
 }
 
 Future<bool> onWillPop(BuildContext context, bool isCheckBeforePop) async {
