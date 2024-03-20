@@ -105,7 +105,7 @@ flutter:
     - assets/background/
     - assets/animation/
     - assets/sound/
-    - assets/images/
+    # - assets/images/
     - assets/data/json_data/
     - assets/data/sound/
     - assets/data/svg_icons/
